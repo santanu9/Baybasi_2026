@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join Baybasi | Membership, Volunteering, Sponsorship & Contact</title>
+  <meta name="description" content="Join Baybasi as a member, volunteer, subscriber, sponsor, or contact the organization for general and corporate inquiries." />
+  <link rel="icon" href="assets/images/baybasi-logo-placeholder.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- Shared site header. Keep header markup consistent across pages. -->
+<header class="site-header" data-site-header>
+  <a class="brand" href="index.html" aria-label="Baybasi home">
+    <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
+    <span class="brand-text">
+      <span class="brand-name">Baybasi</span>
+      <span class="brand-tagline">Culture • Community • Giving Back</span>
+    </span>
+  </a>
+
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+    <span class="sr-only">Open menu</span>
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+    <a class="nav-link " href="index.html">Home</a>
+<a class="nav-link " href="about.html">About Us</a>
+<a class="nav-link " href="impacts.html">Impacts</a>
+<a class="nav-link " href="events.html">Events</a>
+<a class="nav-link " href="sponsors.html">Sponsors</a>
+<a class="nav-link is-active" href="join-us.html">Join Us</a>
+  </nav>
+</header>
+<main id="main-content">
+
+<section class="page-hero compact-hero join-hero">
+  <div class="section-shell">
+    <p class="eyebrow">Join Us / Contact</p>
+    <h1>Be part of Baybasi’s culture, community, and service.</h1>
+    <p>Whether you want to become a member, volunteer, attend events, sponsor, or simply ask a question, start here.</p>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="section-shell">
+    <div class="section-heading center"><p class="eyebrow">Ways to Join</p><h2>Choose the path that fits you</h2></div>
+    <div class="card-grid four-col">
+      <article class="info-card"><h3>Member</h3><p><strong>Why:</strong> access events, participate in programs, elect the Board, join leadership teams, and help decide Baybasi’s future.</p><p><strong>Criteria:</strong> align with Baybasi’s purpose, participate in programs, and pay minimum donation amount set by the Board.</p></article>
+      <article class="info-card"><h3>Volunteer</h3><p><strong>Why:</strong> help the community, give back to society, earn volunteer points, and redeem rewards in future.</p><p><strong>Criteria:</strong> align with Baybasi’s purpose, participate in events, and agree to Baybasi terms.</p></article>
+      <article class="info-card"><h3>Subscriber / Attend</h3><p>Enjoy a homely environment, quality programs, Bengali food, family-friendly events, and discounts for students, seniors, and families.</p><p>Future options may include annual subscriptions, event subscriptions, day passes, and value packs.</p></article>
+      <article class="info-card"><h3>Sponsor</h3><p>Support Baybasi while gaining brand visibility, audience access, goodwill, and direct engagement opportunities.</p><a href="sponsors.html">View sponsor details</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact-form">
+  <div class="section-shell form-layout">
+    <div>
+      <p class="eyebrow">Contact Baybasi</p>
+      <h2>Send an inquiry</h2>
+      <p>Use this form for member interest, volunteering, event updates, sponsorship, corporate inquiry, or general contact.</p>
+      <p><strong>Email:</strong> <a href="mailto:baybasi@baybasi.us">baybasi@baybasi.us</a></p>
+      <p class="note">MVP 1 privacy approach: public pages should not display full residential/personal addresses.</p>
+    </div>
+
+    <!-- MVP 1 static form: JS converts entries into a mailto link. Future developers can replace this with backend/CMS integration. -->
+    <form class="contact-form" data-mailto-form data-recipient="baybasi@baybasi.us">
+      <label>Inquiry Type
+        <select name="Inquiry Type" required>
+          <option value="">Select one</option>
+          <option>Member Interest</option>
+          <option>Volunteer Interest</option>
+          <option>Subscriber / Event Updates</option>
+          <option>Sponsor Inquiry</option>
+          <option>Corporate Inquiry</option>
+          <option>General Contact</option>
+        </select>
+      </label>
+      <label>Name <input name="Name" required /></label>
+      <label>Email <input name="Email" type="email" required /></label>
+      <label>Phone <input name="Phone" /></label>
+      <label>City <input name="City" /></label>
+      <label>Areas of Interest
+        <select name="Areas of Interest">
+          <option>Not Sure</option>
+          <option>Membership</option>
+          <option>Volunteering</option>
+          <option>Events</option>
+          <option>Sponsorship</option>
+          <option>Donation / Support</option>
+          <option>Corporate Partnership</option>
+          <option>Media / Publications</option>
+        </select>
+      </label>
+      <label>Message <textarea name="Message" rows="6" placeholder="Tell us how you would like to connect with Baybasi."></textarea></label>
+      <button class="button button-primary" type="submit">Prepare Email to Baybasi</button>
+      <p class="form-note">This prototype opens your email app addressed to baybasi@baybasi.us. Developers can connect a form service later.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="section-shell">
+    <div class="section-heading center"><p class="eyebrow">Future Platform</p><h2>Planned future capabilities</h2><p>These are placeholders only for Phase 2 and Phase 3.</p></div>
+    <div class="card-grid four-col">
+      <article class="future-card"><h3>Member Portal</h3><p>Coming Soon</p></article>
+      <article class="future-card"><h3>Volunteer Portal</h3><p>Coming Soon</p></article>
+      <article class="future-card"><h3>Event Registration</h3><p>Coming Soon</p></article>
+      <article class="future-card"><h3>Online Payments</h3><p>Future Release</p></article>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Shared footer. Future portal links are intentionally subtle in MVP 1. -->
+<footer class="site-footer">
+  <section class="footer-main section-shell">
+    <div class="footer-brand">
+      <a class="brand brand-footer" href="index.html" aria-label="Baybasi home">
+        <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
+        <span class="brand-text">
+          <span class="brand-name">Baybasi</span>
+          <span class="brand-tagline">Celebrating Culture. Building Community. Giving Back.</span>
+        </span>
+      </a>
+      <p>Baybasi is a Bengali and Indian cultural nonprofit serving the San Francisco Bay Area through festivals, programs, volunteering, and charitable giving.</p>
+      <p><strong>Email:</strong> <a href="mailto:baybasi@baybasi.us">baybasi@baybasi.us</a></p>
+    </div>
+
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="about.html">About Us</a>
+      <a href="impacts.html">Impacts</a>
+      <a href="events.html">Events</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="join-us.html">Join Us / Contact</a>
+    </div>
+
+    <div class="footer-links">
+      <h2>Resources</h2>
+      <a href="about.html#performance-reports">Performance Reports</a>
+      <a href="events.html#publications">Publications</a>
+      <a href="sponsors.html#sponsor-inquiry">Corporate Inquiry</a>
+      <a href="join-us.html#contact-form">Sign Up</a>
+    </div>
+
+    <div class="footer-links future-links">
+      <h2>Future Portals</h2>
+      <span>Member Portal — Coming Soon</span>
+      <span>Volunteer Portal — Coming Soon</span>
+      <span>Event Registration — Coming Soon</span>
+      <span>Admin/CMS Login — Internal Future</span>
+    </div>
+  </section>
+  <div class="footer-bottom section-shell">
+    <span>© 2026 Baybasi. All Rights Reserved.</span>
+    <span>Prototype MVP 1 — HTML, CSS, and Vanilla JavaScript</span>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
