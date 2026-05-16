@@ -1,173 +1,513 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sponsor Baybasi | Partnership, Visibility & Community Impact</title>
-  <meta name="description" content="Sponsor Baybasi and connect your brand with cultural events, community impact, and a high-value Bay Area audience." />
-  <link rel="icon" href="assets/images/baybasi-logo-placeholder.svg" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net"/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js" as="script"/>
+  <title>Sponsors – Baybasi</title>
+  <meta name="description" content="Partner with Baybasi — sponsor Bay Area's premier Indian cultural nonprofit and reach a high-value, engaged community audience."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+          },
+          borderRadius: { DEFAULT: '9999px' },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
 </head>
-<body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<!-- Shared site header. Keep header markup consistent across pages. -->
-<header class="site-header" data-site-header>
-  <a class="brand" href="index.html" aria-label="Baybasi home">
-    <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
-    <span class="brand-text">
-      <span class="brand-name">Baybasi</span>
-      <span class="brand-tagline">Culture • Community • Giving Back</span>
-    </span>
-  </a>
+<body class="bg-[#FFF7ED]">
+<div id="root"></div>
+<script src="js/components.js"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  motion
+} = Motion;
+const sa = (delay = 0) => ({
+  initial: {
+    opacity: 0,
+    y: 24,
+    filter: 'blur(6px)'
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)'
+  },
+  viewport: {
+    once: true,
+    margin: '-50px'
+  },
+  transition: {
+    duration: 0.6,
+    delay,
+    ease: 'easeOut'
+  }
+});
 
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-    <span class="sr-only">Open menu</span>
-    <span></span><span></span><span></span>
-  </button>
+// ── Page Hero ─────────────────────────────────────────────────────────────
+function PageHero() {
+  return /*#__PURE__*/React.createElement("section", {
+    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
+  }, /*#__PURE__*/React.createElement(Navbar, {
+    activePage: "sponsors.html"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto w-full pt-32"
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    crumbs: [{
+      label: 'Sponsors'
+    }]
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.3
+    }
+  }, "// Sponsorship"), /*#__PURE__*/React.createElement(BlurText, {
+    text: "Partner With a Community That Cares",
+    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.7
+    }
+  }, "Reach a high-value, culturally engaged Bay Area audience while supporting a 501(c)(3) charitable organization."), /*#__PURE__*/React.createElement(motion.div, {
+    className: "mt-8 flex flex-wrap gap-3",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.9
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#inquiry",
+    className: "bg-[#B91C1C] rounded-full px-5 py-2.5 text-sm font-semibold text-white flex items-center gap-1.5"
+  }, "Become a Sponsor ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "#tiers",
+    className: "liquid-glass rounded-full px-5 py-2.5 text-sm font-medium text-[#6B7280] hover:text-[#1F2937] transition-colors"
+  }, "View Tiers"))));
+}
 
-  <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-    <a class="nav-link " href="index.html">Home</a>
-<a class="nav-link " href="about.html">About Us</a>
-<a class="nav-link " href="impacts.html">Impacts</a>
-<a class="nav-link " href="events.html">Events</a>
-<a class="nav-link is-active" href="sponsors.html">Sponsors</a>
-<a class="nav-link " href="join-us.html">Join Us</a>
-  </nav>
-</header>
-<main id="main-content">
+// ── Why Sponsor ───────────────────────────────────────────────────────────
+function WhySponsorSection() {
+  const benefits = [{
+    icon: /*#__PURE__*/React.createElement("path", {
+      d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
+    }),
+    title: 'High-End Brand Visibility',
+    body: 'Your brand reaches 5,000–10,000+ attendees across flagship events, printed programs, banners, and digital media.'
+  }, {
+    icon: /*#__PURE__*/React.createElement("path", {
+      d: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+    }),
+    title: 'Affluent Audience Access',
+    body: 'Connect with Bay Area professionals, families, and business owners — a highly educated, high-income demographic.'
+  }, {
+    icon: /*#__PURE__*/React.createElement("path", {
+      d: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
+    }),
+    title: 'Credible Brand Alignment',
+    body: 'Align your brand with a trusted 501(c)(3) nonprofit. Association with Baybasi signals community commitment and cultural goodwill.'
+  }, {
+    icon: /*#__PURE__*/React.createElement("path", {
+      d: "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"
+    }),
+    title: 'Direct Engagement',
+    body: 'Booth presence, logo placement, social media shout-outs, and emcee mentions drive real-time lead generation and brand recall.'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Why Sponsor"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Why Partner", /*#__PURE__*/React.createElement("br", null), "With Baybasi"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 gap-5"
+  }, benefits.map(({
+    icon,
+    title,
+    body
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: title,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex gap-5"
+  }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "w-11 h-11 rounded-[0.75rem] flex-shrink-0 flex items-center justify-center",
+    style: {
+      background: 'rgba(31,41,55,0.06)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "h-5 w-5 text-[#1F2937]"
+  }, icon)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-xl mb-2 leading-tight"
+  }, title), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed"
+  }, body)))))));
+}
 
-<section class="page-hero compact-hero sponsors-hero">
-  <div class="section-shell">
-    <p class="eyebrow">Sponsors</p>
-    <h1>Partner with a cultural nonprofit that brings people together.</h1>
-    <p>Sponsorship supports Baybasi’s cultural programs, community engagement, and charitable impact while giving your brand meaningful visibility.</p>
-  </div>
-</section>
+// ── Sponsorship Tiers ─────────────────────────────────────────────────────
+function TiersSection() {
+  const tiers = [{
+    name: 'Platinum',
+    perks: ['Primary logo on all event banners & stage backdrop', 'Full-page ad in souvenir book', '5-minute brand presentation slot', 'Premium booth placement at all events', 'Social media campaign (5+ posts)', 'Emcee mention at all flagship events', 'VIP table for 10 at gala dinner'],
+    highlight: true
+  }, {
+    name: 'Gold',
+    perks: ['Logo on event banners & souvenir book', 'Half-page ad in souvenir book', 'Premium booth at major events', 'Social media feature (3 posts)', 'Emcee mention at major events', 'Reserved seating for 6 at dinner']
+  }, {
+    name: 'Silver',
+    perks: ['Logo on event banners', 'Quarter-page ad in souvenir book', 'Booth at 2 major events', 'Social media mention (2 posts)', 'Emcee mention at 2 events', 'Reserved seating for 4']
+  }, {
+    name: 'Bronze',
+    perks: ['Name on event banners', 'Business card ad in souvenir book', 'Shared booth at 1 event', 'Social media mention (1 post)', 'Program acknowledgment']
+  }, {
+    name: 'Classic',
+    perks: ['Name in souvenir book', 'Website acknowledgment', 'Program acknowledgment', 'Certificate of appreciation']
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    id: "tiers",
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(120,15,15,0.1) 0%, transparent 70%), #FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Tiers"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Sponsorship", /*#__PURE__*/React.createElement("br", null), "Tiers"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+  }, tiers.map(({
+    name,
+    perks,
+    highlight
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: `rounded-[1.25rem] p-6 flex flex-col ${highlight ? 'liquid-glass-strong' : 'liquid-glass'}`
+  }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mb-6"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-3xl"
+  }, name), highlight && /*#__PURE__*/React.createElement("span", {
+    className: "bg-white text-[#1F2937] rounded-full px-3 py-1 text-[11px] font-semibold font-body"
+  }, "Top Tier")), /*#__PURE__*/React.createElement("ul", {
+    className: "space-y-2.5 flex-1"
+  }, perks.map(p => /*#__PURE__*/React.createElement("li", {
+    key: p,
+    className: "flex items-start gap-2.5 text-sm font-body font-light text-[#6B7280]"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    className: "h-4 w-4 text-[#9CA3AF] flex-shrink-0 mt-0.5"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "20 6 9 17 4 12"
+  })), p))), /*#__PURE__*/React.createElement("a", {
+    href: "#inquiry",
+    className: `mt-6 rounded-full px-4 py-2.5 text-sm font-medium font-body text-center transition-colors flex items-center justify-center gap-1.5
+                  ${highlight ? 'bg-white text-[#1F2937] hover:bg-[#1F2937]/90' : 'liquid-glass text-[#1F2937] hover:text-[#1F2937]'}`
+  }, "Inquire About ", name, " ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-3.5 w-3.5"
+  })))))));
+}
 
-<section class="section">
-  <div class="section-shell split-layout">
-    <div>
-      <p class="eyebrow">Why Sponsor Baybasi</p>
-      <h2>Visibility with goodwill</h2>
-      <p>Baybasi offers sponsors access to a highly engaged Bay Area community through major cultural events, festivals, publications, media, and community programs.</p>
-    </div>
-    <div class="benefit-list">
-      <article><h3>Brand Visibility</h3><p>Showcase your brand across events, sponsor areas, website sections, and publications.</p></article>
-      <article><h3>Affluent Audience</h3><p>Connect with a high-value community audience across the San Francisco Bay Area.</p></article>
-      <article><h3>Goodwill</h3><p>Align with a credible nonprofit supporting culture, community, and charitable causes.</p></article>
-      <article><h3>Direct Engagement</h3><p>Opportunities for lead generation and relationship-building at signature events.</p></article>
-    </div>
-  </div>
-</section>
+// ── Current Sponsors ──────────────────────────────────────────────────────
+function CurrentSponsorsSection() {
+  const tiers = [{
+    name: 'Platinum',
+    sponsors: [{
+      name: 'India Grocery and Spice',
+      img: 'images/sponsors/indian_grocery_image001.png',
+      href: 'http://www.indiagroceryandspice.com/'
+    }, {
+      name: 'Future Right',
+      img: 'images/sponsors/future_right_v2-768x644.png',
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSem_ICmWMSX690Y-u8cQQDcvTy_WWiCGHnqRKNFRhrjwaxjhA/viewform'
+    }]
+  }, {
+    name: 'Gold',
+    sponsors: [{
+      name: 'Zaman',
+      img: 'images/sponsors/zaman-1024x571.jpeg',
+      href: 'https://calcoastmtg.com'
+    }, {
+      name: 'Ask For Cure',
+      img: 'images/sponsors/I-693_New-1024x683.jpeg',
+      href: 'http://www.askforcure.com'
+    }]
+  }, {
+    name: 'Silver',
+    sponsors: [{
+      name: 'Ravi Jagtiani',
+      img: 'images/sponsors/ravi_jagtiani_new-1024x512.jpg',
+      href: null
+    }, {
+      name: 'Ramez Tabri Real Estate',
+      img: 'images/sponsors/ramez_tabri_updated.jpg',
+      href: 'https://rameztabrirealestate.com'
+    }, {
+      name: 'First Bank',
+      img: 'images/sponsors/first_bank.png',
+      href: 'https://www.first.bank/About/Locations/San-Mateo'
+    }, {
+      name: 'Kids Connection Schools',
+      img: 'images/sponsors/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg',
+      href: 'https://kidsconnectionschools.com/'
+    }]
+  }, {
+    name: 'Bronze',
+    sponsors: [{
+      name: 'BMO',
+      img: 'images/sponsors/BMO_Updated-768x440.png',
+      href: 'https://usmortgagebanker.bmo.com/ca/fremont/ac-1685660/'
+    }, {
+      name: 'Rosalind Chin',
+      img: 'images/sponsors/rosalind_chin.png',
+      href: 'http://www.rosalindchin.com'
+    }, {
+      name: 'EBIW',
+      img: 'images/sponsors/ebiw-768x122.png',
+      href: 'https://ebiw.com/'
+    }, {
+      name: 'Shiraz Zack Real Estate',
+      img: 'images/sponsors/kw_PHOTO-2022-09-12-21-14-21.jpg',
+      href: 'https://www.ShirazZack.com/'
+    }]
+  }, {
+    name: 'Classic',
+    sponsors: [{
+      name: 'Jaspreet',
+      img: 'images/sponsors/Jaspreet-768x621.png',
+      href: 'https://www.realtor.com/realestateagents/56a5673e7e54f70100203d91'
+    }, {
+      name: 'Nanda Cal Realty',
+      img: 'images/sponsors/Mamta_logo_new-scaled-1-768x512.jpg',
+      href: 'https://www.nandacalrealty.com/'
+    }, {
+      name: 'Andrew Klink',
+      img: 'images/sponsors/Andrew_Klink_2-scaled-1-768x432.jpeg',
+      href: null
+    }, {
+      name: 'Gama Ride',
+      img: 'images/sponsors/gama_ride_working-1.png',
+      href: 'https://gamaride.net/'
+    }]
+  }];
+  const sizeClass = tier => {
+    if (tier === 'Platinum') return 'w-72 h-36';
+    if (tier === 'Gold') return 'w-60 h-28';
+    if (tier === 'Silver') return 'w-52 h-24';
+    if (tier === 'Bronze') return 'w-44 h-20';
+    return 'w-40 h-16';
+  };
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Our Sponsors"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Thank You", /*#__PURE__*/React.createElement("br", null), "to Our Partners"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-10"
+  }, tiers.map(({
+    name,
+    sponsors
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name
+  }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-4 mb-5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "liquid-glass rounded-full px-4 py-1.5 text-xs font-medium text-[#6B7280] font-body"
+  }, name), /*#__PURE__*/React.createElement("div", {
+    className: "flex-1 h-px",
+    style: {
+      background: 'rgba(31,41,55,0.06)'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap gap-4 items-center"
+  }, sponsors.map(({
+    name: sname,
+    img,
+    href
+  }) => {
+    const card = /*#__PURE__*/React.createElement("div", {
+      className: `liquid-glass rounded-[0.875rem] flex items-center justify-center p-5 ${sizeClass(name)} ${href ? 'cursor-pointer hover:shadow-lg transition-shadow' : ''}`,
+      title: sname
+    }, /*#__PURE__*/React.createElement("img", {
+      src: img,
+      alt: sname,
+      className: "max-w-full max-h-full object-contain"
+    }));
+    return href ? /*#__PURE__*/React.createElement("a", {
+      key: sname,
+      href: href,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, card) : /*#__PURE__*/React.createElement("div", {
+      key: sname
+    }, card);
+  })))))));
+}
 
-<section class="section section-cream">
-  <div class="section-shell">
-    <div class="section-heading center"><p class="eyebrow">Sponsorship Tiers</p><h2>Flexible tiers for different visibility levels</h2></div>
-    <div class="tier-grid">
-      <article class="tier-card featured"><h3>Platinum</h3><p>Highest visibility and premium placement.</p><ul><li>Homepage sponsor visibility</li><li>Event recognition</li><li>Prominent logo placement</li></ul></article>
-      <article class="tier-card"><h3>Gold</h3><p>Strong visibility across events and web.</p><ul><li>Tiered logo placement</li><li>Event recognition</li><li>Digital visibility</li></ul></article>
-      <article class="tier-card"><h3>Silver</h3><p>Valuable community presence.</p><ul><li>Logo listing</li><li>Event acknowledgement</li><li>Website visibility</li></ul></article>
-      <article class="tier-card"><h3>Bronze</h3><p>Accessible sponsorship support.</p><ul><li>Website listing</li><li>Basic event recognition</li></ul></article>
-      <article class="tier-card"><h3>Classic</h3><p>Community supporter level.</p><ul><li>Name/logo listing</li><li>Supporter recognition</li></ul></article>
-    </div>
-  </div>
-</section>
+// ── Sponsor Inquiry Form ──────────────────────────────────────────────────
+function InquirySection() {
+  const [form, setForm] = React.useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    tier: '',
+    message: ''
+  });
+  const handleSubmit = e => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Sponsorship Inquiry: ${form.tier || 'General'} — ${form.company}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\nTier: ${form.tier}\n\n${form.message}`);
+    window.location.href = `mailto:baybasi@baybasi.us?subject=${subject}&body=${body}`;
+  };
+  const field = (label, key, type = 'text', placeholder = '') => /*#__PURE__*/React.createElement("div", {
+    key: key,
+    className: "flex flex-col gap-1.5"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "text-[#6B7280] text-xs font-body tracking-wide uppercase"
+  }, label), /*#__PURE__*/React.createElement("input", {
+    type: type,
+    value: form[key],
+    placeholder: placeholder,
+    onChange: e => setForm({
+      ...form,
+      [key]: e.target.value
+    }),
+    className: "bg-transparent border-0 rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20",
+    style: {
+      background: 'rgba(31,41,55,0.04)'
+    }
+  }));
+  return /*#__PURE__*/React.createElement("section", {
+    id: "inquiry",
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      borderTop: '1px solid rgba(31,41,55,0.06)',
+      background: '#FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Get Started"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Sponsor", /*#__PURE__*/React.createElement("br", null), "Inquiry"), /*#__PURE__*/React.createElement(motion.form, _extends({
+    onSubmit: handleSubmit,
+    className: "liquid-glass rounded-[1.25rem] p-8 max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-5"
+  }, sa(0.2)), field('Your Name', 'name', 'text', 'Full name'), field('Company', 'company', 'text', 'Organization / Business name'), field('Email', 'email', 'email', 'your@email.com'), field('Phone', 'phone', 'tel', '+1 (xxx) xxx-xxxx'), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col gap-1.5 sm:col-span-2"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "text-[#6B7280] text-xs font-body tracking-wide uppercase"
+  }, "Sponsorship Tier"), /*#__PURE__*/React.createElement("select", {
+    value: form.tier,
+    onChange: e => setForm({
+      ...form,
+      tier: e.target.value
+    }),
+    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light focus:outline-none focus:ring-1 focus:ring-white/20",
+    style: {
+      background: 'rgba(31,41,55,0.04)',
+      border: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "",
+    style: {
+      background: '#1a0505'
+    }
+  }, "Select a tier..."), ['Platinum', 'Gold', 'Silver', 'Bronze', 'Classic'].map(t => /*#__PURE__*/React.createElement("option", {
+    key: t,
+    value: t,
+    style: {
+      background: '#1a0505'
+    }
+  }, t)))), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col gap-1.5 sm:col-span-2"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "text-[#6B7280] text-xs font-body tracking-wide uppercase"
+  }, "Message"), /*#__PURE__*/React.createElement("textarea", {
+    rows: 4,
+    value: form.message,
+    placeholder: "Tell us about your sponsorship goals...",
+    onChange: e => setForm({
+      ...form,
+      message: e.target.value
+    }),
+    className: "bg-transparent rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20 resize-none",
+    style: {
+      background: 'rgba(31,41,55,0.04)'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "sm:col-span-2"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "w-full liquid-glass-strong rounded-full py-3 text-sm font-medium text-[#1F2937] flex items-center justify-center gap-2 hover:bg-[#1F2937]/10 transition-colors"
+  }, "Send Inquiry ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  }))))));
+}
 
-<section class="section">
-  <div class="section-shell">
-    <div class="section-heading center"><p class="eyebrow">Current Sponsors</p><h2>Sponsor recognition by tier</h2><p>Replace placeholder boxes with real sponsor logos. Higher tiers should receive more space.</p></div>
-    <div class="sponsor-tier-preview full">
-      <div class="sponsor-tier platinum"><h3>Platinum</h3><div class="logo-row"><span>Large Logo</span><span>Large Logo</span></div></div>
-      <div class="sponsor-tier gold"><h3>Gold</h3><div class="logo-row"><span>Logo</span><span>Logo</span><span>Logo</span></div></div>
-      <div class="sponsor-tier simple"><h3>Silver</h3><div class="logo-row"><span>Logo</span><span>Logo</span><span>Logo</span><span>Logo</span></div></div>
-      <div class="sponsor-tier simple"><h3>Bronze & Classic</h3><div class="logo-row"><span>Logo</span><span>Logo</span><span>Logo</span><span>Logo</span><span>Logo</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-cream">
-  <div class="section-shell testimonial-grid">
-    <blockquote><p>“Sponsor testimony placeholder about brand alignment and community connection.”</p><cite>Corporate Sponsor</cite></blockquote>
-    <blockquote><p>“Partner testimony placeholder about visibility, goodwill, and event engagement.”</p><cite>Community Partner</cite></blockquote>
-  </div>
-</section>
-
-<section class="section" id="sponsor-inquiry">
-  <div class="section-shell form-layout">
-    <div>
-      <p class="eyebrow">Sponsor Inquiry</p>
-      <h2>Start a sponsorship conversation</h2>
-      <p>This MVP 1 form uses a mailto prototype. Developers can later connect it to Formspree, Netlify Forms, Basin, Google Sheets, a backend, or a CMS workflow.</p>
-      <div class="resource-card stacked">
-        <h3>Future sponsor packet</h3>
-        <p>Placeholder for downloadable sponsorship packet PDF.</p>
-        <a class="button button-outline" href="assets/docs/README.md">Packet Placeholder</a>
-      </div>
-    </div>
-    <form class="contact-form" data-mailto-form data-recipient="baybasi@baybasi.us">
-      <input type="hidden" name="Form Type" value="Sponsor Inquiry" />
-      <label>Business / Organization Name <input name="Business / Organization" required /></label>
-      <label>Contact Person <input name="Contact Person" required /></label>
-      <label>Email <input name="Email" type="email" required /></label>
-      <label>Phone <input name="Phone" /></label>
-      <label>Website / Social Link <input name="Website / Social Link" /></label>
-      <label>Sponsorship Interest
-        <select name="Sponsorship Interest">
-          <option>Not Sure</option><option>Platinum</option><option>Gold</option><option>Silver</option><option>Bronze</option><option>Classic</option>
-        </select>
-      </label>
-      <label>Message <textarea name="Message" rows="5"></textarea></label>
-      <button class="button button-primary" type="submit">Prepare Email to Baybasi</button>
-      <p class="form-note">This prototype opens your email app addressed to baybasi@baybasi.us.</p>
-    </form>
-  </div>
-</section>
-</main>
-<!-- Shared footer. Future portal links are intentionally subtle in MVP 1. -->
-<footer class="site-footer">
-  <section class="footer-main section-shell">
-    <div class="footer-brand">
-      <a class="brand brand-footer" href="index.html" aria-label="Baybasi home">
-        <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
-        <span class="brand-text">
-          <span class="brand-name">Baybasi</span>
-          <span class="brand-tagline">Celebrating Culture. Building Community. Giving Back.</span>
-        </span>
-      </a>
-      <p>Baybasi is a Bengali and Indian cultural nonprofit serving the San Francisco Bay Area through festivals, programs, volunteering, and charitable giving.</p>
-      <p><strong>Email:</strong> <a href="mailto:baybasi@baybasi.us">baybasi@baybasi.us</a></p>
-    </div>
-
-    <div class="footer-links">
-      <h2>Explore</h2>
-      <a href="about.html">About Us</a>
-      <a href="impacts.html">Impacts</a>
-      <a href="events.html">Events</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="join-us.html">Join Us / Contact</a>
-    </div>
-
-    <div class="footer-links">
-      <h2>Resources</h2>
-      <a href="about.html#performance-reports">Performance Reports</a>
-      <a href="events.html#publications">Publications</a>
-      <a href="sponsors.html#sponsor-inquiry">Corporate Inquiry</a>
-      <a href="join-us.html#contact-form">Sign Up</a>
-    </div>
-
-    <div class="footer-links future-links">
-      <h2>Future Portals</h2>
-      <span>Member Portal — Coming Soon</span>
-      <span>Volunteer Portal — Coming Soon</span>
-      <span>Event Registration — Coming Soon</span>
-      <span>Admin/CMS Login — Internal Future</span>
-    </div>
-  </section>
-  <div class="footer-bottom section-shell">
-    <span>© 2026 Baybasi. All Rights Reserved.</span>
-    <span>Prototype MVP 1 — HTML, CSS, and Vanilla JavaScript</span>
-  </div>
-</footer>
-<script src="js/main.js"></script>
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageHero, null), /*#__PURE__*/React.createElement(WhySponsorSection, null), /*#__PURE__*/React.createElement(TiersSection, null), /*#__PURE__*/React.createElement(CurrentSponsorsSection, null), /*#__PURE__*/React.createElement(InquirySection, null), /*#__PURE__*/React.createElement(Footer, null));
+}
+const {
+  createRoot
+} = ReactDOM;
+createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+</script>
 </body>
 </html>

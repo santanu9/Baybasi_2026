@@ -1,175 +1,394 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Baybasi Events | Calendar, Festivals, Photos, Videos & Publications</title>
-  <meta name="description" content="View Baybasi’s 2026 event calendar, featured event details, signature festivals, photos, videos, and publications." />
-  <link rel="icon" href="assets/images/baybasi-logo-placeholder.svg" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net"/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js" as="script"/>
+  <title>Events – Baybasi</title>
+  <meta name="description" content="Baybasi 2026 event calendar: Spring Festival, Holi, Boishakhi Adda, Autumn Festival, Diwali and more."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+          },
+          borderRadius: { DEFAULT: '9999px' },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
 </head>
-<body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<!-- Shared site header. Keep header markup consistent across pages. -->
-<header class="site-header" data-site-header>
-  <a class="brand" href="index.html" aria-label="Baybasi home">
-    <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
-    <span class="brand-text">
-      <span class="brand-name">Baybasi</span>
-      <span class="brand-tagline">Culture • Community • Giving Back</span>
-    </span>
-  </a>
+<body class="bg-[#FFF7ED]">
+<div id="root"></div>
+<script src="js/components.js"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  motion
+} = Motion;
+const sa = (delay = 0) => ({
+  initial: {
+    opacity: 0,
+    y: 24,
+    filter: 'blur(6px)'
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)'
+  },
+  viewport: {
+    once: true,
+    margin: '-50px'
+  },
+  transition: {
+    duration: 0.6,
+    delay,
+    ease: 'easeOut'
+  }
+});
 
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-    <span class="sr-only">Open menu</span>
-    <span></span><span></span><span></span>
-  </button>
+// ── Page Hero ─────────────────────────────────────────────────────────────
+function PageHero() {
+  return /*#__PURE__*/React.createElement("section", {
+    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
+  }, /*#__PURE__*/React.createElement(Navbar, {
+    activePage: "events.html"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto w-full pt-32"
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    crumbs: [{
+      label: 'Events'
+    }]
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.3
+    }
+  }, "// Events 2026"), /*#__PURE__*/React.createElement(BlurText, {
+    text: "A Year Full of Culture Joy and Community",
+    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.7
+    }
+  }, "From intimate cultural evenings to public festivals drawing thousands \u2014 every event is an experience.")));
+}
 
-  <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-    <a class="nav-link " href="index.html">Home</a>
-<a class="nav-link " href="about.html">About Us</a>
-<a class="nav-link " href="impacts.html">Impacts</a>
-<a class="nav-link is-active" href="events.html">Events</a>
-<a class="nav-link " href="sponsors.html">Sponsors</a>
-<a class="nav-link " href="join-us.html">Join Us</a>
-  </nav>
-</header>
-<main id="main-content">
+// ── Event Calendar ────────────────────────────────────────────────────────
+function CalendarSection() {
+  const events = [{
+    month: 'January',
+    date: 'Sat Jan 24',
+    name: 'Spring Festival',
+    type: 'Member Event',
+    desc: 'Saraswati Puja and Cultural Program with Lunch and Dinner. Kids Sit & Draw, Bengali Drama, and performances.',
+    highlights: ['500+ Participants', 'Saraswati Puja', 'Kids Programs', 'Bengali Drama']
+  }, {
+    month: 'March',
+    date: 'Sat Mar 21',
+    name: 'Holi',
+    type: 'Public Event',
+    desc: 'Festival of Color with dry color (available for purchase), Live Music, DJ and Dholi. Onsite food vendors and cleaning facility.',
+    highlights: ['5,000+ Participants', 'Dry Color Only', 'Live Music & DJ', '10+ Food Vendors']
+  }, {
+    month: 'April',
+    date: 'Sat Apr 25',
+    name: 'Boishakhi Adda',
+    type: 'Member Event',
+    desc: 'An evening of Rabindra Sangeet and Nazrul Geeti — cultural program by members and guest artists with dinner.',
+    highlights: ['Rabindra Sangeet', 'Nazrul Geeti', 'Guest Artists', 'Bengali Dinner']
+  }, {
+    month: 'June',
+    date: 'TBD',
+    name: 'Town Hall',
+    type: 'Public Event',
+    desc: 'A Meet & Greet for Baybasi friends and families with the Board of Directors and Execution Committee presenting the 2026 plan.',
+    highlights: ['Open to All', 'BoD Presentation', '2026 Planning', 'Community Q&A']
+  }, {
+    month: 'August',
+    date: 'Sat Aug 15',
+    name: 'Picnic',
+    type: 'Member Event',
+    desc: 'A day full of outdoor activities, delicious food, and adda. Celebrate Independence Day with your Baybasi family.',
+    highlights: ['Outdoor Event', 'Independence Day', 'Adda & Food', 'Family Fun']
+  }, {
+    month: 'October',
+    date: 'Fri Oct 16–18',
+    name: 'Autumn Festival',
+    type: 'Public Event',
+    desc: 'Three-day gala celebration of Durga Puja and Dandiya with Cultural Programs, International Artists, Lunch, Dinner, and Indian Fair.',
+    highlights: ['5,000+ Participants', 'Durga Puja', 'Artists from Kolkata', 'Dandiya Night']
+  }, {
+    month: 'November',
+    date: 'Sat Nov 7',
+    name: 'Bijoya Sammilani, Diwali & Laxmi Puja',
+    type: 'Member Event',
+    desc: 'An evening of Meet & Greet and Dinner with Laxmi Puja and Diwali celebration.',
+    highlights: ['2,000+ Participants', 'Laxmi Puja', 'Diya & Rangoli', 'Cultural Programs']
+  }];
+  const monthColors = ['Jan', 'Mar', 'Apr', 'Jun', 'Aug', 'Oct', 'Nov'];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Event Calendar"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "2026 Schedule"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-4"
+  }, events.map(({
+    month,
+    date,
+    name,
+    type,
+    desc,
+    highlights
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: "liquid-glass rounded-[1.25rem] p-6 grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-4 md:gap-6 items-start"
+  }, sa(0.06 * i)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-1"
+  }, month), /*#__PURE__*/React.createElement("div", {
+    className: "font-heading text-[#1F2937] text-lg leading-tight"
+  }, date), /*#__PURE__*/React.createElement("div", {
+    className: "mt-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[10px] text-[#6B7280] font-body"
+  }, type))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl md:text-3xl leading-tight mb-2"
+  }, name), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed max-w-xl"
+  }, desc)), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap gap-1.5 md:justify-end md:max-w-[180px]"
+  }, highlights.map(h => /*#__PURE__*/React.createElement("span", {
+    key: h,
+    className: "liquid-glass rounded-full px-2.5 py-1 text-[11px] text-[#6B7280] font-body whitespace-nowrap"
+  }, h))))))));
+}
 
-<section class="page-hero compact-hero events-hero">
-  <div class="section-shell">
-    <p class="eyebrow">Events</p>
-    <h1>Festivals, programs, and community gatherings.</h1>
-    <p>Explore upcoming Baybasi events, signature programs, media galleries, and publications.</p>
-  </div>
-</section>
+// ── Featured Event ────────────────────────────────────────────────────────
+function FeaturedEventSection() {
+  const program = [{
+    time: '6:00 – 6:30 pm',
+    item: 'Welcome & Arrival'
+  }, {
+    time: '6:30 – 7:00 pm',
+    item: 'Kids Performance'
+  }, {
+    time: '7:00 – 7:45 pm',
+    item: 'Rabindra Sangeet & Nazrul Geeti — Baybasi Members'
+  }, {
+    time: '7:45 – 8:30 pm',
+    item: 'Rabindra Sangeet — Eminent Guest Singer'
+  }, {
+    time: '8:30 – 8:45 pm',
+    item: 'AFRICA: Poetry with Dance — Baybasi Members'
+  }, {
+    time: '8:45 – 9:00 pm',
+    item: 'BIDROHI: Poetry with Dance — Eminent Dancer'
+  }, {
+    time: '9:00 – 9:15 pm',
+    item: 'Finale Chorus'
+  }, {
+    time: '9:00 – 10:30 pm',
+    item: 'Bengali Cuisine Dinner'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(120,15,15,0.12) 0%, transparent 70%), #FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Featured Event"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-3"
+  }, sa(0.1)), "Boishakhi Adda"), /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-[#6B7280] font-body text-sm mb-12 font-light"
+  }, sa(0.15)), "Saturday, April 25, 2026 \xB7 6:00 pm \u2013 11:00 pm \xB7 Wind Room, Foster City Community Center"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 lg:grid-cols-2 gap-8"
+  }, /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "liquid-glass rounded-[1.25rem] p-6"
+  }, sa(0.2)), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl mb-4"
+  }, "Event Details"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-3 text-sm font-body"
+  }, [['Type', 'Member Event'], ['Date', 'Saturday, April 25, 2026'], ['Time', '6:00 pm – 11:00 pm'], ['Venue', 'Wind Room, Foster City Community Center'], ['Dress', 'Traditional Indian / Festive Attire Encouraged'], ['Cuisine', 'Authentic Bengali Cuisine']].map(([k, v]) => /*#__PURE__*/React.createElement("div", {
+    key: k,
+    className: "flex gap-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[#9CA3AF] w-16 flex-shrink-0"
+  }, k), /*#__PURE__*/React.createElement("span", {
+    className: "text-[#1F2937]"
+  }, v))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "liquid-glass rounded-[1.25rem] p-6"
+  }, sa(0.25)), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl mb-4"
+  }, "Program"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-3"
+  }, program.map(({
+    time,
+    item
+  }) => /*#__PURE__*/React.createElement("div", {
+    key: time + item,
+    className: "flex gap-3 items-start"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[#9CA3AF] text-xs font-body w-28 flex-shrink-0 pt-0.5"
+  }, time), /*#__PURE__*/React.createElement("span", {
+    className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+  }, item)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "mt-6 text-center"
+  }, sa(0.35)), /*#__PURE__*/React.createElement("a", {
+    href: "join-us.html",
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+  }, "Register for This Event ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  })))));
+}
 
-<section class="section section-cream">
-  <div class="section-shell">
-    <div class="section-heading">
-      <p class="eyebrow">2026 Event Calendar</p>
-      <h2>Upcoming events</h2>
-    </div>
-    <div class="calendar-grid">
-      <article><span>January</span><h3>Sat 24: Spring Festival</h3><p>Member Event: Saraswati Puja and cultural program with lunch and dinner.</p></article>
-      <article><span>March</span><h3>Sat 21: Holi</h3><p>Public Event: Festival of Color with live music, DJ, Dholi, onsite food vendors, and dry color.</p></article>
-      <article><span>April</span><h3>Sat 25: Boishakhi Adda</h3><p>Member Event: Rabindra Sangeet, Nazrul Geeti, cultural program by members and guest artists, with dinner.</p></article>
-      <article><span>June</span><h3>TBD: Town Hall</h3><p>Public meet and greet for Baybasi friends and families with the Board and Execution Committee.</p></article>
-      <article><span>August</span><h3>Sat 15: Picnic</h3><p>Member Event: Outdoor activities, food, and adda.</p></article>
-      <article><span>October</span><h3>Fri 16–18: Autumn Festival</h3><p>Public Event: Durga Puja and Dandiya with cultural programs, international artists, lunch, dinner, and Indian fair.</p></article>
-      <article><span>November</span><h3>Sat 07: Bijoya Sammilani, Diwali, and Laxmi Puja</h3><p>Member Event: Meet and greet, dinner, Laxmi Puja, and Diwali celebration.</p></article>
-    </div>
-  </div>
-</section>
+// ── Photos & Videos ───────────────────────────────────────────────────────
+function MediaSection() {
+  const galleries = [{
+    event: 'Spring Fest',
+    year: '2025'
+  }, {
+    event: 'Holi',
+    year: '2025'
+  }, {
+    event: 'Boishakhi Adda',
+    year: '2025'
+  }, {
+    event: 'Picnic',
+    year: '2025'
+  }, {
+    event: 'Autumn Fest',
+    year: '2025'
+  }, {
+    event: 'Diwali',
+    year: '2025'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Media"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Photos &", /*#__PURE__*/React.createElement("br", null), "Videos"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+  }, galleries.map(({
+    event,
+    year
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: event,
+    className: "liquid-glass rounded-[1.25rem] overflow-hidden"
+  }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "h-40 flex items-center justify-center",
+    style: {
+      background: `rgba(${120 + i * 10}, ${15 + i * 5}, ${15 + i * 3}, 0.15)`
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "h-10 w-10 text-[#9CA3AF]"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "p-5 flex items-center justify-between"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-xl"
+  }, event), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#9CA3AF] text-xs font-body mt-0.5"
+  }, year)), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-2"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "liquid-glass rounded-full px-3 py-1 text-xs text-[#6B7280] font-body hover:text-[#1F2937] transition-colors"
+  }, "Photos"), /*#__PURE__*/React.createElement("button", {
+    className: "liquid-glass rounded-full px-3 py-1 text-xs text-[#6B7280] font-body hover:text-[#1F2937] transition-colors"
+  }, "Videos"))))))));
+}
 
-<section class="section">
-  <div class="section-shell split-layout">
-    <div>
-      <p class="eyebrow">Featured Event Detail</p>
-      <h2>Boishakhi Adda</h2>
-      <p>An evening of Rabindra Sangeet and Nazrul Geeti, cultural program by members and guest artists, with dinner.</p>
-      <ul class="clean-list event-details-list">
-        <li><strong>Date:</strong> Saturday, April 25, 2026</li>
-        <li><strong>Place:</strong> Wind Room, Foster City Community Center</li>
-        <li><strong>Time:</strong> 6:00 pm – 11:00 pm</li>
-        <li><strong>Cultural Program:</strong> 6:00 pm – 8:30 pm</li>
-        <li><strong>Dinner:</strong> Bengali Cuisine, 9:00 pm – 10:30 pm</li>
-      </ul>
-    </div>
-    <div class="program-card">
-      <h3>Program Items</h3>
-      <ul>
-        <li>Kids Performance</li>
-        <li>Rabindra Sangeet and Nazrul Geeti – Baybasi Members</li>
-        <li>Rabindra Sangeet – Eminent Singer</li>
-        <li>AFRICA: Poetry with Dance – Baybasi Members</li>
-        <li>BIDROHI: Poetry with Dance – Eminent Dancer</li>
-        <li>Finale Chorus</li>
-      </ul>
-      <p class="note">Online event registration is planned for a future release.</p>
-    </div>
-  </div>
-</section>
+// ── Publications ──────────────────────────────────────────────────────────
+function PublicationsSection() {
+  const years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      borderTop: '1px solid rgba(31,41,55,0.06)',
+      background: '#FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Publications"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
+  }, sa(0.1)), "Annual", /*#__PURE__*/React.createElement("br", null), "Souvenir Books"), /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-[#6B7280] font-body font-light text-sm mb-12 max-w-lg"
+  }, sa(0.2)), "13 years of cultural documentation \u2014 our annual souvenir books capture the spirit of each year's events."), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+  }, years.map((year, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: year,
+    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col items-center gap-3 group cursor-pointer hover:bg-[#1F2937]/5 transition-colors"
+  }, sa(0.04 * i)), /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "h-8 w-8 text-[#9CA3AF] group-hover:text-[#6B7280] transition-colors"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "font-heading text-[#1F2937] text-xl"
+  }, year), /*#__PURE__*/React.createElement("span", {
+    className: "text-[#9CA3AF] text-xs font-body group-hover:text-[#6B7280] transition-colors"
+  }, "View \u2192"))))));
+}
 
-<section class="section section-cream">
-  <div class="section-shell">
-    <div class="section-heading center"><p class="eyebrow">Photos & Videos</p><h2>Media galleries</h2></div>
-    <div class="card-grid three-col media-grid">
-      <article><h3>Spring Fest</h3><a href="#">Photos</a><a href="#">Videos</a></article>
-      <article><h3>Holi</h3><a href="#">Photos</a><a href="#">Videos</a></article>
-      <article><h3>Boishakhi Adda</h3><a href="#">Photos</a><a href="#">Videos</a></article>
-      <article><h3>Picnic</h3><a href="#">Photos</a><a href="#">Videos</a></article>
-      <article><h3>Autumn Fest</h3><a href="#">Photos</a><a href="#">Videos</a></article>
-      <article><h3>Diwali</h3><a href="#">Photos</a><a href="#">Videos</a></article>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="publications">
-  <div class="section-shell">
-    <div class="section-heading"><p class="eyebrow">Publications</p><h2>Annual publications and souvenirs</h2><p>Year cards can link to PDFs stored in <code>assets/docs</code> or managed through a future CMS.</p></div>
-    <div class="year-grid">
-      <a href="#">2025</a><a href="#">2024</a><a href="#">2023</a><a href="#">2022</a><a href="#">2021</a><a href="#">2020</a><a href="#">2019</a><a href="#">2018</a><a href="#">2017</a><a href="#">2016</a><a href="#">2015</a><a href="#">2014</a><a href="#">2013</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section-cream">
-  <div class="section-shell resource-card">
-    <div>
-      <p class="eyebrow">Future Feature</p>
-      <h2>Event registration placeholder</h2>
-      <p>Online event registration is planned for a future release. For now, visitors can check event details or contact Baybasi.</p>
-    </div>
-    <a class="button button-primary" href="join-us.html#contact-form">Contact Baybasi</a>
-  </div>
-</section>
-</main>
-<!-- Shared footer. Future portal links are intentionally subtle in MVP 1. -->
-<footer class="site-footer">
-  <section class="footer-main section-shell">
-    <div class="footer-brand">
-      <a class="brand brand-footer" href="index.html" aria-label="Baybasi home">
-        <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
-        <span class="brand-text">
-          <span class="brand-name">Baybasi</span>
-          <span class="brand-tagline">Celebrating Culture. Building Community. Giving Back.</span>
-        </span>
-      </a>
-      <p>Baybasi is a Bengali and Indian cultural nonprofit serving the San Francisco Bay Area through festivals, programs, volunteering, and charitable giving.</p>
-      <p><strong>Email:</strong> <a href="mailto:baybasi@baybasi.us">baybasi@baybasi.us</a></p>
-    </div>
-
-    <div class="footer-links">
-      <h2>Explore</h2>
-      <a href="about.html">About Us</a>
-      <a href="impacts.html">Impacts</a>
-      <a href="events.html">Events</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="join-us.html">Join Us / Contact</a>
-    </div>
-
-    <div class="footer-links">
-      <h2>Resources</h2>
-      <a href="about.html#performance-reports">Performance Reports</a>
-      <a href="events.html#publications">Publications</a>
-      <a href="sponsors.html#sponsor-inquiry">Corporate Inquiry</a>
-      <a href="join-us.html#contact-form">Sign Up</a>
-    </div>
-
-    <div class="footer-links future-links">
-      <h2>Future Portals</h2>
-      <span>Member Portal — Coming Soon</span>
-      <span>Volunteer Portal — Coming Soon</span>
-      <span>Event Registration — Coming Soon</span>
-      <span>Admin/CMS Login — Internal Future</span>
-    </div>
-  </section>
-  <div class="footer-bottom section-shell">
-    <span>© 2026 Baybasi. All Rights Reserved.</span>
-    <span>Prototype MVP 1 — HTML, CSS, and Vanilla JavaScript</span>
-  </div>
-</footer>
-<script src="js/main.js"></script>
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageHero, null), /*#__PURE__*/React.createElement(CalendarSection, null), /*#__PURE__*/React.createElement(FeaturedEventSection, null), /*#__PURE__*/React.createElement(MediaSection, null), /*#__PURE__*/React.createElement(PublicationsSection, null), /*#__PURE__*/React.createElement(Footer, null));
+}
+const {
+  createRoot
+} = ReactDOM;
+createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+</script>
 </body>
 </html>

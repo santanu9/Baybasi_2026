@@ -1,161 +1,534 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Baybasi Impacts | Charity, Volunteering & Community Outcomes</title>
-  <meta name="description" content="Explore Baybasi’s charitable donations, volunteer hours, beneficiaries, past charities, testimonials, and community impact." />
-  <link rel="icon" href="assets/images/baybasi-logo-placeholder.svg" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net"/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js" as="script"/>
+  <title>Impacts – Baybasi</title>
+  <meta name="description" content="Baybasi's community impact: $100K donated, 6,000 volunteering hrs/year, 10,000 direct beneficiaries and 94% program spend."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+          },
+          borderRadius: { DEFAULT: '9999px' },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
 </head>
-<body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<!-- Shared site header. Keep header markup consistent across pages. -->
-<header class="site-header" data-site-header>
-  <a class="brand" href="index.html" aria-label="Baybasi home">
-    <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
-    <span class="brand-text">
-      <span class="brand-name">Baybasi</span>
-      <span class="brand-tagline">Culture • Community • Giving Back</span>
-    </span>
-  </a>
+<body class="bg-[#FFF7ED]">
+<div id="root"></div>
+<script src="js/components.js"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  motion
+} = Motion;
+const sa = (delay = 0) => ({
+  initial: {
+    opacity: 0,
+    y: 24,
+    filter: 'blur(6px)'
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)'
+  },
+  viewport: {
+    once: true,
+    margin: '-50px'
+  },
+  transition: {
+    duration: 0.6,
+    delay,
+    ease: 'easeOut'
+  }
+});
 
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-    <span class="sr-only">Open menu</span>
-    <span></span><span></span><span></span>
-  </button>
+// ── Page Hero ─────────────────────────────────────────────────────────────
+function PageHero() {
+  return /*#__PURE__*/React.createElement("section", {
+    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
+  }, /*#__PURE__*/React.createElement(Navbar, {
+    activePage: "impacts.html"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto w-full pt-32"
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    crumbs: [{
+      label: 'Impacts'
+    }]
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.3
+    }
+  }, "// Impacts"), /*#__PURE__*/React.createElement(BlurText, {
+    text: "Measuring What Matters Most",
+    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.7
+    }
+  }, "25 years of service, hundreds of programs, and a relentless commitment to giving back.")));
+}
 
-  <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-    <a class="nav-link " href="index.html">Home</a>
-<a class="nav-link " href="about.html">About Us</a>
-<a class="nav-link is-active" href="impacts.html">Impacts</a>
-<a class="nav-link " href="events.html">Events</a>
-<a class="nav-link " href="sponsors.html">Sponsors</a>
-<a class="nav-link " href="join-us.html">Join Us</a>
-  </nav>
-</header>
-<main id="main-content">
+// ── Impact Numbers (3 key metrics from PPTX) ──────────────────────────────
+function ImpactNumbers() {
+  const metrics = [{
+    value: '$100,000',
+    label: 'Donated to Charity',
+    detail: 'Supporting 30+ programs in India and US, working in Education, Mental Health, Women Empowerment and Disaster Relief.',
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className: "h-6 w-6 text-[#1F2937]"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+    })),
+    tags: ['Education', 'Mental Health', 'Women Empowerment', 'Disaster Relief']
+  }, {
+    value: '6,000',
+    label: 'Hours of Volunteering / Year',
+    detail: '100+ Volunteers giving their time to organize programs for residents as well as fund raising for the causes in US and India.',
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className: "h-6 w-6 text-[#1F2937]"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+    })),
+    tags: ['100+ Volunteers', 'Programs', 'Fund Raising', 'US & India']
+  }, {
+    value: '10,000',
+    label: 'Direct Beneficiaries',
+    detail: 'Major programs like Holi and Autumn Festivals draw over 5,000 people each and other programs range from 100–500 people.',
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className: "h-6 w-6 text-[#1F2937]"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+    })),
+    tags: ['5,000+ per Major Event', 'Bay Area Community', 'India & US']
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Impact Numbers"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "The Numbers", /*#__PURE__*/React.createElement("br", null), "Behind the Mission"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-3 gap-6"
+  }, metrics.map(({
+    value,
+    label,
+    detail,
+    icon,
+    tags
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: label,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "w-11 h-11 rounded-[0.75rem] flex items-center justify-center mb-5",
+    style: {
+      background: 'rgba(31,41,55,0.06)'
+    }
+  }, icon), /*#__PURE__*/React.createElement("div", {
+    className: "font-heading text-[#1F2937] text-5xl tracking-[-2px] leading-none mb-1"
+  }, value), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#1F2937] text-sm font-body font-medium mb-3"
+  }, label), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed flex-1"
+  }, detail), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap gap-1.5 mt-5"
+  }, tags.map(t => /*#__PURE__*/React.createElement("span", {
+    key: t,
+    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[11px] text-[#6B7280] font-body"
+  }, t)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "mt-8 liquid-glass rounded-[1.25rem] p-8 flex flex-col md:flex-row items-center gap-6"
+  }, sa(0.3)), /*#__PURE__*/React.createElement("div", {
+    className: "font-heading text-[#1F2937] text-7xl md:text-8xl leading-none tracking-[-4px] flex-shrink-0"
+  }, "94%"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[#1F2937] font-body font-medium text-lg mb-2"
+  }, "Revenue Goes to Programs & Charitable Works"), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] font-body font-light text-sm leading-relaxed max-w-xl"
+  }, "94% of our revenue goes into doing the programs and charitable works. Operational overhead is 5% or less \u2014 every dollar raised translates directly into cultural programming, community events, and charitable contributions.")))));
+}
 
-<section class="page-hero compact-hero impact-hero">
-  <div class="section-shell">
-    <p class="eyebrow">Impacts</p>
-    <h1>Giving back is part of our culture.</h1>
-    <p>Baybasi uses cultural programs and community participation to support charitable causes, volunteering, and meaningful social impact.</p>
-  </div>
-</section>
+// ── Testimony — Beneficiaries & Charity Partners ──────────────────────────
+function TestimonyBeneficiaries() {
+  const quotes = [{
+    quote: "The Prerna Audio Library support transformed lives for visually impaired students across our community. Baybasi's generosity gave them access to education and new opportunities.",
+    author: "Prerna Audio Library",
+    role: "Charity Partner"
+  }, {
+    quote: "Baybasi's support for mental health programs has been instrumental. Their commitment to 'On My Mind' showed us how a diaspora community can make real change.",
+    author: "On My Mind",
+    role: "Charity Partner, 2025"
+  }, {
+    quote: "The funding and awareness Baybasi brought to our women's empowerment program created sustainable change — housing, training, and employment for women in need.",
+    author: "A Village for Independent & Enterprising Women",
+    role: "Charity Partner, 2024"
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      background: 'radial-gradient(ellipse 70% 40% at 50% 0%, rgba(185,28,28,0.06) 0%, transparent 60%), #FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Beneficiaries &", /*#__PURE__*/React.createElement("br", null), "Charity Partners"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-3 gap-5"
+  }, quotes.map(({
+    quote,
+    author,
+    role
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: author,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-4xl font-heading leading-none mb-3"
+  }, "\""), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#1F2937] text-sm font-body font-light leading-relaxed italic flex-1"
+  }, quote), /*#__PURE__*/React.createElement("div", {
+    className: "mt-5 flex items-center gap-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-8 h-8 rounded-full flex items-center justify-center",
+    style: {
+      background: 'rgba(31,41,55,0.08)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "h-4 w-4 text-[#6B7280]"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[#6B7280] text-xs font-body font-medium"
+  }, author), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-xs font-body"
+  }, role))))))));
+}
 
-<section class="section section-cream">
-  <div class="section-shell">
-    <div class="metric-grid">
-      <article class="metric-card"><span class="stat-number">$100,000+</span><h2>Donated to Charity</h2><p>Supporting 30+ programs in India and the US that work in education, mental health, women empowerment, and disaster relief.</p></article>
-      <article class="metric-card"><span class="stat-number">6,000</span><h2>Volunteer Hours / Year</h2><p>100+ volunteers give their time to organize programs and fundraise for causes in the US and India.</p></article>
-      <article class="metric-card"><span class="stat-number">10,000</span><h2>Direct Beneficiaries</h2><p>Major programs like Holi and Autumn Festival draw over 5,000 people each, while other programs range from 100–500 people.</p></article>
-      <article class="metric-card"><span class="stat-number">94%</span><h2>Program & Charity Focus</h2><p>94% of revenue goes into programs and charitable work; operational overhead is 5% or less.</p></article>
-    </div>
-  </div>
-</section>
+// ── Past Charities ────────────────────────────────────────────────────────
+function CharitiesSection() {
+  const charities = [{
+    year: '2025',
+    name: 'On My Mind',
+    focus: 'Youth Mental Health',
+    desc: 'Supporting programs that address mental health challenges faced by young people in our community in the US and India.',
+    tags: ['Mental Health', 'Youth', 'US & India']
+  }, {
+    year: '2023–2024',
+    name: 'Prerna Audio Library',
+    focus: 'Visually Impaired Students',
+    desc: 'Audio books for visually impaired students, jobs for teachers and students at the library, and preparation for competitive exams.',
+    tags: ['Education', 'Accessibility', 'India']
+  }, {
+    year: '2024',
+    name: 'A Village for Independent & Enterprising Women',
+    focus: 'Women Empowerment',
+    desc: 'Housing for women with mental health issues, training and therapeutic care, and employment help to build independent lives.',
+    tags: ['Women Empowerment', 'Mental Health', 'India']
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Charitable Work"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Past", /*#__PURE__*/React.createElement("br", null), "Charities"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-3 gap-6"
+  }, charities.map(({
+    year,
+    name,
+    focus,
+    desc,
+    tags
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mb-4"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-heading text-[#9CA3AF] text-lg"
+  }, year), /*#__PURE__*/React.createElement("span", {
+    className: "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#6B7280] font-body"
+  }, focus)), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl leading-tight mb-3"
+  }, name), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed flex-1"
+  }, desc), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap gap-1.5 mt-5"
+  }, tags.map(t => /*#__PURE__*/React.createElement("span", {
+    key: t,
+    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[11px] text-[#6B7280] font-body"
+  }, t))))))));
+}
 
-<section class="section">
-  <div class="section-shell">
-    <div class="section-heading">
-      <p class="eyebrow">Past Charities</p>
-      <h2>Programs Baybasi has supported</h2>
-    </div>
-    <div class="card-grid three-col">
-      <article class="image-card impact-card"><img src="assets/images/charity-placeholder.svg" alt="Charity partner placeholder"><div><span class="pill">2025</span><h3>On My Mind</h3><p>Youth Mental Health</p></div></article>
-      <article class="image-card impact-card"><img src="assets/images/charity-placeholder.svg" alt="Charity partner placeholder"><div><span class="pill">2023–2024</span><h3>Prerna Audio Library</h3><p>Audio books for visually impaired students, jobs for teachers and students, and competitive exam preparation.</p></div></article>
-      <article class="image-card impact-card"><img src="assets/images/charity-placeholder.svg" alt="Charity partner placeholder"><div><span class="pill">2024</span><h3>A Village for Independent and Enterprising Women</h3><p>Housing, training, therapeutic care, and employment support for women with mental health issues.</p></div></article>
-    </div>
-  </div>
-</section>
+// ── Testimony — Members & Volunteers ─────────────────────────────────────
+function TestimonyMembers() {
+  const categories = [{
+    label: 'New Members',
+    quote: "Joining Baybasi was the best decision. I found a second family in the Bay Area and a meaningful connection to my roots.",
+    role: "New Member"
+  }, {
+    label: 'Members',
+    quote: "Baybasi has been the heart of our Bengali community for 25 years. Every Durga Puja feels like home away from home.",
+    role: "Long-time Member"
+  }, {
+    label: 'Past Officers',
+    quote: "Serving on the Board was incredibly rewarding. Seeing the community grow year after year is a privilege I'll always cherish.",
+    role: "Past Officer"
+  }, {
+    label: 'Execution Leads',
+    quote: "Leading the Autumn Festival team taught me so much — logistics, creativity, and the joy of bringing 5,000 people together.",
+    role: "Execution Lead"
+  }, {
+    label: 'Directors',
+    quote: "Baybasi's mission is special because it combines culture, community, and charity. I'm proud to serve on the Board of Directors.",
+    role: "Board Director"
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      background: 'radial-gradient(ellipse 60% 40% at 50% 100%, rgba(127,29,29,0.08) 0%, transparent 70%), #FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Members &", /*#__PURE__*/React.createElement("br", null), "Volunteers"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+  }, categories.map(({
+    label,
+    quote,
+    role
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: label,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#6B7280] font-body self-start mb-4"
+  }, label), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-3xl font-heading leading-none mb-3"
+  }, "\""), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#1F2937] text-sm font-body font-light leading-relaxed italic flex-1"
+  }, quote), /*#__PURE__*/React.createElement("div", {
+    className: "mt-4 text-[#9CA3AF] text-xs font-body"
+  }, "\u2014 ", role))))));
+}
 
-<section class="section section-cream">
-  <div class="section-shell split-layout">
-    <div>
-      <p class="eyebrow">Volunteering</p>
-      <h2>Service powered by community participation</h2>
-      <p>Baybasi volunteers support event operations, cultural programming, fundraising, logistics, food coordination, media, and charitable service initiatives.</p>
-      <a class="button button-primary" href="join-us.html#contact-form">Volunteer Interest Form</a>
-    </div>
-    <div class="volunteer-grid">
-      <article><img src="assets/images/volunteer-placeholder.svg" alt="Volunteering placeholder"><h3>Volunteer Calendar</h3><p>Future schedule with signup links.</p></article>
-      <article><img src="assets/images/volunteer-placeholder.svg" alt="Volunteering placeholder"><h3>Past Volunteering Events</h3><p>Photo, event name, date, and impact numbers.</p></article>
-    </div>
-  </div>
-</section>
+// ── Volunteering Calendar / Past Events ───────────────────────────────────
+function VolunteeringSection() {
+  const upcoming = [{
+    name: 'Boishakhi Adda Setup',
+    date: 'Apr 2026',
+    slots: '30 volunteers needed'
+  }, {
+    name: 'Autumn Festival Week',
+    date: 'Oct 2026',
+    slots: '100 volunteers needed'
+  }, {
+    name: 'Diwali Fair Operations',
+    date: 'Nov 2026',
+    slots: '60 volunteers needed'
+  }, {
+    name: 'Charity Drive 2026',
+    date: 'Dec 2026',
+    slots: '40 volunteers needed'
+  }];
+  const past = [{
+    name: 'Spring Festival Setup',
+    date: 'Jan 2026',
+    impact: '50 volunteers · 200+ hrs'
+  }, {
+    name: 'Holi Grounds & Cleanup',
+    date: 'Mar 2026',
+    impact: '80 volunteers · 400+ hrs'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Volunteering"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
+  }, sa(0.1)), "Volunteering", /*#__PURE__*/React.createElement("br", null), "Calendar"), /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-[#6B7280] font-body font-light text-sm mb-12 max-w-md"
+  }, sa(0.2)), "100+ dedicated volunteers give their time every year. Sign up to make a difference at the next event."), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 lg:grid-cols-2 gap-10"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-5"
+  }, sa(0.15)), "Upcoming Sign-Ups"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-3"
+  }, upcoming.map(({
+    name,
+    date,
+    slots
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: "liquid-glass rounded-[1.25rem] p-5 flex items-center justify-between gap-4"
+  }, sa(0.06 * i + 0.1)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[#1F2937] text-sm font-body font-medium leading-tight"
+  }, name), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-xs font-body mt-0.5"
+  }, date)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-3 flex-shrink-0"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[#6B7280] text-xs font-body"
+  }, slots), /*#__PURE__*/React.createElement("a", {
+    href: "join-us.html#contact",
+    className: "liquid-glass rounded-full px-3 py-1.5 text-[11px] text-[#1F2937] font-body hover:bg-[#1F2937]/10 transition-colors whitespace-nowrap"
+  }, "Sign Up")))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-5"
+  }, sa(0.2)), "Past Volunteering Events"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-3"
+  }, past.map(({
+    name,
+    date,
+    impact
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: "liquid-glass rounded-[1.25rem] p-5 flex items-center justify-between gap-4"
+  }, sa(0.06 * i + 0.2)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[#1F2937] text-sm font-body font-medium leading-tight"
+  }, name), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-xs font-body mt-0.5"
+  }, date)), /*#__PURE__*/React.createElement("span", {
+    className: "text-[#6B7280] text-xs font-body flex-shrink-0"
+  }, impact)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "mt-10 text-center"
+  }, sa(0.4)), /*#__PURE__*/React.createElement("a", {
+    href: "join-us.html#volunteer",
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+  }, "Sign Up to Volunteer ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  })))));
+}
 
-<section class="section">
-  <div class="section-shell">
-    <div class="section-heading center">
-      <p class="eyebrow">Testimonials</p>
-      <h2>Stories from people connected to Baybasi</h2>
-      <p>Replace these placeholders with written or video testimonials from beneficiaries, charity partners, members, volunteers, sponsors, and donors.</p>
-    </div>
-    <div class="testimonial-grid">
-      <blockquote><p>“Beneficiary or charity partner testimony placeholder.”</p><cite>Charity Partner</cite></blockquote>
-      <blockquote><p>“Member testimony placeholder about community and connection.”</p><cite>Baybasi Member</cite></blockquote>
-      <blockquote><p>“Volunteer testimony placeholder about service and leadership.”</p><cite>Volunteer</cite></blockquote>
-      <blockquote><p>“Sponsor testimony placeholder about brand alignment and goodwill.”</p><cite>Sponsor</cite></blockquote>
-    </div>
-  </div>
-</section>
+// ── Testimony — Sponsors ──────────────────────────────────────────────────
+function TestimonySponsors() {
+  const quotes = [{
+    quote: "As a Platinum sponsor, the visibility and community goodwill we receive is unmatched. Baybasi's audience is highly engaged, educated, and loyal to brands that support their culture.",
+    author: "Corporate Partner",
+    role: "Platinum Sponsor"
+  }, {
+    quote: "Sponsoring Holi gave us direct access to 5,000+ Bay Area families in a single day. The ROI — brand recall, foot traffic, and community trust — was exceptional.",
+    author: "Local Business",
+    role: "Gold Sponsor"
+  }, {
+    quote: "Baybasi connects our brand to a community that genuinely cares. Aligning with a 501(c)(3) charitable organization enhances our CSR story in a meaningful, credible way.",
+    author: "Bay Area Enterprise",
+    role: "Sponsor"
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      borderTop: '1px solid rgba(31,41,55,0.06)',
+      background: '#FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Voices from", /*#__PURE__*/React.createElement("br", null), "Our Sponsors"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-3 gap-5"
+  }, quotes.map(({
+    quote,
+    author,
+    role
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: author,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-4xl font-heading leading-none mb-3"
+  }, "\""), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#1F2937] text-base font-body font-light leading-relaxed italic flex-1"
+  }, quote), /*#__PURE__*/React.createElement("div", {
+    className: "mt-5 flex items-center gap-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-8 h-8 rounded-full flex items-center justify-center",
+    style: {
+      background: 'rgba(31,41,55,0.08)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "h-4 w-4 text-[#6B7280]"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[#6B7280] text-xs font-body font-medium"
+  }, author), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#9CA3AF] text-xs font-body"
+  }, role)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "mt-10 text-center"
+  }, sa(0.35)), /*#__PURE__*/React.createElement("a", {
+    href: "sponsors.html",
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+  }, "Become a Sponsor ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  })))));
+}
 
-<section class="cta-band section-shell" aria-label="Support with purpose">
-  <div>
-    <p class="eyebrow">Support with purpose</p>
-    <h2>Help us continue this impact.</h2>
-    <p>For individuals, families, and organizations who feel aligned with Baybasi’s mission, support conversations can begin through our Join Us / Contact page.</p>
-  </div>
-  <div class="cta-actions">
-    <a class="button button-light" href="join-us.html#contact-form">Partner With Baybasi</a>
-    <a class="button button-ghost" href="sponsors.html">Become a Sponsor</a>
-  </div>
-</section></main>
-<!-- Shared footer. Future portal links are intentionally subtle in MVP 1. -->
-<footer class="site-footer">
-  <section class="footer-main section-shell">
-    <div class="footer-brand">
-      <a class="brand brand-footer" href="index.html" aria-label="Baybasi home">
-        <img class="brand-logo" src="assets/images/baybasi-logo-placeholder.svg" alt="Baybasi logo placeholder" />
-        <span class="brand-text">
-          <span class="brand-name">Baybasi</span>
-          <span class="brand-tagline">Celebrating Culture. Building Community. Giving Back.</span>
-        </span>
-      </a>
-      <p>Baybasi is a Bengali and Indian cultural nonprofit serving the San Francisco Bay Area through festivals, programs, volunteering, and charitable giving.</p>
-      <p><strong>Email:</strong> <a href="mailto:baybasi@baybasi.us">baybasi@baybasi.us</a></p>
-    </div>
-
-    <div class="footer-links">
-      <h2>Explore</h2>
-      <a href="about.html">About Us</a>
-      <a href="impacts.html">Impacts</a>
-      <a href="events.html">Events</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="join-us.html">Join Us / Contact</a>
-    </div>
-
-    <div class="footer-links">
-      <h2>Resources</h2>
-      <a href="about.html#performance-reports">Performance Reports</a>
-      <a href="events.html#publications">Publications</a>
-      <a href="sponsors.html#sponsor-inquiry">Corporate Inquiry</a>
-      <a href="join-us.html#contact-form">Sign Up</a>
-    </div>
-
-    <div class="footer-links future-links">
-      <h2>Future Portals</h2>
-      <span>Member Portal — Coming Soon</span>
-      <span>Volunteer Portal — Coming Soon</span>
-      <span>Event Registration — Coming Soon</span>
-      <span>Admin/CMS Login — Internal Future</span>
-    </div>
-  </section>
-  <div class="footer-bottom section-shell">
-    <span>© 2026 Baybasi. All Rights Reserved.</span>
-    <span>Prototype MVP 1 — HTML, CSS, and Vanilla JavaScript</span>
-  </div>
-</footer>
-<script src="js/main.js"></script>
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageHero, null), /*#__PURE__*/React.createElement(ImpactNumbers, null), /*#__PURE__*/React.createElement(TestimonyBeneficiaries, null), /*#__PURE__*/React.createElement(CharitiesSection, null), /*#__PURE__*/React.createElement(TestimonyMembers, null), /*#__PURE__*/React.createElement(VolunteeringSection, null), /*#__PURE__*/React.createElement(TestimonySponsors, null), /*#__PURE__*/React.createElement(Footer, null));
+}
+const {
+  createRoot
+} = ReactDOM;
+createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+</script>
 </body>
 </html>
