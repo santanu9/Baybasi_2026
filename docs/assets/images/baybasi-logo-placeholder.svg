@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+<title id="title">Baybasi logo placeholder</title>
+<desc id="desc">Circular red and gold logo placeholder with the letter B.</desc>
+<defs>
+  <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+    <stop offset="0%" stop-color="#7F1D1D"/>
+    <stop offset="55%" stop-color="#B91C1C"/>
+    <stop offset="100%" stop-color="#F59E0B"/>
+  </linearGradient>
+</defs>
+<circle cx="160" cy="160" r="148" fill="url(#g)"/>
+<circle cx="160" cy="160" r="118" fill="none" stroke="#FFF7ED" stroke-width="10" opacity=".9"/>
+<path d="M94 228c39-5 55-28 66-62 16 36 35 57 68 63-16-33-16-62 4-96-36 9-60 0-72-37-14 36-40 48-77 37 23 34 25 63 11 95Z" fill="#FFF7ED" opacity=".92"/>
+<text x="160" y="188" text-anchor="middle" font-family="Aptos, Inter, Arial, sans-serif" font-size="104" font-weight="800" fill="#7F1D1D">B</text>
+</svg>

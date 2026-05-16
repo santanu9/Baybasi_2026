@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net"/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js" as="script"/>
+  <title>About Us – Baybasi</title>
+  <meta name="description" content="Learn about Baybasi's purpose, journey, board of directors, and corporate details. Est. 2000, Foster City CA."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+          },
+          borderRadius: { DEFAULT: '9999px' },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
+</head>
+<body class="bg-[#FFF7ED]">
+<div id="root"></div>
+<script src="js/components.js"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  motion
+} = Motion;
+const sa = (delay = 0) => ({
+  initial: {
+    opacity: 0,
+    y: 24,
+    filter: 'blur(6px)'
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)'
+  },
+  viewport: {
+    once: true,
+    margin: '-50px'
+  },
+  transition: {
+    duration: 0.6,
+    delay,
+    ease: 'easeOut'
+  }
+});
+
+// ── Page Hero ────────────────────────────────────────────────────────────
+function PageHero() {
+  return /*#__PURE__*/React.createElement("section", {
+    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
+  }, /*#__PURE__*/React.createElement(Navbar, {
+    activePage: "about.html"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto w-full pt-32"
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    crumbs: [{
+      label: 'About Us'
+    }]
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.3
+    }
+  }, "// About Us"), /*#__PURE__*/React.createElement(BlurText, {
+    text: "Our Purpose Our Journey Our People",
+    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+  }), /*#__PURE__*/React.createElement(motion.p, {
+    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.7
+    }
+  }, "Discover the story, values, and people behind 25+ years of Bengali cultural heritage in the Bay Area.")));
+}
+
+// ── Purpose ───────────────────────────────────────────────────────────────
+function PurposeSection() {
+  const pillars = [{
+    n: '01',
+    title: 'Indian Heritage',
+    body: 'Promote awareness of Indian ethnic identity and its cultural and spiritual heritage across generations in the Bay Area.'
+  }, {
+    n: '02',
+    title: 'Bengali & Indian Culture',
+    body: 'Organize cultural events involving Bengali and other Indian traditional and contemporary songs, drama, and dances.'
+  }, {
+    n: '03',
+    title: 'Member Enrichment',
+    body: 'Host periodic conferences and meetings to allow members to learn, network, and share experiences for personal and career development.'
+  }, {
+    n: '04',
+    title: 'Philanthropy',
+    body: 'Organize events to raise funds for the relief of distress and other charitable causes in the US and India.'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Our Purpose"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Why We Exist"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+  }, pillars.map(({
+    n,
+    title,
+    body
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: n,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "font-heading text-[#9CA3AF] text-3xl mb-4"
+  }, n), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl leading-tight mb-3"
+  }, title), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed flex-1"
+  }, body))))));
+}
+
+// ── Journey / Timeline ────────────────────────────────────────────────────
+function JourneySection() {
+  const milestones = [{
+    year: '2000',
+    event: 'Inception of Baybasi in Foster City, CA'
+  }, {
+    year: '2001',
+    event: 'First Saraswati Puja celebration'
+  }, {
+    year: '2008',
+    event: 'Incorporation as Indian nonprofit charitable organization'
+  }, {
+    year: '2008',
+    event: 'First Durga Puja — a tradition born'
+  }, {
+    year: '2009',
+    event: "First Holi — Bay Area's festival of colors"
+  }, {
+    year: '2018',
+    event: '10th Anniversary Durga Puja milestone celebration'
+  }, {
+    year: '2021',
+    event: '10th Anniversary Saraswati Puja celebration'
+  }, {
+    year: '2025',
+    event: 'First Rabindra Jayanti program'
+  }, {
+    year: '2026',
+    event: 'Formation of the first Execution Committee'
+  }, {
+    year: '2027',
+    event: '20th Anniversary Durga Puja (upcoming)'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(127,29,29,0.10) 0%, transparent 70%), #FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-4xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase text-center"
+  }, sa(0)), "// Our Journey"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-16 text-center"
+  }, sa(0.1)), "25 Years of", /*#__PURE__*/React.createElement("br", null), "Cultural Legacy"), /*#__PURE__*/React.createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "timeline-track hidden md:block"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-6 md:space-y-0"
+  }, milestones.map(({
+    year,
+    event
+  }, i) => {
+    const isRight = i % 2 === 0;
+    return /*#__PURE__*/React.createElement(motion.div, _extends({
+      key: `${year}-${i}`,
+      className: "md:flex md:items-center md:gap-8 relative"
+    }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
+      className: `hidden md:block flex-1 text-right ${!isRight ? 'invisible' : ''}`
+    }, isRight && /*#__PURE__*/React.createElement("div", {
+      className: "liquid-glass rounded-[1rem] p-4 inline-block text-left max-w-xs"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "font-heading text-[#1F2937] text-xl mb-1"
+    }, year), /*#__PURE__*/React.createElement("div", {
+      className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+    }, event))), /*#__PURE__*/React.createElement("div", {
+      className: "hidden md:flex w-4 h-4 rounded-full flex-shrink-0 items-center justify-center",
+      style: {
+        background: 'rgba(31,41,55,0.15)',
+        boxShadow: '0 0 0 4px rgba(31,41,55,0.05)'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "w-1.5 h-1.5 rounded-full bg-[#1F2937]/60"
+    })), /*#__PURE__*/React.createElement("div", {
+      className: `hidden md:block flex-1 ${isRight ? 'invisible' : ''}`
+    }, !isRight && /*#__PURE__*/React.createElement("div", {
+      className: "liquid-glass rounded-[1rem] p-4 inline-block max-w-xs"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "font-heading text-[#1F2937] text-xl mb-1"
+    }, year), /*#__PURE__*/React.createElement("div", {
+      className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+    }, event))), /*#__PURE__*/React.createElement("div", {
+      className: "md:hidden liquid-glass rounded-[1rem] p-4 flex gap-4 items-start"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "font-heading text-[#1F2937] text-lg w-12 flex-shrink-0"
+    }, year), /*#__PURE__*/React.createElement("div", {
+      className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+    }, event)));
+  })))));
+}
+
+// ── Board of Directors ────────────────────────────────────────────────────
+function BoardSection() {
+  const board = [{
+    name: 'Suman Debnath',
+    role: 'President & Chairman of the Board',
+    bio: 'Suman has led Baybasi since its early years, guiding the organization through 25+ years of cultural and philanthropic growth. A passionate advocate for Indian heritage, he drives strategic vision, nurtures community partnerships, and has been instrumental in establishing Baybasi as the premier Indian cultural nonprofit in the Bay Area.',
+    img: 'images/about/director-suman-debnath.jpg'
+  }, {
+    name: 'Nilanjan Debroy',
+    role: 'Treasurer & Chief Financial Officer',
+    bio: 'Nilanjan oversees all financial operations and ensures full fiscal transparency. His rigorous stewardship has made it possible for 94% of Baybasi\'s revenues to flow directly into programs and charitable initiatives, maintaining the trust of members, sponsors, and the broader community.',
+    img: 'images/about/director-nilanjan-debroy.jpg'
+  }, {
+    name: 'Prithwiraj Mitra',
+    role: 'General Secretary',
+    bio: 'Prithwiraj coordinates organizational communications, administrative processes, and board records. He serves as the essential link between the board, the membership, and external stakeholders — keeping Baybasi running smoothly across all events and programs throughout the year.',
+    img: 'images/about/director-prithwiraj-mitra.jpg'
+  }, {
+    name: 'Raj Tiwari',
+    role: 'Director, Revenue & Partnerships',
+    bio: 'Raj leads sponsorship development and revenue generation, cultivating meaningful partnerships with Bay Area businesses and community sponsors. His work directly funds Baybasi\'s flagship events, cultural programs, and charitable outreach — expanding the organization\'s reach and sustainability year over year.',
+    img: 'images/about/director-raj-tiwari.jpg'
+  }, {
+    name: 'Sukalyan Chakraborty',
+    role: 'Director, Membership & Volunteering',
+    bio: 'Sukalyan champions member engagement and volunteer development. He has built a thriving network contributing thousands of volunteer hours annually, connecting passionate community members to impactful service opportunities that bring Baybasi\'s mission to life at every event.',
+    img: 'images/about/director-sukalyan-chakraborty.jpg'
+  }, {
+    name: 'Swati Chakraborty',
+    role: 'Director, Brand & Marketing',
+    bio: 'Swati shapes Baybasi\'s visual identity and outreach strategy. Her creative direction has elevated the organization\'s presence across digital platforms, print media, and flagship events — ensuring that every communication reflects Baybasi\'s values of culture, pride, and community belonging.',
+    img: 'images/about/director-swati-chakraborty.jpg'
+  }, {
+    name: 'Manjira Datta',
+    role: 'Director, Community Development',
+    bio: 'Manjira deepens Baybasi\'s roots in the Bay Area by developing programs that promote inclusion, inter-cultural dialogue, and meaningful civic engagement. She focuses on building lasting relationships with local institutions, schools, and cultural organizations to amplify Baybasi\'s community impact.',
+    img: 'images/about/director-manjira-datta.png'
+  }];
+  const initials = name => name.split(' ').slice(0, 2).map(p => p[0]).join('');
+  const [selectedIdx, setSelectedIdx] = React.useState(null);
+  const selected = selectedIdx !== null ? board[selectedIdx] : null;
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Leadership"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Board of", /*#__PURE__*/React.createElement("br", null), "Directors"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+  }, board.map(({
+    name,
+    role,
+    img
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col cursor-pointer group",
+    style: {
+      transition: 'box-shadow 0.2s, transform 0.2s'
+    },
+    onClick: () => setSelectedIdx(i),
+    whileHover: {
+      y: -4,
+      boxShadow: '0 12px 32px rgba(31,41,55,0.10)'
+    }
+  }, sa(0.06 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-start justify-between mb-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-12 h-12 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0",
+    style: {
+      background: 'rgba(185,28,28,0.08)'
+    }
+  }, img ? /*#__PURE__*/React.createElement("img", {
+    src: img,
+    alt: name,
+    className: "w-full h-full object-cover object-top"
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "font-heading text-[#B91C1C] text-lg"
+  }, initials(name))), /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    className: "w-4 h-4 text-[#9CA3AF] opacity-0 group-hover:opacity-100 transition-opacity mt-1"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M7 17L17 7M7 7h10v10"
+  }))), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-xl leading-tight mb-1"
+  }, name), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-xs font-body font-light leading-snug"
+  }, role), /*#__PURE__*/React.createElement("p", {
+    className: "mt-3 text-[10px] text-[#B91C1C] font-body font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
+  }, "View bio \u2192"))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col"
+  }, sa(0.06 * board.length)), /*#__PURE__*/React.createElement("div", {
+    className: "w-12 h-12 rounded-full mb-4 flex items-center justify-center",
+    style: {
+      background: 'rgba(31,41,55,0.04)',
+      border: '1px dashed rgba(31,41,55,0.15)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[#9CA3AF] text-sm"
+  }, "EC")), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-xl leading-tight mb-1"
+  }, "Execution Committee"), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#9CA3AF] text-xs font-body font-light leading-snug"
+  }, "First EC formed in 2026 \u2014 details coming soon.")))), selected && /*#__PURE__*/React.createElement(motion.div, {
+    className: "fixed inset-0 z-50 flex items-center justify-center px-4",
+    style: {
+      background: 'rgba(15,15,15,0.55)',
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)'
+    },
+    initial: {
+      opacity: 0
+    },
+    animate: {
+      opacity: 1
+    },
+    exit: {
+      opacity: 0
+    },
+    onClick: () => setSelectedIdx(null)
+  }, /*#__PURE__*/React.createElement(motion.div, {
+    className: "bg-white rounded-[1.5rem] p-8 max-w-md w-full shadow-2xl relative",
+    initial: {
+      opacity: 0,
+      y: 32,
+      scale: 0.96
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1
+    },
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut'
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "absolute top-5 right-5 w-8 h-8 rounded-full flex items-center justify-center",
+    style: {
+      background: 'rgba(31,41,55,0.06)'
+    },
+    onClick: () => setSelectedIdx(null),
+    "aria-label": "Close"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    className: "w-4 h-4 text-[#6B7280]"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M18 6L6 18M6 6l12 12"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mb-5",
+    style: {
+      background: 'rgba(185,28,28,0.08)'
+    }
+  }, selected.img ? /*#__PURE__*/React.createElement("img", {
+    src: selected.img,
+    alt: selected.name,
+    className: "w-full h-full object-cover object-top"
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "font-heading text-[#B91C1C] text-2xl"
+  }, initials(selected.name))), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl leading-tight mb-1"
+  }, selected.name), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#B91C1C] text-xs font-body font-semibold tracking-wide uppercase mb-5"
+  }, selected.role), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#4B5563] text-sm font-body font-light leading-relaxed"
+  }, selected.bio), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mt-7 pt-5",
+    style: {
+      borderTop: '1px solid rgba(31,41,55,0.07)'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "text-xs text-[#6B7280] flex items-center gap-1 hover:text-[#1F2937] transition-colors disabled:opacity-30",
+    disabled: selectedIdx === 0,
+    onClick: () => setSelectedIdx(selectedIdx - 1)
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    className: "w-3.5 h-3.5"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M15 18l-6-6 6-6"
+  })), "Previous"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] text-[#9CA3AF] font-body"
+  }, selectedIdx + 1, " / ", board.length), /*#__PURE__*/React.createElement("button", {
+    className: "text-xs text-[#6B7280] flex items-center gap-1 hover:text-[#1F2937] transition-colors disabled:opacity-30",
+    disabled: selectedIdx === board.length - 1,
+    onClick: () => setSelectedIdx(selectedIdx + 1)
+  }, "Next", /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    className: "w-3.5 h-3.5"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M9 18l6-6-6-6"
+  })))))));
+}
+
+// ── Corporate Details ─────────────────────────────────────────────────────
+function CorporateSection() {
+  const details = [{
+    label: 'Principal Address',
+    value: '816 Perseus Ln, Foster City, CA 94404'
+  }, {
+    label: 'Corporate Inquiry',
+    value: 'Prithwiraj Mitra — 737 Gull Ave, Foster City, CA 94404'
+  }, {
+    label: 'CA Corporation ID',
+    value: '3150122'
+  }, {
+    label: 'IRS Tax ID (EIN)',
+    value: '26-2921484'
+  }, {
+    label: 'Tax Exempt Status',
+    value: '501(c)(3) Public Charity'
+  }, {
+    label: 'Email',
+    value: 'baybasi@baybasi.us',
+    href: 'mailto:baybasi@baybasi.us'
+  }, {
+    label: 'Website',
+    value: 'www.baybasi.us',
+    href: 'https://www.baybasi.us'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    id: "corporate",
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      borderTop: '1px solid rgba(31,41,55,0.06)',
+      background: '#FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Corporate Details"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+  }, sa(0.1)), "Organization", /*#__PURE__*/React.createElement("br", null), "Information"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl"
+  }, details.map(({
+    label,
+    value,
+    href
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: label,
+    className: "liquid-glass rounded-[1.25rem] p-5"
+  }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-1"
+  }, label), href ? /*#__PURE__*/React.createElement("a", {
+    href: href,
+    className: "text-[#1F2937] text-sm font-body hover:text-[#6B7280] transition-colors"
+  }, value) : /*#__PURE__*/React.createElement("div", {
+    className: "text-[#1F2937] text-sm font-body"
+  }, value))))));
+}
+
+// ── Performance Reports ────────────────────────────────────────────────────
+function ReportsSection() {
+  return /*#__PURE__*/React.createElement("section", {
+    id: "reports",
+    className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Transparency"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-6"
+  }, sa(0.1)), "Performance", /*#__PURE__*/React.createElement("br", null), "Reports"), /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-[#6B7280] font-body font-light text-base max-w-lg mb-12"
+  }, sa(0.2)), "We believe in full transparency. 94% of revenue goes directly into programs and charitable works."), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+  }, ['2025', '2024', '2023'].map((year, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: year,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "font-heading text-[#1F2937] text-4xl mb-4"
+  }, year), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#6B7280] text-sm font-body font-light flex-1"
+  }, "Annual Performance Report"), /*#__PURE__*/React.createElement("div", {
+    className: "mt-5 flex items-center gap-1.5 text-sm text-[#9CA3AF] font-body"
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "h-4 w-4",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+  }), /*#__PURE__*/React.createElement("polyline", {
+    points: "14 2 14 8 20 8"
+  })), year === '2025' ? /*#__PURE__*/React.createElement("a", {
+    href: "#",
+    className: "hover:text-[#1F2937] transition-colors"
+  }, "View PDF \u2192") : /*#__PURE__*/React.createElement("span", null, "Coming soon")))))));
+}
+
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageHero, null), /*#__PURE__*/React.createElement(PurposeSection, null), /*#__PURE__*/React.createElement(JourneySection, null), /*#__PURE__*/React.createElement(BoardSection, null), /*#__PURE__*/React.createElement(CorporateSection, null), /*#__PURE__*/React.createElement(ReportsSection, null), /*#__PURE__*/React.createElement(Footer, null));
+}
+const {
+  createRoot
+} = ReactDOM;
+createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+</script>
+</body>
+</html>

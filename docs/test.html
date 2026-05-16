@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Baybasi Debug</title>
+<style>
+  body { background: #0a0000; color: #0f0; font-family: monospace; padding: 20px; }
+  .ok  { color: #0f0; }
+  .err { color: #f55; font-weight: bold; }
+  #react-out { color: #fff; font-size: 1.2rem; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h2 style="color:#fff">Baybasi Dependency Diagnostics</h2>
+<div id="log"></div>
+<div id="react-out"></div>
+
+<script>
+  var L = (function() {
+    var el = document.getElementById('log');
+    return function(msg, ok) {
+      var d = document.createElement('div');
+      d.className = (ok === false) ? 'err' : 'ok';
+      d.textContent = msg;
+      el.appendChild(d);
+      console.log(msg);
+    };
+  })();
+  window.onerror = function(msg, src, line) { L('JS ERROR: ' + msg + ' (' + src + ':' + line + ')', false); };
+  L('✓ Page started loading');
+</script>
+
+<!-- React -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+  integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script>L(typeof React !== 'undefined' ? '✓ React loaded: ' + React.version : '✗ React FAILED', typeof React !== 'undefined');</script>
+
+<!-- ReactDOM -->
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+  integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script>L(typeof ReactDOM !== 'undefined' ? '✓ ReactDOM loaded' : '✗ ReactDOM FAILED', typeof ReactDOM !== 'undefined');</script>
+
+<!-- Babel -->
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+  integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>L(typeof Babel !== 'undefined' ? '✓ Babel loaded: ' + Babel.version : '✗ Babel FAILED', typeof Babel !== 'undefined');</script>
+
+<!-- Framer Motion -->
+<script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+<script>
+  window.Motion = window.Motion || window.FramerMotion;
+  L(typeof Motion !== 'undefined' ? '✓ Framer Motion loaded, motion=' + typeof Motion.motion : '✗ Framer Motion FAILED', typeof Motion !== 'undefined');
+</script>
+
+<!-- components.js -->
+<script src="js/components.js"></script>
+<script>
+  L(typeof Navbar !== 'undefined'     ? '✓ Navbar defined'     : '✗ Navbar MISSING', typeof Navbar !== 'undefined');
+  L(typeof Footer !== 'undefined'     ? '✓ Footer defined'     : '✗ Footer MISSING', typeof Footer !== 'undefined');
+  L(typeof FadingVideo !== 'undefined'? '✓ FadingVideo defined': '✗ FadingVideo MISSING', typeof FadingVideo !== 'undefined');
+  L(typeof BlurText !== 'undefined'   ? '✓ BlurText defined'   : '✗ BlurText MISSING', typeof BlurText !== 'undefined');
+</script>
+
+<!-- Minimal Babel JSX test -->
+<script type="text/babel">
+  L('✓ Babel type=text/babel script ran');
+  function TestApp() {
+    return <div id="react-out" style={{color:'white', padding:'10px', background:'rgba(255,255,255,0.1)', marginTop:'20px', borderRadius:'8px'}}>
+      <b>✓ React + JSX works!</b>
+    </div>;
+  }
+  ReactDOM.createRoot(document.getElementById('react-out')).render(<TestApp/>);
+</script>
+</body>
+</html>
