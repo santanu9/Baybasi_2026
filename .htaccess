@@ -1,0 +1,148 @@
+# ════════════════════════════════════════════════════════════════════════════
+#  Baybasi Website — Apache configuration for Bluehost (and any cPanel host)
+# ────────────────────────────────────────────────────────────────────────────
+#  This file controls how Apache serves the static site:
+#    • forces HTTPS
+#    • enables gzip/brotli compression
+#    • sets browser cache headers
+#    • declares MIME types for video and modern image formats
+#    • adds basic security headers
+#  Upload this file alongside index.html. It applies to the directory it lives
+#  in plus all sub-directories.
+# ════════════════════════════════════════════════════════════════════════════
+
+# ─── 1. Default document ────────────────────────────────────────────────────
+DirectoryIndex index.html index.htm
+
+# ─── 2. Default character set ──────────────────────────────────────────────
+AddDefaultCharset UTF-8
+
+# ─── 3. MIME types (Bluehost may not set these by default) ─────────────────
+<IfModule mod_mime.c>
+  AddType video/mp4                          .mp4 .m4v
+  AddType video/webm                         .webm
+  AddType image/svg+xml                      .svg .svgz
+  AddType image/webp                         .webp
+  AddType image/avif                         .avif
+  AddType font/woff                          .woff
+  AddType font/woff2                         .woff2
+  AddType application/manifest+json          .webmanifest
+  AddType text/cache-manifest                .appcache
+</IfModule>
+
+# ─── 4. Force HTTPS ────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# ─── 5. Optional: clean URLs (strip .html from links) ───────────────────────
+# Uncomment to allow /membership instead of /membership.html
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteRule ^([^\.]+)$ $1.html [NC,L]
+#   # Permanently redirect /page.html → /page
+#   RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+#   RewriteRule ^ /%1 [R=301,L]
+# </IfModule>
+
+# ─── 6. Gzip compression ───────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/manifest+json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml font/woff font/woff2 application/font-woff application/font-woff2
+</IfModule>
+
+# ─── 7. Brotli (if Bluehost has mod_brotli enabled — many cPanel hosts do) ──
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+  AddOutputFilterByType BROTLI_COMPRESS text/javascript application/javascript application/x-javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/json application/manifest+json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+# ─── 8. Browser cache (Cache-Control via mod_expires) ──────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML / JSON / XML — short cache so updates roll out quickly
+  ExpiresByType text/html                            "access plus 0 seconds"
+  ExpiresByType application/json                     "access plus 0 seconds"
+  ExpiresByType application/xml                      "access plus 0 seconds"
+
+  # CSS / JS — cache for a week (we use ?v=... cache-busters in the markup)
+  ExpiresByType text/css                             "access plus 1 week"
+  ExpiresByType application/javascript               "access plus 1 week"
+  ExpiresByType text/javascript                      "access plus 1 week"
+
+  # Images — cache for a month
+  ExpiresByType image/png                            "access plus 1 month"
+  ExpiresByType image/jpeg                           "access plus 1 month"
+  ExpiresByType image/gif                            "access plus 1 month"
+  ExpiresByType image/svg+xml                        "access plus 1 month"
+  ExpiresByType image/webp                           "access plus 1 month"
+  ExpiresByType image/avif                           "access plus 1 month"
+  ExpiresByType image/x-icon                         "access plus 1 month"
+
+  # Video — cache for a month
+  ExpiresByType video/mp4                            "access plus 1 month"
+  ExpiresByType video/webm                           "access plus 1 month"
+
+  # Fonts — cache for a year
+  ExpiresByType font/woff                            "access plus 1 year"
+  ExpiresByType font/woff2                           "access plus 1 year"
+  ExpiresByType application/font-woff                "access plus 1 year"
+  ExpiresByType application/font-woff2               "access plus 1 year"
+</IfModule>
+
+# ─── 9. Cache-Control header (modern, with public + immutable for assets) ───
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|svg|png|jpg|jpeg|gif|webp|avif|woff|woff2|mp4|webm)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.(html|json|xml)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ─── 10. Security headers ──────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Prevent MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Prevent clickjacking via iframes (own-site iframes still allowed)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Block reflected XSS (modern browsers ignore this, but harmless to keep)
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Don't leak the full Referer to external sites
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Forbid features we don't use
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+  # Strict-Transport-Security — only enable once HTTPS works perfectly
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# ─── 11. Disable directory listing (don't expose folder contents) ──────────
+Options -Indexes
+
+# ─── 12. Block access to dotfiles (.git, .env, etc.) ───────────────────────
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# ─── 13. Custom 404 page ───────────────────────────────────────────────────
+ErrorDocument 404 /404.html
+
+# ─── 14. Allow range requests (required for video seek) ────────────────────
+<IfModule mod_headers.c>
+  Header set Accept-Ranges bytes
+</IfModule>

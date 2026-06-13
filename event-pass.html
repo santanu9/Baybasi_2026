@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <title>Event Pass – Baybasi</title>
+  <meta name="description" content="2026 Baybasi event passes — Annual, Dandiya, Durga Puja, Bijoya-Diwali, Spring Fest, and more. Affordable, event-specific, and day-specific passes."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: {
+      'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+      'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+    }, borderRadius: { DEFAULT: '9999px' } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
+</head>
+<body class="bg-[#FFF7ED] font-body text-[#1F2937] antialiased">
+<div id="root"></div>
+<script src="js/components.js?v=14"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const { motion } = Motion;
+const h = React.createElement;
+const sa = (delay = 0) => ({
+  initial: { opacity: 0, y: 24, filter: 'blur(6px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.6, delay, ease: 'easeOut' }
+});
+
+function PageHero() {
+  return h("section", {
+    className: "relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    style: {
+      backgroundImage: "url('images/heroes/event-pass-photo.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center right',
+      backgroundRepeat: 'no-repeat'
+    }
+  },
+    h(Navbar, { activePage: "" }),
+    /* Cream gradient overlay — keeps text vividly readable while the upper SVG stays vibrant */
+    h("div", {
+      className: "absolute inset-x-0 bottom-0 pointer-events-none",
+      style: {
+        height: '62%',
+        background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.62) 56%, rgba(255,247,237,1) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'linear-gradient(90deg, rgba(255,247,237,0.98) 0%, rgba(255,239,214,0.94) 36%, rgba(127,29,29,0.20) 70%, rgba(22,8,8,0.32) 100%), radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.18), transparent 30%)'
+      }
+    }),
+    h("div", { className: "w-full max-w-7xl mx-auto pt-32 relative z-10" },
+      h(Breadcrumb, { crumbs: [{ label: 'Join Us', href: 'join-us.html' }, { label: 'Event Pass' }] }),
+      h(motion.p, {
+        className: "mt-5 inline-flex items-center gap-2 text-sm md:text-base font-body text-[#7F1D1D] mb-4 tracking-widest uppercase font-bold",
+        style: { textShadow: '0 1px 8px rgba(255,247,237,0.95)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.3 }
+      }, "// Event Pass"),
+      h(BlurText, {
+        text: '2026 Event Passes',
+        className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
+        style: {
+          fontSize: 'clamp(2rem, 7.2vw, 6rem)',
+          flexWrap: 'wrap',
+          whiteSpace: 'normal',
+          justifyContent: 'flex-start',
+          textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
+        }
+      }),
+      h(motion.p, {
+        className: "mt-6 text-[#1F2937] font-body font-semibold max-w-3xl leading-relaxed",
+        style: { fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.7 }
+      }, 'Affordable, granular, event-specific and day-specific passes — Annual, Dandiya, Durga Puja, Bijoya-Diwali, Spring Fest and more.'),
+      h(motion.div, {
+        className: "mt-8 grid w-full max-w-3xl grid-cols-1 sm:grid-cols-3 gap-3",
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.85 }
+      },
+        [
+          ['9', 'Pass Options'],
+          ['5', 'Pricing Categories'],
+          ['20%', 'Guest Discount']
+        ].map(([value, label]) => h("div", {
+          key: label,
+          className: "rounded-2xl border border-[#F59E0B]/35 px-5 py-4 shadow-[0_18px_42px_rgba(127,29,29,0.13)] backdrop-blur-md",
+          style: {
+            background: 'linear-gradient(145deg, rgba(255,250,240,0.96) 0%, rgba(255,233,196,0.96) 54%, rgba(245,211,159,0.94) 100%)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.95), 0 18px 42px rgba(127,29,29,0.13)'
+          }
+        },
+          h("div", { className: "font-heading text-3xl text-[#7F1D1D] leading-none" }, value),
+          h("div", { className: "mt-1 text-xs uppercase tracking-widest text-[#4B5563] font-bold" }, label)
+        ))
+      )
+    )
+  );
+}
+
+function PassTableSection() {
+  const standardCardBg = 'linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%)';
+  const premiumCardBg = 'linear-gradient(145deg, #FFE8B8 0%, #FCD894 48%, #EDBE72 100%)';
+  const insetHighlight = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127,29,29,0.05)';
+
+  /* Small inline SVG icons themed per pass */
+  const icons = {
+    trophy: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M6 2v3a4 4 0 003 3.87V10c0 2.21 1.79 4 4 4v3h-3v2h8v-2h-3v-3c2.21 0 4-1.79 4-4V8.87A4 4 0 0022 5V2H6zm12 6.41V4h2v1a2 2 0 01-2 2v1.41zM8 8.41V4h2v4.41A2 2 0 018 8.41zM4 6V4h2v4a2 2 0 01-2-2z" })
+    ),
+    dandiya: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M14.5 2.5L21 9l-1.5 1.5-2-2-6 6 2 2L12 18 5.5 11.5 7 10l2 2 6-6-2-2 1.5-1.5zM4 19l4 1-1 4-4-1 1-4z" })
+    ),
+    durga: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M12 2C8.13 2 5 5.13 5 9c0 4.17 4.42 9.92 6.24 12.11.4.48 1.13.48 1.53 0C14.58 18.92 19 13.17 19 9c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" })
+    ),
+    sat: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("circle", { cx: "12", cy: "12", r: "5" }),
+      h("path", { d: "M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" }),
+      h("rect", { x: "0", y: "0", width: "0", height: "0" })
+    ),
+    sun: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("circle", { cx: "12", cy: "12", r: "4" }),
+      h("path", { d: "M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12", stroke: "currentColor", strokeWidth: "2", fill: "none", strokeLinecap: "round" })
+    ),
+    diya: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M12 2C12 2 9 6 9 9C9 11 10.5 12 12 12C13.5 12 15 11 15 9C15 6 12 2 12 2z" }),
+      h("ellipse", { cx: "12", cy: "16", rx: "8", ry: "2" }),
+      h("path", { d: "M4 17 Q 5 21, 12 21 Q 19 21, 20 17 Z" })
+    ),
+    music: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M12 3v10.55A4 4 0 1014 17V7h4V3h-6z" })
+    ),
+    book: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" })
+    ),
+    picnic: h("svg", { viewBox: "0 0 24 24", fill: "currentColor", className: "w-7 h-7" },
+      h("path", { d: "M22 9V7h-9V3.5a1.5 1.5 0 10-3 0V7H1v2h.84L4 17.6V21h2v-3h12v3h2v-3.4L22.16 9H22zM12 16a3 3 0 110-6 3 3 0 010 6z" })
+    )
+  };
+
+  const passes = [
+    { name: 'Annual',                     full: 'Annual (all inclusive)', sub: '4× Lunch  ·  6× Dinner  ·  Dandiya  ·  Iman', icon: icons.trophy,  single: '$300', couple: '$500', child: '$150', senior: '$200', adult: '$300', tag: 'Best Value', premium: true },
+    { name: 'Dandiya Night',              full: 'Dandiya Night Only',     sub: 'Dandiya  ·  Dinner',                          icon: icons.dandiya, single: '$40',  couple: '$70',  child: '$20',  senior: '$30',  adult: '$40' },
+    { name: 'Durga Puja',                 full: 'Sat & Sun',              sub: '2× Lunch  ·  2× Dinner  ·  Iman',             icon: icons.durga,   single: '$200', couple: '$350', child: '$100', senior: '$150', adult: '$200' },
+    { name: 'Durga Puja',                 full: 'Saturday Only*',         sub: 'Lunch  ·  Dinner',                            icon: icons.sun,     single: '$100', couple: '$175', child: '$50',  senior: '$75',  adult: '$100' },
+    { name: 'Durga Puja',                 full: 'Sunday Only*',           sub: 'Lunch  ·  Dinner  ·  Iman',                   icon: icons.sun,     single: '$130', couple: '$210', child: '$70',  senior: '$90',  adult: '$130' },
+    { name: 'Bijoya-Diwali',              full: 'Festival of Lights',     sub: 'Dinner',                                      icon: icons.diya,    single: '$60',  couple: '$100', child: '$30',  senior: '$40',  adult: '$60' },
+    { name: 'SF Only',                    full: 'Spring Fest',            sub: 'Lunch  ·  Dinner',                            icon: icons.music,   single: '$80',  couple: '$125', child: '$40',  senior: '$50',  adult: '$80' },
+    { name: 'Rabindra Jayanti',           full: 'Celebrating Tagore',     sub: 'Dinner',                                      icon: icons.book,    single: '$30',  couple: '$60',  child: '$20',  senior: '$30',  adult: '$30' },
+    { name: 'Annual Picnic',              full: 'Family Day Out',         sub: 'Lunch',                                       icon: icons.picnic,  single: '$30',  couple: '$60',  child: '$20',  senior: '$30',  adult: '$30' }
+  ];
+
+  /* Pricing tier renderer */
+  const tierRow = (label, hint, value, accent) => h("div", {
+    className: "flex min-h-[4.5rem] flex-col items-center justify-center rounded-xl border py-2 px-1.5 text-center",
+    style: {
+      background: accent
+        ? 'linear-gradient(180deg, rgba(255,238,197,0.98) 0%, rgba(242,201,135,0.94) 100%)'
+        : 'linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.96) 100%)',
+      borderColor: accent ? 'rgba(245,158,11,0.28)' : 'rgba(127,29,29,0.10)',
+      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.95), 0 6px 16px rgba(127,29,29,0.06)'
+    }
+  },
+    h("span", { className: "text-[10px] font-body uppercase tracking-wider text-[#374151] font-bold" }, label),
+    hint ? h("span", { className: "text-[9px] font-body text-[#6B7280] leading-none mb-1" }, hint) : null,
+    h("span", { className: "font-heading text-lg leading-none font-bold " + (accent ? "text-[#7F1D1D]" : "text-[#111827]") }, value)
+  );
+
+  const renderCard = (p, i) => {
+    const isPremium = p.premium;
+    const baseClass = "rounded-[1.25rem] p-6 flex flex-col h-full border transition-all duration-200 hover:-translate-y-1";
+    return h(motion.div, _extends({
+      key: p.full + i,
+      className: isPremium
+        ? baseClass + " border-[#F59E0B]/55 ring-2 ring-[#F59E0B]/75 relative overflow-hidden"
+        : baseClass + " border-[#7F1D1D]/14 relative overflow-hidden",
+      style: {
+        background: isPremium ? premiumCardBg : standardCardBg,
+        boxShadow: isPremium
+          ? insetHighlight + ', 0 28px 70px rgba(127,29,29,0.18), 0 10px 24px rgba(245,158,11,0.18)'
+          : insetHighlight + ', 0 24px 58px rgba(127,29,29,0.12), 0 8px 18px rgba(31,41,55,0.05)'
+      }
+    }, sa(0.05 * i)),
+      h("div", {
+        className: "absolute inset-x-0 top-0 h-1",
+        style: { background: isPremium ? 'linear-gradient(90deg, #7F1D1D, #F59E0B, #7F1D1D)' : 'linear-gradient(90deg, rgba(127,29,29,0.28), rgba(245,158,11,0.56), rgba(127,29,29,0.18))' }
+      }),
+      isPremium ? h("div", {
+        className: "absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#F59E0B]/15"
+      }) : null,
+      /* Premium ribbon */
+      isPremium ? h("div", {
+        className: "absolute top-3 right-3 text-[10px] uppercase tracking-wider font-bold text-white bg-[#F59E0B] rounded-full px-2.5 py-1 shadow"
+      }, p.tag) : null,
+
+      /* Icon + name */
+      h("div", { className: "relative flex items-center gap-3 mb-3" },
+        h("div", {
+          className: "w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ring-1 ring-[#7F1D1D]/10",
+          style: {
+            background: isPremium
+              ? 'linear-gradient(145deg, rgba(245,158,11,0.42), rgba(255,236,192,0.86))'
+              : 'linear-gradient(145deg, rgba(127,29,29,0.16), rgba(255,232,196,0.88))',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 10px 22px rgba(127,29,29,0.09)'
+          }
+        },
+          h("div", { style: { color: isPremium ? '#7F1D1D' : '#7F1D1D' } }, p.icon)
+        ),
+        h("div", { className: "min-w-0 flex-1" },
+          h("h3", { className: "font-heading text-[#111827] text-xl leading-tight font-bold" }, p.name),
+          h("p", { className: "text-[#7F1D1D] text-xs font-body font-bold mt-0.5" }, p.full)
+        )
+      ),
+
+      /* Includes pill */
+      h("div", {
+        className: "relative mb-5 rounded-2xl border p-4",
+        style: {
+          background: 'linear-gradient(180deg, rgba(255,246,226,0.96) 0%, rgba(247,219,176,0.94) 100%)',
+          borderColor: 'rgba(127,29,29,0.10)',
+          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.96)'
+        }
+      },
+        h("div", { className: "text-[10px] font-body uppercase tracking-widest text-[#4B5563] font-bold mb-1.5" }, "Includes"),
+        h("p", { className: "text-[#1F2937] text-sm font-body font-semibold leading-snug" }, p.sub)
+      ),
+
+      /* Pricing grid */
+      h("div", {
+        className: "grid grid-cols-2 sm:grid-cols-5 gap-1.5 pt-4 mt-auto",
+        style: { borderTop: '1px solid rgba(127,29,29,0.10)' }
+      },
+        tierRow('Single', null, p.single, isPremium),
+        tierRow('Couple', null, p.couple, isPremium),
+        tierRow('Child', '5–18', p.child),
+        tierRow('Senior**', '& Full Time Student', p.senior),
+        tierRow('Adult', null, p.adult)
+      )
+    );
+  };
+
+  return h("section", { className: "relative py-24 px-6 md:px-12 lg:px-20 bg-[#FFF7ED] overflow-hidden" },
+    h("div", {
+      className: "absolute inset-x-0 top-0 h-48 pointer-events-none",
+      style: { background: 'linear-gradient(to bottom, rgba(127,29,29,0.06), rgba(255,247,237,0))' }
+    }),
+    h("div", { className: "max-w-6xl mx-auto" },
+      h("div", { className: "mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end" },
+        h("div", { className: "max-w-2xl" },
+          h(motion.p, _extends({ className: "text-base font-body text-[#7F1D1D] mb-3 tracking-widest uppercase font-semibold" }, sa(0)), "// 2026 Rate Card"),
+          h(motion.h2, _extends({ className: "font-heading text-[#7F1D1D] text-5xl md:text-6xl tracking-normal leading-[0.95] mb-4" }, sa(0.1)), "Choose Your Pass"),
+          h(motion.p, _extends({ className: "text-[#374151] text-base font-body font-light max-w-2xl" }, sa(0.15)), "Nine flexible pass options to match every Baybasi event. Annual covers it all — or pick exactly what you need.")
+        ),
+        h(motion.div, _extends({
+          className: "rounded-2xl border px-5 py-4 text-sm text-[#1F2937] shadow-[0_18px_42px_rgba(127,29,29,0.12)] backdrop-blur-md",
+          style: {
+            background: 'linear-gradient(145deg, rgba(255,247,232,0.98) 0%, rgba(255,229,188,0.98) 58%, rgba(241,204,143,0.94) 100%)',
+            borderColor: 'rgba(245,158,11,0.28)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.95), 0 18px 42px rgba(127,29,29,0.12)'
+          }
+        }, sa(0.2)),
+          h("span", { className: "block text-[10px] uppercase tracking-widest text-[#7F1D1D] font-bold" }, "Quick Guide"),
+          h("span", { className: "mt-1 block font-semibold" }, "Start with Annual for full-season access; choose day passes for focused visits.")
+        )
+      ),
+
+      /* Card grid */
+      h("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" },
+        passes.map(renderCard)
+      ),
+
+      /* Footnotes */
+      h(motion.div, _extends({
+        className: "mt-12 grid grid-cols-1 md:grid-cols-3 gap-3"
+      }, sa(0.3)),
+        h("div", {
+          className: "rounded-2xl border p-4 flex items-start gap-3 shadow-[0_12px_30px_rgba(127,29,29,0.09)]",
+          style: { background: standardCardBg, borderColor: 'rgba(127,29,29,0.12)', boxShadow: insetHighlight + ', 0 12px 30px rgba(127,29,29,0.09)' }
+        },
+          h("span", { className: "font-heading text-[#B91C1C] text-xl leading-none flex-shrink-0" }, "*"),
+          h("p", { className: "text-[#1F2937] text-sm font-body font-medium leading-snug" }, "Day Passes need to be purchased in advance.")
+        ),
+        h("div", {
+          className: "rounded-2xl border p-4 flex items-start gap-3 shadow-[0_12px_30px_rgba(127,29,29,0.09)]",
+          style: { background: standardCardBg, borderColor: 'rgba(127,29,29,0.12)', boxShadow: insetHighlight + ', 0 12px 30px rgba(127,29,29,0.09)' }
+        },
+          h("span", { className: "font-heading text-[#B91C1C] text-xl leading-none flex-shrink-0" }, "**"),
+          h("p", { className: "text-[#1F2937] text-sm font-body font-medium leading-snug" }, "Senior Citizen ≥ 70 years. Senior Citizen ≥ 85 years gets a FREE Annual Pass.")
+        ),
+        h("div", {
+          className: "rounded-2xl border p-4 flex items-start gap-3 shadow-[0_12px_30px_rgba(127,29,29,0.09)]",
+          style: { background: standardCardBg, borderColor: 'rgba(127,29,29,0.12)', boxShadow: insetHighlight + ', 0 12px 30px rgba(127,29,29,0.09)' }
+        },
+          h("span", { className: "font-heading text-[#B91C1C] text-xl leading-none flex-shrink-0" }, "***"),
+          h("p", { className: "text-[#1F2937] text-sm font-body font-medium leading-snug" }, "Members get 20% discount on all Event Passes for their visiting guests.")
+        )
+      ),
+
+      /* CTA */
+      h(motion.div, _extends({ className: "mt-12 flex items-center justify-center" }, sa(0.4)),
+        h("a", {
+          href: "join-us.html#contact",
+          className: "inline-flex items-center gap-2 bg-[#B91C1C] hover:bg-[#7F1D1D] transition-colors rounded-full px-8 py-3.5 text-base font-semibold text-white"
+        }, "Buy Event Pass ", h(ArrowUpRight, { className: "h-4 w-4" }))
+      )
+    )
+  );
+}
+
+function App() {
+  return h(React.Fragment, null,
+    h(PageHero),
+    h(PassTableSection),
+    h(Footer)
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

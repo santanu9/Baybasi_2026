@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <title>Sponsorship – Baybasi</title>
+  <meta name="description" content="Partner with Baybasi: high-impact brand visibility, affluent Bay Area audience, credible 501(c)(3) alignment, and direct engagement. 2026 sponsorship packages and a la carte options."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: {
+      'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+      'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+    }, borderRadius: { DEFAULT: '9999px' } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
+</head>
+<body class="bg-[#FFF7ED] font-body text-[#1F2937] antialiased">
+<div id="root"></div>
+<script src="js/components.js?v=14"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const { motion } = Motion;
+const h = React.createElement;
+const sa = (delay = 0) => ({
+  initial: { opacity: 0, y: 24, filter: 'blur(6px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.6, delay, ease: 'easeOut' }
+});
+const warmCardBg = 'linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%)';
+const warmCardBgStrong = 'linear-gradient(145deg, #FFE8B8 0%, #FCD894 48%, #EDBE72 100%)';
+const warmPillBg = 'linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.96) 100%)';
+const warmInset = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127,29,29,0.05)';
+
+function PageHero() {
+  return h("section", {
+    className: "relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    style: {
+      backgroundImage: "url('images/heroes/sponsorship-photo.png')",
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor: '#FFF7ED'
+    }
+  },
+    h(Navbar, { activePage: "" }),
+    /* Layered overlays keep the sponsorship image grounded and the text readable. */
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'linear-gradient(90deg, rgba(255,247,237,0.99) 0%, rgba(255,239,214,0.92) 35%, rgba(255,247,237,0.34) 68%, rgba(255,247,237,0.10) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-x-0 bottom-0 pointer-events-none",
+      style: {
+        height: '62%',
+        background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.62) 56%, rgba(255,247,237,1) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.14), transparent 30%)'
+      }
+    }),
+    h("div", { className: "w-full max-w-7xl mx-auto pt-32 relative z-10" },
+      h(Breadcrumb, { crumbs: [{ label: 'Join Us', href: 'join-us.html' }, { label: 'Sponsorship' }] }),
+      h(motion.p, {
+        className: "mt-4 text-base font-body text-[#7F1D1D] mb-4 tracking-widest uppercase font-bold",
+        style: { textShadow: '0 1px 8px rgba(255,247,237,0.95)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.3 }
+      }, "// Sponsorship"),
+      h(BlurText, {
+        text: 'Why Partner With Us',
+        className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
+        style: {
+          fontSize: 'clamp(2rem, 7.2vw, 6rem)',
+          flexWrap: 'wrap',
+          whiteSpace: 'normal',
+          justifyContent: 'flex-start',
+          textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
+        }
+      }),
+      h(motion.p, {
+        className: "mt-6 text-[#111827] font-body font-bold max-w-3xl leading-relaxed",
+        style: { fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.7 }
+      }, 'Reach 5,000+ attendees per event across 10+ annual event days — an affluent, 90%+ college-educated, predominantly Indian-American audience.')
+    )
+  );
+}
+
+function WhySection() {
+  const pillars = [
+    {
+      n: '01',
+      title: 'High-Impact Brand Visibility',
+      body: "Baybasi's flagship public festivals attract 5,000+ attendees per event, delivering concentrated exposure to local families and decision-makers. Sponsors receive prominent logo and banner placement across 10+ event days annually, plus year-round recognition on Baybasi's website — visibility well beyond event dates."
+    },
+    {
+      n: '02',
+      title: 'Access a High-Value Audience',
+      body: 'Our events reach an affluent, professional, and diverse Bay Area audience. Holi and the 3-day Autumn Festival (Durga Puja) each draw 5,000+ attendees — predominantly Indian-American families with 90%+ college-educated households, many earning $150K+. Baybasi connects your brand to 35K Bengalis and 100K Indians in the region.'
+    },
+    {
+      n: '03',
+      title: 'Credible Brand Alignment & Goodwill',
+      body: 'Partner with a trusted 501(c)(3) nonprofit with a 25-year legacy. Sponsorship highlights your commitment to community, culture, and social impact — values customers recognize and remember — while supporting programs that advance education, mental health, and disaster relief.'
+    },
+    {
+      n: '04',
+      title: 'Direct Engagement & Lead Generation',
+      body: 'Sponsors engage face-to-face with attendees at high-traffic events. Platinum, Gold, and Silver tiers include exhibition booths at our largest festivals, enabling live demos, sampling, and relationship building in a welcoming, high-engagement environment.'
+    }
+  ];
+
+  return h("section", { className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]" },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase" }, sa(0)), "// Why Partner With Us"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-14" }, sa(0.1)), "Four Reasons", h("br"), "to Sponsor"),
+      h("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5" },
+        pillars.map((p, i) => h(motion.div, _extends({
+          key: p.n,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+          style: { background: warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+        }, sa(0.07 * i)),
+          h("div", { className: "font-heading text-[#7F1D1D] text-3xl mb-4 font-bold" }, p.n),
+          h("h3", { className: "font-heading text-[#111827] text-2xl leading-tight mb-3 font-bold" }, p.title),
+          h("p", { className: "text-[#1F2937] text-base font-body font-medium leading-relaxed" }, p.body)
+        ))
+      )
+    )
+  );
+}
+
+function BusinessSection() {
+  const businesses = [
+    { name: 'Real Estate & Financial Services', count: '17',
+      body: 'Access a network of high-income households and homeowners. Sponsorship builds trust and recognition in a relationship-driven setting, helping you connect with qualified prospects in a warm, community context.' },
+    { name: 'Restaurants, Retail & Boutique', count: '7',
+      body: 'Showcase your products to thousands of attendees through event booths or co-sponsored food stalls. Drive trials, coupons, and repeat customers at high-traffic festivals while building local goodwill and word-of-mouth.' },
+    { name: 'Technology & Startups', count: '2',
+      body: 'Increase visibility among tech professionals, entrepreneurs, and early adopters. Sponsorship signals corporate social responsibility — supporting brand growth, customer loyalty, and talent attraction.' },
+    { name: 'Professional Services', count: '1',
+      body: 'Strengthen credibility by aligning with a respected community nonprofit. Gain visibility with an educated, professional audience through website recognition and event marketing.' }
+  ];
+  const totalSponsors = businesses.reduce((sum, b) => sum + parseInt(b.count, 10), 0);
+  const maxSponsors = businesses.reduce((max, b) => Math.max(max, parseInt(b.count, 10)), 0);
+
+  return h("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: { background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(127,29,29,0.08) 0%, transparent 70%), #FFF7ED' }
+  },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// Advantages by Industry"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-4 text-center" }, sa(0.1)), "Built for Your Business"),
+      h(motion.p, _extends({ className: "text-[#4B5563] text-base font-body font-medium text-center mb-10 max-w-2xl mx-auto" }, sa(0.15)), "Sponsor categories shown as a quick market-readiness chart for business houses evaluating Baybasi partnership fit."),
+      h(motion.div, _extends({
+        className: "mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4"
+      }, sa(0.18)),
+        [
+          ['27', 'Current Sponsors'],
+          ['4', 'Business Segments'],
+          ['5K+', 'Event Reach']
+        ].map(([value, label]) => h("div", {
+          key: label,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-5 text-center shadow-[0_18px_42px_rgba(127,29,29,0.10)]",
+          style: { background: warmCardBg, boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.10)' }
+        },
+          h("div", { className: "font-heading text-[#7F1D1D] text-4xl leading-none font-bold" }, value),
+          h("div", { className: "mt-2 text-[#374151] text-xs uppercase tracking-widest font-body font-bold" }, label)
+        ))
+      ),
+      h("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-5" },
+        businesses.map((b, i) => {
+          const count = parseInt(b.count, 10);
+          const share = Math.round((count / totalSponsors) * 100);
+          const width = Math.max(10, Math.round((count / maxSponsors) * 100)) + '%';
+          return h(motion.div, _extends({
+            key: b.name,
+            className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+            style: { background: warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+          }, sa(0.07 * i)),
+            h("div", { className: "flex items-start justify-between gap-4 mb-5" },
+              h("div", null,
+                h("div", { className: "text-[#7F1D1D] text-xs font-body uppercase tracking-widest font-bold mb-1" }, "Sponsor Segment"),
+                h("h3", { className: "font-heading text-[#111827] text-2xl leading-tight font-bold" }, b.name)
+              ),
+              h("div", { className: "text-right flex-shrink-0" },
+                h("div", { className: "font-heading text-[#7F1D1D] text-4xl leading-none font-bold" }, b.count),
+                h("div", { className: "text-[#374151] text-[10px] uppercase tracking-widest font-body font-bold mt-1" }, "Sponsors")
+              )
+            ),
+            h("div", {
+              className: "rounded-2xl border border-[#7F1D1D]/10 p-4 mb-5",
+              style: { background: 'linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.94) 100%)', boxShadow: warmInset }
+            },
+              h("div", { className: "flex items-center justify-between mb-2" },
+                h("span", { className: "text-[#374151] text-xs font-body uppercase tracking-widest font-bold" }, "Current Mix"),
+                h("span", { className: "text-[#7F1D1D] text-sm font-body font-bold" }, share + "%")
+              ),
+              h("div", { className: "h-3 rounded-full overflow-hidden", style: { background: 'rgba(127,29,29,0.12)' } },
+                h("div", {
+                  className: "h-full rounded-full",
+                  style: {
+                    width,
+                    background: 'linear-gradient(90deg, #7F1D1D 0%, #B91C1C 48%, #F59E0B 100%)',
+                    boxShadow: '0 4px 12px rgba(127,29,29,0.22)'
+                  }
+                })
+              )
+            ),
+            h("p", { className: "text-[#1F2937] text-base font-body font-medium leading-relaxed" }, b.body)
+          );
+        })
+      )
+    )
+  );
+}
+
+function PackagesSection() {
+  const tiers = [
+    { name: 'Platinum', price: '$8,000', totalValue: '$14,200', savings: '$6,200', highlight: true,
+      details: [
+        ['Event Access',     'All Events ($1,000)'],
+        ['Banner',           'All Events (9 Days) ($2,200)'],
+        ['Media',            'All Events (9 Days) ($900)'],
+        ['Website',          'Dedicated Section ($1,000)'],
+        ['Email',            '12 Times ($600)'],
+        ['Flyer',            'All Events (7) ($2,000)'],
+        ['Magazine',         'Full Page ($500)'],
+        ['Stage',            'All Public Airtime ($1,000)'],
+        ['Booth / Table',    'All Public Events (4 Days) ($1,000)'],
+        ['Seminar',          'Yes ($2,000)'],
+        ['Co-Brand',         'Yes ($2,000)']
+      ]
+    },
+    { name: 'Gold', price: '$6,000', totalValue: '$10,000', savings: '$4,000',
+      details: [
+        ['Event Access',     'Public Events (Free)'],
+        ['Banner',           'All Public Events (4 Days) ($1,500)'],
+        ['Media',            'All Public Events (4 Days) ($400)'],
+        ['Website',          'Logo + Tag Line ($800)'],
+        ['Email',            '8 Times ($400)'],
+        ['Flyer',            'Public Events (2) ($1,000)'],
+        ['Stage',            'Name Only ($500)'],
+        ['Booth / Table',    'Holi or AF ($500)']
+      ]
+    },
+    { name: 'Silver', price: '$4,000', totalValue: '$5,400', savings: '$1,400',
+      details: [
+        ['Event Access',     'Public Events (Free)'],
+        ['Banner',           'All Public Events (4 Days) ($1,500)'],
+        ['Media',            'All Public Events (4 Days) ($400)'],
+        ['Website',          'Logo ($500)'],
+        ['Email',            '4 Times ($200)']
+      ]
+    },
+    { name: 'Bronze', price: '$2,000', totalValue: '$3,450', savings: '$1,450',
+      details: [
+        ['Event Access',     'Public Events (Free)'],
+        ['Website',          'Logo ($500)'],
+        ['Email',            '1 Time ($50)']
+      ]
+    },
+    { name: 'Classic', price: '$1,000', totalValue: '$1,900', savings: '$900',
+      details: [
+        ['Event Access',     'Public Events (Free)'],
+        ['Website',          'Name ($300)']
+      ]
+    }
+  ];
+
+  return h("section", { className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]" },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// 2026 Sponsorship Packages"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-14 text-center" }, sa(0.1)), "Choose Your Tier"),
+      h("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4" },
+        tiers.map((t, i) => h(motion.div, _extends({
+          key: t.name,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]" + (t.highlight ? " ring-2 ring-[#F59E0B]/75" : ""),
+          style: { background: t.highlight ? warmCardBgStrong : warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+        }, sa(0.07 * i)),
+          h("div", { className: "flex items-center justify-between mb-2" },
+            h("h3", { className: "font-heading text-[#111827] text-2xl font-bold" }, t.name),
+            t.highlight ? h("span", { className: "text-[10px] uppercase tracking-wider font-bold text-white bg-[#F59E0B] rounded-full px-2 py-0.5" }, "Top") : null
+          ),
+          h("div", { className: "font-heading text-[#7F1D1D] text-4xl mb-1 font-bold" }, t.price),
+          h("div", { className: "text-[#4B5563] text-xs font-body mb-3 font-medium" }, "Total Value ", h("span", { className: "font-bold text-[#111827]" }, t.totalValue)),
+          h("div", { className: "text-[#7F1D1D] text-xs font-body font-semibold uppercase tracking-wider mb-4" }, "Save ", t.savings),
+          h("ul", { className: "flex-1 space-y-2.5" },
+            t.details.map(([label, val]) => h("li", {
+              key: label,
+              className: "text-base font-body leading-snug"
+            },
+              h("div", { className: "text-[#111827] font-bold" }, label),
+              h("div", { className: "text-[#1F2937] font-medium" }, val)
+            ))
+          )
+        ))
+      )
+    )
+  );
+}
+
+function AlaCarteSection() {
+  const items = [
+    { product: 'Color Sponsor (Holi)',                    price: '$1,000' },
+    { product: 'Booth (Non-Food) — Spring Fest',          price: '$500' },
+    { product: 'Booth (Non-Food) — Holi',                 price: '$300' },
+    { product: 'Logo on Water Bottles (Spring Fest)',     price: '$500' },
+    { product: 'Logo on Tickets (Holi)',                  price: '$1,100' },
+    { product: 'Logo on Wrist Bands (Spring Fest)',       price: '$400' },
+    { product: 'Logo on Wrist Bands (Holi)',              price: '$800' },
+    { product: 'Sweet Sponsor — Spring Fest',             price: '$500' },
+    { product: 'Sweet Sponsor — Holi',                    price: '$1,200' },
+    { product: 'DJ Sponsor — Spring Fest',                price: '$850' },
+    { product: 'DJ Sponsor — Holi',                       price: '$500' },
+    { product: 'Event Photography Logo — Spring Fest',    price: '$500' },
+    { product: 'Event Photography Logo — Holi',           price: '$750' },
+    { product: 'Dholi Sponsor — Spring Fest',             price: '$500' },
+    { product: 'Banner — Spring Fest',                    price: '$300' },
+    { product: 'Banner — Holi',                           price: '$500' },
+    { product: 'Banner — Dandiya',                        price: '$400' },
+    { product: 'Banner — Durga Puja',                     price: '$600' },
+    { product: 'Banner — Diwali',                         price: '$400' },
+    { product: 'Gift Vouchers — Spring Fest',             price: '$250+' },
+    { product: 'Gift Vouchers — Durga Puja',              price: '$400+' }
+  ];
+
+  const magazine = [
+    { name: 'Back Outside',     price: '$1,200' },
+    { name: 'Inside Covers',    price: '$1,000 each' },
+    { name: 'Center Full Page', price: '$750' },
+    { name: 'Full Page',        price: '$500' },
+    { name: 'Half Page',        price: '$300' }
+  ];
+
+  return h("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: { background: 'radial-gradient(ellipse 70% 50% at 50% 100%, rgba(245,158,11,0.10) 0%, transparent 70%), #FFF7ED' }
+  },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// A la Carte Sponsorships"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-14 text-center" }, sa(0.1)), "Pick & Choose"),
+
+      h(motion.div, _extends({ className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-14" }, sa(0.2)),
+        items.map((it, i) => h("div", {
+          key: i,
+          className: "rounded-[0.875rem] border border-[#7F1D1D]/15 p-4 flex items-center justify-between gap-3 shadow-[0_12px_30px_rgba(127,29,29,0.09)]",
+          style: { background: warmPillBg, boxShadow: warmInset + ', 0 12px 30px rgba(127,29,29,0.09)' }
+        },
+          h("span", { className: "text-[#111827] text-base font-body font-semibold" }, it.product),
+          h("span", { className: "text-[#7F1D1D] font-heading text-lg whitespace-nowrap font-bold" }, it.price)
+        ))
+      ),
+
+      h(motion.div, _extends({
+        className: "rounded-[1.5rem] border border-[#7F1D1D]/15 p-8 shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+        style: { background: warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+      }, sa(0.3)),
+        h("h3", { className: "font-heading text-[#111827] text-3xl mb-2 font-bold" }, "Annual Magazine — Autumn Festival"),
+        h("p", { className: "text-[#4B5563] text-base font-body font-medium mb-6" }, "Pricing per placement."),
+        h("div", { className: "grid grid-cols-2 md:grid-cols-5 gap-3" },
+          magazine.map(m => h("div", {
+            key: m.name,
+            className: "rounded-2xl border border-[#7F1D1D]/12 p-4 text-center",
+            style: { background: warmPillBg, boxShadow: warmInset }
+          },
+            h("div", { className: "font-heading text-[#111827] text-base mb-1 font-bold" }, m.name),
+            h("div", { className: "font-heading text-[#7F1D1D] text-xl font-bold" }, m.price)
+          ))
+        )
+      ),
+
+      h(motion.div, _extends({ className: "mt-14 flex items-center justify-center" }, sa(0.4)),
+        h("a", {
+          href: "join-us.html#contact",
+          className: "inline-flex items-center gap-2 bg-[#B91C1C] hover:bg-[#7F1D1D] transition-colors rounded-full px-7 py-3 text-base font-semibold text-white"
+        }, "Become a Sponsor ", h(ArrowUpRight, { className: "h-4 w-4" }))
+      )
+    )
+  );
+}
+
+function App() {
+  return h(React.Fragment, null,
+    h(PageHero),
+    h(WhySection),
+    h(BusinessSection),
+    h(PackagesSection),
+    h(AlaCarteSection),
+    h(Footer)
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js" as="script"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
   <title>About Us – Baybasi</title>
   <meta name="description" content="Learn about Baybasi's purpose, journey, board of directors, and corporate details. Est. 2000, Foster City CA."/>
 
@@ -19,15 +19,19 @@
       theme: {
         extend: {
           fontFamily: {
-            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
-            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
           },
           borderRadius: { DEFAULT: '9999px' },
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -35,7 +39,7 @@
 </head>
 <body class="bg-[#FFF7ED]">
 <div id="root"></div>
-<script src="js/components.js"></script>
+<script src="js/components.js?v=14"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -76,7 +80,7 @@ function PageHero() {
       label: 'About Us'
     }]
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    className: "mt-4 text-base font-body text-[#374151] mb-3 tracking-widest uppercase",
     initial: {
       opacity: 0,
       y: 16
@@ -91,9 +95,16 @@ function PageHero() {
     }
   }, "// About Us"), /*#__PURE__*/React.createElement(BlurText, {
     text: "Our Purpose Our Journey Our People",
-    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-[-2px] w-full",
+    style: {
+      fontSize: 'clamp(1.35rem, 5.0vw, 6.0rem)',
+      flexWrap: 'wrap',
+      whiteSpace: 'normal',
+      justifyContent: 'flex-start',
+      textShadow: '0 2px 14px rgba(255,247,237,0.9), 0 1px 4px rgba(255,255,255,0.7)'
+    }
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    className: "mt-5 text-[#374151] font-body font-light text-base max-w-xl leading-relaxed",
     initial: {
       opacity: 0,
       y: 16
@@ -133,7 +144,7 @@ function PurposeSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Our Purpose"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Why We Exist"), /*#__PURE__*/React.createElement("div", {
@@ -146,11 +157,11 @@ function PurposeSection() {
     key: n,
     className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
   }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "font-heading text-[#9CA3AF] text-3xl mb-4"
+    className: "font-heading text-[#4B5563] text-3xl mb-4"
   }, n), /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-2xl leading-tight mb-3"
   }, title), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed flex-1"
+    className: "text-[#374151] text-base font-body font-light leading-relaxed flex-1"
   }, body))))));
 }
 
@@ -195,7 +206,7 @@ function JourneySection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-4xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase text-center"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center"
   }, sa(0)), "// Our Journey"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-16 text-center"
   }, sa(0.1)), "25 Years of", /*#__PURE__*/React.createElement("br", null), "Cultural Legacy"), /*#__PURE__*/React.createElement("div", {
@@ -219,7 +230,7 @@ function JourneySection() {
     }, /*#__PURE__*/React.createElement("div", {
       className: "font-heading text-[#1F2937] text-xl mb-1"
     }, year), /*#__PURE__*/React.createElement("div", {
-      className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+      className: "text-[#374151] text-base font-body font-light leading-snug"
     }, event))), /*#__PURE__*/React.createElement("div", {
       className: "hidden md:flex w-4 h-4 rounded-full flex-shrink-0 items-center justify-center",
       style: {
@@ -235,13 +246,13 @@ function JourneySection() {
     }, /*#__PURE__*/React.createElement("div", {
       className: "font-heading text-[#1F2937] text-xl mb-1"
     }, year), /*#__PURE__*/React.createElement("div", {
-      className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+      className: "text-[#374151] text-base font-body font-light leading-snug"
     }, event))), /*#__PURE__*/React.createElement("div", {
       className: "md:hidden liquid-glass rounded-[1rem] p-4 flex gap-4 items-start"
     }, /*#__PURE__*/React.createElement("div", {
       className: "font-heading text-[#1F2937] text-lg w-12 flex-shrink-0"
     }, year), /*#__PURE__*/React.createElement("div", {
-      className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+      className: "text-[#374151] text-base font-body font-light leading-snug"
     }, event)));
   })))));
 }
@@ -292,7 +303,7 @@ function BoardSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Leadership"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Board of", /*#__PURE__*/React.createElement("br", null), "Directors"), /*#__PURE__*/React.createElement("div", {
@@ -330,15 +341,15 @@ function BoardSection() {
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.5,
-    className: "w-4 h-4 text-[#9CA3AF] opacity-0 group-hover:opacity-100 transition-opacity mt-1"
+    className: "w-4 h-4 text-[#4B5563] opacity-0 group-hover:opacity-100 transition-opacity mt-1"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M7 17L17 7M7 7h10v10"
   }))), /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-xl leading-tight mb-1"
   }, name), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-xs font-body font-light leading-snug"
+    className: "text-[#374151] text-sm font-body font-light leading-snug"
   }, role), /*#__PURE__*/React.createElement("p", {
-    className: "mt-3 text-[10px] text-[#B91C1C] font-body font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
+    className: "mt-3 text-xs text-[#B91C1C] font-body font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
   }, "View bio \u2192"))), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col"
   }, sa(0.06 * board.length)), /*#__PURE__*/React.createElement("div", {
@@ -348,11 +359,11 @@ function BoardSection() {
       border: '1px dashed rgba(31,41,55,0.15)'
     }
   }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[#9CA3AF] text-sm"
+    className: "text-[#4B5563] text-base"
   }, "EC")), /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-xl leading-tight mb-1"
   }, "Execution Committee"), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#9CA3AF] text-xs font-body font-light leading-snug"
+    className: "text-[#4B5563] text-sm font-body font-light leading-snug"
   }, "First EC formed in 2026 \u2014 details coming soon.")))), selected && /*#__PURE__*/React.createElement(motion.div, {
     className: "fixed inset-0 z-50 flex items-center justify-center px-4",
     style: {
@@ -399,7 +410,7 @@ function BoardSection() {
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 2,
-    className: "w-4 h-4 text-[#6B7280]"
+    className: "w-4 h-4 text-[#374151]"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M18 6L6 18M6 6l12 12"
   }))), /*#__PURE__*/React.createElement("div", {
@@ -416,16 +427,16 @@ function BoardSection() {
   }, initials(selected.name))), /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-2xl leading-tight mb-1"
   }, selected.name), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#B91C1C] text-xs font-body font-semibold tracking-wide uppercase mb-5"
+    className: "text-[#B91C1C] text-sm font-body font-semibold tracking-wide uppercase mb-5"
   }, selected.role), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#4B5563] text-sm font-body font-light leading-relaxed"
+    className: "text-[#1F2937] text-base font-body font-light leading-relaxed"
   }, selected.bio), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between mt-7 pt-5",
     style: {
       borderTop: '1px solid rgba(31,41,55,0.07)'
     }
   }, /*#__PURE__*/React.createElement("button", {
-    className: "text-xs text-[#6B7280] flex items-center gap-1 hover:text-[#1F2937] transition-colors disabled:opacity-30",
+    className: "text-sm text-[#374151] flex items-center gap-1 hover:text-[#1F2937] transition-colors disabled:opacity-30",
     disabled: selectedIdx === 0,
     onClick: () => setSelectedIdx(selectedIdx - 1)
   }, /*#__PURE__*/React.createElement("svg", {
@@ -437,9 +448,9 @@ function BoardSection() {
   }, /*#__PURE__*/React.createElement("path", {
     d: "M15 18l-6-6 6-6"
   })), "Previous"), /*#__PURE__*/React.createElement("span", {
-    className: "text-[10px] text-[#9CA3AF] font-body"
+    className: "text-xs text-[#4B5563] font-body"
   }, selectedIdx + 1, " / ", board.length), /*#__PURE__*/React.createElement("button", {
-    className: "text-xs text-[#6B7280] flex items-center gap-1 hover:text-[#1F2937] transition-colors disabled:opacity-30",
+    className: "text-sm text-[#374151] flex items-center gap-1 hover:text-[#1F2937] transition-colors disabled:opacity-30",
     disabled: selectedIdx === board.length - 1,
     onClick: () => setSelectedIdx(selectedIdx + 1)
   }, "Next", /*#__PURE__*/React.createElement("svg", {
@@ -489,7 +500,7 @@ function CorporateSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Corporate Details"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Organization", /*#__PURE__*/React.createElement("br", null), "Information"), /*#__PURE__*/React.createElement("div", {
@@ -502,12 +513,12 @@ function CorporateSection() {
     key: label,
     className: "liquid-glass rounded-[1.25rem] p-5"
   }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-1"
+    className: "text-[#374151] text-sm font-body tracking-widest uppercase mb-1"
   }, label), href ? /*#__PURE__*/React.createElement("a", {
     href: href,
-    className: "text-[#1F2937] text-sm font-body hover:text-[#6B7280] transition-colors"
+    className: "text-[#1F2937] text-base font-body hover:text-[#374151] transition-colors"
   }, value) : /*#__PURE__*/React.createElement("div", {
-    className: "text-[#1F2937] text-sm font-body"
+    className: "text-[#1F2937] text-base font-body"
   }, value))))));
 }
 
@@ -519,11 +530,11 @@ function ReportsSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Transparency"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-6"
   }, sa(0.1)), "Performance", /*#__PURE__*/React.createElement("br", null), "Reports"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#6B7280] font-body font-light text-base max-w-lg mb-12"
+    className: "text-[#374151] font-body font-light text-base max-w-lg mb-12"
   }, sa(0.2)), "We believe in full transparency. 94% of revenue goes directly into programs and charitable works."), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
   }, ['2025', '2024', '2023'].map((year, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
@@ -532,9 +543,9 @@ function ReportsSection() {
   }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
     className: "font-heading text-[#1F2937] text-4xl mb-4"
   }, year), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-sm font-body font-light flex-1"
+    className: "text-[#374151] text-base font-body font-light flex-1"
   }, "Annual Performance Report"), /*#__PURE__*/React.createElement("div", {
-    className: "mt-5 flex items-center gap-1.5 text-sm text-[#9CA3AF] font-body"
+    className: "mt-5 flex items-center gap-1.5 text-base text-[#4B5563] font-body"
   }, /*#__PURE__*/React.createElement("svg", {
     className: "h-4 w-4",
     viewBox: "0 0 24 24",

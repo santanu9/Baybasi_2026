@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="vbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD9C2"/>
+      <stop offset="40%" stop-color="#FFE4D6"/>
+      <stop offset="100%" stop-color="#FFF7ED"/>
+    </linearGradient>
+    <radialGradient id="vglow" cx="0.5" cy="0" r="0.85">
+      <stop offset="0%" stop-color="#B91C1C" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#B91C1C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vheart" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#B91C1C"/>
+    </linearGradient>
+    <linearGradient id="vfadeBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF7ED" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FFF7ED" stop-opacity="0.88"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="800" fill="url(#vbg)"/>
+  <rect width="1920" height="800" fill="url(#vglow)"/>
+
+  <!-- LEFT: open hand offering heart -->
+  <g transform="translate(100, 110)">
+    <g fill="#7F1D1D">
+      <path d="M40 200 C 30 160, 30 120, 40 80 C 44 55, 56 40, 70 40 C 84 40, 96 55, 96 80 L 96 150 C 96 120, 110 100, 124 100 C 138 100, 148 115, 148 140 L 148 200 C 148 188, 162 175, 176 175 C 188 175, 196 188, 196 205 L 196 250 C 196 320, 150 380, 80 380 C 30 380, 0 350, 0 300 L 0 240 C 0 220, 12 210, 24 210 Z"/>
+    </g>
+    <g fill="#FBBF24" opacity="0.85">
+      <path d="M50 180 C 40 145, 40 110, 50 75 C 54 55, 64 42, 76 42 C 88 42, 96 55, 96 78 L 96 130" opacity="0.4"/>
+    </g>
+    <!-- glowing heart -->
+    <g transform="translate(60, 100)">
+      <circle cx="50" cy="44" r="60" fill="#F59E0B" opacity="0.35"/>
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 C 50 8, 58 -2, 72 -2 C 86 -2, 100 10, 100 26 C 100 48, 78 71, 50 96 Z" fill="url(#vheart)"/>
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 L 50 96 Z" fill="#7F1D1D" opacity="0.35"/>
+    </g>
+  </g>
+
+  <!-- CENTER: interlocked solidarity rings -->
+  <g transform="translate(800, 240)">
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#7F1D1D" stroke-width="10" opacity="0.85"/>
+    <circle cx="160" cy="0" r="100" fill="none" stroke="#B91C1C" stroke-width="10" opacity="0.85"/>
+    <circle cx="80" cy="-90" r="100" fill="none" stroke="#F59E0B" stroke-width="10" opacity="0.85"/>
+  </g>
+
+  <!-- RIGHT: mirrored open hand with heart -->
+  <g transform="translate(1820, 110) scale(-1, 1)">
+    <g fill="#B91C1C">
+      <path d="M40 200 C 30 160, 30 120, 40 80 C 44 55, 56 40, 70 40 C 84 40, 96 55, 96 80 L 96 150 C 96 120, 110 100, 124 100 C 138 100, 148 115, 148 140 L 148 200 C 148 188, 162 175, 176 175 C 188 175, 196 188, 196 205 L 196 250 C 196 320, 150 380, 80 380 C 30 380, 0 350, 0 300 L 0 240 C 0 220, 12 210, 24 210 Z"/>
+    </g>
+    <g transform="translate(60, 100)">
+      <circle cx="50" cy="44" r="60" fill="#F59E0B" opacity="0.40"/>
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 C 50 8, 58 -2, 72 -2 C 86 -2, 100 10, 100 26 C 100 48, 78 71, 50 96 Z" fill="#F59E0B"/>
+    </g>
+  </g>
+
+  <!-- Scattered small hearts -->
+  <g opacity="0.85">
+    <g transform="translate(620, 100) scale(0.6)">
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 C 50 8, 58 -2, 72 -2 C 86 -2, 100 10, 100 26 C 100 48, 78 71, 50 96 Z" fill="#B91C1C"/>
+    </g>
+    <g transform="translate(1220, 110) scale(0.5)">
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 C 50 8, 58 -2, 72 -2 C 86 -2, 100 10, 100 26 C 100 48, 78 71, 50 96 Z" fill="#F59E0B"/>
+    </g>
+    <g transform="translate(420, 380) scale(0.45)" opacity="0.7">
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 C 50 8, 58 -2, 72 -2 C 86 -2, 100 10, 100 26 C 100 48, 78 71, 50 96 Z" fill="#7F1D1D"/>
+    </g>
+    <g transform="translate(1560, 400) scale(0.55)" opacity="0.7">
+      <path d="M50 96 C 22 71, 0 48, 0 26 C 0 10, 14 -2, 28 -2 C 42 -2, 50 8, 50 22 C 50 8, 58 -2, 72 -2 C 86 -2, 100 10, 100 26 C 100 48, 78 71, 50 96 Z" fill="#B91C1C"/>
+    </g>
+  </g>
+
+  <!-- Decorative wave band -->
+  <g opacity="0.62" transform="translate(-50, 580)">
+    <path d="M0 200 Q 300 100, 600 200 T 1200 200 T 1800 200 T 2050 200 L 2050 260 L 0 260 Z" fill="#F59E0B"/>
+  </g>
+  <g opacity="0.75" transform="translate(0, 620)">
+    <path d="M0 200 Q 280 130, 560 200 T 1120 200 T 1680 200 T 1920 200 L 1920 230 L 0 230 Z" fill="#B91C1C"/>
+  </g>
+
+  <!-- CREAM FADE at bottom for text legibility -->
+  <rect x="0" y="350" width="1920" height="450" fill="url(#vfadeBottom)"/>
+</svg>

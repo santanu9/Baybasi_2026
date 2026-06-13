@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js" as="script"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
   <title>Impacts – Baybasi</title>
   <meta name="description" content="Baybasi's community impact: $100K donated, 6,000 volunteering hrs/year, 10,000 direct beneficiaries and 94% program spend."/>
 
@@ -19,15 +19,19 @@
       theme: {
         extend: {
           fontFamily: {
-            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
-            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
           },
           borderRadius: { DEFAULT: '9999px' },
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -35,7 +39,7 @@
 </head>
 <body class="bg-[#FFF7ED]">
 <div id="root"></div>
-<script src="js/components.js"></script>
+<script src="js/components.js?v=14"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -76,7 +80,7 @@ function PageHero() {
       label: 'Impacts'
     }]
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    className: "mt-4 text-base font-body text-[#374151] mb-3 tracking-widest uppercase",
     initial: {
       opacity: 0,
       y: 16
@@ -91,9 +95,16 @@ function PageHero() {
     }
   }, "// Impacts"), /*#__PURE__*/React.createElement(BlurText, {
     text: "Measuring What Matters Most",
-    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-[-2px] w-full",
+    style: {
+      fontSize: 'clamp(1.7rem, 6.3vw, 7.56rem)',
+      flexWrap: 'wrap',
+      whiteSpace: 'normal',
+      justifyContent: 'flex-start',
+      textShadow: '0 2px 14px rgba(255,247,237,0.9), 0 1px 4px rgba(255,255,255,0.7)'
+    }
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    className: "mt-5 text-[#374151] font-body font-light text-base max-w-xl leading-relaxed",
     initial: {
       opacity: 0,
       y: 16
@@ -153,7 +164,7 @@ function ImpactNumbers() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Impact Numbers"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "The Numbers", /*#__PURE__*/React.createElement("br", null), "Behind the Mission"), /*#__PURE__*/React.createElement("div", {
@@ -175,14 +186,14 @@ function ImpactNumbers() {
   }, icon), /*#__PURE__*/React.createElement("div", {
     className: "font-heading text-[#1F2937] text-5xl tracking-[-2px] leading-none mb-1"
   }, value), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#1F2937] text-sm font-body font-medium mb-3"
+    className: "text-[#1F2937] text-base font-body font-medium mb-3"
   }, label), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed flex-1"
+    className: "text-[#374151] text-base font-body font-light leading-relaxed flex-1"
   }, detail), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-wrap gap-1.5 mt-5"
   }, tags.map(t => /*#__PURE__*/React.createElement("span", {
     key: t,
-    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[11px] text-[#6B7280] font-body"
+    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[13px] text-[#374151] font-body"
   }, t)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "mt-8 liquid-glass rounded-[1.25rem] p-8 flex flex-col md:flex-row items-center gap-6"
   }, sa(0.3)), /*#__PURE__*/React.createElement("div", {
@@ -190,7 +201,7 @@ function ImpactNumbers() {
   }, "94%"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "text-[#1F2937] font-body font-medium text-lg mb-2"
   }, "Revenue Goes to Programs & Charitable Works"), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] font-body font-light text-sm leading-relaxed max-w-xl"
+    className: "text-[#374151] font-body font-light text-base leading-relaxed max-w-xl"
   }, "94% of our revenue goes into doing the programs and charitable works. Operational overhead is 5% or less \u2014 every dollar raised translates directly into cultural programming, community events, and charitable contributions.")))));
 }
 
@@ -217,7 +228,7 @@ function TestimonyBeneficiaries() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Beneficiaries &", /*#__PURE__*/React.createElement("br", null), "Charity Partners"), /*#__PURE__*/React.createElement("div", {
@@ -230,9 +241,9 @@ function TestimonyBeneficiaries() {
     key: author,
     className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
   }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-4xl font-heading leading-none mb-3"
+    className: "text-[#4B5563] text-4xl font-heading leading-none mb-3"
   }, "\""), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#1F2937] text-sm font-body font-light leading-relaxed italic flex-1"
+    className: "text-[#1F2937] text-base font-body font-light leading-relaxed italic flex-1"
   }, quote), /*#__PURE__*/React.createElement("div", {
     className: "mt-5 flex items-center gap-3"
   }, /*#__PURE__*/React.createElement("div", {
@@ -243,13 +254,13 @@ function TestimonyBeneficiaries() {
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
-    className: "h-4 w-4 text-[#6B7280]"
+    className: "h-4 w-4 text-[#374151]"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
   }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-xs font-body font-medium"
+    className: "text-[#374151] text-sm font-body font-medium"
   }, author), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-xs font-body"
+    className: "text-[#4B5563] text-sm font-body"
   }, role))))))));
 }
 
@@ -279,7 +290,7 @@ function CharitiesSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Charitable Work"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Past", /*#__PURE__*/React.createElement("br", null), "Charities"), /*#__PURE__*/React.createElement("div", {
@@ -296,18 +307,18 @@ function CharitiesSection() {
   }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between mb-4"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "font-heading text-[#9CA3AF] text-lg"
+    className: "font-heading text-[#4B5563] text-lg"
   }, year), /*#__PURE__*/React.createElement("span", {
-    className: "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#6B7280] font-body"
+    className: "liquid-glass rounded-full px-3 py-1 text-[13px] text-[#374151] font-body"
   }, focus)), /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-2xl leading-tight mb-3"
   }, name), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed flex-1"
+    className: "text-[#374151] text-base font-body font-light leading-relaxed flex-1"
   }, desc), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-wrap gap-1.5 mt-5"
   }, tags.map(t => /*#__PURE__*/React.createElement("span", {
     key: t,
-    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[11px] text-[#6B7280] font-body"
+    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[13px] text-[#374151] font-body"
   }, t))))))));
 }
 
@@ -342,7 +353,7 @@ function TestimonyMembers() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Members &", /*#__PURE__*/React.createElement("br", null), "Volunteers"), /*#__PURE__*/React.createElement("div", {
@@ -355,13 +366,13 @@ function TestimonyMembers() {
     key: label,
     className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
   }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#6B7280] font-body self-start mb-4"
+    className: "liquid-glass rounded-full px-3 py-1 text-[13px] text-[#374151] font-body self-start mb-4"
   }, label), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-3xl font-heading leading-none mb-3"
+    className: "text-[#4B5563] text-3xl font-heading leading-none mb-3"
   }, "\""), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#1F2937] text-sm font-body font-light leading-relaxed italic flex-1"
+    className: "text-[#1F2937] text-base font-body font-light leading-relaxed italic flex-1"
   }, quote), /*#__PURE__*/React.createElement("div", {
-    className: "mt-4 text-[#9CA3AF] text-xs font-body"
+    className: "mt-4 text-[#4B5563] text-sm font-body"
   }, "\u2014 ", role))))));
 }
 
@@ -398,15 +409,15 @@ function VolunteeringSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Volunteering"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
   }, sa(0.1)), "Volunteering", /*#__PURE__*/React.createElement("br", null), "Calendar"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#6B7280] font-body font-light text-sm mb-12 max-w-md"
+    className: "text-[#374151] font-body font-light text-base mb-12 max-w-md"
   }, sa(0.2)), "100+ dedicated volunteers give their time every year. Sign up to make a difference at the next event."), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 lg:grid-cols-2 gap-10"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(motion.div, _extends({
-    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-5"
+    className: "text-[#374151] text-sm font-body tracking-widest uppercase mb-5"
   }, sa(0.15)), "Upcoming Sign-Ups"), /*#__PURE__*/React.createElement("div", {
     className: "space-y-3"
   }, upcoming.map(({
@@ -417,18 +428,18 @@ function VolunteeringSection() {
     key: name,
     className: "liquid-glass rounded-[1.25rem] p-5 flex items-center justify-between gap-4"
   }, sa(0.06 * i + 0.1)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#1F2937] text-sm font-body font-medium leading-tight"
+    className: "text-[#1F2937] text-base font-body font-medium leading-tight"
   }, name), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-xs font-body mt-0.5"
+    className: "text-[#4B5563] text-sm font-body mt-0.5"
   }, date)), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-3 flex-shrink-0"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[#6B7280] text-xs font-body"
+    className: "text-[#374151] text-sm font-body"
   }, slots), /*#__PURE__*/React.createElement("a", {
     href: "join-us.html#contact",
-    className: "liquid-glass rounded-full px-3 py-1.5 text-[11px] text-[#1F2937] font-body hover:bg-[#1F2937]/10 transition-colors whitespace-nowrap"
+    className: "liquid-glass rounded-full px-3 py-1.5 text-[13px] text-[#1F2937] font-body hover:bg-[#1F2937]/10 transition-colors whitespace-nowrap"
   }, "Sign Up")))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(motion.div, _extends({
-    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-5"
+    className: "text-[#374151] text-sm font-body tracking-widest uppercase mb-5"
   }, sa(0.2)), "Past Volunteering Events"), /*#__PURE__*/React.createElement("div", {
     className: "space-y-3"
   }, past.map(({
@@ -439,16 +450,16 @@ function VolunteeringSection() {
     key: name,
     className: "liquid-glass rounded-[1.25rem] p-5 flex items-center justify-between gap-4"
   }, sa(0.06 * i + 0.2)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#1F2937] text-sm font-body font-medium leading-tight"
+    className: "text-[#1F2937] text-base font-body font-medium leading-tight"
   }, name), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-xs font-body mt-0.5"
+    className: "text-[#4B5563] text-sm font-body mt-0.5"
   }, date)), /*#__PURE__*/React.createElement("span", {
-    className: "text-[#6B7280] text-xs font-body flex-shrink-0"
+    className: "text-[#374151] text-sm font-body flex-shrink-0"
   }, impact)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "mt-10 text-center"
   }, sa(0.4)), /*#__PURE__*/React.createElement("a", {
     href: "join-us.html#volunteer",
-    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-base font-semibold text-white"
   }, "Sign Up to Volunteer ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   })))));
@@ -478,7 +489,7 @@ function TestimonySponsors() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Voices from", /*#__PURE__*/React.createElement("br", null), "Our Sponsors"), /*#__PURE__*/React.createElement("div", {
@@ -491,7 +502,7 @@ function TestimonySponsors() {
     key: author,
     className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
   }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-4xl font-heading leading-none mb-3"
+    className: "text-[#4B5563] text-4xl font-heading leading-none mb-3"
   }, "\""), /*#__PURE__*/React.createElement("p", {
     className: "text-[#1F2937] text-base font-body font-light leading-relaxed italic flex-1"
   }, quote), /*#__PURE__*/React.createElement("div", {
@@ -504,18 +515,18 @@ function TestimonySponsors() {
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
-    className: "h-4 w-4 text-[#6B7280]"
+    className: "h-4 w-4 text-[#374151]"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
   }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-xs font-body font-medium"
+    className: "text-[#374151] text-sm font-body font-medium"
   }, author), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-xs font-body"
+    className: "text-[#4B5563] text-sm font-body"
   }, role)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "mt-10 text-center"
   }, sa(0.35)), /*#__PURE__*/React.createElement("a", {
     href: "sponsors.html",
-    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-base font-semibold text-white"
   }, "Become a Sponsor ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   })))));

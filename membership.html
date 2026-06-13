@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <title>Membership – Baybasi</title>
+  <meta name="description" content="Baybasi membership benefits, criteria, and minimum donation amounts for 2026."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: {
+      'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+      'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+    }, borderRadius: { DEFAULT: '9999px' } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
+</head>
+<body class="bg-[#FFF7ED] font-body text-[#1F2937] antialiased">
+<div id="root"></div>
+<script src="js/components.js?v=14"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const { motion } = Motion;
+const h = React.createElement;
+const sa = (delay = 0) => ({
+  initial: { opacity: 0, y: 24, filter: 'blur(6px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.6, delay, ease: 'easeOut' }
+});
+const warmCardBg = 'linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%)';
+const warmCardBgStrong = 'linear-gradient(145deg, #FFE8B8 0%, #FCD894 48%, #EDBE72 100%)';
+const warmInset = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127,29,29,0.05)';
+
+function PageHero() {
+  return h("section", {
+    className: "relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    style: {
+      backgroundImage: "url('images/heroes/membership-photo.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center right',
+      backgroundRepeat: 'no-repeat'
+    }
+  },
+    h(Navbar, { activePage: "" }),
+    /* Layered overlays keep the community photo quiet and the text vivid. */
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'linear-gradient(90deg, rgba(255,247,237,0.98) 0%, rgba(255,239,214,0.94) 36%, rgba(127,29,29,0.20) 70%, rgba(22,8,8,0.30) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-x-0 bottom-0 pointer-events-none",
+      style: {
+        height: '62%',
+        background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.62) 56%, rgba(255,247,237,1) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.15), transparent 30%)'
+      }
+    }),
+    h("div", { className: "w-full max-w-7xl mx-auto pt-32 relative z-10" },
+      h(Breadcrumb, { crumbs: [{ label: 'Join Us', href: 'join-us.html' }, { label: 'Membership' }] }),
+      h(motion.p, {
+        className: "mt-5 text-base font-body text-[#7F1D1D] mb-4 tracking-widest uppercase font-bold",
+        style: { textShadow: '0 1px 8px rgba(255,247,237,0.95)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.3 }
+      }, "// Membership"),
+      h(BlurText, {
+        text: 'Become a Member',
+        className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
+        style: {
+          fontSize: 'clamp(2rem, 7.2vw, 6rem)',
+          flexWrap: 'wrap',
+          whiteSpace: 'normal',
+          justifyContent: 'flex-start',
+          textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
+        }
+      }),
+      h(motion.p, {
+        className: "mt-6 text-[#111827] font-body font-bold max-w-3xl leading-relaxed",
+        style: { fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.7 }
+      }, "Voting rights, all-event access, tax-deductible donations, and 20% discount on guest passes — be part of Baybasi's future.")
+    )
+  );
+}
+
+function BenefitsSection() {
+  const benefits = [
+    {
+      n: '01',
+      title: 'All Membership Rights',
+      items: [
+        'Voting Rights',
+        'Attend General Body Meetings',
+        'Participate in Decision Making',
+        'Be part of the Execution Committee',
+        'File nomination to become a Director (Board)'
+      ]
+    },
+    {
+      n: '02',
+      title: 'All-Event Access',
+      items: ['Access to all Baybasi Events — no separate Event Passes needed.']
+    },
+    {
+      n: '03',
+      title: 'Tax-Deductible Donation',
+      items: ['Paid amount is a donation that can be claimed for tax benefits.']
+    },
+    {
+      n: '04',
+      title: 'Guest Discounts',
+      items: ['Members get 20% discount on Event Passes for their guests.']
+    }
+  ];
+
+  return h("section", { className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]" },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase" }, sa(0)), "// Membership Benefits"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14" }, sa(0.1)), "Why Become", h("br"), "a Member"),
+      h("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-5" },
+        benefits.map((b, i) => h(motion.div, _extends({
+          key: b.n,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+          style: { background: warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+        }, sa(0.07 * i)),
+          h("div", { className: "font-heading text-[#7F1D1D] text-3xl mb-4 font-bold" }, b.n),
+          h("h3", { className: "font-heading text-[#111827] text-2xl leading-tight mb-3 font-bold" }, b.title),
+          h("ul", { className: "flex-1 space-y-2" },
+            b.items.map(item => h("li", {
+              key: item,
+              className: "text-[#1F2937] text-base font-body font-medium leading-relaxed flex items-start gap-2"
+            },
+              h("span", { className: "gold-dot mt-2 flex-shrink-0" }),
+              h("span", null, item)
+            ))
+          )
+        ))
+      )
+    )
+  );
+}
+
+function CriteriaSection() {
+  const cards = [
+    {
+      pill: 'Enrolled',
+      title: 'Must be Enrolled in Baybasi',
+      caption: 'Satisfy ONE of the below conditions:',
+      items: ['Core Member', 'Annual / AF "Member"', 'Donor', 'Sponsor']
+    },
+    {
+      pill: 'Engaged',
+      title: 'Engaged for at least 3 Years',
+      caption: 'Satisfy ONE of the below conditions:',
+      items: [
+        'Enrolled in Baybasi as Annual/AF Member, Donor or Sponsor',
+        'Active Volunteer for Organizing Events like Decoration, Food, Cultural, Puja, Logistics etc.',
+        'Active Participation in Organizational Tasks — Website Building, Fund Raising, Sponsorship Drive, Ideation Team etc.',
+        'Board Member current or past'
+      ]
+    },
+    {
+      pill: 'Entrusted',
+      title: 'Must be Entrusted in Baybasi',
+      caption: 'Satisfy ALL of the below conditions:',
+      items: [
+        'Committed to Baybasi’s Purpose',
+        'No known Conflict of Interest',
+        'Clean Background and Residency',
+        'Abide Baybasi’s Terms & Conditions'
+      ]
+    }
+  ];
+
+  return h("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: { background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(127,29,29,0.08) 0%, transparent 70%), #FFF7ED' }
+  },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// Membership Criteria"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14 text-center" }, sa(0.1)), "Three Pillars"),
+      h("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-5" },
+        cards.map((c, i) => h(motion.div, _extends({
+          key: c.pill,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+          style: { background: warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+        }, sa(0.07 * i)),
+          h("div", {
+            className: "rounded-full border border-[#F59E0B]/30 px-3 py-1 text-[13px] text-[#7F1D1D] font-body self-start mb-4 font-bold",
+            style: { background: 'linear-gradient(180deg, rgba(255,238,197,0.98) 0%, rgba(242,201,135,0.94) 100%)' }
+          }, c.pill),
+          h("h3", { className: "font-heading text-[#111827] text-xl leading-tight mb-2 font-bold" }, c.title),
+          h("p", { className: "text-[#4B5563] text-base font-body italic mb-4 font-medium" }, c.caption),
+          h("ul", { className: "flex-1 space-y-2" },
+            c.items.map(item => h("li", {
+              key: item,
+              className: "text-[#1F2937] text-base font-body font-medium leading-relaxed flex items-start gap-2"
+            },
+              h("span", { className: "gold-dot mt-2 flex-shrink-0" }),
+              h("span", null, item)
+            ))
+          )
+        ))
+      ),
+      h(motion.p, _extends({
+        className: "mt-12 text-[#1F2937] font-body text-base max-w-3xl mx-auto text-center leading-relaxed font-medium border border-[#7F1D1D]/15",
+        style: { background: warmCardBg, padding: '1rem 1.5rem', borderRadius: '1rem', boxShadow: warmInset + ', 0 16px 40px rgba(127,29,29,0.10)' }
+      }, sa(0.3)),
+        "Membership Application will be reviewed and approved by the Board. Once approved, to maintain Membership in Good Standing the member needs to continue the membership by paying the annual minimum donation set by the Board year over year, and stay engaged with Baybasi."
+      )
+    )
+  );
+}
+
+function DonationSection() {
+  const tiers = [
+    { label: 'Single', amount: '$300', sub: '' },
+    { label: 'Couple', amount: '$500', sub: '' },
+    { label: 'Child', amount: '$150', sub: 'Age >5 & <18' },
+    { label: 'Senior / Adult Student', amount: '$200', sub: 'Senior Citizen & Adult Full-Time Student' },
+    { label: 'All Other Adults', amount: '$300', sub: '' }
+  ];
+  return h("section", { className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]" },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// Minimum Donation 2026"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14 text-center" }, sa(0.1)), "Annual Minimum Contribution"),
+      h("div", { className: "grid grid-cols-2 md:grid-cols-5 gap-4" },
+        tiers.map((t, i) => h(motion.div, _extends({
+          key: t.label,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-5 flex flex-col items-center text-center shadow-[0_18px_42px_rgba(127,29,29,0.12)]",
+          style: { background: i === 1 ? warmCardBgStrong : warmCardBg, boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.12)' }
+        }, sa(0.05 * i)),
+          h("div", { className: "font-heading text-[#7F1D1D] text-4xl md:text-5xl leading-none mb-2 font-bold" }, t.amount),
+          h("div", { className: "font-heading text-[#111827] text-base font-bold mb-1" }, t.label),
+          t.sub ? h("div", { className: "text-[#374151] text-xs font-body font-medium leading-snug" }, t.sub) : null
+        ))
+      ),
+      h(motion.div, _extends({ className: "mt-12 flex items-center justify-center" }, sa(0.4)),
+        h("a", {
+          href: "join-us.html#contact",
+          className: "inline-flex items-center gap-2 bg-[#B91C1C] hover:bg-[#7F1D1D] transition-colors rounded-full px-7 py-3 text-base font-semibold text-white"
+        }, "Apply for Membership ", h(ArrowUpRight, { className: "h-4 w-4" }))
+      )
+    )
+  );
+}
+
+function App() {
+  return h(React.Fragment, null,
+    h(PageHero),
+    h(BenefitsSection),
+    h(CriteriaSection),
+    h(DonationSection),
+    h(Footer)
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

@@ -4,13 +4,41 @@
    Fonts:  Aptos ExtraBold (800) for headings · Aptos (400) for body
            Fallback stack: Calibri → Trebuchet MS → Arial → sans-serif */
 
+/* ── Inter metric-matched fallback ──────────────────────────────────────────
+   'Aptos' is the brand font but is only available on machines that have it
+   installed (it is not a web-distributable font). Everyone else falls back to
+   Inter — which renders ~15% wider/taller than Aptos, changing sizes and line
+   wrapping. 'InterAdj' is Inter loaded with size-adjust:86.6% so its metrics
+   match Aptos almost exactly (measured: advance 2022 vs Aptos 2021.92 @100px).
+   It sits in the stack right after Aptos; plain 'Inter' (from the Google Fonts
+   <link>) remains after it as a graceful fallback if these files ever move.
+   One variable woff2 per subset covers weights 300–800. */
+@font-face {
+  font-family: 'InterAdj';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  size-adjust: 86.6%;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'InterAdj';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  size-adjust: 86.6%;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: #FFF7ED;
   color: #1F2937;
-  font-family: 'Aptos', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,12 +64,12 @@ button, a, [role="button"] {
 
 /* ── Aptos font-weight bindings ── */
 .font-heading {
-  font-family: 'Aptos', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
   font-weight: 800;
   font-style: normal;
 }
 .font-body {
-  font-family: 'Aptos', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
   font-weight: 400;
 }
 

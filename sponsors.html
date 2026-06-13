@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js" as="script"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
   <title>Sponsors – Baybasi</title>
   <meta name="description" content="Partner with Baybasi — sponsor Bay Area's premier Indian cultural nonprofit and reach a high-value, engaged community audience."/>
 
@@ -19,15 +19,19 @@
       theme: {
         extend: {
           fontFamily: {
-            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
-            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
           },
           borderRadius: { DEFAULT: '9999px' },
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=5"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -35,7 +39,7 @@
 </head>
 <body class="bg-[#FFF7ED]">
 <div id="root"></div>
-<script src="js/components.js"></script>
+<script src="js/components.js?v=14"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -76,7 +80,7 @@ function PageHero() {
       label: 'Sponsors'
     }]
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    className: "mt-4 text-base font-body text-[#374151] mb-3 tracking-widest uppercase",
     initial: {
       opacity: 0,
       y: 16
@@ -91,9 +95,16 @@ function PageHero() {
     }
   }, "// Sponsorship"), /*#__PURE__*/React.createElement(BlurText, {
     text: "Partner With a Community That Cares",
-    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-[-2px] w-full",
+    style: {
+      fontSize: 'clamp(1.32rem, 4.9vw, 5.88rem)',
+      flexWrap: 'wrap',
+      whiteSpace: 'normal',
+      justifyContent: 'flex-start',
+      textShadow: '0 2px 14px rgba(255,247,237,0.9), 0 1px 4px rgba(255,255,255,0.7)'
+    }
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    className: "mt-5 text-[#374151] font-body font-light text-base max-w-xl leading-relaxed",
     initial: {
       opacity: 0,
       y: 16
@@ -122,12 +133,12 @@ function PageHero() {
     }
   }, /*#__PURE__*/React.createElement("a", {
     href: "#inquiry",
-    className: "bg-[#B91C1C] rounded-full px-5 py-2.5 text-sm font-semibold text-white flex items-center gap-1.5"
+    className: "bg-[#B91C1C] rounded-full px-5 py-2.5 text-base font-semibold text-white flex items-center gap-1.5"
   }, "Become a Sponsor ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   })), /*#__PURE__*/React.createElement("a", {
     href: "#tiers",
-    className: "liquid-glass rounded-full px-5 py-2.5 text-sm font-medium text-[#6B7280] hover:text-[#1F2937] transition-colors"
+    className: "liquid-glass rounded-full px-5 py-2.5 text-base font-medium text-[#374151] hover:text-[#1F2937] transition-colors"
   }, "View Tiers"))));
 }
 
@@ -163,7 +174,7 @@ function WhySponsorSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Why Sponsor"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Why Partner", /*#__PURE__*/React.createElement("br", null), "With Baybasi"), /*#__PURE__*/React.createElement("div", {
@@ -187,7 +198,7 @@ function WhySponsorSection() {
   }, icon)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-xl mb-2 leading-tight"
   }, title), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed"
+    className: "text-[#374151] text-base font-body font-light leading-relaxed"
   }, body)))))));
 }
 
@@ -219,7 +230,7 @@ function TiersSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Tiers"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Sponsorship", /*#__PURE__*/React.createElement("br", null), "Tiers"), /*#__PURE__*/React.createElement("div", {
@@ -236,23 +247,23 @@ function TiersSection() {
   }, /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-3xl"
   }, name), highlight && /*#__PURE__*/React.createElement("span", {
-    className: "bg-white text-[#1F2937] rounded-full px-3 py-1 text-[11px] font-semibold font-body"
+    className: "bg-white text-[#1F2937] rounded-full px-3 py-1 text-[13px] font-semibold font-body"
   }, "Top Tier")), /*#__PURE__*/React.createElement("ul", {
     className: "space-y-2.5 flex-1"
   }, perks.map(p => /*#__PURE__*/React.createElement("li", {
     key: p,
-    className: "flex items-start gap-2.5 text-sm font-body font-light text-[#6B7280]"
+    className: "flex items-start gap-2.5 text-base font-body font-light text-[#374151]"
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 2,
-    className: "h-4 w-4 text-[#9CA3AF] flex-shrink-0 mt-0.5"
+    className: "h-4 w-4 text-[#4B5563] flex-shrink-0 mt-0.5"
   }, /*#__PURE__*/React.createElement("polyline", {
     points: "20 6 9 17 4 12"
   })), p))), /*#__PURE__*/React.createElement("a", {
     href: "#inquiry",
-    className: `mt-6 rounded-full px-4 py-2.5 text-sm font-medium font-body text-center transition-colors flex items-center justify-center gap-1.5
+    className: `mt-6 rounded-full px-4 py-2.5 text-base font-medium font-body text-center transition-colors flex items-center justify-center gap-1.5
                   ${highlight ? 'bg-white text-[#1F2937] hover:bg-[#1F2937]/90' : 'liquid-glass text-[#1F2937] hover:text-[#1F2937]'}`
   }, "Inquire About ", name, " ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-3.5 w-3.5"
@@ -342,50 +353,72 @@ function CurrentSponsorsSection() {
     }]
   }];
   const sizeClass = tier => {
-    if (tier === 'Platinum') return 'w-72 h-36';
-    if (tier === 'Gold') return 'w-60 h-28';
-    if (tier === 'Silver') return 'w-52 h-24';
-    if (tier === 'Bronze') return 'w-44 h-20';
+    if (tier === 'Platinum') return 'w-[26rem] h-64';
+    if (tier === 'Gold') return 'w-80 h-44';
+    if (tier === 'Silver') return 'w-60 h-32';
+    if (tier === 'Bronze') return 'w-48 h-24';
     return 'w-40 h-16';
+  };
+  const tierBadgeClass = tier => {
+    if (tier === 'Platinum') return 'text-base font-heading font-bold text-[#1F2937] tracking-wide';
+    if (tier === 'Gold')     return 'text-base font-heading font-bold text-[#1F2937]';
+    if (tier === 'Silver')   return 'text-sm font-heading font-semibold text-[#374151]';
+    if (tier === 'Bronze')   return 'text-sm font-body font-medium text-[#374151]';
+    return 'text-sm font-body font-light text-[#4B5563]';
+  };
+  const tierGapClass = tier => {
+    if (tier === 'Platinum') return 'gap-8';
+    if (tier === 'Gold')     return 'gap-6';
+    if (tier === 'Silver')   return 'gap-5';
+    return 'gap-4';
+  };
+  const tierMarginClass = tier => {
+    if (tier === 'Platinum') return 'mb-16';
+    if (tier === 'Gold')     return 'mb-12';
+    if (tier === 'Silver')   return 'mb-10';
+    if (tier === 'Bronze')   return 'mb-8';
+    return 'mb-6';
   };
   return /*#__PURE__*/React.createElement("section", {
     className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Our Sponsors"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
-  }, sa(0.1)), "Thank You", /*#__PURE__*/React.createElement("br", null), "to Our Partners"), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-10"
-  }, tiers.map(({
+  }, sa(0.1)), "Thank You", /*#__PURE__*/React.createElement("br", null), "to Our Partners"), /*#__PURE__*/React.createElement("div", null,
+  tiers.map(({
     name,
     sponsors
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
-    key: name
+    key: name,
+    className: tierMarginClass(name)
   }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-4 mb-5"
+    className: "flex items-center gap-4 mb-6"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "liquid-glass rounded-full px-4 py-1.5 text-xs font-medium text-[#6B7280] font-body"
+    className: `liquid-glass rounded-full px-5 py-2 ${tierBadgeClass(name)}`
   }, name), /*#__PURE__*/React.createElement("div", {
     className: "flex-1 h-px",
     style: {
-      background: 'rgba(31,41,55,0.06)'
+      background: name === 'Platinum' ? 'linear-gradient(to right, rgba(245,158,11,0.55), transparent)'
+                 : name === 'Gold'     ? 'linear-gradient(to right, rgba(245,158,11,0.35), transparent)'
+                 : 'rgba(31,41,55,0.06)'
     }
   })), /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-wrap gap-4 items-center"
+    className: `flex flex-wrap items-center ${tierGapClass(name)}`
   }, sponsors.map(({
     name: sname,
     img,
     href
   }) => {
     const card = /*#__PURE__*/React.createElement("div", {
-      className: `liquid-glass rounded-[0.875rem] flex items-center justify-center p-5 ${sizeClass(name)} ${href ? 'cursor-pointer hover:shadow-lg transition-shadow' : ''}`,
+      className: `liquid-glass rounded-[1rem] overflow-hidden ${sizeClass(name)} ${href ? 'cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all' : ''}`,
       title: sname
     }, /*#__PURE__*/React.createElement("img", {
       src: img,
       alt: sname,
-      className: "max-w-full max-h-full object-contain"
+      className: "w-full h-full object-cover"
     }));
     return href ? /*#__PURE__*/React.createElement("a", {
       key: sname,
@@ -418,7 +451,7 @@ function InquirySection() {
     key: key,
     className: "flex flex-col gap-1.5"
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-xs font-body tracking-wide uppercase"
+    className: "text-[#374151] text-sm font-body tracking-wide uppercase"
   }, label), /*#__PURE__*/React.createElement("input", {
     type: type,
     value: form[key],
@@ -427,7 +460,7 @@ function InquirySection() {
       ...form,
       [key]: e.target.value
     }),
-    className: "bg-transparent border-0 rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20",
+    className: "bg-transparent border-0 rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-base font-body font-light placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20",
     style: {
       background: 'rgba(31,41,55,0.04)'
     }
@@ -442,7 +475,7 @@ function InquirySection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
   }, sa(0)), "// Get Started"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Sponsor", /*#__PURE__*/React.createElement("br", null), "Inquiry"), /*#__PURE__*/React.createElement(motion.form, _extends({
@@ -451,14 +484,14 @@ function InquirySection() {
   }, sa(0.2)), field('Your Name', 'name', 'text', 'Full name'), field('Company', 'company', 'text', 'Organization / Business name'), field('Email', 'email', 'email', 'your@email.com'), field('Phone', 'phone', 'tel', '+1 (xxx) xxx-xxxx'), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-1.5 sm:col-span-2"
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-xs font-body tracking-wide uppercase"
+    className: "text-[#374151] text-sm font-body tracking-wide uppercase"
   }, "Sponsorship Tier"), /*#__PURE__*/React.createElement("select", {
     value: form.tier,
     onChange: e => setForm({
       ...form,
       tier: e.target.value
     }),
-    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light focus:outline-none focus:ring-1 focus:ring-white/20",
+    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-base font-body font-light focus:outline-none focus:ring-1 focus:ring-white/20",
     style: {
       background: 'rgba(31,41,55,0.04)',
       border: 'none'
@@ -477,7 +510,7 @@ function InquirySection() {
   }, t)))), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-1.5 sm:col-span-2"
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-xs font-body tracking-wide uppercase"
+    className: "text-[#374151] text-sm font-body tracking-wide uppercase"
   }, "Message"), /*#__PURE__*/React.createElement("textarea", {
     rows: 4,
     value: form.message,
@@ -486,7 +519,7 @@ function InquirySection() {
       ...form,
       message: e.target.value
     }),
-    className: "bg-transparent rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20 resize-none",
+    className: "bg-transparent rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-base font-body font-light placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20 resize-none",
     style: {
       background: 'rgba(31,41,55,0.04)'
     }
@@ -494,7 +527,7 @@ function InquirySection() {
     className: "sm:col-span-2"
   }, /*#__PURE__*/React.createElement("button", {
     type: "submit",
-    className: "w-full liquid-glass-strong rounded-full py-3 text-sm font-medium text-[#1F2937] flex items-center justify-center gap-2 hover:bg-[#1F2937]/10 transition-colors"
+    className: "w-full liquid-glass-strong rounded-full py-3 text-base font-medium text-[#1F2937] flex items-center justify-center gap-2 hover:bg-[#1F2937]/10 transition-colors"
   }, "Send Inquiry ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   }))))));

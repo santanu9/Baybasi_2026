@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <title>Volunteer – Baybasi</title>
+  <meta name="description" content="Volunteer with Baybasi — track your hours, earn reward points redeemable for event passes, and give back to your community."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: {
+      'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+      'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+    }, borderRadius: { DEFAULT: '9999px' } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
+</head>
+<body class="bg-[#FFF7ED] font-body text-[#1F2937] antialiased">
+<div id="root"></div>
+<script src="js/components.js?v=14"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const { motion } = Motion;
+const h = React.createElement;
+const sa = (delay = 0) => ({
+  initial: { opacity: 0, y: 24, filter: 'blur(6px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.6, delay, ease: 'easeOut' }
+});
+const warmCardBg = 'linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%)';
+const warmPillBg = 'linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.96) 100%)';
+const warmInset = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127,29,29,0.05)';
+
+function PageHero() {
+  return h("section", {
+    className: "relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    style: {
+      backgroundImage: "url('images/heroes/volunteer-photo.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center right',
+      backgroundRepeat: 'no-repeat'
+    }
+  },
+    h(Navbar, { activePage: "" }),
+    /* Layered overlays keep the volunteering photo grounded and the text readable. */
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'linear-gradient(90deg, rgba(255,247,237,0.98) 0%, rgba(255,239,214,0.94) 36%, rgba(127,29,29,0.20) 70%, rgba(22,8,8,0.30) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-x-0 bottom-0 pointer-events-none",
+      style: {
+        height: '62%',
+        background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.62) 56%, rgba(255,247,237,1) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.14), transparent 30%)'
+      }
+    }),
+    h("div", { className: "w-full max-w-7xl mx-auto pt-32 relative z-10" },
+      h(Breadcrumb, { crumbs: [{ label: 'Join Us', href: 'join-us.html' }, { label: 'Volunteer' }] }),
+      h(motion.p, {
+        className: "mt-5 text-base font-body text-[#7F1D1D] mb-4 tracking-widest uppercase font-bold",
+        style: { textShadow: '0 1px 8px rgba(255,247,237,0.95)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.3 }
+      }, "// Volunteer"),
+      h(BlurText, {
+        text: 'Give Time, Earn Rewards',
+        className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
+        style: {
+          fontSize: 'clamp(2rem, 7.2vw, 6rem)',
+          flexWrap: 'wrap',
+          whiteSpace: 'normal',
+          justifyContent: 'flex-start',
+          textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
+        }
+      }),
+      h(motion.p, {
+        className: "mt-6 text-[#111827] font-body font-bold max-w-3xl leading-relaxed",
+        style: { fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.7 }
+      }, 'Register, track your hours, earn reward points redeemable for event passes — and give back to the community.')
+    )
+  );
+}
+
+function VolunteerSection() {
+  const cards = [
+    {
+      n: '01',
+      title: 'Get Registered',
+      body: 'All volunteers will be registered in Baybasi going forward. We will track every volunteer hour and certify the same so you can claim benefits.',
+      icon: h("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, className: "w-7 h-7 text-[#7F1D1D]" },
+        h("path", { d: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" }),
+        h("circle", { cx: "12", cy: "7", r: "4" })
+      )
+    },
+    {
+      n: '02',
+      title: 'Volunteer Rewards Points',
+      body: 'Baybasi awards reward points based on the hours accumulated through volunteer work. Redeem these points for discounts on Event Passes and other rewards.',
+      icon: h("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, className: "w-7 h-7 text-[#7F1D1D]" },
+        h("polygon", { points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" })
+      )
+    },
+    {
+      n: '03',
+      title: 'Volunteer for Other Charities',
+      body: 'Baybasi is actively looking for opportunities to participate in volunteer work for local charities — part of our commitment to giving back to the community. Stay tuned.',
+      icon: h("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, className: "w-7 h-7 text-[#7F1D1D]" },
+        h("path", { d: "M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" })
+      )
+    }
+  ];
+
+  return h("section", { className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]" },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase" }, sa(0)), "// How Volunteering Works"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14" }, sa(0.1)), "Three Ways to", h("br"), "Make an Impact"),
+
+      h("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-5" },
+        cards.map((c, i) => h(motion.div, _extends({
+          key: c.n,
+          className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+          style: { background: warmCardBg, boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)' }
+        }, sa(0.08 * i)),
+          h("div", {
+            className: "w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border border-[#7F1D1D]/10",
+            style: {
+              background: 'linear-gradient(145deg, rgba(127,29,29,0.16), rgba(255,232,196,0.88))',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 10px 22px rgba(127,29,29,0.09)'
+            }
+          }, c.icon),
+          h("div", { className: "font-heading text-[#7F1D1D] text-2xl mb-2 font-bold" }, c.n),
+          h("h3", { className: "font-heading text-[#111827] text-2xl leading-tight mb-3 font-bold" }, c.title),
+          h("p", { className: "text-[#1F2937] text-base font-body font-medium leading-relaxed flex-1" }, c.body)
+        ))
+      )
+    )
+  );
+}
+
+function OpportunitiesSection() {
+  const areas = [
+    'Decoration', 'Food', 'Cultural Programs', 'Puja Services', 'Logistics',
+    'Website & IT', 'Fund Raising', 'Sponsorship Drive', 'Ideation Team', 'Event Photography'
+  ];
+  return h("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: { background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245,158,11,0.10) 0%, transparent 70%), #FFF7ED' }
+  },
+    h("div", { className: "max-w-6xl mx-auto" },
+      h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// Where You Can Help"),
+      h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14 text-center" }, sa(0.1)), "Volunteer Opportunities"),
+      h(motion.div, _extends({ className: "flex flex-wrap items-center justify-center gap-3" }, sa(0.2)),
+        areas.map(area => h("span", {
+          key: area,
+          className: "rounded-full border border-[#7F1D1D]/12 px-5 py-2.5 text-base font-body font-semibold text-[#111827] shadow-[0_10px_24px_rgba(127,29,29,0.08)]",
+          style: { background: warmPillBg, boxShadow: warmInset + ', 0 10px 24px rgba(127,29,29,0.08)' }
+        }, area))
+      ),
+      h(motion.div, _extends({ className: "mt-12 flex items-center justify-center" }, sa(0.4)),
+        h("a", {
+          href: "join-us.html#contact",
+          className: "inline-flex items-center gap-2 bg-[#B91C1C] hover:bg-[#7F1D1D] transition-colors rounded-full px-7 py-3 text-base font-semibold text-white"
+        }, "Register as Volunteer ", h(ArrowUpRight, { className: "h-4 w-4" }))
+      )
+    )
+  );
+}
+
+function App() {
+  return h(React.Fragment, null,
+    h(PageHero),
+    h(VolunteerSection),
+    h(OpportunitiesSection),
+    h(Footer)
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
