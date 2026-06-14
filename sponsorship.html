@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <link rel="stylesheet" href="css/styles.css?v=7"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -49,11 +49,11 @@ const warmInset = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127
 
 function PageHero() {
   return h("section", {
-    className: "relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    className: "page-photo-hero relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
     style: {
       backgroundImage: "url('images/heroes/sponsorship-photo.png')",
-      backgroundSize: '100% 100%',
-      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center right',
       backgroundRepeat: 'no-repeat',
       backgroundColor: '#FFF7ED'
     }
@@ -255,14 +255,15 @@ function PackagesSection() {
     },
     { name: 'Gold', price: '$6,000', totalValue: '$10,000', savings: '$4,000',
       details: [
-        ['Event Access',     'Public Events (Free)'],
-        ['Banner',           'All Public Events (4 Days) ($1,500)'],
-        ['Media',            'All Public Events (4 Days) ($400)'],
-        ['Website',          'Logo + Tag Line ($800)'],
+        ['Event Access',     'All Events ($1,000)'],
+        ['Banner',           'All Events (9 Days) ($2,200)'],
+        ['Media',            'All Events (9 Days) ($900)'],
+        ['Website',          'Dedicated Section ($1,000)'],
         ['Email',            '8 Times ($400)'],
-        ['Flyer',            'Public Events (2) ($1,000)'],
-        ['Stage',            'Name Only ($500)'],
-        ['Booth / Table',    'Holi or AF ($500)']
+        ['Flyer',            'All Events (7 Events) ($2,000)'],
+        ['Magazine',         'Full Page ($500)'],
+        ['Stage',            'All Public Events Airtime ($1,000)'],
+        ['Booth / Table',    'All Public Events (4 Days) ($1,000)']
       ]
     },
     { name: 'Silver', price: '$4,000', totalValue: '$5,400', savings: '$1,400',
@@ -270,20 +271,29 @@ function PackagesSection() {
         ['Event Access',     'Public Events (Free)'],
         ['Banner',           'All Public Events (4 Days) ($1,500)'],
         ['Media',            'All Public Events (4 Days) ($400)'],
-        ['Website',          'Logo ($500)'],
-        ['Email',            '4 Times ($200)']
+        ['Website',          'Logo + Tag Line ($800)'],
+        ['Email',            '4 Times ($200)'],
+        ['Flyer',            'Public Events (2 Events) ($1,000)'],
+        ['Magazine',         'Full Page ($500)'],
+        ['Stage',            'Name Only ($500)'],
+        ['Booth / Table',    'Holi or AF ($500)']
       ]
     },
     { name: 'Bronze', price: '$2,000', totalValue: '$3,450', savings: '$1,450',
       details: [
         ['Event Access',     'Public Events (Free)'],
+        ['Banner',           'All Public Events (4 Days) ($1,500)'],
+        ['Media',            'All Public Events (4 Days) ($400)'],
         ['Website',          'Logo ($500)'],
-        ['Email',            '1 Time ($50)']
+        ['Email',            '1 Time ($50)'],
+        ['Flyer',            'Public Events (2 Events) ($1,000)']
       ]
     },
     { name: 'Classic', price: '$1,000', totalValue: '$1,900', savings: '$900',
       details: [
         ['Event Access',     'Public Events (Free)'],
+        ['Banner',           'All Public Events (4 Days) ($1,500)'],
+        ['Media',            'All Public Events (4 Days) ($400)'],
         ['Website',          'Name ($300)']
       ]
     }
@@ -322,28 +332,37 @@ function PackagesSection() {
 }
 
 function AlaCarteSection() {
-  const items = [
-    { product: 'Color Sponsor (Holi)',                    price: '$1,000' },
-    { product: 'Booth (Non-Food) — Spring Fest',          price: '$500' },
-    { product: 'Booth (Non-Food) — Holi',                 price: '$300' },
-    { product: 'Logo on Water Bottles (Spring Fest)',     price: '$500' },
-    { product: 'Logo on Tickets (Holi)',                  price: '$1,100' },
-    { product: 'Logo on Wrist Bands (Spring Fest)',       price: '$400' },
-    { product: 'Logo on Wrist Bands (Holi)',              price: '$800' },
-    { product: 'Sweet Sponsor — Spring Fest',             price: '$500' },
-    { product: 'Sweet Sponsor — Holi',                    price: '$1,200' },
-    { product: 'DJ Sponsor — Spring Fest',                price: '$850' },
-    { product: 'DJ Sponsor — Holi',                       price: '$500' },
-    { product: 'Event Photography Logo — Spring Fest',    price: '$500' },
-    { product: 'Event Photography Logo — Holi',           price: '$750' },
-    { product: 'Dholi Sponsor — Spring Fest',             price: '$500' },
-    { product: 'Banner — Spring Fest',                    price: '$300' },
-    { product: 'Banner — Holi',                           price: '$500' },
-    { product: 'Banner — Dandiya',                        price: '$400' },
-    { product: 'Banner — Durga Puja',                     price: '$600' },
-    { product: 'Banner — Diwali',                         price: '$400' },
-    { product: 'Gift Vouchers — Spring Fest',             price: '$250+' },
-    { product: 'Gift Vouchers — Durga Puja',              price: '$400+' }
+  const eventGroups = [
+    { event: 'Spring Fest', items: [
+      { product: 'Banner',                    price: '$300' },
+      { product: 'Gift Vouchers',             price: '$250+' }
+    ]},
+    { event: 'Holi', items: [
+      { product: 'Color Sponsor',                          price: '$1,000' },
+      { product: 'DJ Sponsor (Banner at DJ Stage)',        price: '$850' },
+      { product: 'Banner',                                 price: '$500' },
+      { product: 'Booth (Non-Food)',                       price: '$500' },
+      { product: 'Logo on Water Bottles',                  price: '$500' },
+      { product: 'Sweet Sponsor (Banner at Sweet Table)',  price: '$500' },
+      { product: 'Event Photography (Logo on Event Photos)', price: '$500' },
+      { product: 'Dholi Sponsor (Banner at Dholi Area)',   price: '$500' }
+    ]},
+    { event: 'Dandiya & Durga Puja', items: [
+      { product: 'Sweet Sponsor (Banner at Sweet Table)',  price: '$1,200' },
+      { product: 'Logo on Tickets',                        price: '$1,100' },
+      { product: 'Logo on Wrist Bands — Durga Puja',       price: '$800' },
+      { product: 'Event Photography (Logo on Event Photos)', price: '$750' },
+      { product: 'Banner — Durga Puja',                    price: '$600' },
+      { product: 'DJ Sponsor (Banner at DJ Stage)',        price: '$500' },
+      { product: 'Banner — Dandiya',                       price: '$400' },
+      { product: 'Logo on Wrist Bands — Dandiya',          price: '$400' },
+      { product: 'Gift Vouchers',                          price: '$400+' },
+      { product: 'Booth (Non-Food)',                       price: '$300' }
+    ]},
+    { event: 'Diwali', items: [
+      { product: 'Banner',                    price: '$400' },
+      { product: 'Table Space',               price: '$150' }
+    ]}
   ];
 
   const magazine = [
@@ -354,6 +373,19 @@ function AlaCarteSection() {
     { name: 'Half Page',        price: '$300' }
   ];
 
+  /* Bracketed descriptors render lighter and non-bold, as a sub-label of the product. */
+  const renderProduct = (text) =>
+    text.split(/(\([^)]*\))/g).filter(Boolean).map((part, i) =>
+      part.startsWith('(')
+        ? h("span", { key: i, className: "font-normal text-[#6B7280]" }, part)
+        : part
+    );
+
+  /* Consistent option order in every event: Banner first, Booth next, rest alphabetical. */
+  const baseName = (p) => p.replace(/\s*[—(].*$/, '').trim().toLowerCase();
+  const rank = (p) => baseName(p) === 'banner' ? 0 : baseName(p) === 'booth' ? 1 : 2;
+  const byOrder = (a, b) => rank(a.product) - rank(b.product) || a.product.localeCompare(b.product);
+
   return h("section", {
     className: "py-24 px-8 md:px-16 lg:px-20",
     style: { background: 'radial-gradient(ellipse 70% 50% at 50% 100%, rgba(245,158,11,0.10) 0%, transparent 70%), #FFF7ED' }
@@ -362,14 +394,23 @@ function AlaCarteSection() {
       h(motion.p, _extends({ className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center" }, sa(0)), "// A la Carte Sponsorships"),
       h(motion.h2, _extends({ className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-14 text-center" }, sa(0.1)), "Pick & Choose"),
 
-      h(motion.div, _extends({ className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-14" }, sa(0.2)),
-        items.map((it, i) => h("div", {
-          key: i,
-          className: "rounded-[0.875rem] border border-[#7F1D1D]/15 p-4 flex items-center justify-between gap-3 shadow-[0_12px_30px_rgba(127,29,29,0.09)]",
-          style: { background: warmPillBg, boxShadow: warmInset + ', 0 12px 30px rgba(127,29,29,0.09)' }
-        },
-          h("span", { className: "text-[#111827] text-base font-body font-semibold" }, it.product),
-          h("span", { className: "text-[#7F1D1D] font-heading text-lg whitespace-nowrap font-bold" }, it.price)
+      h("div", { className: "space-y-10 mb-14" },
+        eventGroups.map((g, gi) => h(motion.div, _extends({ key: g.event }, sa(0.15 + 0.05 * gi)),
+          h("div", { className: "flex items-center gap-4 mb-4" },
+            h("h3", { className: "font-heading text-[#7F1D1D] text-2xl md:text-3xl font-bold whitespace-nowrap" }, g.event),
+            h("span", { className: "text-[#374151] text-xs uppercase tracking-widest font-body font-bold" }, g.items.length + (g.items.length === 1 ? " option" : " options")),
+            h("div", { className: "flex-1 h-px", style: { background: 'linear-gradient(90deg, rgba(127,29,29,0.25), transparent)' } })
+          ),
+          h("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" },
+            g.items.slice().sort(byOrder).map((it, i) => h("div", {
+              key: i,
+              className: "rounded-[0.875rem] border border-[#7F1D1D]/15 p-4 flex items-center justify-between gap-3 shadow-[0_12px_30px_rgba(127,29,29,0.09)]",
+              style: { background: warmPillBg, boxShadow: warmInset + ', 0 12px 30px rgba(127,29,29,0.09)' }
+            },
+              h("span", { className: "text-[#111827] text-base font-body font-semibold" }, ...renderProduct(it.product)),
+              h("span", { className: "text-[#7F1D1D] font-heading text-lg whitespace-nowrap font-bold" }, it.price)
+            ))
+          )
         ))
       ),
 

@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <link rel="stylesheet" href="css/styles.css?v=7"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -66,21 +66,47 @@ const sa = (delay = 0) => ({
     ease: 'easeOut'
   }
 });
+const h = React.createElement;
 
 // ── Page Hero ────────────────────────────────────────────────────────────
 function PageHero() {
-  return /*#__PURE__*/React.createElement("section", {
-    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
-  }, /*#__PURE__*/React.createElement(Navbar, {
+  return h("section", {
+    className: "page-photo-hero relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    style: {
+      backgroundImage: "url('images/about/about-hero-community.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center right',
+      backgroundRepeat: 'no-repeat'
+    }
+  }, h(Navbar, {
     activePage: "about.html"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "max-w-6xl mx-auto w-full pt-32"
-  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+  }), h("div", {
+    className: "absolute inset-0 pointer-events-none",
+    style: {
+      background: 'linear-gradient(90deg, rgba(255,247,237,0.99) 0%, rgba(255,239,214,0.95) 36%, rgba(255,247,237,0.48) 68%, rgba(127,29,29,0.20) 100%)'
+    }
+  }), h("div", {
+    className: "absolute inset-x-0 bottom-0 pointer-events-none",
+    style: {
+      height: '62%',
+      background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.64) 56%, rgba(255,247,237,1) 100%)'
+    }
+  }), h("div", {
+    className: "absolute inset-0 pointer-events-none",
+    style: {
+      background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.16), transparent 30%)'
+    }
+  }), h("div", {
+    className: "max-w-7xl mx-auto w-full pt-32 relative z-10"
+  }, h(Breadcrumb, {
     crumbs: [{
       label: 'About Us'
     }]
-  }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-4 text-base font-body text-[#374151] mb-3 tracking-widest uppercase",
+  }), h(motion.p, {
+    className: "mt-5 text-base font-body text-[#7F1D1D] mb-4 tracking-widest uppercase font-bold",
+    style: {
+      textShadow: '0 1px 8px rgba(255,247,237,0.95)'
+    },
     initial: {
       opacity: 0,
       y: 16
@@ -93,18 +119,22 @@ function PageHero() {
       duration: 0.5,
       delay: 0.3
     }
-  }, "// About Us"), /*#__PURE__*/React.createElement(BlurText, {
-    text: "Our Purpose Our Journey Our People",
-    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-[-2px] w-full",
+  }, "// About Us"), h(BlurText, {
+    text: "Built by Community Sustained by Purpose",
+    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
     style: {
-      fontSize: 'clamp(1.35rem, 5.0vw, 6.0rem)',
+      fontSize: 'clamp(2rem, 7.2vw, 6rem)',
       flexWrap: 'wrap',
       whiteSpace: 'normal',
       justifyContent: 'flex-start',
-      textShadow: '0 2px 14px rgba(255,247,237,0.9), 0 1px 4px rgba(255,255,255,0.7)'
+      textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
     }
-  }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#374151] font-body font-light text-base max-w-xl leading-relaxed",
+  }), h(motion.p, {
+    className: "mt-6 text-[#111827] font-body font-bold max-w-5xl leading-relaxed",
+    style: {
+      fontSize: 'clamp(1rem, 1.4vw, 1.25rem)',
+      textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)'
+    },
     initial: {
       opacity: 0,
       y: 16
@@ -117,7 +147,32 @@ function PageHero() {
       duration: 0.5,
       delay: 0.7
     }
-  }, "Discover the story, values, and people behind 25+ years of Bengali cultural heritage in the Bay Area.")));
+  }, "Discover the purpose, journey, leadership, and governance behind 25+ years of Bengali cultural heritage and community service in the Bay Area."), h(motion.div, {
+    className: "mt-8 grid w-full max-w-4xl grid-cols-1 sm:grid-cols-3 gap-3",
+    initial: {
+      opacity: 0,
+      y: 16
+    },
+    animate: {
+      opacity: 1,
+      y: 0
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.85
+    }
+  }, [['25+', 'Years of Service'], ['2000', 'Founded in Foster City'], ['501(c)(3)', 'Public Charity']].map(([value, label]) => h("div", {
+    key: label,
+    className: "rounded-2xl border border-[#F59E0B]/35 px-5 py-4 shadow-[0_18px_42px_rgba(127,29,29,0.13)] backdrop-blur-md",
+    style: {
+      background: 'linear-gradient(145deg, rgba(255,250,240,0.96) 0%, rgba(255,233,196,0.96) 54%, rgba(245,211,159,0.94) 100%)',
+      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.95), 0 18px 42px rgba(127,29,29,0.13)'
+    }
+  }, h("div", {
+    className: "font-heading text-3xl text-[#7F1D1D] leading-none"
+  }, value), h("div", {
+    className: "mt-1 text-xs uppercase tracking-widest text-[#4B5563] font-bold"
+  }, label))))));
 }
 
 // ── Purpose ───────────────────────────────────────────────────────────────
@@ -155,13 +210,13 @@ function PurposeSection() {
     body
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: n,
-    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+    className: "warm-card rounded-[1.25rem] p-6 flex flex-col"
   }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
     className: "font-heading text-[#4B5563] text-3xl mb-4"
   }, n), /*#__PURE__*/React.createElement("h3", {
     className: "font-heading text-[#1F2937] text-2xl leading-tight mb-3"
   }, title), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#374151] text-base font-body font-light leading-relaxed flex-1"
+    className: "text-[#1F2937] text-base font-body font-medium leading-relaxed flex-1"
   }, body))))));
 }
 
@@ -226,11 +281,11 @@ function JourneySection() {
     }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
       className: `hidden md:block flex-1 text-right ${!isRight ? 'invisible' : ''}`
     }, isRight && /*#__PURE__*/React.createElement("div", {
-      className: "liquid-glass rounded-[1rem] p-4 inline-block text-left max-w-xs"
+      className: "warm-card rounded-[1rem] p-4 inline-block text-left max-w-xs"
     }, /*#__PURE__*/React.createElement("div", {
       className: "font-heading text-[#1F2937] text-xl mb-1"
     }, year), /*#__PURE__*/React.createElement("div", {
-      className: "text-[#374151] text-base font-body font-light leading-snug"
+      className: "text-[#1F2937] text-base font-body font-medium leading-snug"
     }, event))), /*#__PURE__*/React.createElement("div", {
       className: "hidden md:flex w-4 h-4 rounded-full flex-shrink-0 items-center justify-center",
       style: {
@@ -242,17 +297,17 @@ function JourneySection() {
     })), /*#__PURE__*/React.createElement("div", {
       className: `hidden md:block flex-1 ${isRight ? 'invisible' : ''}`
     }, !isRight && /*#__PURE__*/React.createElement("div", {
-      className: "liquid-glass rounded-[1rem] p-4 inline-block max-w-xs"
+      className: "warm-card rounded-[1rem] p-4 inline-block max-w-xs"
     }, /*#__PURE__*/React.createElement("div", {
       className: "font-heading text-[#1F2937] text-xl mb-1"
     }, year), /*#__PURE__*/React.createElement("div", {
-      className: "text-[#374151] text-base font-body font-light leading-snug"
+      className: "text-[#1F2937] text-base font-body font-medium leading-snug"
     }, event))), /*#__PURE__*/React.createElement("div", {
-      className: "md:hidden liquid-glass rounded-[1rem] p-4 flex gap-4 items-start"
+      className: "md:hidden warm-card rounded-[1rem] p-4 flex gap-4 items-start"
     }, /*#__PURE__*/React.createElement("div", {
       className: "font-heading text-[#1F2937] text-lg w-12 flex-shrink-0"
     }, year), /*#__PURE__*/React.createElement("div", {
-      className: "text-[#374151] text-base font-body font-light leading-snug"
+      className: "text-[#1F2937] text-base font-body font-medium leading-snug"
     }, event)));
   })))));
 }
@@ -314,7 +369,7 @@ function BoardSection() {
     img
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: name,
-    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col cursor-pointer group",
+    className: "warm-card rounded-[1.25rem] p-5 flex flex-col cursor-pointer group",
     style: {
       transition: 'box-shadow 0.2s, transform 0.2s'
     },
@@ -350,21 +405,7 @@ function BoardSection() {
     className: "text-[#374151] text-sm font-body font-light leading-snug"
   }, role), /*#__PURE__*/React.createElement("p", {
     className: "mt-3 text-xs text-[#B91C1C] font-body font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity"
-  }, "View bio \u2192"))), /*#__PURE__*/React.createElement(motion.div, _extends({
-    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col"
-  }, sa(0.06 * board.length)), /*#__PURE__*/React.createElement("div", {
-    className: "w-12 h-12 rounded-full mb-4 flex items-center justify-center",
-    style: {
-      background: 'rgba(31,41,55,0.04)',
-      border: '1px dashed rgba(31,41,55,0.15)'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[#4B5563] text-base"
-  }, "EC")), /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-xl leading-tight mb-1"
-  }, "Execution Committee"), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#4B5563] text-sm font-body font-light leading-snug"
-  }, "First EC formed in 2026 \u2014 details coming soon.")))), selected && /*#__PURE__*/React.createElement(motion.div, {
+  }, "View bio \u2192")))), selected && /*#__PURE__*/React.createElement(motion.div, {
     className: "fixed inset-0 z-50 flex items-center justify-center px-4",
     style: {
       background: 'rgba(15,15,15,0.55)',
@@ -461,7 +502,75 @@ function BoardSection() {
     className: "w-3.5 h-3.5"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M9 18l6-6-6-6"
-  })))))));
+}))))))));
+}
+
+// ── Execution Committee ───────────────────────────────────────────────────
+function ExecutionCommitteeSection() {
+  const teams = [{
+    title: 'Cultural Programs',
+    body: 'Curates performances, artists, stage flow, and community participation across Baybasi events.'
+  }, {
+    title: 'Operations & Logistics',
+    body: 'Coordinates venues, schedules, vendor handoffs, setup, cleanup, and day-of execution.'
+  }, {
+    title: 'Puja & Traditions',
+    body: 'Supports ritual planning, cultural continuity, and respectful presentation of heritage practices.'
+  }, {
+    title: 'Food & Hospitality',
+    body: 'Plans guest experience, meal service, volunteer shifts, and welcoming community touchpoints.'
+  }, {
+    title: 'Sponsorship & Fundraising',
+    body: 'Builds sponsor relationships and supports fundraising for events and charitable initiatives.'
+  }, {
+    title: 'Volunteer Coordination',
+    body: 'Mobilizes volunteers, tracks participation, and connects members with meaningful service roles.'
+  }, {
+    title: 'Marketing & Communications',
+    body: 'Manages outreach, event messaging, creative assets, and community announcements.'
+  }, {
+    title: 'Technology & Website',
+    body: 'Supports digital tools, website updates, registration workflows, and event communications.'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "py-24 px-8 md:px-16 lg:px-20",
+    style: {
+      background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245,158,11,0.10) 0%, transparent 70%), #FFF7ED'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-6xl mx-auto"
+  }, /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), "// Execution"), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14"
+  }, sa(0.1)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9]"
+  }, "Execution", /*#__PURE__*/React.createElement("br", null), "Committee"), /*#__PURE__*/React.createElement("p", {
+    className: "mt-5 text-[#1F2937] font-body font-medium text-base max-w-2xl leading-relaxed"
+  }, "The Execution Committee translates Baybasi's mission into carefully run events, volunteer coordination, community service, and year-round operational excellence.")), /*#__PURE__*/React.createElement("div", {
+    className: "warm-card-strong rounded-[1.25rem] p-5 min-w-[180px]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "font-heading text-[#7F1D1D] text-4xl leading-none"
+  }, "2026"), /*#__PURE__*/React.createElement("div", {
+    className: "mt-2 text-xs uppercase tracking-widest text-[#4B5563] font-bold"
+  }, "First EC formed"))), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+  }, teams.map((team, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: team.title,
+    className: "warm-card rounded-[1.25rem] p-6 flex flex-col"
+  }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "w-10 h-10 rounded-[0.75rem] flex items-center justify-center mb-4 border border-[#7F1D1D]/10",
+    style: {
+      background: 'linear-gradient(145deg, rgba(127,29,29,0.16), rgba(255,232,196,0.88))',
+      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 10px 22px rgba(127,29,29,0.09)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-heading text-[#7F1D1D] text-sm"
+  }, String(i + 1).padStart(2, '0'))), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#111827] text-xl leading-tight mb-3 font-bold"
+  }, team.title), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#1F2937] text-base font-body font-medium leading-relaxed flex-1"
+  }, team.body))))));
 }
 
 // ── Corporate Details ─────────────────────────────────────────────────────
@@ -511,7 +620,7 @@ function CorporateSection() {
     href
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: label,
-    className: "liquid-glass rounded-[1.25rem] p-5"
+    className: "warm-card rounded-[1.25rem] p-5"
   }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
     className: "text-[#374151] text-sm font-body tracking-widest uppercase mb-1"
   }, label), href ? /*#__PURE__*/React.createElement("a", {
@@ -534,16 +643,16 @@ function ReportsSection() {
   }, sa(0)), "// Transparency"), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-6"
   }, sa(0.1)), "Performance", /*#__PURE__*/React.createElement("br", null), "Reports"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#374151] font-body font-light text-base max-w-lg mb-12"
+    className: "text-[#1F2937] font-body font-medium text-base max-w-lg mb-12"
   }, sa(0.2)), "We believe in full transparency. 94% of revenue goes directly into programs and charitable works."), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
   }, ['2025', '2024', '2023'].map((year, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: year,
-    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+    className: "warm-card rounded-[1.25rem] p-6 flex flex-col"
   }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
     className: "font-heading text-[#1F2937] text-4xl mb-4"
   }, year), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#374151] text-base font-body font-light flex-1"
+    className: "text-[#1F2937] text-base font-body font-medium flex-1"
   }, "Annual Performance Report"), /*#__PURE__*/React.createElement("div", {
     className: "mt-5 flex items-center gap-1.5 text-base text-[#4B5563] font-body"
   }, /*#__PURE__*/React.createElement("svg", {
@@ -564,7 +673,7 @@ function ReportsSection() {
 
 // ── App ───────────────────────────────────────────────────────────────────
 function App() {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageHero, null), /*#__PURE__*/React.createElement(PurposeSection, null), /*#__PURE__*/React.createElement(JourneySection, null), /*#__PURE__*/React.createElement(BoardSection, null), /*#__PURE__*/React.createElement(CorporateSection, null), /*#__PURE__*/React.createElement(ReportsSection, null), /*#__PURE__*/React.createElement(Footer, null));
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageHero, null), /*#__PURE__*/React.createElement(PurposeSection, null), /*#__PURE__*/React.createElement(JourneySection, null), /*#__PURE__*/React.createElement(BoardSection, null), /*#__PURE__*/React.createElement(ExecutionCommitteeSection, null), /*#__PURE__*/React.createElement(CorporateSection, null), /*#__PURE__*/React.createElement(ReportsSection, null), /*#__PURE__*/React.createElement(Footer, null));
 }
 const {
   createRoot

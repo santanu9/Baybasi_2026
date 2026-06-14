@@ -1,0 +1,17 @@
+.git/
+.claude/
+.codex/
+.agents/
+docs/
+reports/
+scripts/
+*.pdf
+*.pptx
+*.key
+*.psd
+*.ai
+*.zip
+.DS_Store
+README.md
+BLUEHOST_DEPLOYMENT.md
+test.html

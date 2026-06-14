@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Baybasi Media Inventory by Page</title>
+  <style>
+    @page { size: landscape; margin: 18mm; }
+    body {
+      margin: 0;
+      color: #1f2937;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    h1 {
+      margin: 0 0 6px;
+      color: #7f1d1d;
+      font-size: 24px;
+    }
+    p {
+      margin: 0 0 14px;
+      color: #4b5563;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 7px;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+    th {
+      background: #fff7ed;
+      color: #7f1d1d;
+      font-weight: 700;
+      text-align: left;
+    }
+    tr:nth-child(even) td { background: #fffaf4; }
+    .page { width: 13%; font-weight: 700; }
+    .dirs { width: 18%; }
+    .images { width: 52%; }
+    .videos { width: 17%; }
+    .section-title {
+      margin-top: 18px;
+      margin-bottom: 8px;
+      color: #7f1d1d;
+      font-size: 16px;
+    }
+    .mono { font-family: Menlo, Consolas, monospace; font-size: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Baybasi Media Inventory by Page</h1>
+  <p>Source: root HTML pages and shared JS files. The <span class="mono">docs/</span> mirror is excluded to avoid duplicate counting.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="page">Page</th>
+        <th class="dirs">Image Directories Used</th>
+        <th class="images">Images</th>
+        <th class="videos">Videos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="page mono">index.html</td>
+        <td class="dirs mono">images/sponsors/<br>images/home/</td>
+        <td class="images mono">indian_grocery_image001.png, future_right_v2-768x644.png, zaman-1024x571.jpeg, I-693_New-1024x683.jpeg, ravi_jagtiani_new-1024x512.jpg, ramez_tabri_updated.jpg, first_bank.png, WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg, BMO_Updated-768x440.png, rosalind_chin.png, ebiw-768x122.png, kw_PHOTO-2022-09-12-21-14-21.jpg, Jaspreet-768x621.png, Mamta_logo_new-scaled-1-768x512.jpg, Andrew_Klink_2-scaled-1-768x432.jpeg, gama_ride_working-1.png</td>
+        <td class="videos mono">images/home/hero-video.mp4<br>External CloudFront .mp4</td>
+      </tr>
+      <tr>
+        <td class="page mono">join-us.html</td>
+        <td class="dirs mono">images/heroes/</td>
+        <td class="images mono">join-us-photo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">membership.html</td>
+        <td class="dirs mono">images/heroes/</td>
+        <td class="images mono">membership-photo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">volunteer.html</td>
+        <td class="dirs mono">images/heroes/</td>
+        <td class="images mono">volunteer-photo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">event-pass.html</td>
+        <td class="dirs mono">images/heroes/</td>
+        <td class="images mono">event-pass-photo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">events.html</td>
+        <td class="dirs mono">images/heroes/</td>
+        <td class="images mono">events-photo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">sponsorship.html</td>
+        <td class="dirs mono">images/heroes/</td>
+        <td class="images mono">sponsorship-photo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">sponsors.html</td>
+        <td class="dirs mono">images/sponsors/</td>
+        <td class="images mono">indian_grocery_image001.png, future_right_v2-768x644.png, zaman-1024x571.jpeg, I-693_New-1024x683.jpeg, ravi_jagtiani_new-1024x512.jpg, ramez_tabri_updated.jpg, first_bank.png, WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg, BMO_Updated-768x440.png, rosalind_chin.png, ebiw-768x122.png, kw_PHOTO-2022-09-12-21-14-21.jpg, Jaspreet-768x621.png, Mamta_logo_new-scaled-1-768x512.jpg, Andrew_Klink_2-scaled-1-768x432.jpeg, gama_ride_working-1.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">about.html</td>
+        <td class="dirs mono">images/about/</td>
+        <td class="images mono">director-suman-debnath.jpg, director-nilanjan-debroy.jpg, director-prithwiraj-mitra.jpg, director-raj-tiwari.jpg, director-sukalyan-chakraborty.jpg, director-swati-chakraborty.jpg, director-manjira-datta.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">impacts.html</td>
+        <td class="dirs">None directly in page</td>
+        <td class="images">None directly referenced</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">404.html</td>
+        <td class="dirs mono">images/common/</td>
+        <td class="images mono">baybasi-logo.png</td>
+        <td class="videos">None</td>
+      </tr>
+      <tr>
+        <td class="page mono">admin.html</td>
+        <td class="dirs mono">images/common/<br>images/home/<br>images/about/<br>images/impacts/<br>images/events/<br>images/sponsors/</td>
+        <td class="images">Admin config lists upload/default paths for site logo, home images, about directors, impact photos, event covers, and sponsor logos.</td>
+        <td class="videos">None</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">Shared and Legacy JavaScript Media</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Directory</th>
+        <th>Media</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">Sitewide shared image</td>
+        <td class="mono">images/common/</td>
+        <td class="mono">baybasi-logo.png via js/components.js</td>
+      </tr>
+      <tr>
+        <td class="mono">js/main.js</td>
+        <td class="mono">assets/images/</td>
+        <td class="mono">hero-culture.svg, hero-festival.svg, hero-impact.svg</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

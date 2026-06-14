@@ -9,7 +9,7 @@ This site is a **static** Bengali-cultural-organization site (HTML + JS + CSS + 
 | `index.html`, `about.html`, `impacts.html`, `events.html`, `sponsors.html`, `join-us.html`, `membership.html`, `event-pass.html`, `volunteer.html`, `sponsorship.html` | 10 site pages |
 | `admin.html` | Content manager (OTP login) |
 | `404.html` | Friendly "page not found" page |
-| `.htaccess` | Apache config: HTTPS, gzip, caching, MIME types, security headers |
+| `.htaccess` | Apache config: HTTPS, gzip, caching, MIME types, security headers, custom 404 |
 | `css/styles.css` | Stylesheet |
 | `js/components.js`, `js/content.js` | Shared scripts |
 | `images/` | All site imagery: logo, sponsor logos, director photos, hero video, hero SVGs |
@@ -20,11 +20,18 @@ Skip these — they're for local development only:
 
 ```
 .claude/             ← Claude Code workspace
+.codex/              ← Codex workspace
+.agents/             ← Agent workspace files
 .git/                ← Git history
 docs/                ← Cloned copy for GitHub Pages
+reports/             ← Local generated reports
+scripts/             ← Local build helpers
+test.html            ← Local test page
 *.pdf, *.pptx        ← Source design files
 BLUEHOST_DEPLOYMENT.md ← (this file)
 ```
+
+The helper script `scripts/build-bluehost-zip.sh` creates a clean upload ZIP with only production files.
 
 ## Step-by-step (using cPanel File Manager)
 
@@ -32,15 +39,11 @@ BLUEHOST_DEPLOYMENT.md ← (this file)
 2. Open `public_html/` (the document root for your primary domain).
 3. If this site replaces an old one, back up the existing files first (download or zip them).
 4. **Upload the project as a single ZIP** (much faster than uploading individual files):
-   - On your computer, in the project root run:
+  - On your computer, in the project root run:
      ```bash
-     zip -r baybasi.zip \
-       index.html about.html impacts.html events.html sponsors.html \
-       join-us.html membership.html event-pass.html volunteer.html sponsorship.html \
-       admin.html 404.html .htaccess \
-       css/ js/ images/
+     ./scripts/build-bluehost-zip.sh
      ```
-   - In File Manager → **Upload** → select `baybasi.zip`.
+   - In File Manager → **Upload** → select `dist/baybasi-bluehost.zip`.
    - Back in File Manager, right-click the zip → **Extract** into `public_html/`.
    - Delete the zip after extraction.
 5. **Verify file permissions**:
@@ -85,8 +88,8 @@ This tells browsers to **only** ever use HTTPS for your domain.
 When you change a file locally:
 
 1. Re-upload **only the changed file** via File Manager or FTP (overwriting the old one).
-2. If you changed `js/components.js`, also bump the `?v=N` cache buster in every HTML file's `<script src="js/components.js?v=N">` so browsers fetch the new copy. (Currently `?v=12`.)
-3. If you changed `css/styles.css`, bump `?v=N` in every `<link rel="stylesheet" href="css/styles.css?v=N">`. (Currently `?v=5`.)
+2. If you changed `js/components.js`, also bump the `?v=N` cache buster in every HTML file's `<script src="js/components.js?v=N">` so browsers fetch the new copy. Current pages use `?v=14` and `events.html` uses `?v=15`.
+3. If you changed `css/styles.css`, bump `?v=N` in every `<link rel="stylesheet" href="css/styles.css?v=N">`. Currently `?v=7`.
 
 ## Admin (`admin.html`) on Bluehost
 
@@ -140,7 +143,23 @@ Add or remove emails as needed.
 - **Hero video doesn't play on iOS Safari** → ensure the `<video>` tag has `playsinline` (already set in `js/components.js`).
 - **Wrong default page** → if `public_html/` already contains an `index.php` or `default.html`, Apache may serve that instead. Delete or rename it.
 - **Mixed content warnings** → all external resources (unpkg.com, cdn.tailwindcss.com, cloudfront for the scroll video) are loaded over `https://`, so this shouldn't happen. If it does, check the URL in the HTML.
-- **Subdirectory install** (e.g. `yourdomain.com/baybasi/`) → all internal links in the HTML are relative (e.g. `href="about.html"`), so this works out of the box. The only thing to fix would be the absolute `/index.html`, `/css/...`, `/images/...` paths inside `404.html` — change `/` to `./` or to the subdirectory prefix.
+- **Subdirectory install** (e.g. `yourdomain.com/baybasi/`) → all internal links in the HTML are relative (e.g. `href="about.html"`), and `404.html` now uses relative asset paths too. If the custom Apache 404 should work inside a subdirectory, adjust `ErrorDocument 404 /404.html` in `.htaccess` to the subdirectory path, for example `ErrorDocument 404 /baybasi/404.html`.
+
+## Build a Bluehost ZIP locally
+
+Run:
+
+```bash
+./scripts/build-bluehost-zip.sh
+```
+
+It writes:
+
+```text
+dist/baybasi-bluehost.zip
+```
+
+Upload and extract that ZIP into Bluehost `public_html/`.
 
 ## Custom domain checklist
 

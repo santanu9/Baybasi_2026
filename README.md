@@ -1,6 +1,6 @@
-# Baybasi Website Prototype — MVP 1
+# Baybasi Website
 
-This is a static public website prototype for Baybasi, a Bengali and Indian cultural nonprofit serving the San Francisco Bay Area.
+This is a static public website for Baybasi, a Bengali and Indian cultural nonprofit serving the San Francisco Bay Area. It is ready for Bluehost/cPanel shared hosting.
 
 ## Project goal
 
@@ -11,8 +11,9 @@ Create a beautiful public information website first, while leaving clear placeho
 - HTML
 - CSS
 - Vanilla JavaScript
+- React/Framer Motion loaded from CDN in the browser
 
-No React, Next.js, Tailwind, Bootstrap, Node backend, CMS, or database are used in this MVP.
+No Node backend, PHP backend, CMS, or database is required for hosting.
 
 ## Pages
 
@@ -22,6 +23,11 @@ No React, Next.js, Tailwind, Bootstrap, Node backend, CMS, or database are used 
 - `events.html` — Event calendar, featured event, media, publications
 - `sponsors.html` — Sponsor benefits, tiers, sponsors, sponsor inquiry
 - `join-us.html` — Membership, volunteering, subscription/event updates, contact forms
+- `membership.html` — Membership details
+- `event-pass.html` — Event pass details
+- `volunteer.html` — Volunteer program
+- `sponsorship.html` — Sponsorship packages
+- `admin.html` — Browser-local image manager
 
 ## Folder structure
 
@@ -36,11 +42,12 @@ baybasi-website/
   css/
     styles.css
   js/
+    components.js
+    content.js
     main.js
+  images/
   assets/
-    images/
-    docs/
-    icons/
+  scripts/
 ```
 
 ## How to preview locally
@@ -69,17 +76,25 @@ Open `css/styles.css` and edit the `:root` variables:
 --color-peach: #FFE4D6;
 ```
 
+## Bluehost deployment
+
+Build a clean cPanel upload ZIP:
+
+```bash
+./scripts/build-bluehost-zip.sh
+```
+
+Upload `dist/baybasi-bluehost.zip` to Bluehost `public_html/`, extract it there, then delete the ZIP. See `BLUEHOST_DEPLOYMENT.md` for the full checklist.
+
 ## How to replace images
 
 Place final images in:
 
 ```text
-assets/images/
+images/
 ```
 
 Then update the relevant `<img>` paths in the HTML files.
-
-Current images are SVG placeholders only.
 
 ## Forms
 

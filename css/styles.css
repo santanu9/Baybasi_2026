@@ -33,7 +33,11 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: clip; /* clip (not hidden) so it doesn't break position:sticky on the scroll-over video */
+}
 body {
   margin: 0;
   background: #FFF7ED;
@@ -44,6 +48,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* Prevent iOS overscroll bounce while keeping native scroll */
   overscroll-behavior-y: none;
+  width: 100%;
+  overflow-x: clip; /* clip (not hidden) so it doesn't break position:sticky on the scroll-over video */
 }
 
 /* ── Mobile touch improvements ── */
@@ -206,8 +212,128 @@ a { text-decoration: none; color: inherit; }
   .hero-stats-label { font-size: 9px !important; }
 }
 
-/* ── Responsive image — never overflow its container ── */
-img { max-width: 100%; height: auto; }
+/* ── Responsive media — never overflow its container ── */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.scroll-video-bg video {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  object-fit: cover;
+}
+
+.page-photo-hero {
+  background-color: #FFF7ED;
+  background-size: cover !important;
+  background-position: center right !important;
+  background-repeat: no-repeat !important;
+}
+
+.professional-hero {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(245,158,11,0.24), transparent 28%),
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,0.62), transparent 26%),
+    linear-gradient(120deg, #FFF7ED 0%, #FFE4D6 42%, #F6D095 100%);
+}
+
+.warm-card {
+  background: linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%);
+  border: 1px solid rgba(127,29,29,0.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.96),
+    inset 0 -1px 0 rgba(127,29,29,0.05),
+    0 24px 58px rgba(127,29,29,0.12);
+}
+
+.warm-card-strong {
+  background: linear-gradient(145deg, #FFE8B8 0%, #FCD894 48%, #EDBE72 100%);
+  border: 1px solid rgba(127,29,29,0.17);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.96),
+    inset 0 -1px 0 rgba(127,29,29,0.07),
+    0 26px 62px rgba(127,29,29,0.14);
+}
+
+.warm-pill {
+  background: linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.96) 100%);
+  border: 1px solid rgba(127,29,29,0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.92);
+}
+
+/* ── Mobile hero/card rendering fixes ── */
+@media (max-width: 640px) {
+  .page-photo-hero {
+    min-height: auto !important;
+    padding: 8rem 1rem 3rem !important;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+  }
+
+  .professional-hero {
+    min-height: auto !important;
+    padding: 8rem 1rem 3rem !important;
+  }
+
+  .join-hero-animated-image {
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .page-photo-hero > div[class*="max-w-"],
+  .inner-hero-bg > div[class*="max-w-"] {
+    min-width: 0;
+  }
+
+  .page-photo-hero [class*="max-w-3xl"],
+  .inner-hero-bg [class*="max-w-3xl"] {
+    max-width: 100% !important;
+  }
+
+  .page-photo-hero h1,
+  .page-photo-hero h2,
+  .page-photo-hero p,
+  .inner-hero-bg h1,
+  .inner-hero-bg h2,
+  .inner-hero-bg p,
+  .liquid-glass,
+  .liquid-glass-strong {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .page-photo-hero [class*="rounded-"],
+  .inner-hero-bg [class*="rounded-"],
+  .liquid-glass,
+  .liquid-glass-strong {
+    max-width: 100%;
+  }
+
+  .page-photo-hero [class*="grid"],
+  .inner-hero-bg [class*="grid"] {
+    min-width: 0;
+  }
+
+  [class*="tracking-[-"] {
+    letter-spacing: 0 !important;
+  }
+
+  [class*="rounded-"] > *,
+  .liquid-glass > *,
+  .liquid-glass-strong > * {
+    min-width: 0;
+  }
+
+  [class*="rounded-"] img {
+    display: block;
+    max-width: 100%;
+  }
+}
 
 /* ── Mobile sponsor logo overflow ── */
 @media (max-width: 640px) {

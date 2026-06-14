@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=6"/>
+  <link rel="stylesheet" href="css/styles.css?v=7"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -46,7 +46,9 @@ const {
   motion
 } = Motion;
 const HERO_VIDEO = "images/home/hero-video.mp4";
-const CAP_VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4";
+// Locally-hosted 3D-rendered Durga Puja gallery background (Blender/EEVEE, web-optimized faststart MP4).
+// Previous external source: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4
+const CAP_VIDEO = "images/home/durga-puja-bg.mp4";
 const sa = (delay = 0) => ({
   initial: {
     opacity: 0,
@@ -237,7 +239,7 @@ function HeroSection() {
   );
 }
 
-// ── ScrollOverVideo: sticky background video w/ sections rolling over it ──
+// ── ScrollOverVideo: ONE sticky background video; all sections roll over it ──
 function ScrollOverVideo({ children }) {
   return /*#__PURE__*/React.createElement("div", {
     className: "relative",

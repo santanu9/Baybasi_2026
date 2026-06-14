@@ -4,18 +4,52 @@
    Fonts:  Aptos ExtraBold (800) for headings · Aptos (400) for body
            Fallback stack: Calibri → Trebuchet MS → Arial → sans-serif */
 
+/* ── Inter metric-matched fallback ──────────────────────────────────────────
+   'Aptos' is the brand font but is only available on machines that have it
+   installed (it is not a web-distributable font). Everyone else falls back to
+   Inter — which renders ~15% wider/taller than Aptos, changing sizes and line
+   wrapping. 'InterAdj' is Inter loaded with size-adjust:86.6% so its metrics
+   match Aptos almost exactly (measured: advance 2022 vs Aptos 2021.92 @100px).
+   It sits in the stack right after Aptos; plain 'Inter' (from the Google Fonts
+   <link>) remains after it as a graceful fallback if these files ever move.
+   One variable woff2 per subset covers weights 300–800. */
+@font-face {
+  font-family: 'InterAdj';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  size-adjust: 86.6%;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'InterAdj';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  size-adjust: 86.6%;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   background: #FFF7ED;
   color: #1F2937;
-  font-family: 'Aptos', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Prevent iOS overscroll bounce while keeping native scroll */
   overscroll-behavior-y: none;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* ── Mobile touch improvements ── */
@@ -36,12 +70,12 @@ button, a, [role="button"] {
 
 /* ── Aptos font-weight bindings ── */
 .font-heading {
-  font-family: 'Aptos', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
   font-weight: 800;
   font-style: normal;
 }
 .font-body {
-  font-family: 'Aptos', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -178,8 +212,154 @@ a { text-decoration: none; color: inherit; }
   .hero-stats-label { font-size: 9px !important; }
 }
 
-/* ── Responsive image — never overflow its container ── */
-img { max-width: 100%; height: auto; }
+/* ── Responsive media — never overflow its container ── */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.scroll-video-bg video {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  object-fit: cover;
+}
+
+.video-scroll-section {
+  position: relative;
+  overflow: hidden;
+  background: #1F2937;
+}
+
+.video-scroll-section > :not(.section-video-bg) {
+  position: relative;
+  z-index: 10;
+}
+
+.section-video-bg,
+.section-video-bg video {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.section-video-bg {
+  z-index: 0;
+}
+
+.page-photo-hero {
+  background-color: #FFF7ED;
+  background-size: cover !important;
+  background-position: center right !important;
+  background-repeat: no-repeat !important;
+}
+
+.professional-hero {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(245,158,11,0.24), transparent 28%),
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,0.62), transparent 26%),
+    linear-gradient(120deg, #FFF7ED 0%, #FFE4D6 42%, #F6D095 100%);
+}
+
+.warm-card {
+  background: linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%);
+  border: 1px solid rgba(127,29,29,0.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.96),
+    inset 0 -1px 0 rgba(127,29,29,0.05),
+    0 24px 58px rgba(127,29,29,0.12);
+}
+
+.warm-card-strong {
+  background: linear-gradient(145deg, #FFE8B8 0%, #FCD894 48%, #EDBE72 100%);
+  border: 1px solid rgba(127,29,29,0.17);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.96),
+    inset 0 -1px 0 rgba(127,29,29,0.07),
+    0 26px 62px rgba(127,29,29,0.14);
+}
+
+.warm-pill {
+  background: linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.96) 100%);
+  border: 1px solid rgba(127,29,29,0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.92);
+}
+
+/* ── Mobile hero/card rendering fixes ── */
+@media (max-width: 640px) {
+  .page-photo-hero {
+    min-height: auto !important;
+    padding: 8rem 1rem 3rem !important;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+  }
+
+  .professional-hero {
+    min-height: auto !important;
+    padding: 8rem 1rem 3rem !important;
+  }
+
+  .join-hero-animated-image {
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .page-photo-hero > div[class*="max-w-"],
+  .inner-hero-bg > div[class*="max-w-"] {
+    min-width: 0;
+  }
+
+  .page-photo-hero [class*="max-w-3xl"],
+  .inner-hero-bg [class*="max-w-3xl"] {
+    max-width: 100% !important;
+  }
+
+  .page-photo-hero h1,
+  .page-photo-hero h2,
+  .page-photo-hero p,
+  .inner-hero-bg h1,
+  .inner-hero-bg h2,
+  .inner-hero-bg p,
+  .liquid-glass,
+  .liquid-glass-strong {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .page-photo-hero [class*="rounded-"],
+  .inner-hero-bg [class*="rounded-"],
+  .liquid-glass,
+  .liquid-glass-strong {
+    max-width: 100%;
+  }
+
+  .page-photo-hero [class*="grid"],
+  .inner-hero-bg [class*="grid"] {
+    min-width: 0;
+  }
+
+  [class*="tracking-[-"] {
+    letter-spacing: 0 !important;
+  }
+
+  [class*="rounded-"] > *,
+  .liquid-glass > *,
+  .liquid-glass-strong > * {
+    min-width: 0;
+  }
+
+  [class*="rounded-"] img {
+    display: block;
+    max-width: 100%;
+  }
+}
 
 /* ── Mobile sponsor logo overflow ── */
 @media (max-width: 640px) {
