@@ -4,48 +4,95 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin – Baybasi Content Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: { extend: { fontFamily: {
-        sans: ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+        sans: ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
       }}}
     }
   </script>
+  <!-- EmailJS for sending OTP emails (replace below CONFIG with your account values) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="js/content.js"></script>
   <style>
-    body { font-family: Aptos, Calibri, 'Trebuchet MS', Arial, sans-serif; }
+    body { font-family: Aptos, Inter, Calibri, 'Trebuchet MS', Arial, sans-serif; }
     .drop-zone { border: 2px dashed #E5E7EB; transition: border-color 0.2s, background 0.2s; }
     .drop-zone.drag-over { border-color: #B91C1C; background: rgba(185,28,28,0.04); }
-    .thumb { width: 120px; height: 64px; object-fit: contain; border-radius: 0.5rem; background: #F9F9F9; border: 1px solid #E5E7EB; }
-    .tab-btn { padding: 0.5rem 1.25rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .thumb { width: 100%; max-height: 110px; object-fit: contain; border-radius: 0.5rem; background: #F9F9F9; }
+    .tab-btn { padding: 0.55rem 1.1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.15s, color 0.15s; }
     .tab-btn.active { background: #B91C1C; color: #fff; }
-    .tab-btn:not(.active) { background: rgba(31,41,55,0.06); color: #6B7280; }
+    .tab-btn:not(.active) { background: #fff; color: #6B7280; border: 1px solid #E5E7EB; }
+    .tab-btn:not(.active):hover { background: #F9F9F9; color: #1F2937; }
     .card { background: #fff; border: 1px solid #E5E7EB; border-radius: 1rem; padding: 1.25rem; }
-    .badge { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 9999px; }
+    .badge { font-size: 0.68rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 9999px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .segment-card { background: #fff; border-radius: 1rem; border: 1px solid #E5E7EB; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .otp-input { letter-spacing: 0.8em; text-align: center; font-size: 1.5rem; font-weight: 600; }
+    .otp-input::placeholder { letter-spacing: 0.3em; }
   </style>
 </head>
 <body class="bg-[#FFF7ED] min-h-screen">
 
-<!-- ── Login Screen ─────────────────────────────────────────────────── -->
-<div id="login-screen" class="min-h-screen flex items-center justify-center px-4">
-  <div class="bg-white rounded-2xl shadow-xl p-10 w-full max-w-sm">
+<!-- ── Login Screen (Step 1: Email) ─────────────────────────────────── -->
+<div id="login-email-screen" class="min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white rounded-2xl shadow-xl p-10 w-full max-w-md">
     <div class="flex items-center gap-3 mb-8">
       <img src="images/common/baybasi-logo.png" alt="Baybasi" style="height:48px;width:48px;object-fit:contain"/>
       <div>
         <div class="font-bold text-xl text-[#B91C1C]">Baybasi</div>
-        <div class="text-xs text-[#6B7280]">Content Manager</div>
+        <div class="text-xs text-[#6B7280]">Content Manager · Secure Login</div>
       </div>
     </div>
-    <p class="text-sm text-[#6B7280] mb-6">Enter your admin password to continue.</p>
+    <h2 class="text-xl font-bold text-[#1F2937] mb-2">Sign in to your account</h2>
+    <p class="text-sm text-[#6B7280] mb-6">We'll send a 6-digit verification code to your email.</p>
     <div class="flex flex-col gap-3">
-      <input id="pw-input" type="password" placeholder="Password"
+      <label class="text-xs text-[#374151] font-semibold uppercase tracking-wider">Admin Email</label>
+      <input id="email-input" type="email" placeholder="you@baybasi.us" autocomplete="email"
         class="border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#B91C1C]/30"/>
-      <div id="pw-error" class="text-red-600 text-xs hidden">Incorrect password. Please try again.</div>
-      <button onclick="tryLogin()"
-        class="bg-[#B91C1C] text-white rounded-full py-3 text-sm font-semibold hover:bg-[#991515] transition-colors">
-        Sign In
+      <div id="email-error" class="text-red-600 text-xs hidden"></div>
+      <button onclick="requestOtp()" id="send-otp-btn"
+        class="bg-[#B91C1C] text-white rounded-full py-3 text-sm font-semibold hover:bg-[#991515] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        Send Verification Code
       </button>
+    </div>
+    <p class="text-xs text-[#9CA3AF] mt-6 text-center">Access is restricted to authorized administrators only.</p>
+  </div>
+</div>
+
+<!-- ── Login Screen (Step 2: OTP) ───────────────────────────────────── -->
+<div id="login-otp-screen" class="hidden min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white rounded-2xl shadow-xl p-10 w-full max-w-md">
+    <div class="flex items-center gap-3 mb-8">
+      <img src="images/common/baybasi-logo.png" alt="Baybasi" style="height:48px;width:48px;object-fit:contain"/>
+      <div>
+        <div class="font-bold text-xl text-[#B91C1C]">Baybasi</div>
+        <div class="text-xs text-[#6B7280]">Verify Your Email</div>
+      </div>
+    </div>
+    <h2 class="text-xl font-bold text-[#1F2937] mb-2">Enter verification code</h2>
+    <p class="text-sm text-[#6B7280] mb-1">Sent to <span id="otp-email-display" class="font-semibold text-[#1F2937]"></span></p>
+    <p class="text-xs text-[#9CA3AF] mb-6">Code expires in 10 minutes.</p>
+    <div id="dev-otp-banner" class="hidden mb-4 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-xs text-amber-800">
+      <div class="font-semibold mb-1">⚠ Dev mode — EmailJS not configured</div>
+      <div>Your code: <span id="dev-otp-value" class="font-mono font-bold text-base"></span></div>
+      <div class="mt-1 text-amber-700">See top of <code>admin.html</code> for setup instructions.</div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <input id="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000"
+        class="otp-input border border-[#E5E7EB] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B91C1C]/30"/>
+      <div id="otp-error" class="text-red-600 text-xs hidden"></div>
+      <button onclick="verifyOtp()"
+        class="bg-[#B91C1C] text-white rounded-full py-3 text-sm font-semibold hover:bg-[#991515] transition-colors">
+        Verify & Sign In
+      </button>
+      <div class="flex items-center justify-between text-xs mt-2">
+        <button onclick="backToEmail()" class="text-[#6B7280] hover:text-[#1F2937]">← Use different email</button>
+        <button id="resend-btn" onclick="requestOtp(true)" class="text-[#B91C1C] hover:underline disabled:opacity-50 disabled:cursor-not-allowed">Resend code</button>
+      </div>
     </div>
   </div>
 </div>
@@ -64,6 +111,7 @@
         </div>
       </div>
       <div class="flex items-center gap-3">
+        <span id="who-am-i" class="hidden md:inline text-xs text-[#6B7280]"></span>
         <a href="index.html" target="_blank"
           class="text-sm text-[#6B7280] hover:text-[#1F2937] transition-colors">View Site ↗</a>
         <button onclick="doLogout()"
@@ -77,172 +125,376 @@
   <main class="max-w-6xl mx-auto px-6 py-10">
 
     <!-- Summary bar -->
-    <div class="mb-8 flex flex-wrap items-center gap-4">
+    <div class="mb-8 flex flex-wrap items-start gap-4">
       <div>
-        <h1 class="text-2xl font-bold text-[#1F2937]">Image Manager</h1>
-        <p class="text-sm text-[#6B7280] mt-0.5">Upload images per section. Changes reflect instantly in the same browser.</p>
+        <h1 class="text-2xl font-bold text-[#1F2937]">Manage Website Content</h1>
+        <p class="text-sm text-[#6B7280] mt-1 max-w-2xl">
+          Select a <span class="font-semibold text-[#1F2937]">Page</span> below, then upload images for each
+          <span class="font-semibold text-[#1F2937]">Segment</span>. Your changes will appear on the website immediately in this browser.
+        </p>
       </div>
-      <div class="ml-auto flex gap-2">
+      <div class="ml-auto flex flex-wrap gap-2">
         <button onclick="handleExport()"
-          class="text-xs border border-[#E5E7EB] rounded-full px-4 py-2 text-[#6B7280] hover:bg-[#F9F9F9] transition-colors">
-          Export Backup
+          class="text-xs border border-[#E5E7EB] bg-white rounded-full px-4 py-2 text-[#6B7280] hover:bg-[#F9F9F9] transition-colors">
+          ⬇ Export Backup
         </button>
-        <label class="text-xs border border-[#E5E7EB] rounded-full px-4 py-2 text-[#6B7280] hover:bg-[#F9F9F9] transition-colors cursor-pointer">
-          Import Backup
+        <label class="text-xs border border-[#E5E7EB] bg-white rounded-full px-4 py-2 text-[#6B7280] hover:bg-[#F9F9F9] transition-colors cursor-pointer">
+          ⬆ Import Backup
           <input type="file" accept=".json" class="hidden" onchange="handleImport(this)"/>
         </label>
         <button onclick="confirmResetAll()"
-          class="text-xs border border-red-200 rounded-full px-4 py-2 text-red-500 hover:bg-red-50 transition-colors">
+          class="text-xs border border-red-200 bg-white rounded-full px-4 py-2 text-red-500 hover:bg-red-50 transition-colors">
           Reset All
         </button>
       </div>
     </div>
 
-    <!-- Tabs -->
-    <div id="tabs" class="flex flex-wrap gap-2 mb-8"></div>
+    <!-- Page tabs -->
+    <div class="mb-3">
+      <div class="text-xs font-bold text-[#374151] uppercase tracking-wider mb-2">Choose a Page</div>
+      <div id="tabs" class="flex flex-wrap gap-2"></div>
+    </div>
 
     <!-- Panels -->
-    <div id="panels"></div>
+    <div id="panels" class="mt-8"></div>
 
   </main>
 </div>
 
 <script>
-// ── Auth ─────────────────────────────────────────────────────────────────────
-var ADMIN_PW = 'baybasi2026';  // Change this to your desired password
+/* ════════════════════════════════════════════════════════════════════════════
+   ADMIN CONFIGURATION
+   ──────────────────────────────────────────────────────────────────────────────
+   1. ADMIN_EMAILS  — list of email addresses allowed to log in.
+   2. EMAILJS_CONFIG — credentials from emailjs.com (free, ~200 emails/month).
+      Setup:
+        a) Sign up at https://www.emailjs.com (use Gmail to send)
+        b) Add an "Email Service" (e.g. Gmail) → copy serviceId
+        c) Create an "Email Template" with these vars:
+             To Email: {{to_email}}
+             Subject:  Your Baybasi Admin Code: {{otp}}
+             Body:     Your verification code is: {{otp}}
+                       This code expires in 10 minutes.
+        d) Account → API Keys → copy publicKey
+        e) Paste serviceId, templateId, publicKey below
+   3. If EMAILJS_CONFIG remains "YOUR_*", login falls back to dev mode and
+      displays the OTP on screen so you can still log in for testing.
+   ════════════════════════════════════════════════════════════════════════════ */
 
-function tryLogin() {
-  var pw = document.getElementById('pw-input').value;
-  var err = document.getElementById('pw-error');
-  if (pw === ADMIN_PW) {
-    sessionStorage.setItem('baybasi_admin', '1');
-    document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('admin-app').classList.remove('hidden');
-    initApp();
+var ADMIN_EMAILS = [
+  'baybasi@baybasi.us',
+  'admin@baybasi.us',
+  'santanu@baybasi.us',
+];
+
+var EMAILJS_CONFIG = {
+  publicKey:  'YOUR_PUBLIC_KEY',
+  serviceId:  'YOUR_SERVICE_ID',
+  templateId: 'YOUR_TEMPLATE_ID',
+};
+
+var OTP_TTL_MIN = 10;             // OTP expires in 10 min
+var SESSION_TTL_HOURS = 24;       // Auto sign-out after 24h
+var RESEND_COOLDOWN_SEC = 30;
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+
+var emailjsReady = false;
+(function initEmailJs() {
+  if (window.emailjs && EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.publicKey.indexOf('YOUR_') !== 0) {
+    try { emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey }); emailjsReady = true; }
+    catch (e) { console.warn('EmailJS init failed:', e); }
+  }
+})();
+
+function normalizeEmail(e) { return String(e || '').trim().toLowerCase(); }
+function isAllowedEmail(e) { return ADMIN_EMAILS.map(normalizeEmail).indexOf(normalizeEmail(e)) >= 0; }
+function makeOtp() { return String(Math.floor(100000 + Math.random() * 900000)); }
+
+/* ── OTP request ── */
+function requestOtp(isResend) {
+  var emailInput = document.getElementById('email-input');
+  var email = normalizeEmail(emailInput ? emailInput.value : '');
+  var pending = JSON.parse(sessionStorage.getItem('baybasi_otp_pending') || 'null');
+  if (isResend && pending) email = pending.email;
+
+  if (!email || email.indexOf('@') < 0) {
+    return showEmailError('Please enter a valid email address.');
+  }
+  if (!isAllowedEmail(email)) {
+    return showEmailError('This email is not authorized. Contact a Baybasi administrator.');
+  }
+
+  var otp = makeOtp();
+  var record = { email: email, otp: otp, expiresAt: Date.now() + OTP_TTL_MIN * 60 * 1000 };
+  sessionStorage.setItem('baybasi_otp_pending', JSON.stringify(record));
+
+  document.getElementById('otp-email-display').textContent = email;
+  document.getElementById('login-email-screen').classList.add('hidden');
+  document.getElementById('login-otp-screen').classList.remove('hidden');
+  document.getElementById('otp-input').value = '';
+  document.getElementById('otp-error').classList.add('hidden');
+  document.getElementById('otp-input').focus();
+
+  startResendCooldown();
+
+  if (emailjsReady) {
+    document.getElementById('dev-otp-banner').classList.add('hidden');
+    emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+      to_email: email,
+      otp: otp,
+    }).then(function () {
+      // Sent — nothing else to do
+    }).catch(function (err) {
+      console.error('EmailJS send failed:', err);
+      revealDevOtp(otp);
+      alert('Could not send email. Showing code on screen instead.');
+    });
   } else {
-    err.classList.remove('hidden');
-    document.getElementById('pw-input').value = '';
+    revealDevOtp(otp);
   }
 }
 
-document.getElementById('pw-input').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') tryLogin();
-});
+function revealDevOtp(otp) {
+  document.getElementById('dev-otp-value').textContent = otp;
+  document.getElementById('dev-otp-banner').classList.remove('hidden');
+}
+
+function showEmailError(msg) {
+  var err = document.getElementById('email-error');
+  err.textContent = msg;
+  err.classList.remove('hidden');
+}
+
+function startResendCooldown() {
+  var btn = document.getElementById('resend-btn');
+  var remaining = RESEND_COOLDOWN_SEC;
+  btn.disabled = true;
+  btn.textContent = 'Resend in ' + remaining + 's';
+  var t = setInterval(function () {
+    remaining--;
+    if (remaining <= 0) {
+      clearInterval(t);
+      btn.disabled = false;
+      btn.textContent = 'Resend code';
+    } else {
+      btn.textContent = 'Resend in ' + remaining + 's';
+    }
+  }, 1000);
+}
+
+function backToEmail() {
+  sessionStorage.removeItem('baybasi_otp_pending');
+  document.getElementById('login-otp-screen').classList.add('hidden');
+  document.getElementById('login-email-screen').classList.remove('hidden');
+  document.getElementById('email-error').classList.add('hidden');
+}
+
+/* ── OTP verification ── */
+function verifyOtp() {
+  var entered = String(document.getElementById('otp-input').value || '').trim();
+  var pending = JSON.parse(sessionStorage.getItem('baybasi_otp_pending') || 'null');
+  var err = document.getElementById('otp-error');
+  if (!pending) { return showOtpError('Session expired. Please request a new code.'); }
+  if (Date.now() > pending.expiresAt) {
+    sessionStorage.removeItem('baybasi_otp_pending');
+    return showOtpError('Code expired. Request a new one.');
+  }
+  if (entered !== pending.otp) { return showOtpError('Incorrect code. Try again.'); }
+
+  // Success → start session
+  var session = { email: pending.email, expiresAt: Date.now() + SESSION_TTL_HOURS * 3600 * 1000 };
+  sessionStorage.setItem('baybasi_admin_session', JSON.stringify(session));
+  sessionStorage.removeItem('baybasi_otp_pending');
+  bootIntoApp();
+}
+
+function showOtpError(msg) {
+  var err = document.getElementById('otp-error');
+  err.textContent = msg;
+  err.classList.remove('hidden');
+}
 
 function doLogout() {
-  sessionStorage.removeItem('baybasi_admin');
+  sessionStorage.removeItem('baybasi_admin_session');
+  sessionStorage.removeItem('baybasi_otp_pending');
   location.reload();
 }
 
-// Auto-login if session still valid
-if (sessionStorage.getItem('baybasi_admin') === '1') {
-  document.getElementById('login-screen').classList.add('hidden');
-  document.getElementById('admin-app').classList.remove('hidden');
+function getSession() {
+  var s = JSON.parse(sessionStorage.getItem('baybasi_admin_session') || 'null');
+  if (!s) return null;
+  if (Date.now() > s.expiresAt) { sessionStorage.removeItem('baybasi_admin_session'); return null; }
+  return s;
 }
 
-// ── Content schema ────────────────────────────────────────────────────────────
-var SECTIONS = [
-  {
-    id: 'common',
-    label: 'Common',
-    items: [
-      { key: 'logo', label: 'Site Logo', default: 'images/common/baybasi-logo.png', hint: 'Appears in navbar and footer across all pages.' },
-    ],
+function bootIntoApp() {
+  var s = getSession();
+  if (!s) return;
+  document.getElementById('login-email-screen').classList.add('hidden');
+  document.getElementById('login-otp-screen').classList.add('hidden');
+  document.getElementById('admin-app').classList.remove('hidden');
+  var who = document.getElementById('who-am-i');
+  if (who) who.textContent = 'Signed in as ' + s.email;
+  initApp();
+}
+
+/* ── Enter key handlers ── */
+document.getElementById('email-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') requestOtp();
+});
+document.getElementById('otp-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') verifyOtp();
+});
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CONTENT SCHEMA — organized as PAGES → SEGMENTS → IMAGES
+   Edit labels and hints below to add or rename items for content editors.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+var PAGES = [
+  { id: 'common', name: 'Site-wide (Header / Logo)',
+    segments: [
+      { id: 'brand', name: 'Brand Logo', desc: 'Logo shown in the navbar and footer on every page.',
+        images: [
+          { key: 'logo', label: 'Site Logo', default: 'images/common/baybasi-logo.png',
+            hint: 'Square PNG, transparent background, min 256×256 px. Appears top-left of every page.' },
+        ]},
+    ]
   },
-  {
-    id: 'home',
-    label: 'Home',
-    items: [
-      { key: 'home_hero_bg',   label: 'Hero Background',     default: 'images/home/hero-bg.jpg',   hint: 'Full-screen hero image on the home page.' },
-      { key: 'home_about_1',  label: 'About Panel 1',       default: 'images/home/about-1.jpg',   hint: 'First About panel image.' },
-      { key: 'home_about_2',  label: 'About Panel 2',       default: 'images/home/about-2.jpg',   hint: 'Second About panel image.' },
-      { key: 'home_about_3',  label: 'About Panel 3',       default: 'images/home/about-3.jpg',   hint: 'Third About panel image.' },
-      { key: 'home_about_4',  label: 'About Panel 4',       default: 'images/home/about-4.jpg',   hint: 'Fourth About panel image.' },
-    ],
+
+  { id: 'home', name: 'Home Page',
+    segments: [
+      { id: 'home_hero', name: 'Hero Section', desc: 'Top banner of the home page with the looping video and tagline.',
+        images: [
+          { key: 'home_hero_bg', label: 'Hero Background (Video Poster)', default: 'images/events/cards/picnic-2026-hero.png',
+            hint: 'Wide landscape JPG, min 1920×1080 px. Used as a backup when the video is loading.' },
+        ]},
+      { id: 'home_about', name: 'About Us — 4 Panels', desc: 'The four About panels (Our Story, Purpose, Major Events, Performance).',
+        images: [
+          { key: 'home_about_1', label: 'Panel 1 — Our Story',       default: 'images/about/about-hero-community.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_2', label: 'Panel 2 — Our Purpose',     default: 'images/impacts/impact-hero-community.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_3', label: 'Panel 3 — Major Events',    default: 'images/events/cards/durga-puja-2026.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_4', label: 'Panel 4 — Our Performance', default: 'images/events/cards/iman-chakraborty-concert-2026.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+        ]},
+    ]
   },
-  {
-    id: 'about',
-    label: 'About Us',
-    items: [
-      { key: 'about_hero',     label: 'Hero Image',          default: 'images/about/hero.jpg',     hint: 'About page hero section background.' },
-      { key: 'about_team_1',   label: 'Team Photo 1',        default: 'images/about/team-1.jpg',   hint: 'Leadership / team photo 1.' },
-      { key: 'about_team_2',   label: 'Team Photo 2',        default: 'images/about/team-2.jpg',   hint: 'Leadership / team photo 2.' },
-    ],
+
+  { id: 'about', name: 'About Us Page',
+    segments: [
+      { id: 'about_hero', name: 'Hero Section', desc: 'Top banner background image on the About Us page.',
+        images: [
+          { key: 'about_hero', label: 'Hero Background', default: 'images/about/about-hero-community.png',
+            hint: 'Wide landscape JPG, min 1920×1080 px.' },
+        ]},
+      { id: 'about_directors', name: 'Board of Directors', desc: 'Headshot photos shown in the Board of Directors grid.',
+        images: [
+          { key: 'director_suman',     label: 'Suman Debnath',        default: 'images/about/director-suman-debnath.jpg',        hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_nilanjan',  label: 'Nilanjan Debroy',      default: 'images/about/director-nilanjan-debroy.jpg',      hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_prithwiraj',label: 'Prithwiraj Mitra',     default: 'images/about/director-prithwiraj-mitra.jpg',     hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_raj',       label: 'Raj Tiwari',           default: 'images/about/director-raj-tiwari.jpg',           hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_sukalyan',  label: 'Sukalyan Chakraborty', default: 'images/about/director-sukalyan-chakraborty.jpg', hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_swati',     label: 'Swati Chakraborty',    default: 'images/about/director-swati-chakraborty.jpg',    hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_manjira',   label: 'Manjira Datta',        default: 'images/about/director-manjira-datta.png',        hint: 'Square headshot. Min 400×400 px. Face centered.' },
+        ]},
+    ]
   },
-  {
-    id: 'impacts',
-    label: 'Impacts',
-    items: [
-      { key: 'impacts_hero',   label: 'Hero Image',          default: 'images/impacts/hero.jpg',   hint: 'Impacts page hero section background.' },
-      { key: 'impacts_photo1', label: 'Impact Photo 1',      default: 'images/impacts/photo1.jpg', hint: 'Shown next to first testimony.' },
-      { key: 'impacts_photo2', label: 'Impact Photo 2',      default: 'images/impacts/photo2.jpg', hint: 'Shown next to second testimony.' },
-      { key: 'impacts_photo3', label: 'Impact Photo 3',      default: 'images/impacts/photo3.jpg', hint: 'Shown next to third testimony.' },
-    ],
+
+  { id: 'impacts', name: 'Impacts Page',
+    segments: [
+      { id: 'impacts_hero', name: 'Hero Section', desc: 'Top banner background on the Impacts page.',
+        images: [
+          { key: 'impacts_hero', label: 'Hero Background', default: 'images/impacts/impact-hero-community.png',
+            hint: 'Wide landscape JPG, min 1920×1080 px.' },
+        ]},
+      { id: 'impacts_stories', name: 'Impact Stories', desc: 'Photos shown alongside each impact testimony.',
+        images: [
+          { key: 'impacts_photo1', label: 'Story 1 Photo', default: 'images/impacts/impact-hero-community.png', hint: 'Min 1200×800 px.' },
+          { key: 'impacts_photo2', label: 'Story 2 Photo', default: 'images/about/about-hero-community.png', hint: 'Min 1200×800 px.' },
+          { key: 'impacts_photo3', label: 'Story 3 Photo', default: 'images/events/cards/durga-puja-2026.png', hint: 'Min 1200×800 px.' },
+        ]},
+    ]
   },
-  {
-    id: 'events',
-    label: 'Events',
-    items: [
-      { key: 'event_spring_fest', label: 'Spring Fest',      default: 'images/events/spring-fest/cover.jpg',  hint: 'Cover photo for Spring Fest.' },
-      { key: 'event_holi',        label: 'Holi',             default: 'images/events/holi/cover.jpg',         hint: 'Cover photo for Holi event.' },
-      { key: 'event_boishakhi',   label: 'Boishakhi Mela',   default: 'images/events/boishakhi/cover.jpg',    hint: 'Cover photo for Boishakhi Mela.' },
-      { key: 'event_autumn_fest', label: 'Autumn Fest',      default: 'images/events/autumn-fest/cover.jpg',  hint: 'Cover photo for Autumn Fest.' },
-      { key: 'event_diwali',      label: 'Diwali Night',     default: 'images/events/diwali/cover.jpg',       hint: 'Cover photo for Diwali Night.' },
-      { key: 'event_picnic',      label: 'Annual Picnic',    default: 'images/events/picnic/cover.jpg',       hint: 'Cover photo for Annual Picnic.' },
-    ],
+
+  { id: 'events', name: 'Events Page',
+    segments: [
+      { id: 'events_covers', name: 'Event Cover Photos', desc: 'Each card on the Events page uses one cover photo.',
+        images: [
+          { key: 'event_spring_fest', label: 'Spring Fest',    default: 'images/events/flyers/spring-fest.jpg', hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_holi',        label: 'Holi',           default: 'images/events/flyers/holi.jpg',        hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_boishakhi',   label: 'Boishakhi Mela', default: 'images/events/cards/boishakhi.svg',   hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_autumn_fest', label: 'Autumn Fest',    default: 'images/events/cards/durga-puja-2026.png', hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_diwali',      label: 'Diwali Night',   default: 'images/events/cards/town-hall.svg',      hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_picnic',      label: 'Annual Picnic',  default: 'images/events/cards/picnic-2026-hero.png',      hint: 'Landscape 16:9, min 1600×900 px.' },
+        ]},
+    ]
   },
-  {
-    id: 'sponsors',
-    label: 'Sponsors',
-    items: [
-      { key: 'sp_indian_grocery',  label: 'India Grocery & Spice',    default: 'images/sponsors/indian_grocery_image001.png',                         hint: 'Platinum sponsor logo.' },
-      { key: 'sp_future_right',    label: 'Future Right',             default: 'images/sponsors/future_right_v2-768x644.png',                         hint: 'Platinum sponsor logo.' },
-      { key: 'sp_zaman',           label: 'Zaman / Cal Coast',        default: 'images/sponsors/zaman-1024x571.jpeg',                                  hint: 'Gold sponsor logo.' },
-      { key: 'sp_ask_for_cure',    label: 'Ask For Cure',             default: 'images/sponsors/I-693_New-1024x683.jpeg',                              hint: 'Gold sponsor logo.' },
-      { key: 'sp_ravi',            label: 'Ravi Jagtiani',            default: 'images/sponsors/ravi_jagtiani_new-1024x512.jpg',                       hint: 'Silver sponsor logo.' },
-      { key: 'sp_ramez',           label: 'Ramez Tabri Real Estate',  default: 'images/sponsors/ramez_tabri_updated.jpg',                              hint: 'Silver sponsor logo.' },
-      { key: 'sp_first_bank',      label: 'First Bank',               default: 'images/sponsors/first_bank.png',                                       hint: 'Silver sponsor logo.' },
-      { key: 'sp_kids_connection', label: 'Kids Connection Schools',  default: 'images/sponsors/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg', hint: 'Silver sponsor logo.' },
-      { key: 'sp_bmo',             label: 'BMO',                      default: 'images/sponsors/BMO_Updated-768x440.png',                              hint: 'Bronze sponsor logo.' },
-      { key: 'sp_rosalind',        label: 'Rosalind Chin',            default: 'images/sponsors/rosalind_chin.png',                                    hint: 'Bronze sponsor logo.' },
-      { key: 'sp_ebiw',            label: 'EBIW',                     default: 'images/sponsors/ebiw-768x122.png',                                     hint: 'Bronze sponsor logo.' },
-      { key: 'sp_shiraz',          label: 'Shiraz Zack Real Estate',  default: 'images/sponsors/kw_PHOTO-2022-09-12-21-14-21.jpg',                     hint: 'Bronze sponsor logo.' },
-      { key: 'sp_jaspreet',        label: 'Jaspreet',                 default: 'images/sponsors/Jaspreet-768x621.png',                                 hint: 'Classic sponsor logo.' },
-      { key: 'sp_nanda',           label: 'Nanda Cal Realty',         default: 'images/sponsors/Mamta_logo_new-scaled-1-768x512.jpg',                  hint: 'Classic sponsor logo.' },
-      { key: 'sp_andrew',          label: 'Andrew Klink',             default: 'images/sponsors/Andrew_Klink_2-scaled-1-768x432.jpeg',                 hint: 'Classic sponsor logo.' },
-      { key: 'sp_gama_ride',       label: 'Gama Ride',                default: 'images/sponsors/gama_ride_working-1.png',                              hint: 'Classic sponsor logo.' },
-    ],
+
+  { id: 'sponsors', name: 'Sponsors Page',
+    segments: [
+      { id: 'sp_platinum', name: 'Platinum Tier (Largest)', desc: 'Top tier — biggest logo display. Wide horizontal logos look best.',
+        images: [
+          { key: 'sp_indian_grocery', label: 'India Grocery & Spice', default: 'images/sponsors/indian_grocery_image001.png',  hint: 'Wide landscape, min 1200×600 px. Will fill the card.' },
+          { key: 'sp_future_right',   label: 'Future Right',          default: 'images/sponsors/future_right_v2-768x644.png',  hint: 'Wide landscape, min 1200×600 px. Will fill the card.' },
+        ]},
+      { id: 'sp_gold', name: 'Gold Tier', desc: 'Second tier — large logos.',
+        images: [
+          { key: 'sp_zaman',        label: 'Zaman / Cal Coast', default: 'images/sponsors/zaman-1024x571.jpeg', hint: 'Min 1000×500 px.' },
+          { key: 'sp_ask_for_cure', label: 'Ask For Cure',      default: 'images/sponsors/I-693_New-1024x683.jpeg', hint: 'Min 1000×500 px.' },
+        ]},
+      { id: 'sp_silver', name: 'Silver Tier', desc: 'Mid-tier logos.',
+        images: [
+          { key: 'sp_ravi',            label: 'Ravi Jagtiani',           default: 'images/sponsors/ravi_jagtiani_new-1024x512.jpg', hint: 'Min 800×400 px.' },
+          { key: 'sp_ramez',           label: 'Ramez Tabri Real Estate', default: 'images/sponsors/ramez_tabri_updated.jpg',       hint: 'Min 800×400 px.' },
+          { key: 'sp_first_bank',      label: 'First Bank',              default: 'images/sponsors/first_bank.png',                hint: 'Min 800×400 px.' },
+          { key: 'sp_kids_connection', label: 'Kids Connection Schools', default: 'images/sponsors/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg', hint: 'Min 800×400 px.' },
+        ]},
+      { id: 'sp_bronze', name: 'Bronze Tier', desc: 'Smaller tier logos.',
+        images: [
+          { key: 'sp_bmo',      label: 'BMO',                     default: 'images/sponsors/BMO_Updated-768x440.png',           hint: 'Min 600×300 px.' },
+          { key: 'sp_rosalind', label: 'Rosalind Chin',           default: 'images/sponsors/rosalind_chin.png',                 hint: 'Min 600×300 px.' },
+          { key: 'sp_ebiw',     label: 'EBIW',                    default: 'images/sponsors/ebiw-768x122.png',                  hint: 'Min 600×300 px.' },
+          { key: 'sp_shiraz',   label: 'Shiraz Zack Real Estate', default: 'images/sponsors/kw_PHOTO-2022-09-12-21-14-21.jpg',  hint: 'Min 600×300 px.' },
+        ]},
+      { id: 'sp_classic', name: 'Classic Tier (Smallest)', desc: 'Smallest tier logos.',
+        images: [
+          { key: 'sp_jaspreet',  label: 'Jaspreet',         default: 'images/sponsors/Jaspreet-768x621.png',               hint: 'Min 400×300 px.' },
+          { key: 'sp_nanda',     label: 'Nanda Cal Realty', default: 'images/sponsors/Mamta_logo_new-scaled-1-768x512.jpg', hint: 'Min 400×300 px.' },
+          { key: 'sp_andrew',    label: 'Andrew Klink',     default: 'images/sponsors/Andrew_Klink_2-scaled-1-768x432.jpeg', hint: 'Min 400×300 px.' },
+          { key: 'sp_gama_ride', label: 'Gama Ride',        default: 'images/sponsors/gama_ride_working-1.png',             hint: 'Min 400×300 px.' },
+        ]},
+    ]
   },
 ];
 
-// ── App ───────────────────────────────────────────────────────────────────────
-var currentTab = SECTIONS[0].id;
+/* ── App ─────────────────────────────────────────────────────────────────── */
+var currentTab = PAGES[0].id;
 
 function initApp() {
   renderTabs();
   renderPanels();
-  showTab(SECTIONS[0].id);
+  showTab(PAGES[0].id);
 }
 
 function renderTabs() {
   var container = document.getElementById('tabs');
   container.innerHTML = '';
-  SECTIONS.forEach(function(sec) {
+  PAGES.forEach(function (p) {
     var btn = document.createElement('button');
     btn.className = 'tab-btn';
-    btn.id = 'tab-' + sec.id;
-    btn.textContent = sec.label;
-    btn.onclick = function() { showTab(sec.id); };
+    btn.id = 'tab-' + p.id;
+    btn.textContent = p.name;
+    btn.onclick = function () { showTab(p.id); };
     container.appendChild(btn);
   });
 }
 
 function showTab(id) {
   currentTab = id;
-  SECTIONS.forEach(function(sec) {
-    var btn = document.getElementById('tab-' + sec.id);
-    var panel = document.getElementById('panel-' + sec.id);
-    if (sec.id === id) {
+  PAGES.forEach(function (p) {
+    var btn = document.getElementById('tab-' + p.id);
+    var panel = document.getElementById('panel-' + p.id);
+    if (p.id === id) {
       btn.classList.add('active');
       panel.classList.remove('hidden');
     } else {
@@ -255,53 +507,91 @@ function showTab(id) {
 function renderPanels() {
   var container = document.getElementById('panels');
   container.innerHTML = '';
-  SECTIONS.forEach(function(sec) {
+  PAGES.forEach(function (p) {
     var panel = document.createElement('div');
-    panel.id = 'panel-' + sec.id;
-    panel.className = 'hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5';
-    sec.items.forEach(function(item) {
-      panel.appendChild(renderCard(item));
+    panel.id = 'panel-' + p.id;
+    panel.className = 'hidden';
+
+    // Page header
+    var head = document.createElement('div');
+    head.className = 'mb-6';
+    head.innerHTML =
+      '<div class="text-xs uppercase tracking-widest text-[#B91C1C] font-bold">Page</div>' +
+      '<h2 class="text-3xl font-bold text-[#1F2937] mt-1">' + escHtml(p.name) + '</h2>' +
+      '<p class="text-sm text-[#6B7280] mt-1">' + p.segments.length + ' segment' + (p.segments.length > 1 ? 's' : '') + ' · ' +
+        p.segments.reduce(function (n, s) { return n + s.images.length; }, 0) + ' image' +
+        (p.segments.reduce(function (n, s) { return n + s.images.length; }, 0) > 1 ? 's' : '') + '</p>';
+    panel.appendChild(head);
+
+    p.segments.forEach(function (seg) {
+      panel.appendChild(renderSegment(p, seg));
     });
+
     container.appendChild(panel);
   });
+}
+
+function renderSegment(page, seg) {
+  var wrap = document.createElement('div');
+  wrap.className = 'segment-card';
+
+  var header = document.createElement('div');
+  header.className = 'mb-5 pb-4 border-b border-[#F1F1F1]';
+  header.innerHTML =
+    '<div class="flex items-baseline gap-2 flex-wrap">' +
+      '<span class="badge bg-amber-100 text-amber-800">Segment</span>' +
+      '<h3 class="font-bold text-[#1F2937] text-lg">' + escHtml(seg.name) + '</h3>' +
+    '</div>' +
+    '<p class="text-sm text-[#6B7280] mt-1">' + escHtml(seg.desc) + '</p>';
+  wrap.appendChild(header);
+
+  var grid = document.createElement('div');
+  grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5';
+  seg.images.forEach(function (item) {
+    grid.appendChild(renderCard(item));
+  });
+  wrap.appendChild(grid);
+
+  return wrap;
 }
 
 function renderCard(item) {
   var key = item.key;
   var current = ContentStore.img(key, item.default);
-  var isOverridden = !!ContentStore.keys().find(function(k) { return k === key; });
+  var isOverridden = !!ContentStore.keys().find(function (k) { return k === key; });
 
   var card = document.createElement('div');
-  card.className = 'card flex flex-col gap-4';
+  card.className = 'card flex flex-col gap-3';
   card.id = 'card-' + key;
 
   card.innerHTML =
     '<div class="flex items-start justify-between gap-2">' +
-      '<div>' +
+      '<div class="min-w-0">' +
         '<div class="font-semibold text-[#1F2937] text-sm">' + escHtml(item.label) + '</div>' +
-        '<div class="text-xs text-[#9CA3AF] mt-0.5">' + escHtml(item.hint) + '</div>' +
+        '<div class="text-xs text-[#9CA3AF] mt-0.5 leading-snug">' + escHtml(item.hint) + '</div>' +
       '</div>' +
       (isOverridden
         ? '<span class="badge bg-green-100 text-green-700 flex-shrink-0">Custom</span>'
         : '<span class="badge bg-gray-100 text-gray-500 flex-shrink-0">Default</span>') +
     '</div>' +
-    '<div class="flex items-center justify-center bg-[#F9F9F9] rounded-xl p-3" style="min-height:80px">' +
+    '<div class="flex items-center justify-center bg-[#FAFAFA] rounded-xl p-2" style="min-height:120px">' +
       '<img id="thumb-' + key + '" src="' + escHtml(current) + '" alt="' + escHtml(item.label) + '" class="thumb" onerror="this.style.opacity=0.2"/>' +
     '</div>' +
-    '<label class="drop-zone rounded-xl p-4 flex flex-col items-center gap-2 cursor-pointer text-center" id="dz-' + key + '">' +
-      '<svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" style="width:28px;height:28px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>' +
-      '<span class="text-xs text-[#9CA3AF]">Click or drag & drop an image</span>' +
+    '<label class="drop-zone rounded-xl p-4 flex flex-col items-center gap-1.5 cursor-pointer text-center" id="dz-' + key + '">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" style="width:24px;height:24px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>' +
+      '<span class="text-xs text-[#6B7280] font-medium">Click or drag &amp; drop a new image</span>' +
+      '<span class="text-[10px] text-[#9CA3AF]">JPG, PNG, or WebP</span>' +
       '<input type="file" accept="image/*" class="hidden" onchange="handleUpload(\'' + key + '\', this, ' + JSON.stringify(item.default) + ')"/>' +
     '</label>' +
     (isOverridden
-      ? '<button class="text-xs text-red-400 hover:text-red-600 transition-colors underline" onclick="handleReset(\'' + key + '\', ' + JSON.stringify(item.default) + ')">Reset to default</button>'
+      ? '<button class="text-xs text-red-400 hover:text-red-600 transition-colors underline self-start" onclick="handleReset(\'' + key + '\', ' + JSON.stringify(item.default) + ')">Reset to default</button>'
       : '');
 
   // Drag-and-drop
   var dz = card.querySelector('#dz-' + key);
-  dz.addEventListener('dragover', function(e) { e.preventDefault(); dz.classList.add('drag-over'); });
-  dz.addEventListener('dragleave', function() { dz.classList.remove('drag-over'); });
-  dz.addEventListener('drop', function(e) {
+  dz.addEventListener('dragover', function (e) { e.preventDefault(); dz.classList.add('drag-over'); });
+  dz.addEventListener('dragleave', function () { dz.classList.remove('drag-over'); });
+  dz.addEventListener('drop', function (e) {
     e.preventDefault();
     dz.classList.remove('drag-over');
     var file = e.dataTransfer.files[0];
@@ -311,6 +601,16 @@ function renderCard(item) {
   return card;
 }
 
+function findItem(key) {
+  for (var i = 0; i < PAGES.length; i++) {
+    for (var j = 0; j < PAGES[i].segments.length; j++) {
+      var found = PAGES[i].segments[j].images.find(function (im) { return im.key === key; });
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
 function handleUpload(key, input, defaultSrc) {
   var file = input.files[0];
   if (!file) return;
@@ -318,9 +618,9 @@ function handleUpload(key, input, defaultSrc) {
 }
 
 function processFile(key, file, defaultSrc) {
-  ContentStore.readFile(file, key, function(k, dataUrl) {
+  ContentStore.readFile(file, key, function (k) {
     refreshCard(k, defaultSrc);
-    showToast('Image updated! Reload the site page to see changes.');
+    showToast('Image updated — reload the website page to see changes.');
   });
 }
 
@@ -331,50 +631,45 @@ function handleReset(key, defaultSrc) {
   showToast('Reset to default.');
 }
 
-function refreshCard(key, defaultSrc) {
-  var section = SECTIONS.find(function(s) { return s.items.find(function(i) { return i.key === key; }); });
-  if (!section) return;
-  var item = section.items.find(function(i) { return i.key === key; });
+function refreshCard(key) {
+  var item = findItem(key);
   if (!item) return;
   var card = document.getElementById('card-' + key);
   if (!card) return;
   var newCard = renderCard(item);
   card.replaceWith(newCard);
-  // Re-attach drag events (already done in renderCard)
 }
 
 function confirmResetAll() {
-  if (!confirm('This will delete ALL custom image uploads and revert every image to its default. Continue?')) return;
-  ContentStore.keys().forEach(function(k) { ContentStore.resetImg(k); });
+  if (!confirm('This will delete ALL custom uploads and revert every image to its default. Continue?')) return;
+  ContentStore.keys().forEach(function (k) { ContentStore.resetImg(k); });
   renderPanels();
   showTab(currentTab);
   showToast('All images reset to defaults.');
 }
 
-function handleExport() {
-  ContentStore.exportJSON();
-}
+function handleExport() { ContentStore.exportJSON(); }
 
 function handleImport(input) {
   var file = input.files[0];
   if (!file) return;
-  ContentStore.importJSON(file, function(count) {
+  ContentStore.importJSON(file, function (count) {
     renderPanels();
     showTab(currentTab);
     showToast('Imported ' + count + ' image(s). Reload site pages to see changes.');
   });
 }
 
-// ── Toast ─────────────────────────────────────────────────────────────────────
+/* ── Toast ──────────────────────────────────────────────────────────────── */
 function showToast(msg) {
   var t = document.createElement('div');
   t.style.cssText = 'position:fixed;bottom:1.5rem;right:1.5rem;background:#1F2937;color:#fff;border-radius:9999px;padding:0.625rem 1.25rem;font-size:0.82rem;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:opacity 0.4s';
   t.textContent = msg;
   document.body.appendChild(t);
-  setTimeout(function() { t.style.opacity = '0'; setTimeout(function() { t.remove(); }, 400); }, 3000);
+  setTimeout(function () { t.style.opacity = '0'; setTimeout(function () { t.remove(); }, 400); }, 3000);
 }
 
-// ── Utils ─────────────────────────────────────────────────────────────────────
+/* ── Utils ──────────────────────────────────────────────────────────────── */
 function escHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -383,10 +678,8 @@ function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// Auto-init if already logged in
-if (sessionStorage.getItem('baybasi_admin') === '1') {
-  initApp();
-}
+/* ── Auto-boot if still logged in ──────────────────────────────────────── */
+if (getSession()) bootIntoApp();
 </script>
 </body>
 </html>

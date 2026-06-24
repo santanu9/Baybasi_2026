@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net"/>
+  <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
+  <link rel="preload" href="js/components.js?v=17" as="script"/>
+  <title>Baybasi – Bay Area Bengali &amp; Indian Cultural Organization</title>
+  <meta name="description" content="Baybasi is the SF Bay Area's premier Indian cultural nonprofit, celebrating Bengali heritage, organizing spectacular events, and giving back to communities since 2000."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+          },
+          borderRadius: { DEFAULT: '9999px' },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=12"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.Motion || window.FramerMotion;</script>
+</head>
+<body class="bg-[#FFF7ED]">
+<div id="root"></div>
+<script src="js/components.js?v=17"></script>
+<script>
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  motion
+} = Motion;
+const HERO_VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4";
+// Locally-hosted 3D-rendered Durga Puja gallery background (Blender/EEVEE, web-optimized faststart MP4).
+// Previous external source: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4
+const CAP_VIDEO = "images/home/durga-puja-bg.mp4";
+const sa = (delay = 0) => ({
+  initial: {
+    opacity: 0,
+    y: 42,
+    scale: 0.975,
+    filter: 'blur(10px)'
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)'
+  },
+  viewport: {
+    once: true,
+    amount: 0.16,
+    margin: '0px 0px -6% 0px'
+  },
+  transition: {
+    duration: 0.78,
+    delay: Math.min(delay, 0.42),
+    ease: [0.22, 1, 0.36, 1]
+  },
+  style: {
+    willChange: 'transform, opacity, filter'
+  }
+});
+
+// ── Animated counter ─────────────────────────────────────────────────────
+// Parses a value like "25+", "$100K+", "2,500+" into prefix/number/suffix,
+// then counts from 0 → target with an ease-out curve when scrolled into view.
+function AnimatedCounter({ value, duration = 2400, delay = 250 }) {
+  const h = React.createElement;
+  const m = String(value).match(/^(\$?)([0-9,]+)(.*)$/);
+  if (!m) return h("span", null, value);
+  const prefix = m[1] || '';
+  const rawNum = m[2];
+  const targetNum = parseInt(rawNum.replace(/,/g, ''), 10);
+  const suffix = m[3] || '';
+  const hasComma = rawNum.includes(',');
+
+  const [current, setCurrent] = React.useState(0);
+  const ref = React.useRef(null);
+  const started = React.useRef(false);
+
+  React.useEffect(function () {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !started.current) {
+        started.current = true;
+        setTimeout(function () {
+          const startTime = performance.now();
+          function step(now) {
+            const t = Math.min((now - startTime) / duration, 1);
+            // ease-out cubic gives a satisfying fast-start, slow-finish feel
+            const eased = 1 - Math.pow(1 - t, 3);
+            setCurrent(Math.round(targetNum * eased));
+            if (t < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }, delay);
+      }
+    }, { threshold: 0.25 });
+    obs.observe(el);
+    return function () { obs.disconnect(); };
+  }, [targetNum, duration, delay]);
+
+  const formatted = hasComma ? current.toLocaleString() : current.toString();
+  return h("span", { ref: ref }, prefix + formatted + suffix);
+}
+
+// ── Hero ──────────────────────────────────────────────────────────────────
+function HeroSection() {
+  const h = React.createElement;
+  const stats = [
+    { value: '25+',     label: 'Years of Service' },
+    { value: '200+',    label: 'Festivals & Programs' },
+    { value: '2,500+',  label: 'Artists & Performers' },
+    { value: '$100K+',  label: 'Donated to Charity' },
+    { value: '6K+',     label: 'Volunteering Hours' },
+    { value: '250K+',   label: 'Lives Touched' },
+  ];
+
+  return h("section", {
+    className: "relative w-full min-h-[100svh] bg-[#FFF7ED] overflow-hidden flex flex-col"
+  },
+    h("video", {
+      src: HERO_VIDEO,
+      className: "absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top z-0",
+      style: { width: '120%', height: '120%' },
+      autoPlay: true,
+      muted: true,
+      playsInline: true,
+      loop: true,
+      preload: "auto",
+      "aria-hidden": "true"
+    }),
+    h("div", {
+      className: "absolute inset-0 z-[1] pointer-events-none",
+      style: {
+        background: 'linear-gradient(180deg, rgba(255,247,237,0.80) 0%, rgba(255,247,237,0.68) 48%, rgba(255,228,214,0.52) 78%, rgba(79,55,52,0.42) 100%)'
+      }
+    }),
+    h("div", { className: "relative z-10 flex flex-col min-h-[100svh] pt-[72px]" },
+      h("div", { className: "flex-1 flex flex-col items-center justify-center px-4 py-8 md:py-10" },
+        h(motion.div, {
+          className: "liquid-glass rounded-full flex flex-wrap items-center justify-center gap-2 mb-4 md:mb-6 max-w-[calc(100vw-2rem)]",
+          style: { padding: '6px' },
+          initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
+          animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay: 0.4, ease: 'easeOut' }
+        },
+          h("span", { className: "bg-white text-[#1F2937] rounded-full px-3 py-1 text-xs font-semibold font-body" }, "Est. 2000"),
+          h("span", { className: "text-sm text-[#7F1D1D] font-body font-medium pr-3" }, "Bay Area's Premier Indian Cultural Organization")
+        ),
+        h(BlurText, {
+          text: "Celebrate Our Heritage Across the Bay Area",
+          className: "font-heading text-[#7F1D1D] leading-[0.94] w-full max-w-[80rem] px-2 text-center",
+          style: {
+            fontSize: 'clamp(2.35rem, 6vw, 5.5rem)',
+            textShadow: '0 2px 18px rgba(255,247,237,0.95)'
+          }
+        }),
+        h(motion.p, {
+          className: "mt-4 text-sm md:text-base text-[#1F2937] max-w-2xl text-center font-body font-medium leading-snug px-2",
+          initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
+          animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay: 0.8, ease: 'easeOut' }
+        }, "From humble beginnings in Foster City to a vibrant community of thousands — Baybasi preserves Indian cultural heritage, organizes spectacular events, and gives back with purpose and pride."),
+        h(motion.div, {
+          className: "flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-5 md:mt-6",
+          initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
+          animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay: 1.1, ease: 'easeOut' }
+        },
+          h("a", { href: "join-us.html", className: "bg-[#B91C1C] rounded-full px-5 py-2.5 text-sm font-semibold text-white flex items-center gap-1.5" },
+            "Join Baybasi ", h(ArrowUpRight, { className: "h-4 w-4" })
+          ),
+          h("a", { href: "events.html", className: "liquid-glass rounded-full px-5 py-2.5 text-sm font-semibold text-[#1F2937] flex items-center gap-1.5" },
+            h(PlayIcon, { className: "h-4 w-4 text-[#B91C1C]" }), "View Events"
+          )
+        ),
+        h(motion.div, {
+          className: "w-full max-w-4xl mt-7 md:mt-10",
+          initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
+          animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay: 1.3, ease: 'easeOut' }
+        },
+          h("div", {
+            className: "liquid-glass rounded-2xl grid grid-cols-3 md:grid-cols-6",
+            style: { borderTop: '1px solid rgba(255,255,255,0.12)' }
+          }, stats.map(function (s, i) {
+            return h("div", {
+              key: s.label,
+              className: "flex flex-col items-center justify-center py-5 px-3 gap-1",
+              style: { borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.1)' : 'none' }
+            },
+              h("span", { className: "font-heading text-[#1F2937] text-2xl md:text-3xl leading-none tracking-tight tabular-nums" },
+                h(AnimatedCounter, { value: s.value, duration: 2200, delay: 250 + i * 140 })
+              ),
+              h("span", { className: "text-[10px] font-body text-center leading-tight text-[#1F2937] font-medium" }, s.label)
+            );
+          }))
+        ),
+        h(motion.div, {
+          className: "flex flex-col items-center gap-3 md:gap-4 mt-7 md:mt-10",
+          initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
+          animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay: 1.4, ease: 'easeOut' }
+        },
+          h("div", { className: "liquid-glass rounded-full px-3.5 py-1" },
+            h("span", { className: "text-xs font-medium text-[#1F2937] font-body" }, "Celebrating India's rich cultural tapestry")
+          ),
+          h("div", {
+            className: "flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:gap-10 lg:gap-14 px-5 py-2"
+          },
+            ['Spring Fest', 'Holi', 'Boishakhi', 'Autumn Fest', 'Diwali'].map(function (name) {
+              return h("span", {
+                key: name,
+                className: "font-heading text-[#7F1D1D] text-lg md:text-2xl",
+                style: { textShadow: '0 1px 10px rgba(255,247,237,0.92)' }
+              }, name);
+            })
+          )
+        )
+      )
+    )
+  );
+}
+
+// ── ScrollOverVideo: ONE sticky background video; all sections roll over it ──
+function ScrollOverVideo({ children }) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "relative",
+    style: { background: '#1F2937' }
+  },
+    /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: 'sticky',
+        top: '72px',
+        height: 'calc(100vh - 72px)',
+        width: '100%',
+        overflow: 'hidden',
+        zIndex: 0
+      }
+    },
+      /*#__PURE__*/React.createElement(FadingVideo, {
+        src: CAP_VIDEO,
+        className: "absolute inset-0 w-full h-full object-cover"
+      }),
+      /*#__PURE__*/React.createElement("div", {
+        className: "absolute inset-0 pointer-events-none",
+        style: {
+          background: 'linear-gradient(180deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.38) 34%, rgba(0,0,0,0.42) 66%, rgba(0,0,0,0.58) 100%), radial-gradient(circle at 50% 38%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 72%)'
+        }
+      })
+    ),
+    /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: 'relative',
+        marginTop: 'calc(-100vh + 72px)',
+        zIndex: 10
+      }
+    }, children)
+  );
+}
+
+// ── Upcoming Events — horizontal scroller; each card has a picture, the verse,
+//    and a "Know more" button that pops up the event flyer in a modal ──────────
+function UpcomingEventsSection() {
+  const h = React.createElement;
+  const scrollerRef = React.useRef(null);
+
+  const allEvents = [
+    { monthNum: 8,  date: 'Sat, Aug 15, 2026',        tag: 'Members Only',     title: 'Summer Picnic',              desc: 'A day of live food, games, music, sunshine, laughter, and soulful adda beside the lake.', place: 'Quarry Lakes, South Ensenada Picnic Area, Fremont', time: '11:30 AM – 6:00 PM', img: 'images/events/cards/picnic-2026-banner.png?v=2', flyer: 'images/events/flyers/picnic-2026.png' },
+    { monthNum: 10, date: 'Fri, Oct 16, 2026',        tag: 'Dandiya Night',    title: 'Dandiya',                    desc: 'An energetic evening of Dandiya, community celebration, and dinner during the Autumn Festival weekend.', place: 'Foster City Community Center', time: 'TBD', img: 'images/events/cards/dandiya-night-2026.png', flyer: null, disableKnowMore: true },
+    { monthNum: 10, date: 'Fri–Sun, Oct 16–18, 2026', tag: 'Durga Puja',       title: 'Autumn Festival',            desc: 'Durga Puja and Dandiya with cultural programs, international artists, lunch, dinner, and Indian fair.', place: 'Foster City Community Center', time: 'All weekend', img: 'images/events/cards/durga-puja-2026.png', flyer: null, disableKnowMore: true },
+    { monthNum: 10, date: 'Sun, Oct 18, 2026',        tag: 'Live Concert',     title: 'Concert - Iman',             desc: 'A live concert by acclaimed Bengali playback singer Iman Chakraborty, presented during Baybasi’s Autumn Festival.', place: 'Foster City Community Center', time: 'TBD', img: 'images/events/cards/iman-chakraborty-concert-2026.png?v=2', flyer: null, disableKnowMore: true }
+  ];
+
+  // Always start at the current month; events that have already passed this year go to the end.
+  const curMonth = new Date().getMonth() + 1; // 1-12
+  const isPast = (e) => e.monthNum < curMonth;
+  const events = allEvents.slice().sort((a, b) => {
+    const ap = isPast(a) ? 1 : 0, bp = isPast(b) ? 1 : 0;
+    return ap !== bp ? ap - bp : a.monthNum - b.monthNum;
+  });
+
+  const [flyer, setFlyer] = React.useState(null);
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const [heading, setHeading] = React.useState(events[0] && isPast(events[0]) ? 'Past Events' : 'Upcoming Events');
+
+  const leftmostIndex = () => {
+    const el = scrollerRef.current; if (!el) return 0;
+    const kids = el.children, x = el.scrollLeft;
+    for (let i = 0; i < kids.length; i++) {
+      if (kids[i].offsetLeft + kids[i].offsetWidth * 0.5 >= x + 20) return i;
+    }
+    return 0;
+  };
+  // Track the left-most card → drives the dots and flips the heading to "Past Events".
+  const onScroll = () => {
+    const idx = leftmostIndex();
+    setActiveIdx(idx);
+    setHeading(events[idx] && isPast(events[idx]) ? 'Past Events' : 'Upcoming Events');
+  };
+  const goTo = (i) => { const el = scrollerRef.current, c = el && el.children[i]; if (c) el.scrollTo({ left: c.offsetLeft, behavior: 'smooth' }); };
+  const nudge = (dir) => {
+    const next = Math.max(0, Math.min(events.length - 1, activeIdx + dir));
+    setActiveIdx(next);
+    goTo(next);
+  };
+
+  React.useEffect(function () {
+    if (!flyer) return;
+    const onKey = (ev) => { if (ev.key === 'Escape') setFlyer(null); };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return function () { document.removeEventListener('keydown', onKey); document.body.style.overflow = prev; };
+  }, [flyer]);
+
+  const meta = (label, value) => h("p", {
+    className: "text-sm text-[#374151] font-body font-medium leading-snug"
+  }, h("strong", { className: "text-[#111827] font-bold" }, label + " "), value);
+
+  const card = (e, i) => h(motion.div, _extends({
+    key: e.title,
+    className: "event-carousel-card group liquid-glass rounded-[1.4rem] overflow-hidden flex flex-col border border-white/30 transition-shadow duration-300 hover:shadow-[0_22px_44px_-18px_rgba(185,28,28,0.45)]"
+  }, sa(0.08 * i)),
+    h("div", { className: "relative h-44 w-full overflow-hidden bg-[#7F1D1D]" },
+      h("img", {
+        src: e.img,
+        alt: e.title,
+        loading: "lazy",
+        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      }),
+      h("div", {
+        className: "absolute inset-0 pointer-events-none",
+        style: { background: 'linear-gradient(180deg, rgba(8,3,3,0.05) 0%, rgba(12,4,4,0.5) 100%)' }
+      })
+    ),
+    h("div", { className: "p-5 flex flex-col flex-1" },
+      h("p", {
+        className: "mb-3 rounded-lg bg-[#FDE8DC] border border-[#DFAE98] px-3 py-2.5 text-center font-body font-bold text-[#7F1D1D] text-base md:text-lg leading-tight shadow-sm"
+      }, e.date),
+      h("span", {
+        className: "self-start text-xs font-body font-bold uppercase rounded-full px-3 py-1.5 mb-3",
+        style: { background: '#FEF0C7', color: '#92400E' }
+      }, e.tag),
+      h("h3", { className: "font-heading text-[#111827] text-2xl leading-tight mb-2" }, e.title),
+      h("p", { className: "text-[15px] text-[#273244] font-body font-medium leading-relaxed mb-4 flex-1" }, e.desc),
+      meta("Place:", e.place),
+      h("div", { className: "mt-1 mb-5" }, meta("Time:", e.time)),
+      h("button", {
+        type: "button",
+        disabled: Boolean(e.disableKnowMore),
+        onClick: e.disableKnowMore ? undefined : () => setFlyer(e),
+        className: `self-start font-body font-semibold text-sm inline-flex items-center gap-1 ${
+          e.disableKnowMore ? 'text-[#4B5563] cursor-not-allowed' : 'text-[#B91C1C] hover:text-[#7F1D1D]'
+        }`
+      }, e.disableKnowMore ? "Know more unavailable" : "Know more",
+        e.disableKnowMore ? null : h(ArrowUpRight, { className: "h-4 w-4" })
+      )
+    )
+  );
+
+  const arrow = (dir, label, glyph) => h("button", {
+    type: "button", "aria-label": label, onClick: () => nudge(dir),
+    className: "hidden md:flex w-12 h-12 rounded-full liquid-glass items-center justify-center text-[#1F2937] text-2xl leading-none font-semibold shrink-0 hover:text-[#B91C1C] transition"
+  }, glyph);
+
+  const dots = h("div", { className: "flex justify-center gap-2 mt-7", role: "tablist", "aria-label": "Event navigation" },
+    events.map((e, i) => h("button", {
+      key: e.title, type: "button", role: "tab", "aria-selected": i === activeIdx, "aria-label": "Go to " + e.title,
+      onClick: () => goTo(i),
+      className: "h-2.5 rounded-full transition-all duration-300 " + (i === activeIdx ? "w-6 bg-[#F59E0B]" : "w-2.5 bg-[#FFF7ED]/40 hover:bg-[#FFF7ED]/70")
+    }))
+  );
+
+  const modal = flyer ? h("div", {
+    className: "fixed inset-0 z-[200] flex items-center justify-center p-4",
+    style: { background: 'rgba(0,0,0,0.80)', backdropFilter: 'blur(4px)' },
+    onClick: () => setFlyer(null)
+  },
+    h("div", { className: "relative", onClick: (ev) => ev.stopPropagation() },
+      h("button", { type: "button", "aria-label": "Close",
+        onClick: () => setFlyer(null),
+        className: "absolute -top-3 -right-3 z-10 w-9 h-9 rounded-full bg-white text-[#1F2937] text-xl leading-none font-bold flex items-center justify-center shadow-lg" }, "×"),
+      flyer.flyer
+        ? h("img", { src: flyer.flyer, alt: flyer.title + " flyer", className: "block max-w-[92vw] max-h-[86vh] rounded-xl shadow-2xl object-contain bg-white" })
+        : h("div", { className: "max-w-[88vw] w-[420px] rounded-2xl bg-[#FFF7ED] p-10 text-center shadow-2xl" },
+            h("div", { className: "font-heading text-[#7F1D1D] text-3xl mb-3 tracking-[-1px] leading-tight" }, flyer.title),
+            h("p", { className: "font-body text-[#374151]" }, "Flyer coming soon — check back closer to the event."),
+            h("a", { href: "events.html", className: "inline-flex items-center gap-1.5 mt-6 bg-[#B91C1C] text-white rounded-full px-5 py-2.5 text-sm font-semibold" }, "All Events ", h(ArrowUpRight, { className: "h-4 w-4" }))
+          )
+    )
+  ) : null;
+
+  return h("section", { className: "home-scroll-section" },
+    h("div", { className: "home-section-inner" },
+      h(motion.h2, _extends({ key: heading, className: "home-section-heading font-heading text-[#FFF7ED] drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]" }, sa(0.1)), heading),
+      h(motion.p, _extends({ className: "home-section-support text-[#FFF7ED]/80 font-body" }, sa(0.16)), "Swipe or use the arrows to explore upcoming festivals, gatherings, and celebrations — everyone is welcome."),
+      h("div", { className: "home-section-content flex items-center gap-3" },
+        arrow(-1, "Previous", "‹"),
+        h("div", { ref: scrollerRef, onScroll: onScroll, className: "events-scroll home-card-grid flex min-w-0 overflow-x-auto py-2 flex-1" },
+          events.map(card)
+        ),
+        arrow(1, "Next", "›")
+      ),
+      dots
+    ),
+    modal
+  );
+}
+
+// ── Impacts / Capabilities ────────────────────────────────────────────────
+function ImpactsSection() {
+  const cards = [{
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className: "h-6 w-6 text-[#1F2937]"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
+    })),
+    tags: ['Saraswati Puja', 'Durga Puja', 'Cultural Gala', 'Public Events'],
+    value: '200+',
+    stat: 'Festivals & Programs',
+    title: 'Signature Events',
+    body: 'From intimate cultural evenings to Holi festivals drawing 5,000+ participants, every Baybasi event is a celebration of life, art, and community.'
+  }, {
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className: "h-6 w-6 text-[#1F2937]"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+    })),
+    tags: ['2,500+ Artists', 'Kolkata Guests', 'Youth Programs', 'Member Enrichment'],
+    value: '2,500+',
+    stat: 'Artists & Performers',
+    title: 'Cultural Programs',
+    body: 'World-class artists from Kolkata and talented local members come together to deliver unforgettable performances of dance, music, drama, and poetry.'
+  }, {
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className: "h-6 w-6 text-[#1F2937]"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
+    })),
+    tags: ['Education', 'Mental Health', 'Women Empowerment', 'Disaster Relief'],
+    value: '$100K+',
+    stat: 'Donated to Charity',
+    title: 'Giving Back',
+    body: '94% of revenue goes directly into programs and charitable works. Supporting 30+ initiatives across India and the US in education, mental health, and disaster relief.'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "home-scroll-section min-h-screen overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "home-section-inner relative z-10 flex flex-col min-h-[calc(100vh-72px)]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-center"
+  }, /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "home-section-heading font-heading text-[#FFF7ED] drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]"
+  }, sa(0.2)), "Community Evolved")), /*#__PURE__*/React.createElement("div", {
+    className: "home-section-content home-card-grid grid grid-cols-1 md:grid-cols-3"
+  }, cards.map(({
+    icon,
+    tags,
+    value,
+    stat,
+    title,
+    body
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: title,
+    className: "liquid-glass rounded-[1.25rem] p-6 min-h-[360px] flex flex-col"
+  }, sa(0.1 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-start justify-between gap-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-11 h-11 rounded-[0.75rem] flex items-center justify-center flex-shrink-0",
+    style: { background: 'rgba(31,41,55,0.10)' }
+  }, icon), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap justify-end gap-1.5 max-w-[65%]"
+  }, tags.map(t => /*#__PURE__*/React.createElement("span", {
+    key: t,
+    className: "liquid-glass rounded-full px-3 py-1 text-[13px] text-[#1F2937] font-body whitespace-nowrap font-medium"
+  }, t)))), /*#__PURE__*/React.createElement("div", {
+    className: "flex-1"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "mt-6"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-baseline gap-2 mb-1"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-heading text-[#1F2937] text-4xl md:text-5xl tracking-[-1px] leading-none"
+  }, value), /*#__PURE__*/React.createElement("span", {
+    className: "text-sm text-[#1F2937] font-body font-medium"
+  }, stat)), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-3xl md:text-4xl tracking-[-1px] leading-none mt-1"
+  }, title), /*#__PURE__*/React.createElement("p", {
+    className: "mt-3 text-base text-[#1F2937] font-body font-light leading-snug max-w-[32ch]"
+  }, body)))))));
+}
+
+// ── About Preview ─────────────────────────────────────────────────────────
+function AboutSection() {
+  const panels = [{
+    title: 'Our Story',
+    content: /*#__PURE__*/React.createElement(React.Fragment, null,
+      /*#__PURE__*/React.createElement("p", { className: "text-[#374151] text-base font-body font-light leading-relaxed" },
+        "What began in 2000 as a small community group in Foster City among a dozen Bengali friends evolved into an Indian nonprofit charitable organization in 2008, today serving communities throughout the SF Bay Area."),
+      /*#__PURE__*/React.createElement("div", { className: "mt-4 flex items-center gap-3" },
+        /*#__PURE__*/React.createElement("div", { className: "liquid-glass rounded-xl px-3 py-2 flex items-center gap-2" },
+          /*#__PURE__*/React.createElement("span", { className: "font-heading text-[#B91C1C] text-2xl leading-none" }, "25+"),
+          /*#__PURE__*/React.createElement("span", { className: "text-xs text-[#374151] font-body leading-tight" }, "Years of\nService")
+        ),
+        /*#__PURE__*/React.createElement("div", { className: "liquid-glass rounded-xl px-3 py-2 flex items-center gap-2" },
+          /*#__PURE__*/React.createElement("span", { className: "font-heading text-[#B91C1C] text-2xl leading-none" }, "501"),
+          /*#__PURE__*/React.createElement("span", { className: "text-xs text-[#374151] font-body leading-tight" }, "(c)(3)\nNonprofit")
+        )
+      )
+    ),
+    cta: 'About Us',
+    href: 'about.html'
+  }, {
+    title: 'Our Purpose',
+    content: /*#__PURE__*/React.createElement("ol", { className: "space-y-2.5 mt-1" },
+      [['Indian Heritage', 'Promote Indian cultural and spiritual heritage.'],
+       ['Bengali Culture', 'Organize Bengali and Indian cultural events.'],
+       ['Member Enrichment', 'Organize seminars and workshops for members.'],
+       ['Philanthropy', 'Raise funds for charitable causes.']
+      ].map(([t, d], i) => /*#__PURE__*/React.createElement("li", { key: t, className: "flex gap-2.5 items-start" },
+        /*#__PURE__*/React.createElement("span", { className: "font-heading text-[#B91C1C] text-base leading-none mt-0.5 flex-shrink-0" }, `0${i+1}`),
+        /*#__PURE__*/React.createElement("div", null,
+          /*#__PURE__*/React.createElement("div", { className: "font-body font-semibold text-[#1F2937] text-sm" }, t),
+          /*#__PURE__*/React.createElement("div", { className: "font-body font-light text-[#374151] text-sm leading-snug" }, d)
+        )
+      ))
+    ),
+    cta: 'Join Us',
+    href: 'join-us.html'
+  }, {
+    title: 'Major Events',
+    content: /*#__PURE__*/React.createElement("div", { className: "flex flex-wrap gap-1.5 mt-1" },
+      ['Spring Fest', 'Holi', 'Boishakhi', 'Adda & Picnic', 'Autumn Fest', 'Dandiya', 'Durga Puja', 'Bijoya Sammilani', 'Diwali', 'Seminars', 'Volunteering'].map(e =>
+        /*#__PURE__*/React.createElement("span", { key: e, className: "text-xs font-body font-medium text-[#1F2937] bg-[#FFE4D6] rounded-full px-2.5 py-1 leading-none" }, e)
+      )
+    ),
+    cta: 'Events',
+    href: 'events.html'
+  }, {
+    title: 'Our Performance',
+    content: /*#__PURE__*/React.createElement(React.Fragment, null,
+      /*#__PURE__*/React.createElement("div", { className: "liquid-glass rounded-xl p-3 mb-3" },
+        /*#__PURE__*/React.createElement("div", { className: "font-heading text-[#1F2937] text-3xl leading-none" }, "94%"),
+        /*#__PURE__*/React.createElement("div", { className: "text-[#374151] text-sm font-body font-light mt-1 leading-snug" }, "Revenue goes into programs & charitable works. Operational overhead 5% or less.")
+      ),
+      /*#__PURE__*/React.createElement("div", { className: "liquid-glass rounded-xl p-3" },
+        /*#__PURE__*/React.createElement("div", { className: "font-heading text-[#1F2937] text-3xl leading-none" }, "$100K+"),
+        /*#__PURE__*/React.createElement("div", { className: "text-[#374151] text-sm font-body font-light mt-1 leading-snug" }, "Donated to education, mental health, and disaster relief.")
+      )
+    ),
+    cta: 'Perf. Report',
+    href: 'about.html#reports'
+  }];
+
+  return /*#__PURE__*/React.createElement("section", {
+    className: "home-scroll-section"
+  }, /*#__PURE__*/React.createElement("div", { className: "home-section-inner" },
+    /*#__PURE__*/React.createElement(motion.h2, _extends({ className: "home-section-heading font-heading text-[#FFF7ED] drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]" }, sa(0.1)),
+      "Who We Are"
+    ),
+    /*#__PURE__*/React.createElement("div", { className: "home-section-content home-card-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" },
+      panels.map(({ title, content, cta, href }, i) =>
+        /*#__PURE__*/React.createElement(motion.div, _extends({
+          key: title,
+          className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col"
+        }, sa(0.08 * i)),
+          /*#__PURE__*/React.createElement("h3", { className: "font-heading text-[#1F2937] text-xl leading-tight mb-4" }, title),
+          /*#__PURE__*/React.createElement("div", { className: "flex-1" }, content),
+          /*#__PURE__*/React.createElement("a", {
+            href: href,
+            className: "mt-6 inline-flex items-center gap-1.5 bg-[#B91C1C] rounded-full px-4 py-2 text-sm font-semibold text-white self-start hover:bg-[#991B1B] transition-colors"
+          }, cta, /*#__PURE__*/React.createElement(ArrowUpRight, { className: "h-3 w-3" }))
+        )
+      )
+    )
+  ));
+}
+
+// ── Signature Events ──────────────────────────────────────────────────────
+function EventsSection() {
+  const events = [{
+    month: 'JAN–FEB',
+    name: 'Spring Festival',
+    highlights: ['500+ Participants', 'Saraswati Puja', 'Kids Sit &amp; Draw', 'Bengali Drama', 'Cultural Programs'],
+    href: 'events.html'
+  }, {
+    month: 'MAR',
+    name: 'Holi',
+    highlights: ['5,000+ Participants', 'Public Event', 'Live Music &amp; DJ', 'Dholi &amp; Dance', '10+ Food Vendors'],
+    href: 'events.html'
+  }, {
+    month: 'SEP–OCT',
+    name: 'Autumn Festival',
+    highlights: ['5,000+ Participants', 'Durga Puja', 'Artists from Kolkata', 'Dandiya Night', 'Gala Programs'],
+    href: 'events.html'
+  }, {
+    month: 'NOV',
+    name: 'Diwali',
+    highlights: ['2,000+ Participants', 'Public Event', 'India Fair', 'Rangoli &amp; Diyas', '10+ Food Vendors'],
+    href: 'events.html'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "home-scroll-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "home-section-inner"
+  }, /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "home-section-heading font-heading text-[#FFF7ED] drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]"
+  }, sa(0.1)), "Events That Unite Us"), /*#__PURE__*/React.createElement("div", {
+    className: "home-section-content home-card-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+  }, events.map(({
+    month,
+    name,
+    highlights,
+    href
+  }, i) => /*#__PURE__*/React.createElement(motion.a, _extends({
+    key: name,
+    href: href,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col min-h-[280px] group hover:bg-[#1F2937]/5 transition-colors"
+  }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "text-[13px] text-[#374151] font-body tracking-widest uppercase mb-3"
+  }, month), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl leading-tight mb-4"
+  }, name), /*#__PURE__*/React.createElement("ul", {
+    className: "flex-1 space-y-1.5"
+  }, highlights.map(h => /*#__PURE__*/React.createElement("li", {
+    key: h,
+    className: "text-sm text-[#374151] font-body font-light flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "gold-dot30 flex-shrink-0"
+  }), /*#__PURE__*/React.createElement("span", {
+    dangerouslySetInnerHTML: {
+      __html: h
+    }
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "mt-5 flex items-center gap-1 text-sm text-[#1F2937] font-body group-hover:text-[#111827] transition-colors"
+  }, "Learn more ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-3 w-3"
+  }))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "text-center mt-8"
+  }, sa(0.3)), /*#__PURE__*/React.createElement("a", {
+    href: "events.html",
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-base font-semibold text-white"
+  }, "View Full Event Calendar ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  })))));
+}
+
+// ── Join Us ───────────────────────────────────────────────────────────────
+function JoinSection() {
+  const panels = [{
+    tag: 'Member',
+    title: 'Become a Member',
+    body: "Access all events, participate in programs, elect the Board of Directors, and shape Baybasi's future.",
+    cta: 'Join as Member',
+    href: 'membership.html'
+  }, {
+    tag: 'Volunteer',
+    title: 'Give Your Time',
+    body: 'Join our community team, earn volunteer points redeemable for rewards, and make a real difference.',
+    cta: 'Start Volunteering',
+    href: 'volunteer.html'
+  }, {
+    tag: 'Event Pass',
+    title: 'Event Pass',
+    body: 'Affordable, event-specific and day-specific passes — enjoy Annual, Dandiya, Durga Puja, Bijoya-Diwali, Spring Fest, Picnic and more.',
+    cta: 'View Plans',
+    href: 'event-pass.html'
+  }, {
+    tag: 'Sponsor',
+    title: 'Partner With Us',
+    body: 'Reach a high-value affluent audience with brand visibility, credible alignment, and direct engagement.',
+    cta: 'Explore Tiers',
+    href: 'sponsorship.html'
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "home-scroll-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "home-section-inner"
+  }, /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "home-section-heading font-heading text-[#FFF7ED] drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]"
+  }, sa(0.1)), "Be Part of Something Meaningful"), /*#__PURE__*/React.createElement("div", {
+    className: "home-section-content home-card-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+  }, panels.map(({
+    tag,
+    title,
+    body,
+    cta,
+    href
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: tag,
+    className: "liquid-glass rounded-[1.25rem] p-6 flex flex-col min-h-[280px]"
+  }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
+    className: "liquid-glass rounded-full px-3 py-1 text-[13px] text-[#374151] font-body self-start mb-4"
+  }, tag), /*#__PURE__*/React.createElement("h3", {
+    className: "font-heading text-[#1F2937] text-2xl leading-tight mb-3"
+  }, title), /*#__PURE__*/React.createElement("p", {
+    className: "text-[#374151] text-base font-body font-light leading-snug flex-1"
+  }, body), /*#__PURE__*/React.createElement("a", {
+    href: href,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "mt-5 flex items-center gap-1.5 text-base text-[#374151] font-body hover:text-[#1F2937] transition-colors"
+  }, cta, " ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-3.5 w-3.5"
+  })))))));
+}
+
+// ── Sponsors ──────────────────────────────────────────────────────────────
+function SponsorsSection() {
+  const tiers = [{
+    name: 'Platinum',
+    sponsors: [{
+      name: 'India Grocery and Spice',
+      img: 'images/sponsors/indian_grocery_image001.png',
+      href: 'http://www.indiagroceryandspice.com/'
+    }, {
+      name: 'Future Right',
+      img: 'images/sponsors/future_right_v2-768x644.png',
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSem_ICmWMSX690Y-u8cQQDcvTy_WWiCGHnqRKNFRhrjwaxjhA/viewform'
+    }]
+  }, {
+    name: 'Gold',
+    sponsors: [{
+      name: 'Zaman',
+      img: 'images/sponsors/zaman-1024x571.jpeg',
+      href: 'https://calcoastmtg.com'
+    }, {
+      name: 'Ask For Cure',
+      img: 'images/sponsors/I-693_New-1024x683.jpeg',
+      href: 'http://www.askforcure.com'
+    }]
+  }, {
+    name: 'Silver',
+    sponsors: [{
+      name: 'Ravi Jagtiani',
+      img: 'images/sponsors/ravi_jagtiani_new-1024x512.jpg',
+      href: null
+    }, {
+      name: 'Ramez Tabri Real Estate',
+      img: 'images/sponsors/ramez_tabri_updated.jpg',
+      href: 'https://rameztabrirealestate.com'
+    }, {
+      name: 'First Bank',
+      img: 'images/sponsors/first_bank.png',
+      href: 'https://www.first.bank/About/Locations/San-Mateo'
+    }, {
+      name: 'Kids Connection Schools',
+      img: 'images/sponsors/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg',
+      href: 'https://kidsconnectionschools.com/'
+    }]
+  }, {
+    name: 'Bronze',
+    sponsors: [{
+      name: 'BMO',
+      img: 'images/sponsors/BMO_Updated-768x440.png',
+      href: 'https://usmortgagebanker.bmo.com/ca/fremont/ac-1685660/'
+    }, {
+      name: 'Rosalind Chin',
+      img: 'images/sponsors/rosalind_chin.png',
+      href: 'http://www.rosalindchin.com'
+    }, {
+      name: 'EBIW',
+      img: 'images/sponsors/ebiw-768x122.png',
+      href: 'https://ebiw.com/'
+    }, {
+      name: 'Shiraz Zack Real Estate',
+      img: 'images/sponsors/kw_PHOTO-2022-09-12-21-14-21.jpg',
+      href: 'https://www.ShirazZack.com/'
+    }]
+  }, {
+    name: 'Classic',
+    sponsors: [{
+      name: 'Jaspreet',
+      img: 'images/sponsors/Jaspreet-768x621.png',
+      href: 'https://www.realtor.com/realestateagents/56a5673e7e54f70100203d91'
+    }, {
+      name: 'Nanda Cal Realty',
+      img: 'images/sponsors/Mamta_logo_new-scaled-1-768x512.jpg',
+      href: 'https://www.nandacalrealty.com/'
+    }, {
+      name: 'Andrew Klink',
+      img: 'images/sponsors/Andrew_Klink_2-scaled-1-768x432.jpeg',
+      href: null
+    }, {
+      name: 'Gama Ride',
+      img: 'images/sponsors/gama_ride_working-1.png',
+      href: 'https://gamaride.net/'
+    }]
+  }];
+  const tierBadges = {
+    Platinum: 'from-[#F8FAFC] via-[#D9E2EC] to-[#A7B0BA] text-[#1F2937] ring-[#F8FAFC]/70 shadow-[0_12px_34px_rgba(248,250,252,0.18)]',
+    Gold: 'from-[#FFE8A3] via-[#F6C453] to-[#B7791F] text-[#3F2506] ring-[#FFE8A3]/70 shadow-[0_12px_34px_rgba(246,196,83,0.22)]',
+    Silver: 'from-[#F8FAFC] via-[#CBD5E1] to-[#94A3B8] text-[#233044] ring-[#F8FAFC]/70 shadow-[0_12px_34px_rgba(203,213,225,0.18)]',
+    Bronze: 'from-[#E8B36B] via-[#B7791F] to-[#7C3F12] text-[#FFF7ED] ring-[#E8B36B]/60 shadow-[0_12px_34px_rgba(183,121,31,0.20)]',
+    Classic: 'from-[#8B1E24] via-[#B13A3F] to-[#D8A35D] text-[#FFF7ED] ring-[#D8A35D]/55 shadow-[0_12px_34px_rgba(177,58,63,0.20)]'
+  };
+  const sponsorCardSize = tier => tier === 'Platinum' ? 'w-full sm:w-[20rem] md:w-[24rem] h-36 md:h-40' : tier === 'Gold' ? 'w-full sm:w-[18rem] md:w-[21rem] h-32 md:h-36' : tier === 'Silver' ? 'w-full sm:w-[15rem] md:w-[17rem] h-28 md:h-32' : tier === 'Bronze' ? 'w-full sm:w-[14rem] md:w-[15.5rem] h-[6.5rem] md:h-28' : 'w-full sm:w-[13rem] md:w-[14.5rem] h-24 md:h-28';
+  return /*#__PURE__*/React.createElement("section", {
+    className: "home-scroll-section",
+    style: {
+      borderTop: '1px solid rgba(255,255,255,0.10)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "home-section-inner"
+  }, /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "home-section-heading font-heading text-[#FFF7ED] drop-shadow-[0_3px_14px_rgba(0,0,0,0.55)]"
+  }, sa(0.1)), "Our Supporters"), /*#__PURE__*/React.createElement(motion.p, _extends({
+    className: "home-section-support text-[#FFF7ED]/85 text-base font-body font-medium drop-shadow"
+  }, sa(0.2)), "Generous sponsors make our cultural programs and charitable work possible."), /*#__PURE__*/React.createElement("div", {
+    className: "home-section-content space-y-12"
+  }, tiers.map(({
+    name,
+    sponsors
+  }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
+    key: name,
+    className: "flex flex-col items-center gap-5"
+  }, sa(0.05 * i)), /*#__PURE__*/React.createElement("div", {
+    className: `rounded-full px-7 py-2.5 text-base md:text-lg font-semibold font-body min-w-36 text-center bg-gradient-to-r ring-1 ${tierBadges[name]}`
+  }, name), /*#__PURE__*/React.createElement("div", {
+    className: "home-card-grid flex flex-wrap items-center justify-center w-full"
+  }, sponsors.map(({
+    name: sname,
+    img,
+    href
+  }) => {
+    const card = /*#__PURE__*/React.createElement("div", {
+      title: sname,
+      className: `liquid-glass rounded-[0.75rem] flex items-center justify-center p-2 md:p-3 ${sponsorCardSize(name)} shadow-[0_18px_50px_rgba(0,0,0,0.16)]
+                        ${href ? 'cursor-pointer hover:shadow-[0_22px_58px_rgba(0,0,0,0.22)] hover:-translate-y-0.5 transition-all duration-300' : ''}`
+    }, /*#__PURE__*/React.createElement("img", {
+      src: img,
+      alt: sname,
+      className: "w-full h-full object-contain"
+    }));
+    return href ? /*#__PURE__*/React.createElement("a", {
+      key: sname,
+      href: href,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, card) : /*#__PURE__*/React.createElement("div", {
+      key: sname
+    }, card);
+  }))))), /*#__PURE__*/React.createElement(motion.div, _extends({
+    className: "text-center mt-10"
+  }, sa(0.4)), /*#__PURE__*/React.createElement("a", {
+    href: "sponsors.html",
+    className: "inline-flex items-center gap-2 liquid-glass rounded-full px-6 py-2.5 text-base font-medium text-[#1F2937] hover:text-[#1F2937] transition-colors"
+  }, "Become a Sponsor ", /*#__PURE__*/React.createElement(ArrowUpRight, {
+    className: "h-4 w-4"
+  })))));
+}
+
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null,
+    /*#__PURE__*/React.createElement(Navbar, { activePage: "index.html" }),
+    /*#__PURE__*/React.createElement(HeroSection, null),
+    /*#__PURE__*/React.createElement(ScrollOverVideo, null,
+      /*#__PURE__*/React.createElement(UpcomingEventsSection, null),
+      /*#__PURE__*/React.createElement(ImpactsSection, null),
+      /*#__PURE__*/React.createElement(AboutSection, null),
+      /*#__PURE__*/React.createElement(EventsSection, null),
+      /*#__PURE__*/React.createElement(JoinSection, null),
+      /*#__PURE__*/React.createElement(SponsorsSection, null)
+    ),
+    /*#__PURE__*/React.createElement(Footer, null)
+  );
+}
+const {
+  createRoot
+} = ReactDOM;
+createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="mbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD9C2"/>
+      <stop offset="40%" stop-color="#FFE4D6"/>
+      <stop offset="100%" stop-color="#FFF7ED"/>
+    </linearGradient>
+    <radialGradient id="mglow" cx="0.5" cy="0" r="0.85">
+      <stop offset="0%" stop-color="#B91C1C" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#B91C1C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mgoldglow" cx="0.85" cy="0.25" r="0.45">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mfadeBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF7ED" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FFF7ED" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="800" fill="url(#mbg)"/>
+  <rect width="1920" height="800" fill="url(#mglow)"/>
+  <rect width="1920" height="800" fill="url(#mgoldglow)"/>
+
+  <!-- LEFT CLUSTER: vibrant community of person-icons -->
+  <g transform="translate(40, 60)">
+    <g stroke-dasharray="6 8" fill="none" opacity="0.75">
+      <line x1="120" y1="180" x2="300" y2="120" stroke="#7F1D1D" stroke-width="3"/>
+      <line x1="300" y1="120" x2="480" y2="200" stroke="#B91C1C" stroke-width="3"/>
+      <line x1="120" y1="180" x2="220" y2="320" stroke="#F59E0B" stroke-width="3"/>
+      <line x1="480" y1="200" x2="360" y2="340" stroke="#7F1D1D" stroke-width="3"/>
+      <line x1="220" y1="320" x2="360" y2="340" stroke="#B91C1C" stroke-width="3"/>
+    </g>
+    <g>
+      <circle cx="120" cy="180" r="58" fill="#7F1D1D"/>
+      <circle cx="120" cy="180" r="58" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="120" cy="158" r="20" fill="#FFF7ED"/>
+      <path d="M86 200 Q 120 166, 154 200 L 154 222 L 86 222 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="300" cy="120" r="52" fill="#B91C1C"/>
+      <circle cx="300" cy="120" r="52" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="300" cy="101" r="17" fill="#FFF7ED"/>
+      <path d="M270 138 Q 300 110, 330 138 L 330 156 L 270 156 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="480" cy="200" r="56" fill="#F59E0B"/>
+      <circle cx="480" cy="200" r="56" fill="none" stroke="#7F1D1D" stroke-width="3"/>
+      <circle cx="480" cy="180" r="18" fill="#FFF7ED"/>
+      <path d="M448 220 Q 480 188, 512 220 L 512 240 L 448 240 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="220" cy="320" r="50" fill="#7F1D1D"/>
+      <circle cx="220" cy="320" r="50" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="220" cy="303" r="16" fill="#FFF7ED"/>
+      <path d="M192 338 Q 220 312, 248 338 L 248 354 L 192 354 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="360" cy="340" r="46" fill="#B91C1C"/>
+      <circle cx="360" cy="340" r="46" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="360" cy="325" r="15" fill="#FFF7ED"/>
+      <path d="M334 356 Q 360 332, 386 356 L 386 370 L 334 370 Z" fill="#FFF7ED"/>
+    </g>
+  </g>
+
+  <!-- RIGHT CLUSTER: mirror community of person-icons -->
+  <g transform="translate(1280, 50)">
+    <g stroke-dasharray="6 8" fill="none" opacity="0.75">
+      <line x1="80" y1="180" x2="260" y2="120" stroke="#7F1D1D" stroke-width="3"/>
+      <line x1="260" y1="120" x2="440" y2="200" stroke="#B91C1C" stroke-width="3"/>
+      <line x1="80" y1="180" x2="180" y2="320" stroke="#F59E0B" stroke-width="3"/>
+      <line x1="440" y1="200" x2="320" y2="340" stroke="#7F1D1D" stroke-width="3"/>
+    </g>
+    <g>
+      <circle cx="80" cy="180" r="50" fill="#B91C1C"/>
+      <circle cx="80" cy="180" r="50" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="80" cy="162" r="16" fill="#FFF7ED"/>
+      <path d="M50 198 Q 80 170, 110 198 L 110 216 L 50 216 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="260" cy="120" r="56" fill="#F59E0B"/>
+      <circle cx="260" cy="120" r="56" fill="none" stroke="#7F1D1D" stroke-width="3"/>
+      <circle cx="260" cy="100" r="18" fill="#FFF7ED"/>
+      <path d="M228 140 Q 260 110, 292 140 L 292 160 L 228 160 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="440" cy="200" r="54" fill="#7F1D1D"/>
+      <circle cx="440" cy="200" r="54" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="440" cy="181" r="17" fill="#FFF7ED"/>
+      <path d="M408 220 Q 440 192, 472 220 L 472 238 L 408 238 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="180" cy="320" r="48" fill="#F59E0B"/>
+      <circle cx="180" cy="320" r="48" fill="none" stroke="#7F1D1D" stroke-width="3"/>
+      <circle cx="180" cy="305" r="15" fill="#FFF7ED"/>
+      <path d="M154 338 Q 180 314, 206 338 L 206 354 L 154 354 Z" fill="#FFF7ED"/>
+    </g>
+    <g>
+      <circle cx="320" cy="340" r="52" fill="#B91C1C"/>
+      <circle cx="320" cy="340" r="52" fill="none" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="320" cy="322" r="16" fill="#FFF7ED"/>
+      <path d="M290 358 Q 320 332, 350 358 L 350 374 L 290 374 Z" fill="#FFF7ED"/>
+    </g>
+  </g>
+
+  <!-- Decorative cultural wave band -->
+  <g opacity="0.60" transform="translate(-50, 580)">
+    <path d="M0 200 Q 300 100, 600 200 T 1200 200 T 1800 200 T 2050 200 L 2050 260 L 0 260 Z" fill="#F59E0B"/>
+  </g>
+  <g opacity="0.72" transform="translate(0, 620)">
+    <path d="M0 200 Q 280 130, 560 200 T 1120 200 T 1680 200 T 1920 200 L 1920 230 L 0 230 Z" fill="#B91C1C"/>
+  </g>
+
+  <!-- CREAM FADE at bottom for text legibility -->
+  <rect x="0" y="350" width="1920" height="450" fill="url(#mfadeBottom)"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="t d">
+<title id="t">Town Hall</title>
+<desc id="d">Community meet and greet with the Board and Execution Committee</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#7F1D1D"/><stop offset="100%" stop-color="#9A3412"/></linearGradient>
+  <radialGradient id="sun" cx="76%" cy="22%" r="48%"><stop offset="0%" stop-color="#F59E0B" stop-opacity=".9"/><stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#fff" opacity=".16"/></pattern>
+</defs>
+<rect width="1200" height="760" fill="url(#bg)"/>
+<rect width="1200" height="760" fill="url(#sun)"/>
+<rect width="1200" height="760" fill="url(#dots)"/>
+<g fill="#FFE4D6" opacity=".92">
+  <circle cx="250" cy="230" r="64"/><circle cx="360" cy="250" r="78"/><circle cx="470" cy="232" r="64"/>
+  <path d="M150 360 q210 -90 440 0 v40 H150 Z" opacity=".8"/>
+</g>
+<circle cx="960" cy="190" r="84" fill="#F59E0B" opacity=".55"/>
+<text x="80" y="600" font-family="Inter, Arial, sans-serif" font-size="100" font-weight="800" fill="#FFF7ED" letter-spacing="-2">Town Hall</text>
+<text x="84" y="662" font-family="Inter, Arial, sans-serif" font-size="36" fill="#FFE4D6">Community · Meet &amp; Greet</text>
+</svg>

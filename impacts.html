@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <link rel="preload" href="js/components.js?v=17" as="script"/>
   <title>Impacts – Baybasi</title>
   <meta name="description" content="Baybasi's community impact: $100K donated, 6,000 volunteering hrs/year, 10,000 direct beneficiaries and 94% program spend."/>
 
@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=7"/>
+  <link rel="stylesheet" href="css/styles.css?v=25"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -39,7 +39,7 @@
 </head>
 <body class="bg-[#FFF7ED]">
 <div id="root"></div>
-<script src="js/components.js?v=14"></script>
+<script src="js/components.js?v=17"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -97,7 +97,7 @@ function PageHero() {
       background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.16), transparent 30%)'
     }
   }), h("div", {
-    className: "max-w-7xl mx-auto w-full pt-32 relative z-10"
+    className: "max-w-7xl mx-auto w-full pt-32 relative z-10 flex flex-col items-center text-center"
   }, h(Breadcrumb, {
     crumbs: [{
       label: 'Impacts'
@@ -119,18 +119,18 @@ function PageHero() {
       duration: 0.5,
       delay: 0.3
     }
-  }, "// Impacts"), h(BlurText, {
+  }, ""), h(BlurText, {
     text: "Measuring Service Culture and Giving",
     className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
     style: {
       fontSize: 'clamp(2rem, 7.2vw, 6rem)',
       flexWrap: 'wrap',
       whiteSpace: 'normal',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
     }
   }), h(motion.p, {
-    className: "mt-6 text-[#111827] font-body font-bold max-w-3xl leading-relaxed",
+    className: "mt-6 text-[#111827] font-body font-bold max-w-3xl leading-relaxed mx-auto text-center",
     style: {
       fontSize: 'clamp(1rem, 1.4vw, 1.25rem)',
       textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)'
@@ -148,7 +148,7 @@ function PageHero() {
       delay: 0.7
     }
   }, "25 years of service, hundreds of programs, thousands of volunteer hours, and a focused commitment to charitable work in the US and India."), h(motion.div, {
-    className: "mt-8 grid w-full max-w-4xl grid-cols-1 sm:grid-cols-4 gap-3",
+    className: "mt-8 grid w-full max-w-4xl mx-auto grid-cols-1 sm:grid-cols-4 gap-3",
     initial: {
       opacity: 0,
       y: 16
@@ -220,7 +220,7 @@ function ImpactNumbers() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Impact Numbers"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "The Numbers", /*#__PURE__*/React.createElement("br", null), "Behind the Mission"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -239,7 +239,7 @@ function ImpactNumbers() {
       background: 'rgba(31,41,55,0.06)'
     }
   }, icon), /*#__PURE__*/React.createElement("div", {
-    className: "font-heading text-[#1F2937] text-5xl tracking-[-2px] leading-none mb-1"
+    className: "font-heading text-[#1F2937] text-5xl tracking-normal leading-none mb-1"
   }, value), /*#__PURE__*/React.createElement("div", {
     className: "text-[#1F2937] text-base font-body font-medium mb-3"
   }, label), /*#__PURE__*/React.createElement("p", {
@@ -284,7 +284,7 @@ function TestimonyBeneficiaries() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Beneficiaries &", /*#__PURE__*/React.createElement("br", null), "Charity Partners"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-3 gap-5"
@@ -346,7 +346,7 @@ function CharitiesSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Charitable Work"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Past", /*#__PURE__*/React.createElement("br", null), "Charities"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -409,7 +409,7 @@ function TestimonyMembers() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Members &", /*#__PURE__*/React.createElement("br", null), "Volunteers"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -465,7 +465,7 @@ function VolunteeringSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Volunteering"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
   }, sa(0.1)), "Volunteering", /*#__PURE__*/React.createElement("br", null), "Calendar"), /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-[#1F2937] font-body font-medium text-base mb-12 max-w-md"
@@ -545,7 +545,7 @@ function TestimonySponsors() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Testimony"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Voices from", /*#__PURE__*/React.createElement("br", null), "Our Sponsors"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-3 gap-5"

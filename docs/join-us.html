@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js" as="script"/>
+  <link rel="preload" href="js/components.js?v=17" as="script"/>
   <title>Join Us – Baybasi</title>
   <meta name="description" content="Join Baybasi as a member, volunteer, subscriber, or sponsor. Be part of Bay Area's vibrant Indian cultural community."/>
 
@@ -19,23 +19,57 @@
       theme: {
         extend: {
           fontFamily: {
-            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
-            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
           },
           borderRadius: { DEFAULT: '9999px' },
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=7"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=25"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
   <script>window.Motion = window.Motion || window.FramerMotion;</script>
+  <style>
+    .join-hero-animated-image {
+      background-image: url('images/heroes/join-us-photo.png');
+      background-size: cover;
+      background-position: center right;
+      background-repeat: no-repeat;
+      transform: scale(1.04);
+      transform-origin: 70% 50%;
+      animation: joinHeroImageDrift 18s ease-in-out infinite alternate;
+      will-change: transform, background-position;
+    }
+
+    @keyframes joinHeroImageDrift {
+      0% {
+        transform: scale(1.04) translate3d(0, 0, 0);
+        background-position: center right;
+      }
+      100% {
+        transform: scale(1.1) translate3d(-1.5%, -1%, 0);
+        background-position: 58% center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .join-hero-animated-image {
+        animation: none;
+        transform: scale(1.04);
+      }
+    }
+  </style>
 </head>
-<body class="bg-[#FFF7ED]">
+<body class="bg-[#FFF7ED] font-body text-[#1F2937] antialiased">
 <div id="root"></div>
-<script src="js/components.js"></script>
+<script src="js/components.js?v=17"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -62,21 +96,51 @@ const sa = (delay = 0) => ({
     ease: 'easeOut'
   }
 });
+const warmCardBg = 'linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%)';
+const warmPillBg = 'linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.96) 100%)';
+const warmInset = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127,29,29,0.05)';
+const inputSurface = {
+  background: 'linear-gradient(180deg, rgba(255,247,232,0.98) 0%, rgba(248,221,178,0.94) 100%)',
+  border: '1px solid rgba(127,29,29,0.12)',
+  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.92)'
+};
 
 // ── Page Hero ─────────────────────────────────────────────────────────────
 function PageHero() {
   return /*#__PURE__*/React.createElement("section", {
-    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
-  }, /*#__PURE__*/React.createElement(Navbar, {
+    className: "page-photo-hero relative min-h-[72vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "join-hero-animated-image absolute inset-0 pointer-events-none",
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement(Navbar, {
     activePage: "join-us.html"
   }), /*#__PURE__*/React.createElement("div", {
-    className: "max-w-6xl mx-auto w-full pt-32"
+    className: "absolute inset-0 pointer-events-none",
+    style: {
+      background: 'linear-gradient(90deg, rgba(255,247,237,0.98) 0%, rgba(255,239,214,0.94) 36%, rgba(127,29,29,0.20) 70%, rgba(22,8,8,0.30) 100%)'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-x-0 bottom-0 pointer-events-none",
+    style: {
+      height: '62%',
+      background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.62) 56%, rgba(255,247,237,1) 100%)'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 pointer-events-none",
+    style: {
+      background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.14), transparent 30%)'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "max-w-7xl mx-auto w-full pt-32 relative z-10 flex flex-col items-center text-center"
   }, /*#__PURE__*/React.createElement(Breadcrumb, {
     crumbs: [{
       label: 'Join Us'
     }]
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
+    className: "mt-5 text-base font-body text-[#7F1D1D] mb-3 tracking-widest uppercase font-bold",
+    style: {
+      textShadow: '0 1px 8px rgba(255,247,237,0.95)'
+    },
     initial: {
       opacity: 0,
       y: 16
@@ -89,11 +153,21 @@ function PageHero() {
       duration: 0.5,
       delay: 0.3
     }
-  }, "// Join Us"), /*#__PURE__*/React.createElement(BlurText, {
+  }, ""), /*#__PURE__*/React.createElement(BlurText, {
     text: "Be Part of Something Truly Meaningful",
-    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
+    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
+    style: {
+      fontSize: 'clamp(1.24rem, 4.6vw, 5.52rem)',
+      flexWrap: 'wrap',
+      whiteSpace: 'normal',
+      justifyContent: 'center',
+      textShadow: '0 2px 14px rgba(255,247,237,0.9), 0 1px 4px rgba(255,255,255,0.7)'
+    }
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
+    className: "mt-5 text-[#111827] font-body font-bold text-base max-w-xl leading-relaxed mx-auto text-center",
+    style: {
+      textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)'
+    },
     initial: {
       opacity: 0,
       y: 16
@@ -117,38 +191,41 @@ function JoinOptionsSection() {
     title: 'Become a Member',
     why: ['Access to all Baybasi events and programs', 'Participate in cultural and enrichment programs', 'Vote to elect the Board of Directors', 'Join leadership teams and committees', 'Help shape Baybasi\'s future direction'],
     criteria: ['Alignment to Baybasi\'s vision and purpose', 'Participate in Baybasi\'s events and programs', 'Pay minimum donation amount set by Board'],
-    cta: 'Apply for Membership'
+    cta: 'Join as Member',
+    href: 'membership.html'
   }, {
     id: 'volunteer',
     tag: 'Volunteering',
     title: 'Volunteer With Us',
     why: ['Join a passionate team giving back to society', 'Earn volunteer points for your contribution', 'Redeem points for rewards and recognition', 'Build friendships across the community', 'Make a tangible difference at every event'],
     criteria: ['Alignment to Baybasi\'s vision and purpose', 'Participate in Baybasi\'s events and programs', 'Agree to Baybasi\'s Terms and Conditions'],
-    cta: 'Start Volunteering'
+    cta: 'Start Volunteering',
+    href: 'volunteer.html'
   }, {
-    id: 'subscribe',
-    tag: 'Subscription',
-    title: 'Subscribe',
-    why: ['Homely environment and quality programs', 'Authentic Bengali cuisine at every event', 'Funds go directly to charitable causes', 'Discounts for students, seniors, and families', 'Flexible plans to suit your lifestyle'],
-    criteria: ['Annual Subscription — full year of access', 'Event Subscription — pay per event', 'Day Pass — single event attendance', 'Value Packs — bundled discounts available'],
-    cta: 'View Subscription Plans'
+    id: 'event-pass',
+    tag: 'Event Pass',
+    title: 'Event Pass',
+    why: ['Homely environment and quality programs', 'Authentic Bengali cuisine at every event', 'Funds go directly to charitable causes', 'Discounts for students, seniors, and families', 'Flexible event-specific and day-specific passes'],
+    criteria: ['Annual Pass — full year, all inclusive', 'Event-specific Passes — Durga Puja, Dandiya, Bijoya-Diwali', 'Day Passes — single-day attendance', 'Member 20% guest discount on every pass'],
+    cta: 'View Plans',
+    href: 'event-pass.html'
   }, {
     id: 'sponsor',
     tag: 'Sponsorship',
     title: 'Sponsor Baybasi',
     why: ['High-end brand visibility at all events', 'Access a high-value, affluent Bay Area audience', 'Credible brand alignment and community goodwill', 'Direct engagement and lead generation', 'Support a 501(c)(3) charitable organization'],
     criteria: ['Platinum — maximum visibility & impact', 'Gold — premier partnership tier', 'Silver — strong community presence', 'Bronze — solid brand exposure', 'Classic — foundational support'],
-    cta: 'Explore Sponsorship',
-    href: 'sponsors.html'
+    cta: 'Explore Tiers',
+    href: 'sponsorship.html'
   }];
   return /*#__PURE__*/React.createElement("section", {
     className: "py-24 px-8 md:px-16 lg:px-20 bg-[#FFF7ED]"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Ways to Join"), /*#__PURE__*/React.createElement(motion.h2, _extends({
-    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-14"
   }, sa(0.1)), "Choose Your", /*#__PURE__*/React.createElement("br", null), "Path"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-2 gap-6"
   }, options.map(({
@@ -162,42 +239,49 @@ function JoinOptionsSection() {
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: id,
     id: id,
-    className: "liquid-glass rounded-[1.25rem] p-7 flex flex-col"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-7 flex flex-col shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+    style: {
+      background: warmCardBg,
+      boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)'
+    }
   }, sa(0.08 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#6B7280] font-body self-start mb-5"
+    className: "rounded-full border border-[#F59E0B]/30 px-3 py-1 text-[13px] text-[#7F1D1D] font-body self-start mb-5 font-bold",
+    style: {
+      background: warmPillBg
+    }
   }, tag), /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-3xl md:text-4xl leading-tight mb-6"
+    className: "font-heading text-[#111827] text-3xl md:text-4xl leading-tight mb-6 font-bold"
   }, title), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase mb-3"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase mb-3 font-bold"
   }, "Why Join"), /*#__PURE__*/React.createElement("ul", {
     className: "space-y-2"
   }, why.map(w => /*#__PURE__*/React.createElement("li", {
     key: w,
-    className: "flex items-start gap-2 text-sm font-body font-light text-[#6B7280]"
+    className: "flex items-start gap-2 text-base font-body font-medium text-[#1F2937]"
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 2,
-    className: "h-3.5 w-3.5 text-[#9CA3AF] flex-shrink-0 mt-0.5"
+    className: "h-3.5 w-3.5 text-[#4B5563] flex-shrink-0 mt-0.5"
   }, /*#__PURE__*/React.createElement("polyline", {
     points: "20 6 9 17 4 12"
   })), w)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase mb-3"
-  }, id === 'subscribe' ? 'Subscription Types' : id === 'sponsor' ? 'Tiers Available' : 'Criteria'), /*#__PURE__*/React.createElement("ul", {
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase mb-3 font-bold"
+  }, id === 'event-pass' ? 'Pass Types' : id === 'sponsor' ? 'Tiers Available' : 'Criteria'), /*#__PURE__*/React.createElement("ul", {
     className: "space-y-2"
   }, criteria.map(c => /*#__PURE__*/React.createElement("li", {
     key: c,
-    className: "flex items-start gap-2 text-sm font-body font-light text-[#6B7280]"
+    className: "flex items-start gap-2 text-base font-body font-medium text-[#1F2937]"
   }, /*#__PURE__*/React.createElement("span", {
     className: "gold-dot25 flex-shrink-0 mt-2"
   }), c))))), /*#__PURE__*/React.createElement("div", {
     className: "mt-6"
   }, /*#__PURE__*/React.createElement("a", {
     href: href || '#contact',
-    className: "inline-flex items-center gap-1.5 bg-[#B91C1C] rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+    className: "inline-flex items-center gap-1.5 bg-[#B91C1C] rounded-full px-5 py-2.5 text-base font-semibold text-white"
   }, cta, " ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   }))))))));
@@ -226,11 +310,11 @@ function PortalsSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Coming Soon"), /*#__PURE__*/React.createElement(motion.h2, _extends({
-    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-4"
   }, sa(0.1)), "Digital", /*#__PURE__*/React.createElement("br", null), "Platforms"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#9CA3AF] font-body font-light text-sm mb-12 max-w-lg"
+    className: "text-[#4B5563] font-body font-light text-base mb-12 max-w-lg"
   }, sa(0.2)), "We're building dedicated portals to make your Baybasi experience seamless and connected."), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
   }, portals.map(({
@@ -238,27 +322,34 @@ function PortalsSection() {
     desc
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: name,
-    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-5 flex flex-col shadow-[0_18px_42px_rgba(127,29,29,0.10)]",
+    style: {
+      background: warmCardBg,
+      boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.10)'
+    }
   }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
     className: "w-9 h-9 rounded-[0.65rem] mb-4 flex items-center justify-center",
     style: {
-      background: 'rgba(31,41,55,0.05)',
-      border: '1px dashed rgba(31,41,55,0.12)'
+      background: 'linear-gradient(145deg, rgba(127,29,29,0.16), rgba(255,232,196,0.88))',
+      border: '1px solid rgba(127,29,29,0.12)'
     }
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
-    className: "h-4 w-4 text-[#9CA3AF]"
+    className: "h-4 w-4 text-[#4B5563]"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"
   }))), /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-lg mb-2 leading-tight"
+    className: "font-heading text-[#111827] text-lg mb-2 leading-tight font-bold"
   }, name), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#9CA3AF] text-xs font-body font-light leading-relaxed flex-1"
+    className: "text-[#1F2937] text-sm font-body font-medium leading-relaxed flex-1"
   }, desc), /*#__PURE__*/React.createElement("div", {
     className: "mt-4"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "liquid-glass rounded-full px-3 py-1 text-[10px] text-[#9CA3AF] font-body"
+    className: "rounded-full border border-[#7F1D1D]/12 px-3 py-1 text-xs text-[#374151] font-body font-semibold",
+    style: {
+      background: warmPillBg
+    }
   }, "Coming Soon")))))));
 }
 
@@ -283,7 +374,7 @@ function ContactSection() {
     key: key,
     className: `flex flex-col gap-1.5 ${span ? 'sm:col-span-2' : ''}`
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase"
   }, label), /*#__PURE__*/React.createElement("input", {
     type: type,
     value: form[key],
@@ -292,11 +383,8 @@ function ContactSection() {
       ...form,
       [key]: e.target.value
     }),
-    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-white/20",
-    style: {
-      background: 'rgba(31,41,55,0.04)',
-      border: 'none'
-    }
+    className: "rounded-[0.75rem] px-4 py-3 text-[#111827] text-base font-body font-medium placeholder-[#6B7280] focus:outline-none focus:ring-1 focus:ring-[#7F1D1D]/25",
+    style: inputSurface
   }));
   return /*#__PURE__*/React.createElement("section", {
     id: "contact",
@@ -308,46 +396,49 @@ function ContactSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Get in Touch"), /*#__PURE__*/React.createElement(motion.h2, _extends({
-    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-normal leading-[0.9] mb-4"
   }, sa(0.1)), "Contact Us"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#9CA3AF] font-body font-light text-sm mb-14 max-w-md"
+    className: "text-[#4B5563] font-body font-light text-base mb-14 max-w-md"
   }, sa(0.2)), "Questions, partnerships, or just want to say hello? We'd love to hear from you."), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
   }, /*#__PURE__*/React.createElement(motion.form, _extends({
     onSubmit: handleSubmit,
-    className: "liquid-glass rounded-[1.25rem] p-7 grid grid-cols-1 sm:grid-cols-2 gap-5"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-7 grid grid-cols-1 sm:grid-cols-2 gap-5 shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+    style: {
+      background: warmCardBg,
+      boxShadow: warmInset + ', 0 24px 58px rgba(127,29,29,0.12)'
+    }
   }, sa(0.2)), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-1.5 sm:col-span-2"
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase"
   }, "Inquiry Type"), /*#__PURE__*/React.createElement("select", {
     value: form.type,
     onChange: e => setForm({
       ...form,
       type: e.target.value
     }),
-    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light focus:outline-none focus:ring-1 focus:ring-white/20",
-    style: {
-      background: 'rgba(31,41,55,0.04)',
-      border: 'none'
-    }
+    className: "rounded-[0.75rem] px-4 py-3 text-[#111827] text-base font-body font-medium focus:outline-none focus:ring-1 focus:ring-[#7F1D1D]/25",
+    style: inputSurface
   }, /*#__PURE__*/React.createElement("option", {
     value: "",
     style: {
-      background: '#1a0505'
+      background: '#FFF7ED',
+      color: '#111827'
     }
-  }, "Select inquiry type..."), ['Membership', 'Volunteering', 'Subscription', 'Sponsorship', 'Event Information', 'General'].map(t => /*#__PURE__*/React.createElement("option", {
+  }, "Select inquiry type..."), ['Membership', 'Volunteering', 'Event Pass', 'Sponsorship', 'Event Information', 'General'].map(t => /*#__PURE__*/React.createElement("option", {
     key: t,
     value: t,
     style: {
-      background: '#1a0505'
+      background: '#FFF7ED',
+      color: '#111827'
     }
   }, t)))), inp('Full Name', 'name', 'text', 'Your full name'), inp('Email', 'email', 'email', 'your@email.com'), inp('Phone', 'phone', 'tel', '+1 (xxx) xxx-xxxx'), inp('City', 'city', 'text', 'City, State'), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-1.5 sm:col-span-2"
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase"
   }, "Areas of Interest"), /*#__PURE__*/React.createElement("input", {
     type: "text",
     value: form.interests,
@@ -356,15 +447,12 @@ function ContactSection() {
       ...form,
       interests: e.target.value
     }),
-    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-white/20",
-    style: {
-      background: 'rgba(31,41,55,0.04)',
-      border: 'none'
-    }
+    className: "rounded-[0.75rem] px-4 py-3 text-[#111827] text-base font-body font-medium placeholder-[#6B7280] focus:outline-none focus:ring-1 focus:ring-[#7F1D1D]/25",
+    style: inputSurface
   })), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-1.5 sm:col-span-2"
   }, /*#__PURE__*/React.createElement("label", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase"
   }, "Message"), /*#__PURE__*/React.createElement("textarea", {
     rows: 4,
     value: form.message,
@@ -373,20 +461,17 @@ function ContactSection() {
       ...form,
       message: e.target.value
     }),
-    className: "rounded-[0.75rem] px-4 py-3 text-[#1F2937] text-sm font-body font-light placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-white/20 resize-none",
-    style: {
-      background: 'rgba(31,41,55,0.04)',
-      border: 'none'
-    }
+    className: "rounded-[0.75rem] px-4 py-3 text-[#111827] text-base font-body font-medium placeholder-[#6B7280] focus:outline-none focus:ring-1 focus:ring-[#7F1D1D]/25 resize-none",
+    style: inputSurface
   })), /*#__PURE__*/React.createElement("div", {
     className: "sm:col-span-2"
   }, /*#__PURE__*/React.createElement("button", {
     type: "submit",
-    className: "w-full liquid-glass-strong rounded-full py-3 text-sm font-medium text-[#1F2937] flex items-center justify-center gap-2 hover:bg-[#1F2937]/10 transition-colors"
+    className: "w-full rounded-full bg-[#B91C1C] py-3 text-base font-semibold text-white flex items-center justify-center gap-2 hover:bg-[#7F1D1D] transition-colors"
   }, "Send Message ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   })), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#9CA3AF] text-xs font-body text-center mt-3"
+    className: "text-[#4B5563] text-sm font-body text-center mt-3"
   }, "Opens your email client \xB7 baybasi@baybasi.us"))), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "flex flex-col gap-5"
   }, sa(0.3)), [{
@@ -419,35 +504,46 @@ function ContactSection() {
     icon
   }) => /*#__PURE__*/React.createElement("div", {
     key: label,
-    className: "liquid-glass rounded-[1.25rem] p-5 flex gap-4"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-5 flex gap-4 shadow-[0_18px_42px_rgba(127,29,29,0.10)]",
+    style: {
+      background: warmCardBg,
+      boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.10)'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "w-10 h-10 rounded-[0.75rem] flex-shrink-0 flex items-center justify-center",
     style: {
-      background: 'rgba(31,41,55,0.05)'
+      background: 'linear-gradient(145deg, rgba(127,29,29,0.16), rgba(255,232,196,0.88))'
     }
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
-    className: "h-5 w-5 text-[#6B7280]"
+    className: "h-5 w-5 text-[#374151]"
   }, icon)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase mb-1"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase mb-1"
   }, label), href ? /*#__PURE__*/React.createElement("a", {
     href: href,
-    className: "text-[#1F2937] text-sm font-body hover:text-[#6B7280] transition-colors"
+    className: "text-[#1F2937] text-base font-body hover:text-[#374151] transition-colors"
   }, value) : /*#__PURE__*/React.createElement("div", {
-    className: "text-[#1F2937] text-sm font-body"
+    className: "text-[#1F2937] text-base font-body"
   }, value), /*#__PURE__*/React.createElement("div", {
-    className: "text-[#9CA3AF] text-xs font-body font-light mt-0.5"
+    className: "text-[#4B5563] text-sm font-body font-light mt-0.5"
   }, sub)))), /*#__PURE__*/React.createElement("div", {
-    className: "liquid-glass rounded-[1.25rem] p-5"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-5 shadow-[0_18px_42px_rgba(127,29,29,0.10)]",
+    style: {
+      background: warmCardBg,
+      boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.10)'
+    }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-[10px] font-body tracking-widest uppercase mb-4"
+    className: "text-[#374151] text-xs font-body tracking-widest uppercase mb-4"
   }, "Quick Links"), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-wrap gap-2"
   }, [['About Us', 'about.html'], ['Impacts', 'impacts.html'], ['Events', 'events.html'], ['Sponsors', 'sponsors.html'], ['Performance Report', 'about.html#reports']].map(([label, href]) => /*#__PURE__*/React.createElement("a", {
     key: label,
     href: href,
-    className: "liquid-glass rounded-full px-3 py-1.5 text-xs text-[#6B7280] font-body hover:text-[#1F2937] transition-colors flex items-center gap-1"
+    className: "rounded-full border border-[#7F1D1D]/12 px-3 py-1.5 text-sm text-[#374151] font-body font-semibold hover:text-[#111827] transition-colors flex items-center gap-1",
+    style: {
+      background: warmPillBg
+    }
   }, label, " ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-2.5 w-2.5"
   })))))))));

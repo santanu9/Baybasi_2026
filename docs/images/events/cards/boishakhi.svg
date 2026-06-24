@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="t d">
+<title id="t">Boishakhi Adda</title>
+<desc id="d">Rabindra Sangeet, Nazrul Geeti and cultural program</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#7F1D1D"/><stop offset="100%" stop-color="#B91C1C"/></linearGradient>
+  <radialGradient id="sun" cx="74%" cy="24%" r="46%"><stop offset="0%" stop-color="#F59E0B" stop-opacity=".95"/><stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#fff" opacity=".16"/></pattern>
+</defs>
+<rect width="1200" height="760" fill="url(#bg)"/>
+<rect width="1200" height="760" fill="url(#sun)"/>
+<rect width="1200" height="760" fill="url(#dots)"/>
+<circle cx="930" cy="210" r="96" fill="#FFE4D6" opacity=".92"/>
+<g fill="none" stroke="#FFF7ED" stroke-width="9" opacity=".8">
+  <circle cx="250" cy="250" r="120"/><path d="M250 132 v236"/>
+  <path d="M150 250 h200"/>
+</g>
+<text x="80" y="600" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="800" fill="#FFF7ED" letter-spacing="-2">Boishakhi Adda</text>
+<text x="84" y="662" font-family="Inter, Arial, sans-serif" font-size="36" fill="#FFE4D6">Rabindra Sangeet · Culture · Dinner</text>
+</svg>

@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <link rel="preload" href="js/components.js?v=17" as="script"/>
   <title>About Us – Baybasi</title>
   <meta name="description" content="Learn about Baybasi's purpose, journey, board of directors, and corporate details. Est. 2000, Foster City CA."/>
 
@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=7"/>
+  <link rel="stylesheet" href="css/styles.css?v=25"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -39,7 +39,7 @@
 </head>
 <body class="bg-[#FFF7ED]">
 <div id="root"></div>
-<script src="js/components.js?v=14"></script>
+<script src="js/components.js?v=17"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -97,7 +97,7 @@ function PageHero() {
       background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.44), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.16), transparent 30%)'
     }
   }), h("div", {
-    className: "max-w-7xl mx-auto w-full pt-32 relative z-10"
+    className: "max-w-7xl mx-auto w-full pt-32 relative z-10 flex flex-col items-center text-center"
   }, h(Breadcrumb, {
     crumbs: [{
       label: 'About Us'
@@ -119,18 +119,18 @@ function PageHero() {
       duration: 0.5,
       delay: 0.3
     }
-  }, "// About Us"), h(BlurText, {
+  }, ""), h(BlurText, {
     text: "Built by Community Sustained by Purpose",
     className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
     style: {
       fontSize: 'clamp(2rem, 7.2vw, 6rem)',
       flexWrap: 'wrap',
       whiteSpace: 'normal',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
     }
   }), h(motion.p, {
-    className: "mt-6 text-[#111827] font-body font-bold max-w-5xl leading-relaxed",
+    className: "mt-6 text-[#111827] font-body font-bold max-w-5xl leading-relaxed mx-auto text-center",
     style: {
       fontSize: 'clamp(1rem, 1.4vw, 1.25rem)',
       textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)'
@@ -148,7 +148,7 @@ function PageHero() {
       delay: 0.7
     }
   }, "Discover the purpose, journey, leadership, and governance behind 25+ years of Bengali cultural heritage and community service in the Bay Area."), h(motion.div, {
-    className: "mt-8 grid w-full max-w-4xl grid-cols-1 sm:grid-cols-3 gap-3",
+    className: "mt-8 grid w-full max-w-4xl mx-auto grid-cols-1 sm:grid-cols-3 gap-3",
     initial: {
       opacity: 0,
       y: 16
@@ -200,7 +200,7 @@ function PurposeSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Our Purpose"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Why We Exist"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
@@ -262,7 +262,7 @@ function JourneySection() {
     className: "max-w-4xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase text-center"
-  }, sa(0)), "// Our Journey"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-16 text-center"
   }, sa(0.1)), "25 Years of", /*#__PURE__*/React.createElement("br", null), "Cultural Legacy"), /*#__PURE__*/React.createElement("div", {
     className: "relative"
@@ -359,7 +359,7 @@ function BoardSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Leadership"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Board of", /*#__PURE__*/React.createElement("br", null), "Directors"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
@@ -541,12 +541,12 @@ function ExecutionCommitteeSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Execution"), /*#__PURE__*/React.createElement(motion.div, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14"
   }, sa(0.1)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9]"
   }, "Execution", /*#__PURE__*/React.createElement("br", null), "Committee"), /*#__PURE__*/React.createElement("p", {
-    className: "mt-5 text-[#1F2937] font-body font-medium text-base max-w-2xl leading-relaxed"
+    className: "mt-5 text-[#1F2937] font-body font-medium text-base max-w-2xl leading-relaxed mx-auto text-center"
   }, "The Execution Committee translates Baybasi's mission into carefully run events, volunteer coordination, community service, and year-round operational excellence.")), /*#__PURE__*/React.createElement("div", {
     className: "warm-card-strong rounded-[1.25rem] p-5 min-w-[180px]"
   }, /*#__PURE__*/React.createElement("div", {
@@ -610,7 +610,7 @@ function CorporateSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Corporate Details"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Organization", /*#__PURE__*/React.createElement("br", null), "Information"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl"
@@ -640,7 +640,7 @@ function ReportsSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Transparency"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-6"
   }, sa(0.1)), "Performance", /*#__PURE__*/React.createElement("br", null), "Reports"), /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-[#1F2937] font-body font-medium text-base max-w-lg mb-12"

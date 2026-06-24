@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js" as="script"/>
+  <link rel="preload" href="js/components.js?v=17" as="script"/>
   <title>Events – Baybasi</title>
   <meta name="description" content="Baybasi 2026 event calendar: Spring Festival, Holi, Boishakhi Adda, Autumn Festival, Diwali and more."/>
 
@@ -19,28 +19,33 @@
       theme: {
         extend: {
           fontFamily: {
-            'heading': ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
-            'body':    ['Aptos', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'heading': ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
+            'body':    ['Aptos', 'InterAdj', 'Inter', 'Calibri', 'Trebuchet MS', 'Arial', 'sans-serif'],
           },
           borderRadius: { DEFAULT: '9999px' },
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=7"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+  <link rel="stylesheet" href="css/styles.css?v=25"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
   <script>window.Motion = window.Motion || window.FramerMotion;</script>
 </head>
-<body class="bg-[#FFF7ED]">
+<body class="bg-[#FFF7ED] font-body text-[#1F2937] antialiased">
 <div id="root"></div>
-<script src="js/components.js"></script>
+<script src="js/components.js?v=17"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
   motion
 } = Motion;
+const h = React.createElement;
 const sa = (delay = 0) => ({
   initial: {
     opacity: 0,
@@ -62,51 +67,86 @@ const sa = (delay = 0) => ({
     ease: 'easeOut'
   }
 });
+const warmCardBg = 'linear-gradient(145deg, #FFF7E8 0%, #FFE4BE 52%, #F5D39F 100%)';
+const warmCardBgStrong = 'linear-gradient(145deg, #FFE8B8 0%, #FCD894 48%, #EDBE72 100%)';
+const warmInset = 'inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(127,29,29,0.05)';
+const cardShadow = warmInset + ', 0 24px 58px rgba(127,29,29,0.12)';
 
 // ── Page Hero ─────────────────────────────────────────────────────────────
 function PageHero() {
-  return /*#__PURE__*/React.createElement("section", {
-    className: "relative min-h-[55vh] flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-20 inner-hero-bg overflow-hidden"
-  }, /*#__PURE__*/React.createElement(Navbar, {
-    activePage: "events.html"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "max-w-6xl mx-auto w-full pt-32"
-  }, /*#__PURE__*/React.createElement(Breadcrumb, {
-    crumbs: [{
-      label: 'Events'
-    }]
-  }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-4 text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase",
-    initial: {
-      opacity: 0,
-      y: 16
-    },
-    animate: {
-      opacity: 1,
-      y: 0
-    },
-    transition: {
-      duration: 0.5,
-      delay: 0.3
+  return h("section", {
+    className: "page-photo-hero relative min-h-[72vh] flex flex-col justify-end pb-16 px-6 md:px-12 lg:px-20 overflow-hidden",
+    style: {
+      backgroundImage: "url('images/heroes/events-photo.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center right',
+      backgroundRepeat: 'no-repeat'
     }
-  }, "// Events 2026"), /*#__PURE__*/React.createElement(BlurText, {
-    text: "A Year Full of Culture Joy and Community",
-    className: "text-5xl md:text-7xl lg:text-[5rem] font-heading text-[#1F2937] leading-[0.85] tracking-[-4px] max-w-3xl"
-  }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#6B7280] font-body font-light text-base max-w-xl leading-relaxed",
-    initial: {
-      opacity: 0,
-      y: 16
-    },
-    animate: {
-      opacity: 1,
-      y: 0
-    },
-    transition: {
-      duration: 0.5,
-      delay: 0.7
-    }
-  }, "From intimate cultural evenings to public festivals drawing thousands \u2014 every event is an experience.")));
+  },
+    h(Navbar, { activePage: "events.html" }),
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'linear-gradient(90deg, rgba(255,247,237,0.98) 0%, rgba(255,239,214,0.94) 37%, rgba(127,29,29,0.18) 70%, rgba(22,8,8,0.30) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-x-0 bottom-0 pointer-events-none",
+      style: {
+        height: '62%',
+        background: 'linear-gradient(to bottom, rgba(255,247,237,0) 0%, rgba(255,247,237,0.64) 56%, rgba(255,247,237,1) 100%)'
+      }
+    }),
+    h("div", {
+      className: "absolute inset-0 pointer-events-none",
+      style: {
+        background: 'radial-gradient(circle at 14% 28%, rgba(255,255,255,0.42), transparent 28%), radial-gradient(circle at 82% 22%, rgba(245,158,11,0.15), transparent 30%)'
+      }
+    }),
+    h("div", { className: "w-full max-w-7xl mx-auto pt-32 relative z-10 flex flex-col items-center text-center" },
+      h(Breadcrumb, { crumbs: [{ label: 'Events' }] }),
+      h(motion.p, {
+        className: "mt-5 text-base font-body text-[#7F1D1D] mb-4 tracking-widest uppercase font-bold",
+        style: { textShadow: '0 1px 8px rgba(255,247,237,0.95)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.3 }
+      }, ""),
+      h(BlurText, {
+        text: "A Year of Culture Joy and Community",
+        className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
+        style: {
+          fontSize: 'clamp(2rem, 7.2vw, 6rem)',
+          flexWrap: 'wrap',
+          whiteSpace: 'normal',
+          justifyContent: 'center',
+          textShadow: '0 2px 16px rgba(255,247,237,1), 0 1px 4px rgba(255,255,255,0.9), 0 0 2px rgba(255,247,237,1)'
+        }
+      }),
+      h(motion.p, {
+        className: "mt-6 text-[#111827] font-body font-bold max-w-3xl leading-relaxed mx-auto text-center",
+        style: { fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', textShadow: '0 1px 10px rgba(255,247,237,0.95), 0 0 2px rgba(255,247,237,1)' },
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.7 }
+      }, "From intimate cultural evenings to public festivals drawing thousands, every Baybasi event brings heritage, service, and community together."),
+      h(motion.div, {
+        className: "mt-8 grid w-full max-w-3xl mx-auto grid-cols-1 sm:grid-cols-3 gap-3",
+        initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, delay: 0.85 }
+      },
+        [['7', 'Major Events'], ['5,000+', 'Public Festival Guests'], ['2026', 'Community Calendar']].map(([value, label]) => h("div", {
+          key: label,
+          className: "rounded-2xl border border-[#F59E0B]/35 px-5 py-4 shadow-[0_18px_42px_rgba(127,29,29,0.13)] backdrop-blur-md",
+          style: {
+            background: 'linear-gradient(145deg, rgba(255,250,240,0.96) 0%, rgba(255,233,196,0.96) 54%, rgba(245,211,159,0.94) 100%)',
+            boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.13)'
+          }
+        },
+          h("div", { className: "font-heading text-3xl text-[#7F1D1D] leading-none" }, value),
+          h("div", { className: "mt-1 text-xs uppercase tracking-widest text-[#4B5563] font-bold" }, label)
+        ))
+      )
+    )
+  );
 }
 
 // ── Event Calendar ────────────────────────────────────────────────────────
@@ -167,8 +207,8 @@ function CalendarSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Event Calendar"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "2026 Schedule"), /*#__PURE__*/React.createElement("div", {
     className: "space-y-4"
@@ -181,24 +221,27 @@ function CalendarSection() {
     highlights
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: name,
-    className: "liquid-glass rounded-[1.25rem] p-6 grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-4 md:gap-6 items-start"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 grid grid-cols-1 md:grid-cols-[150px_1fr_auto] gap-5 md:gap-7 items-start shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+    style: { background: i === 1 || i === 5 ? warmCardBgStrong : warmCardBg, boxShadow: cardShadow }
   }, sa(0.06 * i)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-[#6B7280] text-xs font-body tracking-widest uppercase mb-1"
+    className: "text-[#7F1D1D] text-sm font-body tracking-widest uppercase mb-1 font-bold"
   }, month), /*#__PURE__*/React.createElement("div", {
-    className: "font-heading text-[#1F2937] text-lg leading-tight"
+    className: "font-heading text-[#111827] text-xl leading-tight font-bold"
   }, date), /*#__PURE__*/React.createElement("div", {
     className: "mt-2"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "liquid-glass rounded-full px-2.5 py-0.5 text-[10px] text-[#6B7280] font-body"
+    className: "rounded-full border border-[#F59E0B]/30 px-3 py-1 text-xs text-[#7F1D1D] font-body font-bold",
+    style: { background: 'linear-gradient(180deg, rgba(255,238,197,0.98) 0%, rgba(242,201,135,0.94) 100%)' }
   }, type))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-2xl md:text-3xl leading-tight mb-2"
+    className: "font-heading text-[#111827] text-2xl md:text-3xl leading-tight mb-2 font-bold"
   }, name), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#6B7280] text-sm font-body font-light leading-relaxed max-w-xl"
+    className: "text-[#1F2937] text-base font-body font-medium leading-relaxed max-w-xl"
   }, desc)), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-wrap gap-1.5 md:justify-end md:max-w-[180px]"
   }, highlights.map(h => /*#__PURE__*/React.createElement("span", {
     key: h,
-    className: "liquid-glass rounded-full px-2.5 py-1 text-[11px] text-[#6B7280] font-body whitespace-nowrap"
+    className: "rounded-full border border-[#7F1D1D]/10 px-2.5 py-1 text-[13px] text-[#1F2937] font-body whitespace-nowrap font-medium",
+    style: { background: 'rgba(255,247,232,0.72)' }
   }, h))))))));
 }
 
@@ -237,30 +280,32 @@ function FeaturedEventSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Featured Event"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-3"
   }, sa(0.1)), "Boishakhi Adda"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#6B7280] font-body text-sm mb-12 font-light"
+    className: "text-[#374151] font-body text-base mb-12 font-light"
   }, sa(0.15)), "Saturday, April 25, 2026 \xB7 6:00 pm \u2013 11:00 pm \xB7 Wind Room, Foster City Community Center"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 lg:grid-cols-2 gap-8"
   }, /*#__PURE__*/React.createElement(motion.div, _extends({
-    className: "liquid-glass rounded-[1.25rem] p-6"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+    style: { background: warmCardBg, boxShadow: cardShadow }
   }, sa(0.2)), /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-2xl mb-4"
+    className: "font-heading text-[#111827] text-2xl mb-4 font-bold"
   }, "Event Details"), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-3 text-sm font-body"
+    className: "space-y-3 text-base font-body"
   }, [['Type', 'Member Event'], ['Date', 'Saturday, April 25, 2026'], ['Time', '6:00 pm – 11:00 pm'], ['Venue', 'Wind Room, Foster City Community Center'], ['Dress', 'Traditional Indian / Festive Attire Encouraged'], ['Cuisine', 'Authentic Bengali Cuisine']].map(([k, v]) => /*#__PURE__*/React.createElement("div", {
     key: k,
     className: "flex gap-3"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[#9CA3AF] w-16 flex-shrink-0"
+    className: "text-[#7F1D1D] w-16 flex-shrink-0 font-bold"
   }, k), /*#__PURE__*/React.createElement("span", {
-    className: "text-[#1F2937]"
+    className: "text-[#1F2937] font-medium"
   }, v))))), /*#__PURE__*/React.createElement(motion.div, _extends({
-    className: "liquid-glass rounded-[1.25rem] p-6"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-6 shadow-[0_24px_58px_rgba(127,29,29,0.12)]",
+    style: { background: warmCardBgStrong, boxShadow: cardShadow }
   }, sa(0.25)), /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-2xl mb-4"
+    className: "font-heading text-[#111827] text-2xl mb-4 font-bold"
   }, "Program"), /*#__PURE__*/React.createElement("div", {
     className: "space-y-3"
   }, program.map(({
@@ -270,14 +315,14 @@ function FeaturedEventSection() {
     key: time + item,
     className: "flex gap-3 items-start"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[#9CA3AF] text-xs font-body w-28 flex-shrink-0 pt-0.5"
+    className: "text-[#7F1D1D] text-sm font-body w-28 flex-shrink-0 pt-0.5 font-bold"
   }, time), /*#__PURE__*/React.createElement("span", {
-    className: "text-[#6B7280] text-sm font-body font-light leading-snug"
+    className: "text-[#1F2937] text-base font-body font-medium leading-snug"
   }, item)))))), /*#__PURE__*/React.createElement(motion.div, _extends({
     className: "mt-6 text-center"
   }, sa(0.35)), /*#__PURE__*/React.createElement("a", {
     href: "join-us.html",
-    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+    className: "inline-flex items-center gap-2 bg-[#B91C1C] rounded-full px-6 py-2.5 text-base font-semibold text-white"
   }, "Register for This Event ", /*#__PURE__*/React.createElement(ArrowUpRight, {
     className: "h-4 w-4"
   })))));
@@ -309,8 +354,8 @@ function MediaSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Media"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Photos &", /*#__PURE__*/React.createElement("br", null), "Videos"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -319,30 +364,34 @@ function MediaSection() {
     year
   }, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: event,
-    className: "liquid-glass rounded-[1.25rem] overflow-hidden"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 overflow-hidden shadow-[0_24px_58px_rgba(127,29,29,0.12)]"
+    ,
+    style: { background: warmCardBg, boxShadow: cardShadow }
   }, sa(0.07 * i)), /*#__PURE__*/React.createElement("div", {
-    className: "h-40 flex items-center justify-center",
+    className: "h-44 flex items-center justify-center",
     style: {
-      background: `rgba(${120 + i * 10}, ${15 + i * 5}, ${15 + i * 3}, 0.15)`
+      background: `radial-gradient(circle at 32% 24%, rgba(255,232,184,0.58), transparent 34%), linear-gradient(135deg, rgba(127,29,29,0.92) 0%, rgba(${120 + i * 10}, ${35 + i * 5}, ${25 + i * 3}, 0.82) 54%, rgba(245,158,11,0.46) 100%)`
     }
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
-    className: "h-10 w-10 text-[#9CA3AF]"
+    className: "h-11 w-11 text-[#FFF7ED] drop-shadow-[0_6px_18px_rgba(0,0,0,0.30)]"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
   }))), /*#__PURE__*/React.createElement("div", {
     className: "p-5 flex items-center justify-between"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
-    className: "font-heading text-[#1F2937] text-xl"
+    className: "font-heading text-[#111827] text-xl font-bold"
   }, event), /*#__PURE__*/React.createElement("p", {
-    className: "text-[#9CA3AF] text-xs font-body mt-0.5"
+    className: "text-[#7F1D1D] text-sm font-body mt-0.5 font-bold"
   }, year)), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-2"
   }, /*#__PURE__*/React.createElement("button", {
-    className: "liquid-glass rounded-full px-3 py-1 text-xs text-[#6B7280] font-body hover:text-[#1F2937] transition-colors"
+    className: "rounded-full border border-[#7F1D1D]/15 px-3 py-1 text-sm text-[#1F2937] font-body font-semibold hover:text-[#7F1D1D] transition-colors",
+    style: { background: 'rgba(255,247,232,0.76)' }
   }, "Photos"), /*#__PURE__*/React.createElement("button", {
-    className: "liquid-glass rounded-full px-3 py-1 text-xs text-[#6B7280] font-body hover:text-[#1F2937] transition-colors"
+    className: "rounded-full border border-[#7F1D1D]/15 px-3 py-1 text-sm text-[#1F2937] font-body font-semibold hover:text-[#7F1D1D] transition-colors",
+    style: { background: 'rgba(255,247,232,0.76)' }
   }, "Videos"))))))));
 }
 
@@ -358,26 +407,27 @@ function PublicationsSection() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-sm font-body text-[#6B7280] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Publications"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+    className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-4"
   }, sa(0.1)), "Annual", /*#__PURE__*/React.createElement("br", null), "Souvenir Books"), /*#__PURE__*/React.createElement(motion.p, _extends({
-    className: "text-[#6B7280] font-body font-light text-sm mb-12 max-w-lg"
+    className: "text-[#374151] font-body font-light text-base mb-12 max-w-lg"
   }, sa(0.2)), "13 years of cultural documentation \u2014 our annual souvenir books capture the spirit of each year's events."), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
   }, years.map((year, i) => /*#__PURE__*/React.createElement(motion.div, _extends({
     key: year,
-    className: "liquid-glass rounded-[1.25rem] p-5 flex flex-col items-center gap-3 group cursor-pointer hover:bg-[#1F2937]/5 transition-colors"
+    className: "rounded-[1.25rem] border border-[#7F1D1D]/15 p-5 flex flex-col items-center gap-3 group cursor-pointer transition-all duration-200 hover:-translate-y-1 shadow-[0_18px_42px_rgba(127,29,29,0.10)]",
+    style: { background: i === 0 ? warmCardBgStrong : warmCardBg, boxShadow: warmInset + ', 0 18px 42px rgba(127,29,29,0.10)' }
   }, sa(0.04 * i)), /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "currentColor",
-    className: "h-8 w-8 text-[#9CA3AF] group-hover:text-[#6B7280] transition-colors"
+    className: "h-8 w-8 text-[#7F1D1D] group-hover:text-[#B91C1C] transition-colors"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
   })), /*#__PURE__*/React.createElement("span", {
-    className: "font-heading text-[#1F2937] text-xl"
+    className: "font-heading text-[#111827] text-xl font-bold"
   }, year), /*#__PURE__*/React.createElement("span", {
-    className: "text-[#9CA3AF] text-xs font-body group-hover:text-[#6B7280] transition-colors"
+    className: "text-[#7F1D1D] text-sm font-body font-bold group-hover:text-[#B91C1C] transition-colors"
   }, "View \u2192"))))));
 }
 

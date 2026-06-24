@@ -9,7 +9,7 @@
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
-  <link rel="preload" href="js/components.js?v=14" as="script"/>
+  <link rel="preload" href="js/components.js?v=17" as="script"/>
   <title>Sponsors – Baybasi</title>
   <meta name="description" content="Partner with Baybasi — sponsor Bay Area's premier Indian cultural nonprofit and reach a high-value, engaged community audience."/>
 
@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=7"/>
+  <link rel="stylesheet" href="css/styles.css?v=25"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -39,7 +39,7 @@
 </head>
 <body class="bg-[#FFF7ED]">
 <div id="root"></div>
-<script src="js/components.js?v=14"></script>
+<script src="js/components.js?v=17"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
@@ -74,7 +74,7 @@ function PageHero() {
   }, /*#__PURE__*/React.createElement(Navbar, {
     activePage: "sponsors.html"
   }), /*#__PURE__*/React.createElement("div", {
-    className: "max-w-6xl mx-auto w-full pt-32"
+    className: "max-w-6xl mx-auto w-full pt-32 flex flex-col items-center text-center"
   }, /*#__PURE__*/React.createElement(Breadcrumb, {
     crumbs: [{
       label: 'Sponsors'
@@ -93,18 +93,18 @@ function PageHero() {
       duration: 0.5,
       delay: 0.3
     }
-  }, "// Sponsorship"), /*#__PURE__*/React.createElement(BlurText, {
+  }, ""), /*#__PURE__*/React.createElement(BlurText, {
     text: "Partner With a Community That Cares",
-    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-[-2px] w-full",
+    className: "font-heading text-[#7F1D1D] leading-[0.95] tracking-normal w-full",
     style: {
       fontSize: 'clamp(1.32rem, 4.9vw, 5.88rem)',
       flexWrap: 'wrap',
       whiteSpace: 'normal',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       textShadow: '0 2px 14px rgba(255,247,237,0.9), 0 1px 4px rgba(255,255,255,0.7)'
     }
   }), /*#__PURE__*/React.createElement(motion.p, {
-    className: "mt-5 text-[#374151] font-body font-light text-base max-w-xl leading-relaxed",
+    className: "mt-5 text-[#374151] font-body font-light text-base max-w-xl leading-relaxed mx-auto text-center",
     initial: {
       opacity: 0,
       y: 16
@@ -175,7 +175,7 @@ function WhySponsorSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Why Sponsor"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Why Partner", /*#__PURE__*/React.createElement("br", null), "With Baybasi"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 gap-5"
@@ -231,7 +231,7 @@ function TiersSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Tiers"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Sponsorship", /*#__PURE__*/React.createElement("br", null), "Tiers"), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -385,7 +385,7 @@ function CurrentSponsorsSection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Our Sponsors"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Thank You", /*#__PURE__*/React.createElement("br", null), "to Our Partners"), /*#__PURE__*/React.createElement("div", null,
   tiers.map(({
@@ -476,7 +476,7 @@ function InquirySection() {
     className: "max-w-6xl mx-auto"
   }, /*#__PURE__*/React.createElement(motion.p, _extends({
     className: "text-base font-body text-[#374151] mb-3 tracking-widest uppercase"
-  }, sa(0)), "// Get Started"), /*#__PURE__*/React.createElement(motion.h2, _extends({
+  }, sa(0)), ""), /*#__PURE__*/React.createElement(motion.h2, _extends({
     className: "font-heading text-[#1F2937] text-5xl md:text-6xl tracking-[-3px] leading-[0.9] mb-14"
   }, sa(0.1)), "Sponsor", /*#__PURE__*/React.createElement("br", null), "Inquiry"), /*#__PURE__*/React.createElement(motion.form, _extends({
     onSubmit: handleSubmit,

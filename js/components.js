@@ -301,7 +301,9 @@ window.Navbar = function Navbar(props) {
   return _h('nav', {
     className: 'fixed top-0 left-0 right-0 z-[1000]',
     style: {
-      background: 'rgba(255,247,237,0.96)',
+      isolation: 'isolate',
+      zIndex: 10000,
+      background: '#FFF7ED',
       backdropFilter: 'blur(16px)',
       WebkitBackdropFilter: 'blur(16px)',
       borderBottom: '1px solid #E5E7EB',
