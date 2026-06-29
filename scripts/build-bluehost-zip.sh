@@ -19,6 +19,11 @@ zip -r "$OUT_DIR/$ZIP_NAME" \
   -x "docs/*" \
   -x "reports/*" \
   -x "scripts/*" \
+  -x "resources/index/images/dandiya-night-2026-hero.png" \
+  -x "resources/index/images/durga-puja-2026-hero.png" \
+  -x "resources/index/images/iman-chakraborty-concert-2026-hero.png" \
+  -x "resources/index/images/picnic-2026-hero.png" \
+  -x "resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png" \
   -x ".git/*" \
   -x ".claude/*" \
   -x ".codex/*" \

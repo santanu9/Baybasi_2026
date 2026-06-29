@@ -10,6 +10,7 @@
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="js/components.js?v=17" as="script"/>
+  <link rel="preload" href="resources/index/images/soccer-world-cup-final-watch-party-2026-hero.jpg" as="image" fetchpriority="high"/>
   <title>Baybasi – Bay Area Bengali &amp; Indian Cultural Organization</title>
   <meta name="description" content="Baybasi is the SF Bay Area's premier Indian cultural nonprofit, celebrating Bengali heritage, organizing spectacular events, and giving back to communities since 2000."/>
 
@@ -31,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=29"/>
+  <link rel="stylesheet" href="css/styles.css?v=30"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -49,11 +50,11 @@ const {
 // Previous external source: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4
 const CAP_VIDEO = "resources/index/videos/durga-puja-bg.mp4?v=3";
 const HOME_EVENTS = [
-  { monthNum: 7, date: 'Sun, Jul 19, 2026', tag: 'Outdoor Watch Party', title: 'Ultimate World Cup Final Watch Party', heroTitle: 'Ultimate Final Watch Party', desc: 'Gather outdoors with the community for an ultimate World Cup Final viewing arrangement on the big screen.', place: 'Rec Center Meadows\n650 Shell Blvd\nFoster City, CA 94401', time: '11:00 AM', img: 'resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png', heroImg: 'resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png', flyer: 'resources/index/images/ultimate-final-watch-party-2026.jpeg', directions: 'https://www.google.com/maps/dir/?api=1&destination=650%20Shell%20Blvd%2C%20Foster%20City%2C%20CA%2094401' },
-  { monthNum: 8, date: 'Sat, Aug 15, 2026', tag: 'Members Only', title: 'Summer Picnic', heroTitle: 'Summer Picnic by the Lake', desc: 'A day of live food, games, music, sunshine, laughter, and soulful adda beside the lake.', place: 'Quarry Lakes, South Ensenada Picnic Area\n2100 Isherwood Way\nFremont, CA, US 94539', time: '11:30 AM – 6:00 PM', img: 'resources/index/images/picnic-2026-banner.png?v=2', heroImg: 'resources/index/images/picnic-2026-hero.png', flyer: 'resources/index/images/picnic-2026.png', directions: 'https://www.google.com/maps/dir/?api=1&destination=2100%20Isherwood%20Way%2C%20Fremont%2C%20CA%2094539' },
-  { monthNum: 10, date: 'Fri, Oct 16, 2026', tag: 'Dandiya Night', title: 'Dandiya', heroTitle: 'Dandiya Night Celebration', desc: 'An energetic evening of Dandiya, community celebration, and dinner during the Autumn Festival weekend.', place: 'Foster City Community Center', time: '6:00 PM', img: 'resources/index/images/dandiya-night-2026.png', heroImg: 'resources/index/images/dandiya-night-2026-hero.png', flyer: null, disableKnowMore: true },
-  { monthNum: 10, date: 'Fri–Sun, Oct 16–18, 2026', tag: 'Durga Puja', title: 'Autumn Festival', heroTitle: 'Autumn Festival Weekend', desc: 'Durga Puja and Dandiya with cultural programs, international artists, lunch, dinner, and Indian fair.', place: 'Foster City Community Center', time: 'All weekend', img: 'resources/index/images/durga-puja-2026.png', heroImg: 'resources/index/images/durga-puja-2026-hero.png', flyer: null, disableKnowMore: true },
-  { monthNum: 10, date: 'Sun, Oct 18, 2026', tag: 'Live Concert', title: 'Concert - Iman', heroTitle: 'Iman Chakraborty Concert', desc: 'A live concert by acclaimed Bengali playback singer Iman Chakraborty, presented during Baybasi’s Autumn Festival.', place: 'Foster City Community Center', time: '6:00 PM', img: 'resources/index/images/iman-chakraborty-concert-2026.png?v=2', heroImg: 'resources/index/images/iman-chakraborty-concert-2026-hero.png', flyer: null, disableKnowMore: true }
+  { monthNum: 7, date: 'Sun, Jul 19, 2026', tag: 'Outdoor Watch Party', title: 'Ultimate World Cup Final Watch Party', heroTitle: 'Ultimate Final Watch Party', desc: 'Gather outdoors with the community for an ultimate World Cup Final viewing arrangement on the big screen.', place: 'Rec Center Meadows\n650 Shell Blvd\nFoster City, CA 94401', time: '11:00 AM', img: 'resources/index/images/soccer-world-cup-final-watch-party-2026-hero.jpg', heroImg: 'resources/index/images/soccer-world-cup-final-watch-party-2026-hero.jpg', flyer: 'resources/index/images/ultimate-final-watch-party-2026.jpeg', directions: 'https://www.google.com/maps/dir/?api=1&destination=650%20Shell%20Blvd%2C%20Foster%20City%2C%20CA%2094401' },
+  { monthNum: 8, date: 'Sat, Aug 15, 2026', tag: 'Members Only', title: 'Summer Picnic', heroTitle: 'Summer Picnic by the Lake', desc: 'A day of live food, games, music, sunshine, laughter, and soulful adda beside the lake.', place: 'Quarry Lakes, South Ensenada Picnic Area\n2100 Isherwood Way\nFremont, CA, US 94539', time: '11:30 AM – 6:00 PM', img: 'resources/index/images/picnic-2026-banner.png?v=2', heroImg: 'resources/index/images/picnic-2026-hero.jpg', flyer: 'resources/index/images/picnic-2026.png', directions: 'https://www.google.com/maps/dir/?api=1&destination=2100%20Isherwood%20Way%2C%20Fremont%2C%20CA%2094539' },
+  { monthNum: 10, date: 'Fri, Oct 16, 2026', tag: 'Dandiya Night', title: 'Dandiya', heroTitle: 'Dandiya Night Celebration', desc: 'An energetic evening of Dandiya, community celebration, and dinner during the Autumn Festival weekend.', place: 'Foster City Community Center', time: '6:00 PM', img: 'resources/index/images/dandiya-night-2026.png', heroImg: 'resources/index/images/dandiya-night-2026-hero.jpg', flyer: null, disableKnowMore: true },
+  { monthNum: 10, date: 'Fri–Sun, Oct 16–18, 2026', tag: 'Durga Puja', title: 'Autumn Festival', heroTitle: 'Autumn Festival Weekend', desc: 'Durga Puja and Dandiya with cultural programs, international artists, lunch, dinner, and Indian fair.', place: 'Foster City Community Center', time: 'All weekend', img: 'resources/index/images/durga-puja-2026.png', heroImg: 'resources/index/images/durga-puja-2026-hero.jpg', flyer: null, disableKnowMore: true },
+  { monthNum: 10, date: 'Sun, Oct 18, 2026', tag: 'Live Concert', title: 'Concert - Iman', heroTitle: 'Iman Chakraborty Concert', desc: 'A live concert by acclaimed Bengali playback singer Iman Chakraborty, presented during Baybasi’s Autumn Festival.', place: 'Foster City Community Center', time: '6:00 PM', img: 'resources/index/images/iman-chakraborty-concert-2026.png?v=2', heroImg: 'resources/index/images/iman-chakraborty-concert-2026-hero.jpg', flyer: null, disableKnowMore: true }
 ];
 const sa = (delay = 0) => ({
   initial: {
@@ -133,6 +134,7 @@ function HeroSection() {
   const [active, setActive] = React.useState(0);
   const [showDetails, setShowDetails] = React.useState(false);
   const [paused, setPaused] = React.useState(false);
+  const [loadedSlides, setLoadedSlides] = React.useState({ 0: true });
   const event = HOME_EVENTS[active];
   const stats = [
     { value: '25+', label: 'Years of Service' },
@@ -143,6 +145,17 @@ function HeroSection() {
     { value: '250K+', label: 'Lives Touched' }
   ];
 
+  const loadSlide = React.useCallback(function (next) {
+    const normalized = (next + HOME_EVENTS.length) % HOME_EVENTS.length;
+    setLoadedSlides(function (current) {
+      if (current[normalized]) return current;
+      const updated = Object.assign({}, current);
+      updated[normalized] = true;
+      return updated;
+    });
+    return normalized;
+  }, []);
+
   React.useEffect(function () {
     if (paused || showDetails) return;
     const timer = setInterval(function () {
@@ -150,6 +163,10 @@ function HeroSection() {
     }, 6500);
     return function () { clearInterval(timer); };
   }, [paused, showDetails]);
+
+  React.useEffect(function () {
+    loadSlide(active);
+  }, [active, loadSlide]);
 
   React.useEffect(function () {
     if (!showDetails || !event.flyer) return;
@@ -172,7 +189,8 @@ function HeroSection() {
   }, [showDetails, event.flyer]);
 
   const selectSlide = function (next) {
-    setActive((next + HOME_EVENTS.length) % HOME_EVENTS.length);
+    const normalized = loadSlide(next);
+    setActive(normalized);
     setShowDetails(false);
   };
 
@@ -188,10 +206,13 @@ function HeroSection() {
         className: "home-feature-slide" + (i === active ? " is-active" : ""),
         "aria-hidden": i === active ? "false" : "true"
       },
-        h("img", {
+        (loadedSlides[i] || i === active) && h("img", {
           src: slide.heroImg || slide.img,
           alt: "",
-          className: "home-feature-image"
+          className: "home-feature-image",
+          loading: i === 0 ? "eager" : "lazy",
+          fetchPriority: i === 0 ? "high" : "low",
+          decoding: "async"
         })
       );
     }),

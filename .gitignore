@@ -1,3 +1,6 @@
 .claude/
 .DS_Store
 BLUEHOST_DEPLOYMENT.md
+dist/
+*.zip
+.bluehost-upload-manifest.tsv

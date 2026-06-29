@@ -8,6 +8,11 @@ scripts/
 dist/
 backups/
 .bluehost-remote-backups/
+resources/index/images/dandiya-night-2026-hero.png
+resources/index/images/durga-puja-2026-hero.png
+resources/index/images/iman-chakraborty-concert-2026-hero.png
+resources/index/images/picnic-2026-hero.png
+resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png
 *.pdf
 *.pptx
 *.key

@@ -82,6 +82,24 @@ BLUEHOST_REMOTE_DIR=/home2/baybasiu/public_html/demosite \
 ./scripts/sftp-bluehost-upload.sh
 ```
 
+The default mode is a full upload. To upload only files that changed since the last successful helper-script upload:
+
+```bash
+BLUEHOST_UPLOAD_MODE=changed \
+BLUEHOST_HOST=ftp.yourdomain.com \
+BLUEHOST_USER=username@example.com \
+BLUEHOST_REMOTE_DIR=/home2/baybasiu/public_html/demosite \
+./scripts/sftp-bluehost-upload.sh
+```
+
+Changed-file mode stores a local checksum manifest at `.bluehost-upload-manifest.tsv`. If that manifest does not exist yet, the first changed-file run uploads all staged production files once and creates the baseline. Use full mode after deleting or moving many files, because changed-file mode uploads new/modified files but does not infer arbitrary remote deletions.
+
+Equivalent short toggle:
+
+```bash
+BLUEHOST_CHANGED_ONLY=1 ./scripts/sftp-bluehost-upload.sh
+```
+
 By default it also removes legacy remote media paths that were replaced by `resources/`, including:
 
 - `images/`

@@ -11,17 +11,34 @@ BLUEHOST_REMOTE_DIR="${BLUEHOST_REMOTE_DIR:-/home2/baybasiu/public_html/demosite
 BLUEHOST_CLEAN_OLD="${BLUEHOST_CLEAN_OLD:-0}"
 BLUEHOST_CLEAN_LEGACY_MEDIA="${BLUEHOST_CLEAN_LEGACY_MEDIA:-1}"
 BLUEHOST_CLEAN_DOCS="${BLUEHOST_CLEAN_DOCS:-1}"
+BLUEHOST_CHANGED_ONLY="${BLUEHOST_CHANGED_ONLY:-0}"
+BLUEHOST_UPLOAD_MODE="${BLUEHOST_UPLOAD_MODE:-full}"
+BLUEHOST_MANIFEST_FILE="${BLUEHOST_MANIFEST_FILE:-$ROOT_DIR/.bluehost-upload-manifest.tsv}"
+BLUEHOST_UPDATE_MANIFEST="${BLUEHOST_UPDATE_MANIFEST:-1}"
 
 STAGE_DIR="$(mktemp -d)"
 BATCH_FILE="$(mktemp)"
-trap 'rm -rf "$STAGE_DIR" "$BATCH_FILE"' EXIT
+CURRENT_MANIFEST="$(mktemp)"
+UPLOAD_LIST="$(mktemp)"
+UPLOAD_DIRS="$(mktemp)"
+trap 'rm -rf "$STAGE_DIR" "$BATCH_FILE" "$CURRENT_MANIFEST" "$UPLOAD_LIST" "$UPLOAD_DIRS"' EXIT
 
 cd "$ROOT_DIR"
+
+if [ "$BLUEHOST_CHANGED_ONLY" = "1" ]; then
+  BLUEHOST_UPLOAD_MODE="changed"
+fi
+
+if [ "$BLUEHOST_UPLOAD_MODE" != "full" ] && [ "$BLUEHOST_UPLOAD_MODE" != "changed" ]; then
+  echo "Error: BLUEHOST_UPLOAD_MODE must be 'full' or 'changed'." >&2
+  exit 1
+fi
 
 RSYNC_EXCLUDES=(
   --exclude-from=".bluehostignore"
   --exclude=".bluehostignore"
   --exclude="docs/"
+  --exclude=".bluehost-upload-manifest.tsv"
 )
 
 rsync -a "${RSYNC_EXCLUDES[@]}" "$ROOT_DIR"/ "$STAGE_DIR"/
@@ -161,6 +178,11 @@ emit_legacy_media_cleanup() {
     "resources/admin/images/spring-fest.jpg"
     "resources/admin/images/town-hall.svg"
     "resources/admin/images/zaman-1024x571.jpeg"
+    "resources/index/images/dandiya-night-2026-hero.png"
+    "resources/index/images/durga-puja-2026-hero.png"
+    "resources/index/images/iman-chakraborty-concert-2026-hero.png"
+    "resources/index/images/picnic-2026-hero.png"
+    "resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png"
   )
   local dirs=(
     "images/events/flyers"
@@ -187,18 +209,58 @@ emit_legacy_media_cleanup() {
   done
 }
 
+write_manifest() {
+  local source_dir="$1"
+  local output_file="$2"
+
+  {
+    while IFS= read -r file; do
+      local relative_path="${file#"$source_dir"/}"
+      local checksum
+      checksum="$(shasum -a 256 "$file" | awk '{print $1}')"
+      printf '%s\t%s\n' "$checksum" "$relative_path"
+    done < <(find "$source_dir" -mindepth 1 -type f -print | LC_ALL=C sort)
+  } > "$output_file"
+}
+
+build_upload_list() {
+  write_manifest "$STAGE_DIR" "$CURRENT_MANIFEST"
+
+  if [ "$BLUEHOST_UPLOAD_MODE" = "changed" ] && [ -f "$BLUEHOST_MANIFEST_FILE" ]; then
+    awk -F '\t' '
+      NR == FNR { previous[$2] = $1; next }
+      !($2 in previous) || previous[$2] != $1 { print $2 }
+    ' "$BLUEHOST_MANIFEST_FILE" "$CURRENT_MANIFEST" > "$UPLOAD_LIST"
+  else
+    awk -F '\t' '{ print $2 }' "$CURRENT_MANIFEST" > "$UPLOAD_LIST"
+  fi
+
+  while IFS= read -r relative_path; do
+    [ -n "$relative_path" ] || continue
+    local dir="${relative_path%/*}"
+    while [ "$dir" != "$relative_path" ] && [ "$dir" != "." ] && [ -n "$dir" ]; do
+      printf '%s\n' "$dir"
+      [ "$dir" = "${dir%/*}" ] && break
+      dir="${dir%/*}"
+    done
+  done < "$UPLOAD_LIST" | LC_ALL=C sort -u > "$UPLOAD_DIRS"
+}
+
+build_upload_list
+
 {
   printf 'cd %s\n' "$(sftp_quote "$BLUEHOST_REMOTE_DIR")"
 
   while IFS= read -r dir; do
     printf -- '-mkdir %s\n' "$(sftp_quote "$dir")"
-  done < <(find "$STAGE_DIR" -mindepth 1 -type d -print | sed "s#^$STAGE_DIR/##" | LC_ALL=C sort)
+  done < "$UPLOAD_DIRS"
 
-  while IFS= read -r file; do
-    relative_path="${file#"$STAGE_DIR"/}"
+  while IFS= read -r relative_path; do
+    [ -n "$relative_path" ] || continue
+    file="$STAGE_DIR/$relative_path"
     printf -- '-rm %s\n' "$(sftp_quote "$relative_path")"
     printf 'put %s %s\n' "$(sftp_quote "$file")" "$(sftp_quote "$relative_path")"
-  done < <(find "$STAGE_DIR" -mindepth 1 -type f -print | LC_ALL=C sort)
+  done < "$UPLOAD_LIST"
 } > "$BATCH_FILE"
 
 if [ "$BLUEHOST_CLEAN_LEGACY_MEDIA" = "1" ]; then
@@ -225,7 +287,12 @@ EOF
 
 echo "Uploading Baybasi static site to ${BLUEHOST_USER}@${BLUEHOST_HOST}:${BLUEHOST_REMOTE_DIR}"
 echo "Using SFTP port ${BLUEHOST_PORT}"
-echo "Staged $(find "$STAGE_DIR" -type f | wc -l | tr -d ' ') files for upload."
+echo "Upload mode: ${BLUEHOST_UPLOAD_MODE}"
+if [ "$BLUEHOST_UPLOAD_MODE" = "changed" ] && [ ! -f "$BLUEHOST_MANIFEST_FILE" ]; then
+  echo "No previous upload manifest found; changed-file mode will upload all staged files once and create a baseline."
+fi
+echo "Staged $(find "$STAGE_DIR" -type f | wc -l | tr -d ' ') production files."
+echo "Queued $(wc -l < "$UPLOAD_LIST" | tr -d ' ') files for SFTP."
 echo "Existing matching remote files will be removed before upload so fresh copies replace them."
 if [ "$BLUEHOST_CLEAN_LEGACY_MEDIA" = "1" ]; then
   echo "Legacy media cleanup enabled: removing old remote images/, assets/, and loose media files after resources/ uploads."
@@ -244,5 +311,12 @@ else
 fi
 
 sftp -P "$BLUEHOST_PORT" -b "$BATCH_FILE" "${BLUEHOST_USER}@${BLUEHOST_HOST}"
+
+if [ "$BLUEHOST_UPDATE_MANIFEST" = "1" ]; then
+  cp "$CURRENT_MANIFEST" "$BLUEHOST_MANIFEST_FILE"
+  echo "Updated upload manifest: $BLUEHOST_MANIFEST_FILE"
+else
+  echo "Upload manifest update disabled."
+fi
 
 echo "Upload complete."
