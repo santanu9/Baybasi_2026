@@ -11,6 +11,7 @@
   <link rel="preload" href="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js" as="script" crossorigin="anonymous"/>
   <link rel="preload" href="js/components.js?v=17" as="script"/>
   <link rel="preload" href="resources/index/images/soccer-world-cup-final-watch-party-2026-hero.jpg" as="image" fetchpriority="high"/>
+  <link rel="icon" type="image/png" href="resources/common/images/baybasi-logo.png"/>
   <title>Baybasi – Bay Area Bengali &amp; Indian Cultural Organization</title>
   <meta name="description" content="Baybasi is the SF Bay Area's premier Indian cultural nonprofit, celebrating Bengali heritage, organizing spectacular events, and giving back to communities since 2000."/>
 
@@ -32,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=30"/>
+  <link rel="stylesheet" href="css/styles.css?v=33"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -295,13 +296,13 @@ function HeroSection() {
         className: "home-feature-arrow home-feature-arrow-prev",
         onClick: function () { selectSlide(active - 1); },
         "aria-label": "Previous featured event"
-      }, "‹"),
+      }, h("span", { "aria-hidden": "true" }, "‹")),
       h("button", {
         type: "button",
         className: "home-feature-arrow home-feature-arrow-next",
         onClick: function () { selectSlide(active + 1); },
         "aria-label": "Next featured event"
-      }, "›"),
+      }, h("span", { "aria-hidden": "true" }, "›")),
       h("div", { className: "home-feature-dots", role: "tablist", "aria-label": "Featured events" },
         HOME_EVENTS.map(function (slide, i) {
           return h("button", {
@@ -1007,6 +1008,9 @@ function SponsorsSection() {
     }, /*#__PURE__*/React.createElement("img", {
       src: img,
       alt: sname,
+      loading: "lazy",
+      decoding: "async",
+      fetchPriority: "low",
       className: "w-full h-full object-contain"
     }));
     return href ? /*#__PURE__*/React.createElement("a", {
