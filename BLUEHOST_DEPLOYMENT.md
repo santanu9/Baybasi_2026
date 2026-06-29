@@ -12,7 +12,9 @@ This site is a **static** Bengali-cultural-organization site (HTML + JS + CSS + 
 | `.htaccess` | Apache config: HTTPS, gzip, caching, MIME types, security headers, custom 404 |
 | `css/styles.css` | Stylesheet |
 | `js/components.js`, `js/content.js` | Shared scripts |
-| `images/` | All site imagery: logo, sponsor logos, director photos, hero video, hero SVGs |
+| `resources/` | Page-scoped media: `resources/<page>/images/` and `resources/<page>/videos/` |
+
+`docs/` is not needed for Bluehost hosting. It is a cloned/static copy for GitHub Pages-style publishing, while Bluehost serves the root HTML files directly.
 
 ## What does NOT get deployed
 
@@ -67,6 +69,39 @@ If you prefer an FTP client (FileZilla, Cyberduck):
 4. Upload everything from the project root (excluding the "do NOT deploy" list above).
 5. **Make sure `.htaccess` is uploaded** — most FTP clients hide dotfiles by default. In FileZilla: **Server → Force showing hidden files**.
 
+If you are replacing an older Baybasi upload, remove the old remote `images/`, `assets/`, and loose sponsor-logo media files after uploading. The SFTP helper does this automatically by default.
+
+## SFTP helper script
+
+The helper script uploads the current static site, including the new `resources/` media tree:
+
+```bash
+BLUEHOST_HOST=ftp.yourdomain.com \
+BLUEHOST_USER=username@example.com \
+BLUEHOST_REMOTE_DIR=/home2/baybasiu/public_html/demosite \
+./scripts/sftp-bluehost-upload.sh
+```
+
+By default it also removes legacy remote media paths that were replaced by `resources/`, including:
+
+- `images/`
+- `assets/`
+- old loose root sponsor/logo image files
+
+It also skips `docs/` during upload and removes any old remote `docs/` folder, because Bluehost does not need the GitHub Pages copy.
+
+To skip that cleanup for a dry migration run:
+
+```bash
+BLUEHOST_CLEAN_LEGACY_MEDIA=0 ./scripts/sftp-bluehost-upload.sh
+```
+
+To keep an old remote `docs/` folder temporarily:
+
+```bash
+BLUEHOST_CLEAN_DOCS=0 ./scripts/sftp-bluehost-upload.sh
+```
+
 ## HTTPS / SSL
 
 Bluehost provisions a free Let's Encrypt cert on every domain automatically. Confirm:
@@ -87,7 +122,7 @@ This tells browsers to **only** ever use HTTPS for your domain.
 
 When you change a file locally:
 
-1. Re-upload **only the changed file** via File Manager or FTP (overwriting the old one).
+1. Re-upload **only the changed file** via File Manager or FTP (overwriting the old one). Media files now live under `resources/<page>/images/` or `resources/<page>/videos/`.
 2. If you changed `js/components.js`, also bump the `?v=N` cache buster in every HTML file's `<script src="js/components.js?v=N">` so browsers fetch the new copy. Current pages use `?v=14` and `events.html` uses `?v=15`.
 3. If you changed `css/styles.css`, bump `?v=N` in every `<link rel="stylesheet" href="css/styles.css?v=N">`. Currently `?v=7`.
 

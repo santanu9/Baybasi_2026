@@ -315,7 +315,7 @@ window.Navbar = function Navbar(props) {
       /* ── Logo ── */
       _h('a', { href: 'index.html', style: { display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', flexShrink: 0 } },
         _h('img', {
-          src: 'images/common/baybasi-logo.png',
+          src: 'resources/common/images/baybasi-logo.png',
           alt: 'Baybasi',
           style: { height: '52px', width: '52px', objectFit: 'contain', display: 'block' }
         }),
@@ -560,7 +560,7 @@ window.Footer = function Footer() {
         /* Brand column */
         _h('div', { style: { display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: 0 } },
           _h('a', { href: 'index.html', style: { display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' } },
-            _h('img', { src: 'images/common/baybasi-logo.png', alt: 'Baybasi', style: { height: '52px', width: '52px', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(245,158,11,0.25))' } }),
+            _h('img', { src: 'resources/common/images/baybasi-logo.png', alt: 'Baybasi', style: { height: '52px', width: '52px', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(245,158,11,0.25))' } }),
             _h('div', { style: { display: 'flex', flexDirection: 'column', lineHeight: 1.1 } },
               _h('span', { style: { fontFamily: fontStack, fontWeight: 800, fontSize: '1.55rem', color: '#FFF7ED', letterSpacing: '-0.5px' } }, 'Baybasi'),
               _h('span', { style: { fontFamily: fontStack, fontWeight: 400, fontSize: '0.7rem', color: 'rgba(255,247,237,0.55)', letterSpacing: '0.06em', marginTop: '2px' } }, 'A California Nonprofit')

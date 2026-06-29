@@ -41,7 +41,7 @@
 <div id="login-email-screen" class="min-h-screen flex items-center justify-center px-4">
   <div class="bg-white rounded-2xl shadow-xl p-10 w-full max-w-md">
     <div class="flex items-center gap-3 mb-8">
-      <img src="images/common/baybasi-logo.png" alt="Baybasi" style="height:48px;width:48px;object-fit:contain"/>
+      <img src="resources/common/images/baybasi-logo.png" alt="Baybasi" style="height:48px;width:48px;object-fit:contain"/>
       <div>
         <div class="font-bold text-xl text-[#B91C1C]">Baybasi</div>
         <div class="text-xs text-[#6B7280]">Content Manager · Secure Login</div>
@@ -67,7 +67,7 @@
 <div id="login-otp-screen" class="hidden min-h-screen flex items-center justify-center px-4">
   <div class="bg-white rounded-2xl shadow-xl p-10 w-full max-w-md">
     <div class="flex items-center gap-3 mb-8">
-      <img src="images/common/baybasi-logo.png" alt="Baybasi" style="height:48px;width:48px;object-fit:contain"/>
+      <img src="resources/common/images/baybasi-logo.png" alt="Baybasi" style="height:48px;width:48px;object-fit:contain"/>
       <div>
         <div class="font-bold text-xl text-[#B91C1C]">Baybasi</div>
         <div class="text-xs text-[#6B7280]">Verify Your Email</div>
@@ -104,7 +104,7 @@
   <header class="bg-white border-b border-[#E5E7EB] sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img src="images/common/baybasi-logo.png" alt="Baybasi" style="height:40px;width:40px;object-fit:contain"/>
+        <img src="resources/common/images/baybasi-logo.png" alt="Baybasi" style="height:40px;width:40px;object-fit:contain"/>
         <div>
           <span class="font-bold text-[#B91C1C]">Baybasi</span>
           <span class="text-[#6B7280] text-sm ml-2">Content Manager</span>
@@ -357,7 +357,7 @@ var PAGES = [
     segments: [
       { id: 'brand', name: 'Brand Logo', desc: 'Logo shown in the navbar and footer on every page.',
         images: [
-          { key: 'logo', label: 'Site Logo', default: 'images/common/baybasi-logo.png',
+          { key: 'logo', label: 'Site Logo', default: 'resources/common/images/baybasi-logo.png',
             hint: 'Square PNG, transparent background, min 256×256 px. Appears top-left of every page.' },
         ]},
     ]
@@ -367,15 +367,15 @@ var PAGES = [
     segments: [
       { id: 'home_hero', name: 'Hero Section', desc: 'Top banner of the home page with the looping video and tagline.',
         images: [
-          { key: 'home_hero_bg', label: 'Hero Background (Video Poster)', default: 'images/events/cards/picnic-2026-hero.png',
+          { key: 'home_hero_bg', label: 'Hero Background (Video Poster)', default: 'resources/index/images/picnic-2026-hero.png',
             hint: 'Wide landscape JPG, min 1920×1080 px. Used as a backup when the video is loading.' },
         ]},
       { id: 'home_about', name: 'About Us — 4 Panels', desc: 'The four About panels (Our Story, Purpose, Major Events, Performance).',
         images: [
-          { key: 'home_about_1', label: 'Panel 1 — Our Story',       default: 'images/about/about-hero-community.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
-          { key: 'home_about_2', label: 'Panel 2 — Our Purpose',     default: 'images/impacts/impact-hero-community.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
-          { key: 'home_about_3', label: 'Panel 3 — Major Events',    default: 'images/events/cards/durga-puja-2026.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
-          { key: 'home_about_4', label: 'Panel 4 — Our Performance', default: 'images/events/cards/iman-chakraborty-concert-2026.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_1', label: 'Panel 1 — Our Story',       default: 'resources/index/images/about-hero-community.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_2', label: 'Panel 2 — Our Purpose',     default: 'resources/index/images/impact-hero-community.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_3', label: 'Panel 3 — Major Events',    default: 'resources/index/images/durga-puja-2026.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
+          { key: 'home_about_4', label: 'Panel 4 — Our Performance', default: 'resources/index/images/iman-chakraborty-concert-2026.png', hint: 'Square or 4:3 image. Min 800×800 px.' },
         ]},
     ]
   },
@@ -384,18 +384,18 @@ var PAGES = [
     segments: [
       { id: 'about_hero', name: 'Hero Section', desc: 'Top banner background image on the About Us page.',
         images: [
-          { key: 'about_hero', label: 'Hero Background', default: 'images/about/about-hero-community.png',
+          { key: 'about_hero', label: 'Hero Background', default: 'resources/about/images/about-hero-community.png',
             hint: 'Wide landscape JPG, min 1920×1080 px.' },
         ]},
       { id: 'about_directors', name: 'Board of Directors', desc: 'Headshot photos shown in the Board of Directors grid.',
         images: [
-          { key: 'director_suman',     label: 'Suman Debnath',        default: 'images/about/director-suman-debnath.jpg',        hint: 'Square headshot. Min 400×400 px. Face centered.' },
-          { key: 'director_nilanjan',  label: 'Nilanjan Debroy',      default: 'images/about/director-nilanjan-debroy.jpg',      hint: 'Square headshot. Min 400×400 px. Face centered.' },
-          { key: 'director_prithwiraj',label: 'Prithwiraj Mitra',     default: 'images/about/director-prithwiraj-mitra.jpg',     hint: 'Square headshot. Min 400×400 px. Face centered.' },
-          { key: 'director_raj',       label: 'Raj Tiwari',           default: 'images/about/director-raj-tiwari.jpg',           hint: 'Square headshot. Min 400×400 px. Face centered.' },
-          { key: 'director_sukalyan',  label: 'Sukalyan Chakraborty', default: 'images/about/director-sukalyan-chakraborty.jpg', hint: 'Square headshot. Min 400×400 px. Face centered.' },
-          { key: 'director_swati',     label: 'Swati Chakraborty',    default: 'images/about/director-swati-chakraborty.jpg',    hint: 'Square headshot. Min 400×400 px. Face centered.' },
-          { key: 'director_manjira',   label: 'Manjira Datta',        default: 'images/about/director-manjira-datta.png',        hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_suman',     label: 'Suman Debnath',        default: 'resources/about/images/director-suman-debnath.jpg',        hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_nilanjan',  label: 'Nilanjan Debroy',      default: 'resources/about/images/director-nilanjan-debroy.jpg',      hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_prithwiraj',label: 'Prithwiraj Mitra',     default: 'resources/about/images/director-prithwiraj-mitra.jpg',     hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_raj',       label: 'Raj Tiwari',           default: 'resources/about/images/director-raj-tiwari.jpg',           hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_sukalyan',  label: 'Sukalyan Chakraborty', default: 'resources/about/images/director-sukalyan-chakraborty.jpg', hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_swati',     label: 'Swati Chakraborty',    default: 'resources/about/images/director-swati-chakraborty.jpg',    hint: 'Square headshot. Min 400×400 px. Face centered.' },
+          { key: 'director_manjira',   label: 'Manjira Datta',        default: 'resources/about/images/director-manjira-datta.png',        hint: 'Square headshot. Min 400×400 px. Face centered.' },
         ]},
     ]
   },
@@ -404,14 +404,14 @@ var PAGES = [
     segments: [
       { id: 'impacts_hero', name: 'Hero Section', desc: 'Top banner background on the Impacts page.',
         images: [
-          { key: 'impacts_hero', label: 'Hero Background', default: 'images/impacts/impact-hero-community.png',
+          { key: 'impacts_hero', label: 'Hero Background', default: 'resources/impacts/images/impact-hero-community.png',
             hint: 'Wide landscape JPG, min 1920×1080 px.' },
         ]},
       { id: 'impacts_stories', name: 'Impact Stories', desc: 'Photos shown alongside each impact testimony.',
         images: [
-          { key: 'impacts_photo1', label: 'Story 1 Photo', default: 'images/impacts/impact-hero-community.png', hint: 'Min 1200×800 px.' },
-          { key: 'impacts_photo2', label: 'Story 2 Photo', default: 'images/about/about-hero-community.png', hint: 'Min 1200×800 px.' },
-          { key: 'impacts_photo3', label: 'Story 3 Photo', default: 'images/events/cards/durga-puja-2026.png', hint: 'Min 1200×800 px.' },
+          { key: 'impacts_photo1', label: 'Story 1 Photo', default: 'resources/impacts/images/impact-hero-community.png', hint: 'Min 1200×800 px.' },
+          { key: 'impacts_photo2', label: 'Story 2 Photo', default: 'resources/impacts/images/about-hero-community.png', hint: 'Min 1200×800 px.' },
+          { key: 'impacts_photo3', label: 'Story 3 Photo', default: 'resources/impacts/images/durga-puja-2026.png', hint: 'Min 1200×800 px.' },
         ]},
     ]
   },
@@ -420,12 +420,12 @@ var PAGES = [
     segments: [
       { id: 'events_covers', name: 'Event Cover Photos', desc: 'Each card on the Events page uses one cover photo.',
         images: [
-          { key: 'event_spring_fest', label: 'Spring Fest',    default: 'images/events/flyers/spring-fest.jpg', hint: 'Landscape 16:9, min 1600×900 px.' },
-          { key: 'event_holi',        label: 'Holi',           default: 'images/events/flyers/holi.jpg',        hint: 'Landscape 16:9, min 1600×900 px.' },
-          { key: 'event_boishakhi',   label: 'Boishakhi Mela', default: 'images/events/cards/boishakhi.svg',   hint: 'Landscape 16:9, min 1600×900 px.' },
-          { key: 'event_autumn_fest', label: 'Autumn Fest',    default: 'images/events/cards/durga-puja-2026.png', hint: 'Landscape 16:9, min 1600×900 px.' },
-          { key: 'event_diwali',      label: 'Diwali Night',   default: 'images/events/cards/town-hall.svg',      hint: 'Landscape 16:9, min 1600×900 px.' },
-          { key: 'event_picnic',      label: 'Annual Picnic',  default: 'images/events/cards/picnic-2026-hero.png',      hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_spring_fest', label: 'Spring Fest',    default: 'resources/events/images/spring-fest.jpg', hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_holi',        label: 'Holi',           default: 'resources/events/images/holi.jpg',        hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_boishakhi',   label: 'Boishakhi Mela', default: 'resources/events/images/boishakhi.svg',   hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_autumn_fest', label: 'Autumn Fest',    default: 'resources/events/images/durga-puja-2026.png', hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_diwali',      label: 'Diwali Night',   default: 'resources/events/images/town-hall.svg',      hint: 'Landscape 16:9, min 1600×900 px.' },
+          { key: 'event_picnic',      label: 'Annual Picnic',  default: 'resources/events/images/picnic-2026-hero.png',      hint: 'Landscape 16:9, min 1600×900 px.' },
         ]},
     ]
   },
@@ -434,34 +434,34 @@ var PAGES = [
     segments: [
       { id: 'sp_platinum', name: 'Platinum Tier (Largest)', desc: 'Top tier — biggest logo display. Wide horizontal logos look best.',
         images: [
-          { key: 'sp_indian_grocery', label: 'India Grocery & Spice', default: 'images/sponsors/indian_grocery_image001.png',  hint: 'Wide landscape, min 1200×600 px. Will fill the card.' },
-          { key: 'sp_future_right',   label: 'Future Right',          default: 'images/sponsors/future_right_v2-768x644.png',  hint: 'Wide landscape, min 1200×600 px. Will fill the card.' },
+          { key: 'sp_indian_grocery', label: 'India Grocery & Spice', default: 'resources/sponsors/images/indian_grocery_image001.png',  hint: 'Wide landscape, min 1200×600 px. Will fill the card.' },
+          { key: 'sp_future_right',   label: 'Future Right',          default: 'resources/sponsors/images/future_right_v2-768x644.png',  hint: 'Wide landscape, min 1200×600 px. Will fill the card.' },
         ]},
       { id: 'sp_gold', name: 'Gold Tier', desc: 'Second tier — large logos.',
         images: [
-          { key: 'sp_zaman',        label: 'Zaman / Cal Coast', default: 'images/sponsors/zaman-1024x571.jpeg', hint: 'Min 1000×500 px.' },
-          { key: 'sp_ask_for_cure', label: 'Ask For Cure',      default: 'images/sponsors/I-693_New-1024x683.jpeg', hint: 'Min 1000×500 px.' },
+          { key: 'sp_zaman',        label: 'Zaman / Cal Coast', default: 'resources/sponsors/images/zaman-1024x571.jpeg', hint: 'Min 1000×500 px.' },
+          { key: 'sp_ask_for_cure', label: 'Ask For Cure',      default: 'resources/sponsors/images/I-693_New-1024x683.jpeg', hint: 'Min 1000×500 px.' },
         ]},
       { id: 'sp_silver', name: 'Silver Tier', desc: 'Mid-tier logos.',
         images: [
-          { key: 'sp_ravi',            label: 'Ravi Jagtiani',           default: 'images/sponsors/ravi_jagtiani_new-1024x512.jpg', hint: 'Min 800×400 px.' },
-          { key: 'sp_ramez',           label: 'Ramez Tabri Real Estate', default: 'images/sponsors/ramez_tabri_updated.jpg',       hint: 'Min 800×400 px.' },
-          { key: 'sp_first_bank',      label: 'First Bank',              default: 'images/sponsors/first_bank.png',                hint: 'Min 800×400 px.' },
-          { key: 'sp_kids_connection', label: 'Kids Connection Schools', default: 'images/sponsors/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg', hint: 'Min 800×400 px.' },
+          { key: 'sp_ravi',            label: 'Ravi Jagtiani',           default: 'resources/sponsors/images/ravi_jagtiani_new-1024x512.jpg', hint: 'Min 800×400 px.' },
+          { key: 'sp_ramez',           label: 'Ramez Tabri Real Estate', default: 'resources/sponsors/images/ramez_tabri_updated.jpg',       hint: 'Min 800×400 px.' },
+          { key: 'sp_first_bank',      label: 'First Bank',              default: 'resources/sponsors/images/first_bank.png',                hint: 'Min 800×400 px.' },
+          { key: 'sp_kids_connection', label: 'Kids Connection Schools', default: 'resources/sponsors/images/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg', hint: 'Min 800×400 px.' },
         ]},
       { id: 'sp_bronze', name: 'Bronze Tier', desc: 'Smaller tier logos.',
         images: [
-          { key: 'sp_bmo',      label: 'BMO',                     default: 'images/sponsors/BMO_Updated-768x440.png',           hint: 'Min 600×300 px.' },
-          { key: 'sp_rosalind', label: 'Rosalind Chin',           default: 'images/sponsors/rosalind_chin.png',                 hint: 'Min 600×300 px.' },
-          { key: 'sp_ebiw',     label: 'EBIW',                    default: 'images/sponsors/ebiw-768x122.png',                  hint: 'Min 600×300 px.' },
-          { key: 'sp_shiraz',   label: 'Shiraz Zack Real Estate', default: 'images/sponsors/kw_PHOTO-2022-09-12-21-14-21.jpg',  hint: 'Min 600×300 px.' },
+          { key: 'sp_bmo',      label: 'BMO',                     default: 'resources/sponsors/images/BMO_Updated-768x440.png',           hint: 'Min 600×300 px.' },
+          { key: 'sp_rosalind', label: 'Rosalind Chin',           default: 'resources/sponsors/images/rosalind_chin.png',                 hint: 'Min 600×300 px.' },
+          { key: 'sp_ebiw',     label: 'EBIW',                    default: 'resources/sponsors/images/ebiw-768x122.png',                  hint: 'Min 600×300 px.' },
+          { key: 'sp_shiraz',   label: 'Shiraz Zack Real Estate', default: 'resources/sponsors/images/kw_PHOTO-2022-09-12-21-14-21.jpg',  hint: 'Min 600×300 px.' },
         ]},
       { id: 'sp_classic', name: 'Classic Tier (Smallest)', desc: 'Smallest tier logos.',
         images: [
-          { key: 'sp_jaspreet',  label: 'Jaspreet',         default: 'images/sponsors/Jaspreet-768x621.png',               hint: 'Min 400×300 px.' },
-          { key: 'sp_nanda',     label: 'Nanda Cal Realty', default: 'images/sponsors/Mamta_logo_new-scaled-1-768x512.jpg', hint: 'Min 400×300 px.' },
-          { key: 'sp_andrew',    label: 'Andrew Klink',     default: 'images/sponsors/Andrew_Klink_2-scaled-1-768x432.jpeg', hint: 'Min 400×300 px.' },
-          { key: 'sp_gama_ride', label: 'Gama Ride',        default: 'images/sponsors/gama_ride_working-1.png',             hint: 'Min 400×300 px.' },
+          { key: 'sp_jaspreet',  label: 'Jaspreet',         default: 'resources/sponsors/images/Jaspreet-768x621.png',               hint: 'Min 400×300 px.' },
+          { key: 'sp_nanda',     label: 'Nanda Cal Realty', default: 'resources/sponsors/images/Mamta_logo_new-scaled-1-768x512.jpg', hint: 'Min 400×300 px.' },
+          { key: 'sp_andrew',    label: 'Andrew Klink',     default: 'resources/sponsors/images/Andrew_Klink_2-scaled-1-768x432.jpeg', hint: 'Min 400×300 px.' },
+          { key: 'sp_gama_ride', label: 'Gama Ride',        default: 'resources/sponsors/images/gama_ride_working-1.png',             hint: 'Min 400×300 px.' },
         ]},
     ]
   },

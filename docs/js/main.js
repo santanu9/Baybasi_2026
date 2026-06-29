@@ -21,10 +21,10 @@
   const hero = document.querySelector('[data-hero-rotator]');
   const impactBox = document.querySelector('[data-rotating-impact]');
   const slides = [
-    { image: 'assets/images/hero-culture.svg', number: '25+', label: 'Years in Service' },
-    { image: 'assets/images/hero-festival.svg', number: '200+', label: 'Festivals and Programs' },
-    { image: 'assets/images/hero-impact.svg', number: '$100,000+', label: 'Donated to Charity' },
-    { image: 'assets/images/hero-culture.svg', number: '250,000+', label: 'Lives Touched' }
+    { image: 'resources/home/images/hero-culture.svg', number: '25+', label: 'Years in Service' },
+    { image: 'resources/home/images/hero-festival.svg', number: '200+', label: 'Festivals and Programs' },
+    { image: 'resources/home/images/hero-impact.svg', number: '$100,000+', label: 'Donated to Charity' },
+    { image: 'resources/home/images/hero-culture.svg', number: '250,000+', label: 'Lives Touched' }
   ];
 
   if (hero && impactBox && slides.length) {

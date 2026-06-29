@@ -14,7 +14,7 @@ zip -r "$OUT_DIR/$ZIP_NAME" \
   index.html about.html impacts.html events.html sponsors.html \
   join-us.html membership.html event-pass.html volunteer.html sponsorship.html \
   admin.html 404.html .htaccess \
-  css js images \
+  css js resources \
   -x "*.DS_Store" \
   -x "docs/*" \
   -x "reports/*" \

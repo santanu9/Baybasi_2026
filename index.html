@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"/>
-  <link rel="stylesheet" href="css/styles.css?v=26"/>
+  <link rel="stylesheet" href="css/styles.css?v=29"/>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
@@ -47,13 +47,13 @@ const {
 } = Motion;
 // Locally-hosted 3D-rendered Durga Puja gallery background (Blender/EEVEE, web-optimized faststart MP4).
 // Previous external source: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4
-const CAP_VIDEO = "images/home/durga-puja-bg.mp4?v=3";
+const CAP_VIDEO = "resources/index/videos/durga-puja-bg.mp4?v=3";
 const HOME_EVENTS = [
-  { monthNum: 8, date: 'Sat, Aug 15, 2026', tag: 'Members Only', title: 'Summer Picnic', heroTitle: 'A Summer Day by the Lake', desc: 'A day of live food, games, music, sunshine, laughter, and soulful adda beside the lake.', place: 'Quarry Lakes, South Ensenada Picnic Area\n2100 Isherwood Way\nFremont, CA, US 94539', time: '11:30 AM – 6:00 PM', img: 'images/events/cards/picnic-2026-banner.png?v=2', heroImg: 'images/events/cards/picnic-2026-hero.png', flyer: 'images/events/flyers/picnic-2026.png', directions: 'https://www.google.com/maps/dir/?api=1&destination=2100%20Isherwood%20Way%2C%20Fremont%2C%20CA%2094539' },
-  { monthNum: 7, date: 'Sun, Jul 19, 2026', tag: 'Outdoor Watch Party', title: 'FIFA Soccer World Cup Final Watch Party', heroTitle: 'FIFA Soccer World Cup Final Watch Party', desc: 'Gather outdoors with the community for a FIFA Soccer World Cup Final viewing arrangement on the big screen.', place: 'Rec Center Meadows', time: '11:00 AM', img: 'images/events/cards/soccer-world-cup-final-watch-party-2026-hero.png', heroImg: 'images/events/cards/soccer-world-cup-final-watch-party-2026-hero.png', flyer: null },
-  { monthNum: 10, date: 'Fri, Oct 16, 2026', tag: 'Dandiya Night', title: 'Dandiya', heroTitle: 'Dance Into Autumn', desc: 'An energetic evening of Dandiya, community celebration, and dinner during the Autumn Festival weekend.', place: 'Foster City Community Center', time: 'TBD', img: 'images/events/cards/dandiya-night-2026.png', heroImg: 'images/events/cards/dandiya-night-2026-hero.png', flyer: null, disableKnowMore: true },
-  { monthNum: 10, date: 'Fri–Sun, Oct 16–18, 2026', tag: 'Durga Puja', title: 'Autumn Festival', heroTitle: 'Tradition Comes Alive', desc: 'Durga Puja and Dandiya with cultural programs, international artists, lunch, dinner, and Indian fair.', place: 'Foster City Community Center', time: 'All weekend', img: 'images/events/cards/durga-puja-2026.png', heroImg: 'images/events/cards/durga-puja-2026-hero.png', flyer: null, disableKnowMore: true },
-  { monthNum: 10, date: 'Sun, Oct 18, 2026', tag: 'Live Concert', title: 'Concert - Iman', heroTitle: 'Iman Chakraborty Live', desc: 'A live concert by acclaimed Bengali playback singer Iman Chakraborty, presented during Baybasi’s Autumn Festival.', place: 'Foster City Community Center', time: 'TBD', img: 'images/events/cards/iman-chakraborty-concert-2026.png?v=2', heroImg: 'images/events/cards/iman-chakraborty-concert-2026-hero.png', flyer: null, disableKnowMore: true }
+  { monthNum: 7, date: 'Sun, Jul 19, 2026', tag: 'Outdoor Watch Party', title: 'Ultimate World Cup Final Watch Party', heroTitle: 'Ultimate Final Watch Party', desc: 'Gather outdoors with the community for an ultimate World Cup Final viewing arrangement on the big screen.', place: 'Rec Center Meadows\n650 Shell Blvd\nFoster City, CA 94401', time: '11:00 AM', img: 'resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png', heroImg: 'resources/index/images/soccer-world-cup-final-watch-party-2026-hero.png', flyer: 'resources/index/images/ultimate-final-watch-party-2026.jpeg', directions: 'https://www.google.com/maps/dir/?api=1&destination=650%20Shell%20Blvd%2C%20Foster%20City%2C%20CA%2094401' },
+  { monthNum: 8, date: 'Sat, Aug 15, 2026', tag: 'Members Only', title: 'Summer Picnic', heroTitle: 'Summer Picnic by the Lake', desc: 'A day of live food, games, music, sunshine, laughter, and soulful adda beside the lake.', place: 'Quarry Lakes, South Ensenada Picnic Area\n2100 Isherwood Way\nFremont, CA, US 94539', time: '11:30 AM – 6:00 PM', img: 'resources/index/images/picnic-2026-banner.png?v=2', heroImg: 'resources/index/images/picnic-2026-hero.png', flyer: 'resources/index/images/picnic-2026.png', directions: 'https://www.google.com/maps/dir/?api=1&destination=2100%20Isherwood%20Way%2C%20Fremont%2C%20CA%2094539' },
+  { monthNum: 10, date: 'Fri, Oct 16, 2026', tag: 'Dandiya Night', title: 'Dandiya', heroTitle: 'Dandiya Night Celebration', desc: 'An energetic evening of Dandiya, community celebration, and dinner during the Autumn Festival weekend.', place: 'Foster City Community Center', time: '6:00 PM', img: 'resources/index/images/dandiya-night-2026.png', heroImg: 'resources/index/images/dandiya-night-2026-hero.png', flyer: null, disableKnowMore: true },
+  { monthNum: 10, date: 'Fri–Sun, Oct 16–18, 2026', tag: 'Durga Puja', title: 'Autumn Festival', heroTitle: 'Autumn Festival Weekend', desc: 'Durga Puja and Dandiya with cultural programs, international artists, lunch, dinner, and Indian fair.', place: 'Foster City Community Center', time: 'All weekend', img: 'resources/index/images/durga-puja-2026.png', heroImg: 'resources/index/images/durga-puja-2026-hero.png', flyer: null, disableKnowMore: true },
+  { monthNum: 10, date: 'Sun, Oct 18, 2026', tag: 'Live Concert', title: 'Concert - Iman', heroTitle: 'Iman Chakraborty Concert', desc: 'A live concert by acclaimed Bengali playback singer Iman Chakraborty, presented during Baybasi’s Autumn Festival.', place: 'Foster City Community Center', time: '6:00 PM', img: 'resources/index/images/iman-chakraborty-concert-2026.png?v=2', heroImg: 'resources/index/images/iman-chakraborty-concert-2026-hero.png', flyer: null, disableKnowMore: true }
 ];
 const sa = (delay = 0) => ({
   initial: {
@@ -239,7 +239,7 @@ function HeroSection() {
           h("p", null, event.desc)
         )
       ),
-      showDetails && event.flyer && h(motion.div, {
+      showDetails && event.flyer && ReactDOM.createPortal(h(motion.div, {
         className: "home-feature-flyer-modal",
         role: "dialog",
         "aria-modal": "true",
@@ -268,7 +268,7 @@ function HeroSection() {
             className: "home-feature-flyer-image"
           })
         )
-      ),
+      ), document.body),
       h("button", {
         type: "button",
         className: "home-feature-arrow home-feature-arrow-prev",
@@ -510,7 +510,7 @@ function UpcomingEventsSection() {
 
   const arrow = (dir, label, glyph) => h("button", {
     type: "button", "aria-label": label, onClick: () => nudge(dir),
-    className: "hidden md:flex w-12 h-12 rounded-full liquid-glass items-center justify-center text-[#1F2937] text-2xl leading-none font-semibold shrink-0 hover:text-[#B91C1C] transition"
+    className: "hidden md:flex w-12 h-12 rounded-full bg-transparent items-center justify-center text-[#FFF7ED] text-2xl leading-none font-semibold shrink-0 hover:text-[#F59E0B] transition"
   }, glyph);
 
   const dots = h("div", { className: "flex justify-center gap-2 mt-7", role: "tablist", "aria-label": "Event navigation" },
@@ -521,8 +521,8 @@ function UpcomingEventsSection() {
     }))
   );
 
-  const modal = flyer ? h("div", {
-    className: "fixed inset-0 z-[200] flex items-center justify-center p-4",
+  const modal = flyer ? ReactDOM.createPortal(h("div", {
+    className: "fixed inset-0 z-[2147483647] flex items-center justify-center p-4",
     style: { background: 'rgba(0,0,0,0.80)', backdropFilter: 'blur(4px)' },
     onClick: () => setFlyer(null)
   },
@@ -538,7 +538,7 @@ function UpcomingEventsSection() {
             h("a", { href: "events.html", className: "inline-flex items-center gap-1.5 mt-6 bg-[#B91C1C] text-white rounded-full px-5 py-2.5 text-sm font-semibold" }, "All Events ", h(ArrowUpRight, { className: "h-4 w-4" }))
           )
     )
-  ) : null;
+  ), document.body) : null;
 
   return h("section", { className: "home-scroll-section" },
     h("div", { className: "home-section-inner" },
@@ -867,79 +867,79 @@ function SponsorsSection() {
     name: 'Platinum',
     sponsors: [{
       name: 'India Grocery and Spice',
-      img: 'images/sponsors/indian_grocery_image001.png',
+      img: 'resources/index/images/indian_grocery_image001.png',
       href: 'http://www.indiagroceryandspice.com/'
     }, {
       name: 'Future Right',
-      img: 'images/sponsors/future_right_v2-768x644.png',
+      img: 'resources/index/images/future_right_v2-768x644.png',
       href: 'https://docs.google.com/forms/d/e/1FAIpQLSem_ICmWMSX690Y-u8cQQDcvTy_WWiCGHnqRKNFRhrjwaxjhA/viewform'
     }]
   }, {
     name: 'Gold',
     sponsors: [{
       name: 'Zaman',
-      img: 'images/sponsors/zaman-1024x571.jpeg',
+      img: 'resources/index/images/zaman-1024x571.jpeg',
       href: 'https://calcoastmtg.com'
     }, {
       name: 'Ask For Cure',
-      img: 'images/sponsors/I-693_New-1024x683.jpeg',
+      img: 'resources/index/images/I-693_New-1024x683.jpeg',
       href: 'http://www.askforcure.com'
     }]
   }, {
     name: 'Silver',
     sponsors: [{
       name: 'Ravi Jagtiani',
-      img: 'images/sponsors/ravi_jagtiani_new-1024x512.jpg',
+      img: 'resources/index/images/ravi_jagtiani_new-1024x512.jpg',
       href: null
     }, {
       name: 'Ramez Tabri Real Estate',
-      img: 'images/sponsors/ramez_tabri_updated.jpg',
+      img: 'resources/index/images/ramez_tabri_updated.jpg',
       href: 'https://rameztabrirealestate.com'
     }, {
       name: 'First Bank',
-      img: 'images/sponsors/first_bank.png',
+      img: 'resources/index/images/first_bank.png',
       href: 'https://www.first.bank/About/Locations/San-Mateo'
     }, {
       name: 'Kids Connection Schools',
-      img: 'images/sponsors/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg',
+      img: 'resources/index/images/WhatsApp-Image-2023-10-20-at-2.22.33-PM-1024x1018.jpeg',
       href: 'https://kidsconnectionschools.com/'
     }]
   }, {
     name: 'Bronze',
     sponsors: [{
       name: 'BMO',
-      img: 'images/sponsors/BMO_Updated-768x440.png',
+      img: 'resources/index/images/BMO_Updated-768x440.png',
       href: 'https://usmortgagebanker.bmo.com/ca/fremont/ac-1685660/'
     }, {
       name: 'Rosalind Chin',
-      img: 'images/sponsors/rosalind_chin.png',
+      img: 'resources/index/images/rosalind_chin.png',
       href: 'http://www.rosalindchin.com'
     }, {
       name: 'EBIW',
-      img: 'images/sponsors/ebiw-768x122.png',
+      img: 'resources/index/images/ebiw-768x122.png',
       href: 'https://ebiw.com/'
     }, {
       name: 'Shiraz Zack Real Estate',
-      img: 'images/sponsors/kw_PHOTO-2022-09-12-21-14-21.jpg',
+      img: 'resources/index/images/kw_PHOTO-2022-09-12-21-14-21.jpg',
       href: 'https://www.ShirazZack.com/'
     }]
   }, {
     name: 'Classic',
     sponsors: [{
       name: 'Jaspreet',
-      img: 'images/sponsors/Jaspreet-768x621.png',
+      img: 'resources/index/images/Jaspreet-768x621.png',
       href: 'https://www.realtor.com/realestateagents/56a5673e7e54f70100203d91'
     }, {
       name: 'Nanda Cal Realty',
-      img: 'images/sponsors/Mamta_logo_new-scaled-1-768x512.jpg',
+      img: 'resources/index/images/Mamta_logo_new-scaled-1-768x512.jpg',
       href: 'https://www.nandacalrealty.com/'
     }, {
       name: 'Andrew Klink',
-      img: 'images/sponsors/Andrew_Klink_2-scaled-1-768x432.jpeg',
+      img: 'resources/index/images/Andrew_Klink_2-scaled-1-768x432.jpeg',
       href: null
     }, {
       name: 'Gama Ride',
-      img: 'images/sponsors/gama_ride_working-1.png',
+      img: 'resources/index/images/gama_ride_working-1.png',
       href: 'https://gamaride.net/'
     }]
   }];
